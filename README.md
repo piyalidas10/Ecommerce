@@ -1,7 +1,7 @@
 # Run Ecommerce application
 npm start
 
-# In  API service, static JSON files are used which are coming from assets folder
+# In  API service static JSON files are used which are coming from assets folder
 categories.json
 content.json
 products.json
