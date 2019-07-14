@@ -2,9 +2,9 @@
 npm start
 
 # In  API service, static JSOn files are used which are coming in assets folder
-1. categories.json
-2. content.json
-3. products.json
+categories.json
+content.json
+products.json
 
 #How do I add Sass compilation in Angular CLI 6: angular.json
 "schematics": {
