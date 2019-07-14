@@ -1,0 +1,29 @@
+.sortBy {
+    padding: 12px 16px 0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #f0f0f0;
+}
+.sortBy span {
+    border-bottom: 2px solid transparent;
+    display: inline-block;
+    padding: 8px 10px 4px 0;
+}
+.sortBy ul {
+    list-style: none;
+    display: inline-block;
+    margin-bottom: 0;
+    padding: 0;
+}
+.sortBy ul li {
+    border-bottom: 2px solid transparent;
+    display: inline-block;
+    padding: 8px 0 4px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+.sortBy ul li.active {
+    color: #2874f0;
+    border-bottom: 2px solid #2874f0;
+    cursor: default;
+    font-weight: 500;
+}

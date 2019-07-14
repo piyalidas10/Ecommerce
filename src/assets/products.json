@@ -1,0 +1,53 @@
+[
+    {
+        "ProductId": "HT-1000",
+        "SubCategory": "Laptops",
+        "Category": "electronics",
+        "SupplierName": "Very Best Screens",
+        "WeightMeasure": 4.2,
+        "WeightUnit": "KG",
+        "Description": "Notebook Basic 15 with 2,80 GHz quad core, 15\" LCD, 4 GB DDR3 RAM, 500 GB Hard Disc, Windows 8 Pro",
+        "Name": "Notebook Basic 15",
+        "DateOfSale": "2017-03-26",
+        "ProductPicUrl": "",
+        "Status": "Available",
+        "Quantity": 10,
+        "CurrencyCode": "INR",
+        "Price": "12300",
+        "DateOfEntry" : "2019-03-20"
+    },
+    {
+        "ProductId": "HT-1001",
+        "SubCategory": "Television",
+        "Category": "appliances",
+        "SupplierName": "Very Best Screens",
+        "WeightMeasure": 4.5,
+        "WeightUnit": "KG",
+        "Description": "Notebook Basic 17 with 2,80 GHz quad core, 17\" LCD, 4 GB DDR3 RAM, 500 GB Hard Disc, Windows 8 Pro",
+        "Name": "Notebook Basic 17",
+        "DateOfSale": "2017-04-17",
+        "ProductPicUrl": "",
+        "Status": "Available",
+        "Quantity": 20,
+        "CurrencyCode": "INR",
+        "Price": 1249,
+        "DateOfEntry" : "2019-03-21"
+    },
+    {
+        "ProductId": "IFB 23",
+        "SubCategory": "Microwave",
+        "Category": "appliances",
+        "SupplierName": "Very Best Screens",
+        "WeightMeasure": 4.5,
+        "WeightUnit": "KG",
+        "Description": "This IFB Microwave Oven is the ‘little elf’ for modern kitchens.",
+        "Name": "IFB 23 L Convection Microwave Oven  (23SC3, Silver)",
+        "DateOfSale": "2017-04-17",
+        "ProductPicUrl": "IFB23.jpeg",
+        "Status": "Available",
+        "Quantity": 5,
+        "CurrencyCode": "INR",
+        "Price": 9399,
+        "DateOfEntry" : "2019-05-21"
+    }
+]  

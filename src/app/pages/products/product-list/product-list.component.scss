@@ -1,0 +1,44 @@
+@import "../../../../assets/styles/theme.scss";
+.sidebar{
+    margin-top: 10px;
+}
+.productLists { 
+    background: $color-white;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.08);
+    border: 1px solid #eaeaea;
+    padding: 0 0 convertEm(20) 0;
+    margin-top: 10px;
+    .no-product{
+        img{
+            max-width: 200px;
+        }
+    }
+    .productBox { 
+        border-bottom: 1px solid #eaeaea;
+        padding: convertEm(15);
+        margin-bottom: 10px;
+        display: block;
+        cursor: pointer;
+        color: $color-black;
+        text-decoration: none;
+        img {
+            margin: 10px 0;
+        }
+        h6 { margin: 10px 0;}
+        p{
+            .rate { 
+                color: #CC0000;
+                font-weight: bold;
+            }
+        }
+        ul {
+            margin-left: 20px;
+            padding: 0;
+        }
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+    
+}
+

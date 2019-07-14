@@ -1,0 +1,100 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./assets/styles/theme.scss";
+@import './assets/styles/mixin.scss';
+html,body {
+  background: $pagebg;
+  width: 100%;
+  height: 100%;
+}
+
+.divider {
+  width: 100%;
+  height: 10px;
+  border-bottom: $color-light-grey 1px solid;
+  margin-bottom: 10px;
+}
+
+.loader-bg {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+}
+
+.loader {
+  border: 16px solid $color-white;
+  border-top: 16px solid $color-blue;
+  @include border-radius(50%);
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -60px;
+  margin-top: -60px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.owl-carousel {
+  width: 90% !important;
+  margin: 10% auto;
+}
+
+.owl-carousel .owl-nav {
+  overflow: hidden;
+  height: 0px;
+}
+
+.owl-carousel .nav-btn {
+  height: 47px;
+  position: absolute;
+  width: 26px;
+  cursor: pointer;
+  top: 30% !important;
+}
+
+.owl-carousel .owl-prev.disabled,
+.owl-carousel .owl-next.disabled {
+  pointer-events: none;
+  opacity: 0.2;
+}
+
+.owl-carousel .prev-slide {
+  /* background: url(./assets/images/nav-icon.png) no-repeat scroll 0 0; */
+  left: -33px;
+}
+
+.owl-carousel .next-slide {
+  /* background: url(./assets/images/nav-icon.png) no-repeat scroll -24px 0px; */
+  right: -33px;
+}
+
+.owl-carousel .prev-slide:hover {
+  background-position: 0px -53px;
+}
+
+.owl-carousel .next-slide:hover {
+  background-position: -24px -53px;
+}
+
+.wrapper {
+  background: $color-white;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .08);
+  border: 1px solid #eaeaea;
+}
+
+@media (min-width: 1600px) {
+  .container {
+    max-width: 1600px;
+  }
+}

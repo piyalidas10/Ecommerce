@@ -1,0 +1,14 @@
+<div class="filterSec">
+  <div class="col-12">
+    <h6>CATEGORIES</h6>
+    <ul class="catListing">
+      <li *ngFor="let cat of subCat">{{cat}}</li>
+    </ul>
+    <div class="divider"></div>
+  </div>
+  <div class="col-12">
+    <h6>Price (Rs.)</h6>
+    <ng5-slider [(ngModel)]="priceSelection" [(value)]="minValue" [(highValue)]="maxValue" [options]="options" (mouseup)="changePrice()"></ng5-slider>
+    <div class="divider"></div>
+  </div>
+</div>

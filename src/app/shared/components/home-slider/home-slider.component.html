@@ -1,0 +1,20 @@
+<div id="demo" class="carousel slide" data-ride="carousel" #sliderBox (mouseover)="showArraow()" (mouseout)="hideArraow()">
+  <ul class="carousel-indicators">
+    <li *ngFor="let no of slideCt; let i = index" data-target="#demo" data-slide-to="i"></li>
+  </ul>
+  <div class="carousel-inner">
+    <div class="carousel-item" *ngFor="let sl of slideCt">
+      <img src="{{sl.url}}" alt="Los Angeles" width="1100" height="500">
+      <div class="carousel-caption">
+        <h3>{{sl.title}}</h3>
+        <p>{{sl.caption}}</p>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+</div>

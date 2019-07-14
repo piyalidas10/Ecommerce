@@ -1,0 +1,55 @@
+@import '../../../../assets/styles/theme.scss';
+@import '../../../../assets/styles/mixin.scss';
+.carousel-item img{
+    width: 100%;
+}
+.carousel-control-next, .carousel-control-prev {
+    height: 100px;
+    margin: 0;
+    width: 46px;
+    background: $color-white;
+    color: $color-black-medium;
+    top: 50%;
+    position: absolute;
+    z-index: 8;
+    margin-top: -50px;
+    text-align: center;
+    cursor: pointer;
+    opacity: 0;
+    text-indent: 0;
+    font-size: 0;
+    -webkit-transition: all .3s ease 0s;
+    -moz-transition: all .3s ease 0s;
+    -ms-transition: all .3s ease 0s;
+    -o-transition: all .3s ease 0s;
+    transition: all .3s ease 0s;
+}
+
+.carousel-control-prev{
+    @include border-radius(0 5px 5px 0);
+    left: -70px;
+}
+
+
+.carousel-control-next{
+    @include border-radius(5px 0 0 5px);
+    right: -70px;
+}
+
+.carousel-control-next-icon:after
+{
+  content: '>';
+  font-size: 20px;
+  line-height: 20px;
+  color: $color-black;
+  font-weight: bold;
+}
+
+.carousel-control-prev-icon:after {
+  content: '<';
+  font-size: 20px;
+  line-height: 20px;
+  color: $color-black;
+  font-weight: bold;
+}
+

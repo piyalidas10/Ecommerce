@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="col-lg-4 offset-md-4 col-md-6 offset-md-3 loginBox">
+        <h3 class="text-center">Log In</h3>
+        <p *ngIf="message" class="text-center error">{{message}}</p>
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+          <div class="row form-group clearfix" [ngClass]="{ 'has-error': submitted && f.umail.errors }">
+              <label for="umail" class="col-md-3 col-sm-5 col-12">umail</label>
+              <div class="col-md-9 col-sm-7 col-12">
+                  <input type="text" class="form-control" formControlName="umail" />
+                  <div *ngIf="submitted && f.umail.errors" class="help-block">
+                        <div *ngIf="f.umail.errors.required">umail is required</div>
+                  </div>
+              </div>
+          </div>
+          <div class="row form-group clearfix" [ngClass]="{ 'has-error': submitted && f.password.errors }">
+            <label for="password" class="col-md-3 col-sm-5 col-12">Password</label>
+            <div class="col-md-9 col-sm-7 col-12">
+                <input type="password" class="form-control" formControlName="password"/>
+                <div *ngIf="submitted && f.password.errors" class="help-block">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-9 offset-md-3 col-sm-7 offset-sm-5 col-12 form-group text-right">
+                <button class="btn btn-success btn-block" type="submit">Login</button>
+            </div>
+            <div class="col-md-9 offset-md-3 col-sm-7 offset-sm-5 col-12 text-center">
+                <p>New customer? Start here.</p>
+            </div>
+          </div>
+      </form>
+    </div>
+</div>

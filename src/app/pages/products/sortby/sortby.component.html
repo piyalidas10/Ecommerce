@@ -1,0 +1,6 @@
+<div class="col-md-12 sortBy">
+  <span>Sort By</span>
+  <ul #selectSort>
+    <li *ngFor="let ty of type; let i = index" (click)="sortByFunc($event, i)">{{ty}}</li>
+  </ul>
+</div>

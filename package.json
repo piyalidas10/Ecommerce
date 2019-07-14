@@ -1,48 +1,90 @@
 {
-  "name": "project8",
-  "version": "0.0.0",
+  "name": "ecommerce",
+  "version": "0.0.1",
+  "author": {
+    "name": "Piyali Das",
+    "email": "piyalidas.it@gmail.com"
+  },
+  "description": "A ecommerce POC",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/piyalidas10/angular-library"
+  },
+  "contributors": [
+    "piyali das <piyalidas.it@gmail.com>"
+  ],
+  "homepage": "http://localhost:4200/home",
+  "keywords": [
+    "ecommerce",
+    "POC",
+    "angular",
+    "application"
+  ],
+  "engines": {
+    "node": ">= 10.15.3",
+    "npm": ">= 6.4.1"
+  },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "init": "npm prune && npm install",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "start": "npm run && ng serve && ng lint"
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^6.0.3",
-    "@angular/common": "^6.0.3",
-    "@angular/compiler": "^6.0.3",
-    "@angular/core": "^6.0.3",
-    "@angular/forms": "^6.0.3",
-    "@angular/http": "^6.0.3",
-    "@angular/platform-browser": "^6.0.3",
-    "@angular/platform-browser-dynamic": "^6.0.3",
-    "@angular/router": "^6.0.3",
+    "@angular/animations": "6.1.0",
+    "@angular/common": "6.1.0",
+    "@angular/compiler": "6.1.0",
+    "@angular/core": "6.1.0",
+    "@angular/forms": "6.1.0",
+    "@angular/http": "6.1.0",
+    "@angular/platform-browser": "6.1.0",
+    "@angular/platform-browser-dynamic": "6.1.0",
+    "@angular/router": "6.1.0",
+    "@ng-bootstrap/ng-bootstrap": "^4.2.0",
     "core-js": "^2.5.4",
-    "rxjs": "^6.0.0",
-    "zone.js": "^0.8.26"
+    "detect-passive-events": "^1.0.4",
+    "ng5-slider": "^1.2.1",
+    "npm": "^6.8.0",
+    "rxjs": "^6.2.2",
+    "zone.js": "0.8.26"
   },
   "devDependencies": {
-    "@angular/compiler-cli": "^6.0.3",
+    "@angular/compiler-cli": "^6.1.0",
+    "@angular-devkit/build-ng-packagr": "~0.8.0",
     "@angular-devkit/build-angular": "~0.6.8",
-    "typescript": "~2.7.2",
+    "ng-packagr": "^4.7.1",
+    "tsickle": ">=0.29.0",
+    "tslib": "^1.9.0",
+    "typescript": "2.9.1",
     "@angular/cli": "~6.0.8",
-    "@angular/language-service": "^6.0.3",
+    "@angular/language-service": "^6.1.0",
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "~4.2.1",
     "jasmine-core": "~2.99.1",
+    "jasmine-marbles": "^0.4.1",
     "jasmine-spec-reporter": "~4.2.1",
-    "karma": "~1.7.1",
+    "karma": "^4.0.0",
     "karma-chrome-launcher": "~2.2.0",
-    "karma-coverage-istanbul-reporter": "~2.0.0",
-    "karma-jasmine": "~1.1.1",
+    "karma-coverage-istanbul-reporter": "~2.0.5",
+    "karma-jasmine": "~1.1.2",
     "karma-jasmine-html-reporter": "^0.2.2",
-    "protractor": "~5.3.0",
-    "ts-node": "~5.0.1",
-    "tslint": "~5.9.1"
+    "lighthouse": "^4.0.0-alpha.2-3.2.1",
+    "protractor": "~5.4.0",
+    "puppeteer": "^1.11.0",
+    "standard-version": "^4.4.0",
+    "ts-node": "~7.0.0",
+    "tslint": "^5.11.0",
+    "tslint-config-airbnb": "^5.10.0",
+    "wallaby-webpack": "^3.9.11",
+    "webpack-dev-server": "3.1.14"
   }
 }
