@@ -1,7 +1,18 @@
-# Ecommerce using Angular 6
-1. Go to 'http://developers.facebook.com/apps' 
-2. After creating an app, the App ID / Client ID is shown
-3. Create a New App ID with name and email id
-4. Gte the client id / app id
-5. Check thee 4 given scenario whatever you want to check
-6. Then confirm
+# Run Ecommerce application in browser
+npm start
+
+# In  API service, static JSOn files are used which are coming in assets folder
+1. categories.json
+2. content.json
+3. products.json
+
+#How do I add Sass compilation in Angular CLI 6: angular.json
+"schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+},
+Changing the CSS Files to Sass
+"styles": [
+              "src/styles.scss"
+          ],
