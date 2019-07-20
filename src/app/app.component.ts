@@ -1,7 +1,6 @@
 import { Component, ViewEncapsulation, OnInit, Inject } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { DOCUMENT } from '@angular/common';
-import { APIService } from './service/api.service';
 import { AppConfig } from './settings/app.config';
 
 @Component({

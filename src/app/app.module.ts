@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -8,12 +8,14 @@ import { AppRoutingModule } from './app.routing';
 import { AppConfig } from './settings/app.config';
 
 
-import { HeaderComponent } from './shared/components/header/header.component';
-
+import { HeaderModule } from './shared/components/header/header.module';
+import { NavbarModule } from './shared/components/navbar/navbar.module';
+import { CartModule } from './shared/components/cart/cart.module';
 
 import { APIService } from './service/api.service';
-import { CartComponent } from './shared/components/cart/cart.component';
-import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { AuthService } from './auth/auth.service';
+
+
 
 import { ModalDialogComponent } from './shared/modal-dialog/modal-dialog.component';
 
@@ -21,19 +23,21 @@ import { ModalDialogComponent } from './shared/modal-dialog/modal-dialog.compone
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    CartComponent,
-    NavbarComponent,
     ModalDialogComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
+    CommonModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HeaderModule,
+    NavbarModule,
+    CartModule
   ],
-  providers: [APIService, AppConfig],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
+  providers: [APIService, AppConfig, AuthService],
   entryComponents: [ModalDialogComponent],
   bootstrap: [AppComponent]
 })

@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home.component';
-import { HomeSliderComponent } from '../../shared/components/home-slider/home-slider.component';
+import { HomeSliderModule } from '../../shared/components/home-slider/home-slider.module';
 
 const routes: Routes = [
   {
@@ -15,11 +15,12 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    HomeSliderModule
   ],
   declarations: [
-    HomeComponent,
-    HomeSliderComponent
-  ]
+    HomeComponent
+  ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class HomeModule { }

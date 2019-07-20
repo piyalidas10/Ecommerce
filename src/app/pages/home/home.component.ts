@@ -9,7 +9,6 @@ import { filter, map, flatMap } from 'rxjs/operators';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
   constructor(
     private router: Router,
     private titleService: Title
