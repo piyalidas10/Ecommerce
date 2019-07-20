@@ -1,10 +1,4 @@
 # Run Ecommerce application
-Before push any code you have to pass in lint and test cases
-1. ng lint
-2. ng test
-
-after pass in both cases
-
 npm start
 
 # PUSH Ecommerce application
