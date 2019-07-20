@@ -2,6 +2,7 @@
 Before push any code you have to pass in lint and test cases
 1. ng lint
 2. ng test
+
 after pass in both cases
 
 npm start
@@ -10,7 +11,9 @@ npm start
 Before push any code you have to pass in lint and test cases
 1. ng lint
 2. ng test
+
 after pass in both cases
+
 1. git add .
 2. git commit -m "message" --no-verify
 3. git push -u origin master
