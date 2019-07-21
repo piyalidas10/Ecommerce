@@ -3,31 +3,44 @@
 </div>
 
 <div class="container" *ngIf="!isLoading">
+
   <div class="row">
     <div class="col-12 col-md-4 col-lg-3 sidebar">
       <app-sidebar-filter (priceVal)="changePrice($event)"></app-sidebar-filter>
     </div>
     <div class="col-12 col-md-8 col-lg-9 productLists">
       <app-sortby (changeEvent)="sortbyMessage($event)"></app-sortby>
-      <div class="row">
-        <div class="col-12 col-xl-3 col-md-4 col-sm-6" *ngFor="let prodt of products">
-          <a (click)="productDetails(prodt.ProductId)" class="productBox">
-                <div clas="productImg">
-                    <img [src]="imgURL + checkPath(prodt.ProductPicUrl)" class="img-thumbnail" />
-                </div>
-                <h6>{{prodt.Name | truncate:20}}</h6>
-                <p>
-                  <span class="rate">{{prodt.Price | currency:prodt.CurrencyCode }}</span>
-                </p>
-                <button class="btn btn-warning btn-block">Add To Cart</button>
-                <button class="btn btn-success btn-block">Buy Now</button>
-          </a>
-        </div>
-        <div class="col-12 no-product text-center" *ngIf="products.length===0">
-            <img [src]="imgURL + nopic" class="img-thumbnail" />
-            <h4>Opps sorry, No products found</h4>
+
+      <div class="errorWrapper col-12" *ngIf="errorData && errorData.length > 0">
+        <div class="col-sm-12 alert alert-danger">
+          <div class="fa fa-warning"></div>
+          {{errorData}}
         </div>
       </div>
+
+      <div class="row" *ngIf="!errorData">
+        <div class="col-12 col-xl-3 col-md-4 col-sm-6" *ngFor="let prodt of products">
+          <a (click)="productDetails(prodt.ProductId)" class="productBox">
+            <div clas="productImg">
+              <img [src]="imgURL + checkPath(prodt.ProductPicUrl)" class="img-thumbnail" />
+            </div>
+            <h6>{{prodt.Name | truncate:20}}</h6>
+            <p>
+              <span class="rate">{{prodt.Price | currency:prodt.CurrencyCode }}</span>
+            </p>
+            <button class="btn btn-warning btn-block">Add To Cart</button>
+            <button class="btn btn-success btn-block">Buy Now</button>
+          </a>
+        </div>
+        <div class="col-12 no-product text-center" *ngIf="products.length === 0">
+          <img [src]="imgURL + nopic" class="img-thumbnail" />
+          <h4>Opps sorry, No products found</h4>
+        </div>
+      </div>
+
+
     </div>
   </div>
+
+
 </div>

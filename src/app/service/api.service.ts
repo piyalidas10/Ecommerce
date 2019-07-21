@@ -84,55 +84,45 @@ export class APIService {
   */
   getProducts(cat: string): Observable<any> {
     const apiURL = `${this.appConfig.protocol}${this.appConfig.apiEndpoint}${this.appConfig.API_PRODUCT_LIST_PATH}` + '/?cat=';
-    return this.http.get(apiURL, this.ecommerceRQSTOptions)
-      .pipe(catchError(this.handleError('getProducts', [])));
+    return this.http.get(apiURL, this.ecommerceRQSTOptions);
+    // .pipe(catchError(this.handleError('getProducts', [])));
   }
 
   /**
    * Get product details
   */
-  getProductDetails(id: string) {
-    // tslint:disable-next-line:no-shadowed-variable
-    const promise = new Promise((resolve, reject) => {
-      const apiURL = 'http://localhost:4200/assets/products.json' + '/?id=';
-      return this.http.get(apiURL).toPromise().then(
-        res => {
-          resolve(res);
-        },
-        msg => {
-          reject(msg);
-        }
-      );
-    });
-    return promise;
+  getProductDetails(id: string): Observable<any> {
+      const apiURL = `${this.appConfig.protocol}${this.appConfig.apiEndpoint}${this.appConfig.API_PRODUCT_LIST_PATH}` + '/?id=';
+      return this.http.get(apiURL, this.ecommerceRQSTOptions);
+      // .pipe(catchError(this.handleError('getProductDetails', [])));
   }
 
 
 
-  /**
-   * Handle Http operation that failed.
-   * Let the app continue.
-   * @param operation - name of the operation that failed
-   * @param result - optional value to return as the observable result
-   */
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
+  // /**
+  //  * Handle Http operation that failed.
+  //  * Let the app continue.
+  //  * @param operation - name of the operation that failed
+  //  * @param result - optional value to return as the observable result
+  //  */
+  // private handleError<T>(operation = 'operation', result?: T) {
+  //   return (error: any): Observable<T> => {
 
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
+  //     // TODO: send the error to remote logging infrastructure
+  //     console.error(error); // log to console instead
 
-      // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
+  //     // TODO: better job of transforming error for user consumption
+  //     this.log(`${operation} failed: ${error.message}`);
 
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
-  }
+  //     // Let the app keep running by returning an empty result.
+  //     return of(result as T);
+  //   };
+  // }
 
-  /** Log a APIService message with the MessageService */
-  private log(message: string) {
-    this.messageService.add(`APIService: ${message}`);
-  }
+  // /** Log a Service message with the MessageService */
+  // private log(message: string) {
+  //   this.messageService.add(`API Service: ${message}`);
+  // }
 
 
 }

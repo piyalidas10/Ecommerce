@@ -21,9 +21,12 @@ export class ProductDetailsComponent implements OnInit {
 
   fetchProductInfo(id) {
     this.productsData.getProductDetails(id)
-      .then(
-        (res) => {
-          console.log(res);
+      .subscribe(
+        data => {
+          console.log(data);
+        },
+        err => {
+          console.log(err);
         }
       );
   }

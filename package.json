@@ -65,6 +65,7 @@
     "ng5-slider": "^1.2.1",
     "npm": "^6.8.0",
     "rxjs": "^6.2.2",
+    "rxjs-compat": "^6.5.2",
     "zone.js": "0.8.26"
   },
   "devDependencies": {

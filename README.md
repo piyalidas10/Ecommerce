@@ -47,7 +47,7 @@ npm install husky --save-dev
 }
 Any time you try and commit, the hooks will run your lint command first. The hooks will not allow your commit to pass if the lint are failing.
 
-😜 Don’t worry, you can force a commit with --no-verify if you find yourself in the situation where you just want to commit even though your pre-commit hooks don’t succeed.
+Don’t worry, you can force a commit with --no-verify if you find yourself in the situation where you just want to commit even though your pre-commit hooks don’t succeed.
 
 git commit -m "first commit" --no-verify
 
@@ -65,6 +65,22 @@ and before pushing to a remote repository we:
 perform an optimized build
 then run unit tests
 
-https://www.npmjs.com/package/pre-commit-with-lint
-https://www.npmjs.com/package/pre-commit
-https://sigmoidal.io/automatic-code-quality-checks-with-git-hooks/
+1. https://www.npmjs.com/package/pre-commit-with-lint
+2. https://www.npmjs.com/package/pre-commit
+3. https://sigmoidal.io/automatic-code-quality-checks-with-git-hooks/
+
+# Angular 6 Http Error Interceptor
+
+The Error Interceptor intercepts http responses from the api to check if there were any errors. If there is a 401 Unauthorized response the user is automatically logged out of the application, all other errors are re-thrown to be caught by the calling service so an alert can be displayed to the user.
+
+It's implemented using the HttpInterceptor class that was introduced in Angular 4.3 as part of the new HttpClientModule. By extending the HttpInterceptor class you can create a custom interceptor to catch all error responses from the server in a single location.
+
+In api.service.ts
+
+"handleError" is comment out becuase i have implement api error globally using HttpInterceptor which is written in http-error-interceptor.ts
+
+if you change the following ------------
+
+API_PRODUCT_LIST_PATH = 'assets/product.json' in app.config.ts, you can see error in "Http failure response for http://localhost:4200/assets/product.json/?cat=: 404 Not Found" error in products page and also in console.
+
+
