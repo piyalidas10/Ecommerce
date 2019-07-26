@@ -11,14 +11,14 @@
     <div class="col-12 col-md-8 col-lg-9 productLists">
       <app-sortby (changeEvent)="sortbyMessage($event)"></app-sortby>
 
-      <div class="errorWrapper col-12" *ngIf="errorData && errorData.length > 0">
+      <div class="errorWrapper col-12" *ngIf="errorData !== NULL">
         <div class="col-sm-12 alert alert-danger">
           <div class="fa fa-warning"></div>
-          {{errorData}}
+          {{errorData.errorDesc}}
         </div>
       </div>
 
-      <div class="row" *ngIf="!errorData">
+      <div class="row" *ngIf="errorData === NULL">
         <div class="col-12 col-xl-3 col-md-4 col-sm-6" *ngFor="let prodt of products">
           <a (click)="productDetails(prodt.ProductId)" class="productBox">
             <div clas="productImg">

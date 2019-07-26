@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, ActivationEnd } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { filter, map } from 'rxjs/operators';
 import { APIService } from '../../../service/api.service';
+import { SharedService } from '../../../service/shared.service';
 import { AppConfig } from '../../../settings/app.config';
 
 import { SidebarFilterComponent } from '../sidebar-filter/sidebar-filter.component';
@@ -21,7 +22,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   option: string;
   isLoading: Boolean = true;
   imgURL: string;
-  errorData: string;
+  errorData: any;
   productObsv: Subscription;
 
   @Output() productDetailsEvent = new EventEmitter<any>();
@@ -36,7 +37,8 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   constructor(
     private titleService: Title,
-    private productsData: APIService,
+    private apiService: APIService,
+    private sharedService: SharedService,
     private appConfig: AppConfig,
     private route: ActivatedRoute,
     private router: Router
@@ -50,6 +52,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.errorMsg();
     this.listAppliances();
     this.option = 'Newest First';
     this.sortbyMessage(this.option);
@@ -60,7 +63,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
         this.route.params.subscribe(params => {
           const cat = params['cat'];
           console.log(cat);
-          this.productObsv = this.productsData.getProducts(cat).
+          this.productObsv = this.apiService.getProducts(cat).
             subscribe(
               data => {
                 this.products = [];
@@ -76,15 +79,26 @@ export class ProductListComponent implements OnInit, OnDestroy {
                 console.log(this.products);
               },
               err => {
-                this.errorData = err.message;
+                this.errorData = this.sharedService.getErrorKeys(err.statusText);
                 this.isLoading = false;
-                console.log(err);
+                console.log('errorData => ', this.errorData);
               }
             );
         });
       } catch (error) {
         console.log(error);
       }
+  }
+
+  errorMsg() {
+    this.apiService.getErrorMessage().then(
+      (res) => {
+        if (this.sharedService.errorObj.length === 0) {
+          this.sharedService.errorObj = res['errors'];
+          console.log('erroJson => ', this.sharedService.errorObj);
+        }
+      }, (error) => {
+      });
   }
 
   checkPath(imgsrc): string {

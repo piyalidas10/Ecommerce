@@ -12,9 +12,16 @@ export class SharedService {
       id : 1
     }
   ];
+  errorObj = [];
+
   constructor(private http: HttpClient) { }
 
   private dataSource = new BehaviorSubject<any>(this.dataDefault);
   productInfo = this.dataSource.asObservable();
+
+  public getErrorKeys(key) {
+    const objKey = key.toUpperCase().split(' ').join('_');
+    return this.errorObj[objKey];
+  }
 
 }

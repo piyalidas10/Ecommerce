@@ -8,4 +8,5 @@ export class AppConfig {
     API_PRODUCT_ADD_PATH = '';
     API_PRODUCT_DELETE_PATH = '';
     IMAGE_PATH = 'assets/images/products/';
+    ERROR_MSG_PATH = 'assets/errors.json';
 }

@@ -18,12 +18,14 @@ import { AuthService } from './auth/auth.service';
 
 
 import { ModalDialogComponent } from './shared/modal-dialog/modal-dialog.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ModalDialogComponent
+    ModalDialogComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

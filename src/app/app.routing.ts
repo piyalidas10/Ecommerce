@@ -20,6 +20,11 @@ const appRoutes: Routes = [
         data: {title: 'Ecommerce login'}
     },
     {
+        path: 'register',
+        loadChildren: './pages/register/register.module#RegisterModule',
+        data: {title: 'Ecommerce Register'}
+    },
+    {
         path: 'products/:cat',
         loadChildren: './pages/products/product-list/product-list.module#ProductListModule',
         data: {title: 'of Ecommerce Online'}

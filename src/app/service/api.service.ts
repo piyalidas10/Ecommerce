@@ -46,7 +46,7 @@ export class APIService {
     // tslint:disable-next-line:no-shadowed-variable
     const promise = new Promise((resolve, reject) => {
       const apiURL = `${this.appConfig.protocol}${this.appConfig.apiEndpoint}${this.appConfig.API_CATEGORY_PATH}`;
-      return this.http.get(apiURL, this.ecommerceRQSTOptions).toPromise().then(
+      return this.http.get(apiURL).toPromise().then(
         res => {
           resolve(res);
         },
@@ -65,8 +65,7 @@ export class APIService {
   // tslint:disable-next-line:no-shadowed-variable
   const promise = new Promise((resolve, reject) => {
     const apiURL = `${this.appConfig.protocol}${this.appConfig.apiEndpoint}${this.appConfig.API_CONTENT_PATH}`;
-    console.log(apiURL);
-    return this.http.get(apiURL, this.ecommerceRQSTOptions).toPromise().then(
+    return this.http.get(apiURL).toPromise().then(
       res => {
         resolve(res);
       },
@@ -77,6 +76,25 @@ export class APIService {
   });
   return promise;
 }
+
+/**
+   * Get error message
+  */
+ getErrorMessage() {
+   // tslint:disable-next-line:no-shadowed-variable
+  const promise = new Promise((resolve, reject) => {
+    const apiURL = `${this.appConfig.protocol}${this.appConfig.apiEndpoint}${this.appConfig.ERROR_MSG_PATH}`;
+    return this.http.get(apiURL).toPromise().then(
+      res => {
+        resolve(res);
+      },
+      msg => {
+        reject(msg);
+      }
+    );
+  });
+  return promise;
+ }
 
 
   /**

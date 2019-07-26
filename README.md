@@ -7,7 +7,9 @@ Before push any code you have to pass in lint and test cases
 2. ng test
 
 After pass in both cases---------
-
+1. git stash ---------- save you local changes
+2. git pull ----------- pull the master branch changes
+3. git stash apply -------- merge local changes with master branch changes
 1. git add .
 2. git commit -m "message" --no-verify
 3. git push -u origin master
