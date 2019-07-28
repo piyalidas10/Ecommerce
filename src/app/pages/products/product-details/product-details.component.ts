@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { APIService } from '../../../service/api.service';
+import { AppConfig } from '../../../settings/app.config';
 
 @Component({
   selector: 'app-product-details',
@@ -9,7 +10,17 @@ import { APIService } from '../../../service/api.service';
 })
 export class ProductDetailsComponent implements OnInit {
   productId: string;
-  constructor(private Activatedroute: ActivatedRoute, private productsData: APIService) { }
+  imgURL: string;
+  pic: string;
+  productDt = {};
+
+  constructor(
+    private Activatedroute: ActivatedRoute,
+    private productsData: APIService,
+    private appConfig: AppConfig
+  ) {
+    this.imgURL = appConfig.protocol + appConfig.apiEndpoint + appConfig.IMAGE_PATH;
+  }
 
   ngOnInit() {
     this.Activatedroute.params.subscribe(params => {
@@ -23,12 +34,22 @@ export class ProductDetailsComponent implements OnInit {
     this.productsData.getProductDetails(id)
       .subscribe(
         data => {
+          this.productDt = data;
           console.log(data);
         },
         err => {
           console.log(err);
         }
       );
+  }
+
+  checkPath(imgsrc): string {
+    if (imgsrc === undefined || imgsrc === '') {
+      this.pic = 'empty_product.svg';
+    } else {
+      this.pic = imgsrc;
+    }
+    return this.pic;
   }
 
 }

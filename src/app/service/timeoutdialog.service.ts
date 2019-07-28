@@ -2,40 +2,7 @@ import { Injectable, Component, Input, OnInit, ApplicationRef, ChangeDetectorRef
 import { Observable, of } from 'rxjs';
 import { delay, tap } from 'rxjs/operators';
 import { NgbModal, NgbModalOptions, NgbActiveModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-
-@Component({
-  template: `
-  <div class="modal-header">
-    <h4 class="modal-title">{{ title }}</h4>
-    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <p [innerHTML]="message"></p>
-  </div>
-  <div class="modal-footer">
-    <button *ngIf="showCancel" type="button" class="btn btn-secondary" (click)="activeModal.close(false)">{{ cancelText }}</button>
-    <button type="button" class="btn btn-secondary" (click)="activeModal.close(true)">{{ confirmText }}</button>
-  </div>
-`
-})
-
-export class TimeoutdialogComponent implements OnInit {
-  @Input() title;
-  @Input() message;
-  @Input() showCancel = false;
-  @Input() confirmText: String = 'Ok';
-  @Input() cancelText: String = 'Cancel';
-
-  constructor(public activeModal: NgbActiveModal, public changeRef: ChangeDetectorRef) {
-      // console.log("DialogComponent construct");
-  }
-
-  ngOnInit() {
-      // console.log("DialogComponent init");
-  }
-}
+import { TimeoutDialogComponent } from '../shared/components/timeout-dialog/timeout-dialog.component';
 
 @Injectable({
   providedIn: 'root'
@@ -45,7 +12,7 @@ export class TimeoutdialogService {
   constructor(private modalService: NgbModal) { }
 
     public confirm() {
-        const modalRef = this.modalService.open(TimeoutdialogComponent);
+        const modalRef = this.modalService.open(TimeoutDialogComponent);
 
         const instance = (modalRef as any)._windowCmptRef.instance;
         instance.windowClass = '';
@@ -72,7 +39,7 @@ export class TimeoutdialogService {
 
     public open(title: string, message: string, showCancel: boolean = false, confirmText: string = 'Ok', cancelText: string = 'Cancel',
         options: NgbModalOptions = { size: 'sm' }) {
-        const modalRef = this.modalService.open(TimeoutdialogComponent, options);
+        const modalRef = this.modalService.open(TimeoutDialogComponent, options);
 
         const instance = (modalRef as any)._windowCmptRef.instance;
 

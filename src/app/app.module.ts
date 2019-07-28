@@ -18,14 +18,21 @@ import { AuthService } from './auth/auth.service';
 
 
 import { ModalDialogComponent } from './shared/modal-dialog/modal-dialog.component';
-import { RegisterComponent } from './pages/register/register.component';
+import { ProductsComponent } from './pages/products/products.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+
+import { ModalDirective } from './directives/modal.directive';
+import { TimeoutDialogComponent } from './shared/components/timeout-dialog/timeout-dialog.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    ProductsComponent,
+    ModalDirective,
     ModalDialogComponent,
-    RegisterComponent
+    TimeoutDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +41,8 @@ import { RegisterComponent } from './pages/register/register.component';
     AppRoutingModule,
     HeaderModule,
     NavbarModule,
-    CartModule
+    CartModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

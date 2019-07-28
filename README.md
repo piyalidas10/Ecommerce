@@ -86,3 +86,5 @@ if you change the following ------------
 API_PRODUCT_LIST_PATH = 'assets/product.json' in app.config.ts, you can see error in "Http failure response for http://localhost:4200/assets/product.json/?cat=: 404 Not Found" error in products page and also in console.
 
 
+# Service worker using PWA
+

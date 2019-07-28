@@ -2,7 +2,7 @@
     <div class="col-lg-4 offset-md-4 col-md-6 offset-md-3 loginBox">
         <h3 class="text-center">Log In</h3>
         <p *ngIf="message" class="text-center error">{{message}}</p>
-      <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <!-- <form [formGroup]="loginForm" (ngSubmit)="login()">
           <div class="row form-group clearfix" [ngClass]="{ 'has-error': submitted && f.umail.errors }">
               <label for="umail" class="col-md-3 col-sm-5 col-12">umail</label>
               <div class="col-md-9 col-sm-7 col-12">
@@ -29,6 +29,6 @@
                 <p>New customer? <a routerLink="/register">Start here</a>.</p>
             </div>
           </div>
-      </form>
+      </form> -->
     </div>
 </div>

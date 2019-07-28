@@ -11,12 +11,12 @@ export class HomeSliderComponent implements OnInit, AfterViewInit {
   constructor() {
     this.slideCt = [
       {
-        url: 'https://demo.themedelights.com/Wordpress/WP01/WP004/wp-content/uploads/2019/03/Main_Banner-1-1.jpg',
+        url: './assets/images/Main_Banner-1-1.jpg',
         title: 'Los Angeles',
         caption: 'We had such a great time in LA!'
       },
       {
-        url: 'https://demo.themedelights.com/Wordpress/WP01/WP004/wp-content/uploads/2019/03/Main_Banner-2-1.jpg',
+        url: './assets/images/Main_Banner-2-1.jpg',
         title: 'Chicago',
         caption: 'Thank you, Chicago!'
       }
