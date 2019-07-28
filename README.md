@@ -190,6 +190,6 @@ Change apiEndpoint and contentEndpoint from localhost:4200/ to 127.0.0.1:8081/
 
 ### Reference Videos :
 
-https://www.youtube.com/watch?v=5YtNQJQu31Y
-https://www.youtube.com/watch?v=f26hgzyGdHM
+1. https://www.youtube.com/watch?v=5YtNQJQu31Y
+2. https://www.youtube.com/watch?v=f26hgzyGdHM
 
