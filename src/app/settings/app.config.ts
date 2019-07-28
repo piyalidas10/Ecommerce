@@ -1,7 +1,7 @@
 export class AppConfig {
     protocol = 'http://';
-    apiEndpoint = '127.0.0.1:8081/';
-    contentEndpoint = '127.0.0.1:8081/';
+    apiEndpoint = 'localhost:4200/';
+    contentEndpoint = 'localhost:4200/';
     API_CATEGORY_PATH = 'assets/mockdata/categories.json';
     API_CONTENT_PATH = 'assets/mockdata/content.json';
     API_PRODUCT_LIST_PATH = 'assets/mockdata/products.json';
