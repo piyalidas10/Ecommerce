@@ -76,7 +76,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
                   this.nopic = 'empty_product.svg';
                 }
                 this.isLoading = false;
-                console.log(this.products);
+                console.log('products => ', this.products);
               },
               err => {
                 this.errorData = this.sharedService.getErrorKeys(err.statusText);

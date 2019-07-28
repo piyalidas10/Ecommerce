@@ -25,7 +25,7 @@
     "resources": {
       "files": [
         "/assets/**",
-        "/assets/*.json",
+        "/assets/mockdata/*.json",
         "/assets/styles/*.scss",
         "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
       ]

@@ -14,6 +14,9 @@
     },
     "REQUEST_TIMEOUT": {
         "errorDesc": "The server timed out waiting for the request."
+    },
+    "GATEWAY_TIMEOUT": {
+        "errorDesc": "A network error between servers on the internet or an issue with an actual server"
     }
 }
 }
