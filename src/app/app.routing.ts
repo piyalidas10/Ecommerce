@@ -35,7 +35,9 @@ const appRoutes: Routes = [
     },
     {
         path: '**',
-        loadChildren: './pages/pagenotfound/pagenotfound.module#PagenotfoundModule'
+        loadChildren: '',
+        redirectTo: 'home',
+        pathMatch: 'full'
     }
 ];
 

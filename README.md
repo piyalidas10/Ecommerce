@@ -193,3 +193,21 @@ Change apiEndpoint and contentEndpoint from localhost:4200/ to 127.0.0.1:8081/
 1. https://www.youtube.com/watch?v=5YtNQJQu31Y
 2. https://www.youtube.com/watch?v=f26hgzyGdHM
 
+
+# Form Validators
+
+```
+class Validators {
+  static min(min: number): ValidatorFn
+  static max(max: number): ValidatorFn
+  static required(control: AbstractControl): ValidationErrors | null
+  static requiredTrue(control: AbstractControl): ValidationErrors | null
+  static email(control: AbstractControl): ValidationErrors | null
+  static minLength(minLength: number): ValidatorFn
+  static maxLength(maxLength: number): ValidatorFn
+  static pattern(pattern: string | RegExp): ValidatorFn
+  static nullValidator(control: AbstractControl): ValidationErrors | null
+  static compose(validators: ValidatorFn[]): ValidatorFn | null
+  static composeAsync(validators: AsyncValidatorFn[]): AsyncValidatorFn | null
+}
+```

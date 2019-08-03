@@ -97,6 +97,26 @@ export class APIService {
  }
 
 
+ /**
+   * Get Form validation error message
+  */
+ getValidationErrorMessage() {
+  // tslint:disable-next-line:no-shadowed-variable
+ const promise = new Promise((resolve, reject) => {
+   const apiURL = `${this.appConfig.protocol}${this.appConfig.apiEndpoint}${this.appConfig.VALIDATION_ERROR_MSG_PATH}`;
+   return this.http.get(apiURL).toPromise().then(
+     res => {
+       resolve(res);
+     },
+     msg => {
+       reject(msg);
+     }
+   );
+ });
+ return promise;
+}
+
+
   /**
    * Get products
   */

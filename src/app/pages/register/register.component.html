@@ -1,3 +1,44 @@
-<p>
-  register works!
-</p>
+<div class="container">
+  <div class="col-xl-6 offset-xl-3 col-md-10 offset-md-1 registerBox">
+    <h3 class="text-center">Register</h3>
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+      <div class="row form-group clearfix">
+            <div class="col-md-4 col-12">
+              <label for="firstName">First Name</label>
+                <input type="text" appValidationLabel formControlName="firstName" class="form-control" />
+            </div>
+            <div class="col-md-4 col-12">
+              <label for="middleName">Middle Name</label>
+                <input type="text" appValidationLabel formControlName="middleName" class="form-control" />
+            </div>
+            <div class="col-md-4 col-12">
+              <label for="lastName">Last Name</label>
+                <input type="text" appValidationLabel formControlName="lastName" class="form-control" />
+            </div>
+      </div>      
+      <div class="row form-group clearfix">
+        <label for="emailId" class="col-md-4 col-sm-5 col-12">Email ID</label>
+        <div class="col-md-8 col-sm-7 col-12">
+          <input type="text" appValidationLabel formControlName="emailId" class="form-control" />
+        </div>
+      </div>
+      <div class="row form-group clearfix">
+        <label for="mobile" class="col-md-4 col-sm-5 col-12">Mobile No</label>
+        <div class="col-md-8 col-sm-7 col-12">
+          <input type="text" appValidationLabel formControlName="mobile" class="form-control" />
+        </div>
+      </div>
+      <div class="row form-group clearfix">
+        <label for="umail" class="col-md-4 col-sm-5 col-12">Password</label>
+        <div class="col-md-8 col-sm-7 col-12">
+          <input type="text" appValidationLabel formControlName="password" class="form-control" />
+        </div>
+      </div>
+      <div class="row form-group clearfix">
+        <div class="col-12 text-center">
+            <button class="btn btn-primary" type="submit" appFormSubmit>Register With Us</button>
+        </div>
+      </div>  
+    </form>
+  </div>
+</div>

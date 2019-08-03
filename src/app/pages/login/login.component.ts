@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivationEnd } from '@angular/router';
@@ -11,7 +11,7 @@ import { first } from 'rxjs/operators';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit {
   user: {};
@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   message: string;
   returnUrl: string;
+  submitted = false;
 
   constructor(
     private titleService: Title,
@@ -47,7 +48,7 @@ export class LoginComponent implements OnInit {
 
 
   login() {
-
+    this.submitted = true;
     // stop here if form is invalid
     if (this.loginForm.invalid) {
       return;
