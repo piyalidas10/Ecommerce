@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
 import { AppConfig } from '../settings/app.config';
 import { resolve, reject } from 'q';
+import { Icategories } from '../modules/categories';
 
 @Injectable({
   providedIn: 'root',
@@ -46,7 +47,7 @@ export class APIService {
     // tslint:disable-next-line:no-shadowed-variable
     const promise = new Promise((resolve, reject) => {
       const apiURL = `${this.appConfig.protocol}${this.appConfig.apiEndpoint}${this.appConfig.API_CATEGORY_PATH}`;
-      return this.http.get(apiURL).toPromise().then(
+      return this.http.get<{message: string; categories: Icategories[]}>(apiURL).toPromise().then(
         res => {
           resolve(res);
         },

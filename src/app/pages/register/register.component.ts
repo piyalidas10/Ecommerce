@@ -7,6 +7,7 @@ import { APIService } from '../../service/api.service';
 import { SharedService } from '../../service/shared.service';
 import { MessageService } from '../../service/message.service';
 import { ValidationMessageService } from '../../service/validation-msg.service';
+import { IRegister } from '../../modules/register';
 
 @Component({
   selector: 'app-register',
@@ -50,13 +51,18 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  register() {
+  verifyForm() {
     const invalidElements = this.el.nativeElement.querySelectorAll('.form-control.ng-invalid');
     console.log(invalidElements, invalidElements.length);
     if (invalidElements.length > 0) {
       console.log(invalidElements[0]);
       invalidElements[0].focus();
     } else {
+      this.register({value: this.registerForm.value, valid: true});
+    }
+  }
+
+  register({ value, valid }: { value: IRegister, valid: boolean }) {
       console.log('Form submitted!');
       console.log(this.registerForm);
       // this.userService.register(this.registerForm.value)
@@ -69,7 +75,6 @@ export class RegisterComponent implements OnInit {
       //         error => {
       //             this.msgService.error(error);
       //         });
-    }
   }
 
   /*

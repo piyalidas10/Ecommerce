@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { APIService } from '../../../service/api.service';
+import { Icategories } from '../../../modules/categories';
 
 @Component({
   selector: 'app-navbar',
@@ -22,9 +23,9 @@ export class NavbarComponent implements OnInit {
       // catch with a regular try/catch block
       await this.productsData.getCategories().
         then(
-          (res) => {
-            this.categories = res;
-            console.log(this.categories);
+          (res: Icategories[]) => {
+            this.categories = res['categories'];
+            console.log(res);
           }
         );
       } catch (error) {

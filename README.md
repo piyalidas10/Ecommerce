@@ -194,20 +194,138 @@ Change apiEndpoint and contentEndpoint from localhost:4200/ to 127.0.0.1:8081/
 2. https://www.youtube.com/watch?v=f26hgzyGdHM
 
 
-# Form Validators
+# Sonar / SonarQube / Sonarts with Angular 6
+
+SonarQube is an open-source platform for continuous inspection of code quality which do regular code and generate static analysis of code to detect bugs, code smells, and security vulnerabilities. Soon share each and every part of report like what is code smell, css issues, duplicate code etc
+
+### Install tslint typescript
 
 ```
-class Validators {
-  static min(min: number): ValidatorFn
-  static max(max: number): ValidatorFn
-  static required(control: AbstractControl): ValidationErrors | null
-  static requiredTrue(control: AbstractControl): ValidationErrors | null
-  static email(control: AbstractControl): ValidationErrors | null
-  static minLength(minLength: number): ValidatorFn
-  static maxLength(maxLength: number): ValidatorFn
-  static pattern(pattern: string | RegExp): ValidatorFn
-  static nullValidator(control: AbstractControl): ValidationErrors | null
-  static compose(validators: ValidatorFn[]): ValidatorFn | null
-  static composeAsync(validators: AsyncValidatorFn[]): AsyncValidatorFn | null
-}
+npm install tslint typescript --save-dev
+```
+
+# Adding NodeJS to my Ecommerce Project
+
+```
+1. Create server.js in root folder
+2. Create ecommerce_backend folder in root folder
+3. Create app.js file in ecommerce_backend folder
+4. Run "npm install --save express" command to install express in your project
+5. npm i --save-dev nodemon
+```
+
+nodemon is a tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory are detected.
+
+
+# RUN server
+
+```
+npm run start:server
+```
+
+# API create in NODE
+
+### app.js
+
+```
+const express = require('express'); //server starts (express framework for routing all these)
+const bodyParser = require("body-parser");
+
+const app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PATCH, DELETE, OPTIONS"
+  );
+  next();
+});
+
+app.use('/api/categories', (req, res, next) => {
+  const categories = [{
+      "catId": "1",
+      "catName": "electronics",
+      "catDesc": "electronics",
+      "subCat": ["Laptops"]
+    },
+    {
+      "catId": "2",
+      "catName": "appliances",
+      "catDesc": "appliances",
+      "subCat": ["Television", "Microwave"]
+    },
+    {
+      "catId": "3",
+      "catName": "home-furniture",
+      "catDesc": "home & furniture",
+      "subCat": ["Kitchen", "Furniture"]
+    }
+  ];
+  res.status(200).json({
+    message: 'Successfully get categories',
+    categories: categories
+  });
+});
+
+// catch 404 and forward to error handler
+app.use((err, req, res, next) => {
+  next(createError(404));
+});
+
+
+// error handler
+app.use((err, req, res, next) => {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
+
+module.exports = app;
+```
+
+RUN the 'http://localhost:3000/api/categories' and get the JSON Static data in written in app.js.
+
+Now if you run http://localhost:4200/ using npm start. You will get CORS error in console.
+
+Cors stands for cross origin resource. We have a separated server and client, remember they're running on different domains, localhost 3000 for the server, localhost 4200 for our angular app. Now client and server want to talk to each other and they're not on the same host, if they were, then we could communicate without any issues but if they're on different hosts like in our case, we got 4200 but it doesn't matter, if we have different hosts we're then communicating with such background requests will fail and that's a security mechanism.You should not be able to access the data on a server or its resources in general if you're not running on the same server, so if the request is coming from a different address, this will give us a so-called cors error.
+
+so let's go there to the app.js file and there I will simply add one additional middleware. Now this middleware of course has to run before we handle the response sending here because there after the response is already sent, we can't manipulate it any more and we want to manipulate the response because we need to add headers to it.
+
+```
+npm install --save body-parser
+```
+
+### You have to write the following code in app.js to prevent from CORS
+
+```
+const bodyParser = require("body-parser");
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PATCH, DELETE, OPTIONS"
+  );
+  next();
+});
 ```

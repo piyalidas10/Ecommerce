@@ -1,4 +1,4 @@
 export interface ILogin {
-    umail: string;
+    emailId: string;
     password: string;
 }
