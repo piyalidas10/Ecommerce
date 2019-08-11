@@ -224,6 +224,13 @@ npm run start:server
 ```
 
 # API create in NODE
+### RUN both angular and nodejs simultaneously
+
+```
+npm start
+npm run start:server
+```
+
 
 ### app.js
 
@@ -329,3 +336,132 @@ app.use((req, res, next) => {
   next();
 });
 ```
+
+
+# Adding Mongoose
+
+Mongoose is an Object Data Modeling (ODM) library for MongoDB and Node.js. It manages relationships between data, provides schema validation, and is used to translate between objects in code and the representation of those objects in MongoDB. Object Mapping between Node and MongoDB managed via Mongoose.
+
+https://mongoosejs.com/docs/guide.html
+
+```
+npm install --save mongoose
+```
+
+on the ecommerce_backend and for that, I'll create a new folder there and I'll name it models too. Model, schema, we'll basically.
+
+```
+1. Create categories.js because here I want to create my categories model using mongoose
+2. mongoose, const mongoose by using that require syntax where I require the mongoose package
+    const mongoose = require('mongoose');
+3. you first of all create a blueprint for how your data should look like.    
+```
+
+```
+const mongoose = require('mongoose');
+
+const categoriesSchema = mongoose.Schema({
+    catId: { type: String, required: true },
+    catName:  { type: String, required: true },
+    catDesc: { type: String, required: true },
+    subCat: { type: [], required: true },
+});
+
+/* 
+**To use our schema definition, we need to convert our categoriesSchema into a Model we can work with.
+so it's this model which I'll export with the help of the module.exports syntax.
+Now this mongoose model can be used outside of this model file
+*/
+mongoose.exports = mongoose.Model('Categories', categoriesSchema);
+```
+
+# Connecting our Node Express App to MongoDB 
+### connect with mLab (mLab is now part of MongoDB, Inc.)
+
+How will you create a database in mLab : 
+1. https://www.linkedin.com/pulse/create-database-mongodb-using-mlabcom-piyali-das/
+2. https://www.youtube.com/watch?v=GrphDM8CJ6Q
+
+1. Create a database ecommerce in mLab
+2. Now you have to create multiple tables in ecommerce database like categories, content, errors, products, validationerrors (see from assets/mockdata)
+3. connection string mongodb://<dbuser>:<dbpassword>.mlab.com:41557/ecommerce which will be use in database.js to connect with nodejs
+4. create a folder config in ecommerce_backend folder
+5. create a database.js file in config folder to build connectivity with mlab using authentication details
+6. create a models folder in ecommerce_backend folder
+7. Create a schema categories.js. You have to create multiple schema for each and every tables
+
+### app.js
+
+```
+const database = require('./config/database');
+const mongoose = require('mongoose'); // require mongoose
+
+// MongoDB connection
+mongoose.connect(database.mlab.url, {
+  useMongoClient: true
+});
+mongoose.Promise = global.Promise;
+
+// On connection error
+mongoose.connection.on('error', (error) => {
+  console.log('Database error: ' + error);
+});
+
+// On successful connection
+mongoose.connection.on('connected', () => {
+  console.log('Connected to database');
+});
+```
+
+### database.js
+
+```
+module.exports = {
+    mlab:
+    {
+        name: <dbuser>,
+        url: "mongodb://<dbuser>:<dbpassword>.mlab.com:41557/ecommerce",
+        port: 27017
+    }
+};
+```
+
+### categories.js
+
+```
+const mongoose = require('mongoose');
+
+const categoriesSchema = mongoose.Schema({
+    catId: { type: String, required: true },
+    catName:  { type: String, required: true },
+    catDesc: { type: String, required: true },
+    subCat: { type: [], required: true }
+});
+
+/* 
+**To use our schema definition, we need to convert our categoriesSchema into a Model we can work with.
+so it's this model which I'll export with the help of the module.exports syntax.
+Now this mongoose model can be used outside of this model file
+*/
+module.exports = mongoose.model('Categories', categoriesSchema);
+```
+
+# Fetch data from mLab categories table
+
+### app.js
+
+```
+const Categories = require("./models/categories");
+
+app.use('/api/categories', (req, res, next) => {
+  Categories.find().then(cats => {
+    res.status(200).json({
+      message: "Categories fetched successfully!",
+      categories: cats
+    });
+  });
+});
+```
+
+
+

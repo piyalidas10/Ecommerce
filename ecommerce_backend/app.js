@@ -1,10 +1,34 @@
 const express = require('express'); //server starts (express framework for routing all these)
 const bodyParser = require("body-parser");
 
+const database = require('./config/database');
+const mongoose = require('mongoose'); // require mongoose
+
+const Categories = require("./models/categories");
+
 const app = express();
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+// MongoDB connection
+mongoose.connect(database.mlab.url, {
+  useNewUrlParser: true
+});
+mongoose.Promise = global.Promise;
+
+// On connection error
+mongoose.connection.on('error', (error) => {
+  console.log('Database error: ' + error);
+});
+
+// On successful connection
+mongoose.connection.on('connected', () => {
+  console.log('Connected to database');
+});
+
+// Body parser middleware
+app.use(bodyParser.json());                                     // parse application/json
+app.use(bodyParser.urlencoded({extended: true}));               // parse application/x-www-form-urlencoded
+app.use(bodyParser.text());                                     // allows bodyParser to look at raw text
+app.use(bodyParser.json({type: 'application/vnd.api+json'}));  // parse application/vnd.api+json as json
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -20,28 +44,11 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/categories', (req, res, next) => {
-  const categories = [{
-      "catId": "1",
-      "catName": "electronics",
-      "catDesc": "electronics",
-      "subCat": ["Laptops"]
-    },
-    {
-      "catId": "2",
-      "catName": "appliances",
-      "catDesc": "appliances",
-      "subCat": ["Television", "Microwave"]
-    },
-    {
-      "catId": "3",
-      "catName": "home-furniture",
-      "catDesc": "home & furniture",
-      "subCat": ["Kitchen", "Furniture"]
-    }
-  ];
-  res.status(200).json({
-    message: 'Successfully get categories',
-    categories: categories
+  Categories.find().then(cats => {
+    res.status(200).json({
+      message: "Categories fetched successfully!",
+      categories: cats
+    });
   });
 });
 
@@ -59,7 +66,7 @@ app.use((err, req, res, next) => {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.send('error'); //this or res.status(err.status || 500).send('error')
 });
 
 module.exports = app;
