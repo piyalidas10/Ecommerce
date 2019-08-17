@@ -67,7 +67,8 @@ export class ProductListComponent implements OnInit, OnDestroy {
             subscribe(
               data => {
                 this.products = [];
-                data.forEach(element => {
+                console.log(data.products);
+                data.products.forEach(element => {
                   if (element['Category'] === cat) {
                     this.products.push(element);
                   }
@@ -94,7 +95,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
     this.apiService.getErrorMessage().then(
       (res) => {
         if (this.sharedService.errorObj.length === 0) {
-          this.sharedService.errorObj = res['errors'];
+          this.sharedService.errorObj = res['srverrors'][0]['errorslist'];
           console.log('erroJson => ', this.sharedService.errorObj);
         }
       }, (error) => {

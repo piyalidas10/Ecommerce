@@ -84,7 +84,7 @@ export class RegisterComponent implements OnInit {
     this.apiService.getValidationErrorMessage().then(
       (res) => {
         if (this.validErrorMsgService.validationErrorObj.length === 0) {
-          this.validErrorMsgService.validationErrorObj = res['validationErrors'];
+          this.validErrorMsgService.validationErrorObj = res['vlderrors'][0]['validationErrors'];
           console.log('Validation Error => ', this.validErrorMsgService.validationErrorObj);
         }
       }, (error) => {

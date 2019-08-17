@@ -1,5 +1,5 @@
 {
-"errors" : {
+"errorslist" : {
     "BAD_REQUEST": {
         "errorDesc": "The server cannot or will not process the request due to an apparent client error."
     },
@@ -18,4 +18,5 @@
     "GATEWAY_TIMEOUT": {
         "errorDesc": "A network error between servers on the internet or an issue with an actual server"
     }
+}
 }

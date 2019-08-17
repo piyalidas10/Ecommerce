@@ -4,7 +4,11 @@ const bodyParser = require("body-parser");
 const database = require('./config/database');
 const mongoose = require('mongoose'); // require mongoose
 
-const Categories = require("./models/categories");
+const categoriesRoutes = require('./routes/categories');
+const contentRoutes = require('./routes/content');
+const errorsRoutes = require('./routes/errors');
+const validationerrorsRoutes = require('./routes/validationerrors');
+const productsRoutes = require('./routes/products');
 
 const app = express();
 
@@ -43,15 +47,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/api/categories', (req, res, next) => {
-  Categories.find().then(cats => {
-    res.status(200).json({
-      message: "Categories fetched successfully!",
-      categories: cats
-    });
-  });
-});
-
 // catch 404 and forward to error handler
 app.use((err, req, res, next) => {
   next(createError(404));
@@ -69,4 +64,9 @@ app.use((err, req, res, next) => {
   res.send('error'); //this or res.status(err.status || 500).send('error')
 });
 
+app.use('/api/categories', categoriesRoutes);
+app.use('/api/content', contentRoutes);
+app.use('/api/errors', errorsRoutes);
+app.use('/api/validationerrors', validationerrorsRoutes);
+app.use('/api/products', productsRoutes);
 module.exports = app;

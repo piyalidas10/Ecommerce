@@ -47,7 +47,7 @@ export class APIService {
     // tslint:disable-next-line:no-shadowed-variable
     const promise = new Promise((resolve, reject) => {
       const apiURL = `${this.appConfig.protocol}${this.appConfig.apiEndpoint}${this.appConfig.API_CATEGORY_PATH}`;
-      return this.http.get<{message: string; categories: Icategories[]}>(apiURL).toPromise().then(
+      return this.http.get<{categories: Icategories[]}>(apiURL).toPromise().then(
         res => {
           resolve(res);
         },
@@ -66,7 +66,7 @@ export class APIService {
   // tslint:disable-next-line:no-shadowed-variable
   const promise = new Promise((resolve, reject) => {
     const apiURL = `${this.appConfig.protocol}${this.appConfig.apiEndpoint}${this.appConfig.API_CONTENT_PATH}`;
-    return this.http.get(apiURL).toPromise().then(
+    return this.http.get<{content: any}>(apiURL).toPromise().then(
       res => {
         resolve(res);
       },
@@ -85,7 +85,7 @@ export class APIService {
    // tslint:disable-next-line:no-shadowed-variable
   const promise = new Promise((resolve, reject) => {
     const apiURL = `${this.appConfig.protocol}${this.appConfig.apiEndpoint}${this.appConfig.ERROR_MSG_PATH}`;
-    return this.http.get(apiURL).toPromise().then(
+    return this.http.get<{srverrors: any}>(apiURL).toPromise().then(
       res => {
         resolve(res);
       },
@@ -105,7 +105,7 @@ export class APIService {
   // tslint:disable-next-line:no-shadowed-variable
  const promise = new Promise((resolve, reject) => {
    const apiURL = `${this.appConfig.protocol}${this.appConfig.apiEndpoint}${this.appConfig.VALIDATION_ERROR_MSG_PATH}`;
-   return this.http.get(apiURL).toPromise().then(
+   return this.http.get<{vlderrors: any}>(apiURL).toPromise().then(
      res => {
        resolve(res);
      },

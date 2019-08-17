@@ -48,12 +48,12 @@ export class HeaderComponent implements OnInit, AfterViewInit {
           (res) => {
             if (this.isLoggedIn === false) {
               const pageName = 'logout';
-              this.content = res['sitePage'].filter((elemt) => elemt.pageName !== pageName);
+              this.content = res['content']['sitePage'].filter((elemt) => elemt.pageName !== pageName);
             } else {
-              this.content = res['sitePage'];
+              this.content = res['content']['sitePage'];
               this.checkIndexLogout();
             }
-            console.log('Header Menu => ', this.content);
+            console.log('Header Menu => ', res['content']);
             this.cdr.markForCheck();
           }
         );
@@ -63,7 +63,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   }
 
   /*
-    chekc the index of logout menu
+    check the index of logout menu
   */
   checkIndexLogout() {
     for (const k in this.content) {

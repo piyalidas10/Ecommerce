@@ -37,7 +37,7 @@ export class SidebarFilterComponent implements OnInit {
           subscribe(
             data => {
               this.subCat = [];
-              data.forEach(element => {
+              data.products.forEach(element => {
                 if (element['Category'] === cat) {
                   this.subCat.push(element['SubCategory']);
                 }

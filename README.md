@@ -1,7 +1,9 @@
 # Run Ecommerce application
-
+Run these two scripts in two different git bash 
+npm start will start my Angular Application and npm run start:server will start my Node server
 ```
-npm start
+npm start 
+npm run start:server
 ```
 
 # PUSH Ecommerce application
