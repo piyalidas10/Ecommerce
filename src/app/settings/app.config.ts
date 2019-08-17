@@ -4,6 +4,7 @@ export class AppConfig {
     // contentEndpoint = '127.0.0.1:8081/';
     apiEndpoint = 'localhost:3000/';
     contentEndpoint = 'localhost:3000/';
+    imgEndpoint = 'localhost:4200/';
     API_CATEGORY_PATH = 'api/categories';
     API_CONTENT_PATH = 'api/content';
     API_PRODUCT_LIST_PATH = 'api/products';
