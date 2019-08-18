@@ -32,7 +32,6 @@ export class ValidationLabelDirective implements OnInit {
 
   @HostListener('blur', ['$event'])
   handleBlurEvent(event) {
-    console.log('this.control.value => ', this.control.value);
     // This is needed to handle the case of clicking a required field and moving out.
     // Rest all are handled by status change subscription
     if (this.control.value === null || this.control.value === '') {
@@ -60,7 +59,6 @@ export class ValidationLabelDirective implements OnInit {
     if (errorElement) {
       this.elRef.nativeElement.classList.remove('is-invalid');
       errorElement.remove();
-      console.log(errorElement);
     }
   }
 

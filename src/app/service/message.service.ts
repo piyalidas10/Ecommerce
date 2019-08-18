@@ -31,6 +31,7 @@ export class MessageService {
   error(message: string, keepAfterNavigationChange = false) {
       this.keepAfterNavigationChange = keepAfterNavigationChange;
       this.subject.next({ type: 'error', text: message });
+      console.log('Piyali', this.subject);
   }
 
   getMessage(): Observable<any> {

@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { APIService } from '../../service/api.service';
 import { SharedService } from '../../service/shared.service';
 import { MessageService } from '../../service/message.service';
+import { AuthService } from '../../auth/auth.service';
 import { ValidationMessageService } from '../../service/validation-msg.service';
 import { IRegister } from '../../modules/register';
 
@@ -17,6 +18,7 @@ import { IRegister } from '../../modules/register';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   errorData: any;
+  isLoading: Boolean = true;
 
   constructor(
     private titleService: Title,
@@ -25,6 +27,7 @@ export class RegisterComponent implements OnInit {
     private apiService: APIService,
     private sharedService: SharedService,
     private msgService: MessageService,
+    private authService: AuthService,
     private el: ElementRef,
     private validErrorMsgService: ValidationMessageService
   ) {
@@ -64,17 +67,19 @@ export class RegisterComponent implements OnInit {
 
   register({ value, valid }: { value: IRegister, valid: boolean }) {
       console.log('Form submitted!');
-      console.log(this.registerForm);
-      // this.userService.register(this.registerForm.value)
-      //     .pipe(first())
-      //     .subscribe(
-      //         data => {
-      //             this.msgService.success('Registration successful', true);
-      //             this.router.navigate(['/login']);
-      //         },
-      //         error => {
-      //             this.msgService.error(error);
-      //         });
+      console.log(this.registerForm.value);
+      this.authService.createCustomer(this.registerForm.value)
+          .pipe()
+          .subscribe(
+              data => {
+                  this.msgService.success('Registration successful', true);
+                  this.router.navigate(['/login']);
+              },
+              error => {
+                console.log('Registration error => ', error.error.message);
+                  this.msgService.error(error.error.message, true);
+                  this.isLoading = false;
+              });
   }
 
   /*
@@ -86,9 +91,11 @@ export class RegisterComponent implements OnInit {
         if (this.validErrorMsgService.validationErrorObj.length === 0) {
           this.validErrorMsgService.validationErrorObj = res['vlderrors'][0]['validationErrors'];
           console.log('Validation Error => ', this.validErrorMsgService.validationErrorObj);
+          this.isLoading = false;
         }
       }, (error) => {
         this.errorData = this.sharedService.getErrorKeys(error.statusText);
+        this.isLoading = false;
       });
   }
 

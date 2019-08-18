@@ -14,6 +14,7 @@ export class AlertComponent implements OnInit, OnDestroy {
   constructor(private msgService: MessageService) { }
 
   ngOnInit() {
+      console.log('PiyaliDas');
       this.subscription = this.msgService.getMessage().subscribe(message => {
           this.message = message;
       });

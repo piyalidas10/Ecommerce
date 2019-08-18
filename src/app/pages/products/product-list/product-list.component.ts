@@ -48,7 +48,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
       ).subscribe(event => {
         this.titleService.setTitle(this.titleCaseWord(event['snapshot'].params['cat']) + ' ' + event['snapshot'].data['title']);
       });
-      this.imgURL = appConfig.protocol + appConfig.imgEndpoint + appConfig.IMAGE_PATH;
+      this.imgURL = appConfig.protocol + appConfig.pageEndpoint + appConfig.IMAGE_PATH;
   }
 
   ngOnInit() {
