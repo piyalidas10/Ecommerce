@@ -1,10 +1,16 @@
 const Customers = require("../models/customers");
 
 exports.createCustomers = (req, res, next) => {
-    Customers.findOne({ customerEmail: req.body.customerEmail }, function (err, exitsEmail) {
+    Customers.find( { $or: [{ customerEmail: req.body.customerEmail}, {customerMobile: req.body.customerMobile}]}, function (err, custItems) {
         // Make sure user doesn't already exist
-        if (exitsEmail) {
-            return res.status(400).send({ message: "The email address you have entered is already associated with another account." });
+        if (custItems && custItems.length > 0) {
+            if (custItems[0].customerEmail === req.body.customerEmail) {
+                console.log(custItems[0].customerEmail);
+                return res.status(400).send({ message: "The Email Id you have entered is already associated with another account." });
+            } else {
+                console.log(custItems[0].customerMobile);
+                return res.status(400).send({ message: "The Mobile No. you have entered is already associated with another account." });
+            }
         }
         else {
             const custs = new Customers({
@@ -31,5 +37,11 @@ exports.createCustomers = (req, res, next) => {
             });
         }
 
+    });
+};
+
+exports.loginCustomer = (req, res, next) => {
+    Customers.find ( { $and: [{ customerEmail: req.body.customerEmail}, {customerMobile: req.body.customerMobile}]}, function (err, custItems) {
+        
     });
 };

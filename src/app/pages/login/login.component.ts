@@ -19,7 +19,7 @@ import { first } from 'rxjs/operators';
 })
 export class LoginComponent implements OnInit {
   user: {};
-  model: ILogin = { emailId: 'admin@gmail.com', password: 'admin123' };
+  model: ILogin;
   loginForm: FormGroup;
   message: string;
   returnUrl: string;
@@ -67,8 +67,7 @@ export class LoginComponent implements OnInit {
       console.log(invalidElements[0]);
       invalidElements[0].focus();
     } else {
-      if (this.loginForm.get('emailId').value === this.model.emailId && this.loginForm.get('password').value === this.model.password) {
-        this.authService.login(this.loginForm.get('emailId').value, this.loginForm.get('password').value)
+        this.authService.loginCustomer(this.loginForm.get('emailId').value, this.loginForm.get('password').value)
           .pipe(first())
           .subscribe(
             data => {
@@ -77,9 +76,6 @@ export class LoginComponent implements OnInit {
             error => {
               this.message = error;
             });
-      } else {
-        this.message = 'Please check your emailId and password';
-      }
     }
 }
 

@@ -9,7 +9,7 @@ const customersSchema = mongoose.Schema({
     customerCity: { type: String, default:'Not Given' },
     customerState: { type: String, default:'Not Given' },
     customerZip: { type: Number, default: 0 },
-    customerMobile: { type: String, required: true, unique: true },
+    customerMobile: { type: Number, required: true, unique: true },
     customerCountry: { type: String, default:'india' },
     customerRegisterDate: { type: Date, default: Date.now}
 });

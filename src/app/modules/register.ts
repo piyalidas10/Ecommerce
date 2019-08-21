@@ -1,8 +1,8 @@
 export interface IRegister {
-    firstName: string;
-    middleName: string;
-    lastName: string;
-    emailId: string;
-    mobile: string;
-    password: string;
+    customerFirstName: string;
+    customerMiddleName: string;
+    customerLastName: string;
+    customerEmail: string;
+    customerMobile: string;
+    customerPass: string;
 }

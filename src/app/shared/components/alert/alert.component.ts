@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MessageService } from '../../../service/message.service';
 
@@ -7,17 +7,24 @@ import { MessageService } from '../../../service/message.service';
   templateUrl: './alert.component.html',
   styleUrls: ['./alert.component.scss']
 })
-export class AlertComponent implements OnInit, OnDestroy {
+export class AlertComponent implements OnInit, OnChanges, OnDestroy {
   private subscription: Subscription;
   message: any;
 
   constructor(private msgService: MessageService) { }
 
   ngOnInit() {
-      console.log('PiyaliDas');
-      this.subscription = this.msgService.getMessage().subscribe(message => {
-          this.message = message;
-      });
+      this.showMsgAlert();
+  }
+
+  ngOnChanges() {
+    this.showMsgAlert();
+  }
+
+  showMsgAlert() {
+    this.subscription = this.msgService.getMessage().subscribe(message => {
+        this.message = message;
+    });
   }
 
   ngOnDestroy() {

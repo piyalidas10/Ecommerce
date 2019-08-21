@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { ILogin } from '../modules/login';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable, BehaviorSubject, of } from 'rxjs';
 import { Subject } from 'rxjs';
 import { AppConfig } from '../settings/app.config';
 import { Router, ActivationEnd } from '@angular/router';
+import { ILogin } from '../modules/login';
+import { IRegister } from '../modules/register';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,6 @@ import { Router, ActivationEnd } from '@angular/router';
 export class AuthService {
   public loggedInStatus = new BehaviorSubject<boolean>(false);
   public loggedInUser = new BehaviorSubject<ILogin>(<ILogin>{});
-  private authStatusListener = new Subject<boolean>();
 
   constructor(
     private http: HttpClient,
@@ -21,9 +21,7 @@ export class AuthService {
     private router: Router
   ) { }
 
-  createCustomer(
-    registerVal: {firstName: String, middleName: String, lastName: String, emailId: String, mobile: String, password: String}
-  ): Observable<any> {
+  createCustomer(registerVal: {firstName, middleName, lastName, emailId, mobile, password}): Observable<IRegister> {
       const authData = { customerFirstName: registerVal.firstName, customerMiddleName: registerVal.middleName,
         customerLastName: registerVal.lastName, customerEmail: registerVal.emailId,
         customerMobile: registerVal.mobile, customerPass: registerVal.password};
@@ -32,32 +30,25 @@ export class AuthService {
             .pipe(map(response => {
                 localStorage.setItem('token', response.emailId);
                 localStorage.setItem('isLoggedIn', 'true');
-                this.authStatusListener.next(false);
+                this.loggedInStatus.next(true);
                 return response;
             }));
   }
 
-  login(umail, password): Observable<object> {
-        /* For API use only */
-            // return this.http.post<any>('login', {username, password})
-            // .pipe(map((res: Response) => {
-            //   console.log('response', username);
-            //   if (res) {
-            //     localStorage.setItem('isLoggedIn', 'true');
-            //     localStorage.setItem('token', username);
-            //   }
-            //   return res;
-            // }));
-
-        /* for static data */
-        // tslint:disable-next-line:no-unused-expression
-            localStorage.setItem('isLoggedIn', 'true');
-            localStorage.setItem('token', umail);
-            this.loggedInStatus.next(true);
-            this.loggedInUser.next(umail);
-            console.log('piyali');
-            return of(umail);
-  }
+  // loginCustomer(emailId, password): Observable<ILogin> {
+  //           const authData = { customerEmail: emailId, customerPass: password};
+  //           const apiURL = `${this.appConfig.protocol}${this.appConfig.apiEndpoint}${this.appConfig.API_CUSTOMERS_PATH}`;
+  //           return this.http.post<any>(apiURL, authData)
+  //           .pipe(map((res: Response) => {
+  //             console.log('Login response => ', res);
+  //             // if (res) {
+  //             //   localStorage.setItem('isLoggedIn', 'true');
+  //             //   localStorage.setItem('token', res);
+  //             //   this.loggedInStatus.next(true);
+  //             // }
+  //             return res;
+  //           }));
+  // }
 
   logout(): void {
     localStorage.setItem('isLoggedIn', 'false');

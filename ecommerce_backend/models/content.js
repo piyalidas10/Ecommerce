@@ -2,16 +2,23 @@ const mongoose = require('mongoose');
 
 const contentSchema = mongoose.Schema({
     siteTitle: { type: String },
-    sitePage:  { type : Array , "default" : [] },
-    slider: { type : Array , "default" : [] },
+    sitePage:  [{ 
+        pageName: String,
+        pageHeader: String
+    }],
+    slider: [{ 
+        title: String,
+        caption: String,
+        url: String
+    }],
     productPage: {
         sidebar: {
             header: {type: String },
-            subheader: {type: [] }
+            subheader: {type: Array }
         },
         rightSide: {
             header: {type: String },
-            subheaders: {type: [] }
+            subheaders: {type: Array }
         }
     }
 });

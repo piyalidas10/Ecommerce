@@ -138,18 +138,22 @@ http-server -p 8081 -c-1 dist/ecommerce
 ```
 export class AppConfig {
     protocol = 'http://';
-    apiEndpoint = '127.0.0.1:8081/';
-    contentEndpoint = '127.0.0.1:8081/';
-    API_CATEGORY_PATH = 'assets/mockdata/categories.json';
-    API_CONTENT_PATH = 'assets/mockdata/content.json';
-    API_PRODUCT_LIST_PATH = 'assets/mockdata/products.json';
+    // apiEndpoint = '127.0.0.1:8081/';
+    // contentEndpoint = '127.0.0.1:8081/';
+    apiEndpoint = 'localhost:3000/';
+    contentEndpoint = 'localhost:3000/';
+    pageEndpoint = 'localhost:4200/';
+    API_CATEGORY_PATH = 'api/categories';
+    API_CONTENT_PATH = 'api/content';
+    API_PRODUCT_LIST_PATH = 'api/products';
     API_PRODUCT_ADD_PATH = '';
     API_PRODUCT_DELETE_PATH = '';
+    API_CUSTOMERS_PATH = 'api/customers';
     IMAGE_PATH = 'assets/images/products/';
-    ERROR_MSG_PATH = 'assets/mockdata/errors.json';
+    ERROR_MSG_PATH = 'api/errors';
+    VALIDATION_ERROR_MSG_PATH = 'api/validationerrors';
 }
 ```
-Change apiEndpoint and contentEndpoint from localhost:4200/ to 127.0.0.1:8081/
 
 ## ngsw-config.json
 
