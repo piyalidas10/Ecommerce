@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, ElementRef } from '@angular/core';
+import { Component, OnInit, OnChanges, ElementRef, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router, ActivationEnd } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
@@ -9,16 +9,18 @@ import { MessageService } from '../../service/message.service';
 import { AuthService } from '../../auth/auth.service';
 import { ValidationMessageService } from '../../service/validation-msg.service';
 import { IRegister } from '../../modules/register';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit, OnChanges {
+export class RegisterComponent implements OnInit, OnChanges, OnDestroy {
   registerForm: FormGroup;
   errorData: any;
   isLoading: Boolean = true;
+  registerService: Subscription;
 
   constructor(
     private titleService: Title,
@@ -67,12 +69,12 @@ export class RegisterComponent implements OnInit, OnChanges {
   }
 
   register({ value, valid }: { value: IRegister, valid: boolean }) {
-      this.authService.createCustomer(this.registerForm.value)
+      this.registerService = this.authService.createCustomer(this.registerForm.value)
           .pipe()
           .subscribe(
               data => {
-                  this.msgService.success('Registration successful', true);
-                  this.router.navigate(['/home']);
+                  this.msgService.success('Registration successful. Please go to login page.', true);
+                  this.router.navigate(['/register']);
               },
               error => {
                 console.log('Registration error => ', error.error.message);
@@ -96,6 +98,10 @@ export class RegisterComponent implements OnInit, OnChanges {
         this.errorData = this.sharedService.getErrorKeys(error.statusText);
         this.isLoading = false;
       });
+  }
+
+  ngOnDestroy() {
+    this.registerService.unsubscribe();
   }
 
 }

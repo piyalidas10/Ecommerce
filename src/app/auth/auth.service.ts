@@ -25,7 +25,7 @@ export class AuthService {
       const authData = { customerFirstName: registerVal.firstName, customerMiddleName: registerVal.middleName,
         customerLastName: registerVal.lastName, customerEmail: registerVal.emailId,
         customerMobile: registerVal.mobile, customerPass: registerVal.password};
-      const apiURL = `${this.appConfig.protocol}${this.appConfig.apiEndpoint}${this.appConfig.API_CUSTOMERS_PATH}`;
+      const apiURL = `${this.appConfig.protocol}${this.appConfig.apiEndpoint}${this.appConfig.API_REGISTER_PATH}`;
       return this.http.post<any>(apiURL, authData)
             .pipe(map(response => {
                 localStorage.setItem('token', response.emailId);
@@ -35,20 +35,20 @@ export class AuthService {
             }));
   }
 
-  // loginCustomer(emailId, password): Observable<ILogin> {
-  //           const authData = { customerEmail: emailId, customerPass: password};
-  //           const apiURL = `${this.appConfig.protocol}${this.appConfig.apiEndpoint}${this.appConfig.API_CUSTOMERS_PATH}`;
-  //           return this.http.post<any>(apiURL, authData)
-  //           .pipe(map((res: Response) => {
-  //             console.log('Login response => ', res);
-  //             // if (res) {
-  //             //   localStorage.setItem('isLoggedIn', 'true');
-  //             //   localStorage.setItem('token', res);
-  //             //   this.loggedInStatus.next(true);
-  //             // }
-  //             return res;
-  //           }));
-  // }
+  loginCustomer(emailId, password): Observable<any> {
+            const authData = { customerEmail: emailId, customerPass: password};
+            const apiURL = `${this.appConfig.protocol}${this.appConfig.apiEndpoint}${this.appConfig.API_LOGIN_PATH}`;
+            return this.http.post<any>(apiURL, authData)
+            .pipe(map((res: Response) => {
+              console.log('Login response => ', res);
+              // if (res) {
+              //   localStorage.setItem('isLoggedIn', 'true');
+              //   localStorage.setItem('token', res);
+              //   this.loggedInStatus.next(true);
+              // }
+              return res;
+            }));
+  }
 
   logout(): void {
     localStorage.setItem('isLoggedIn', 'false');

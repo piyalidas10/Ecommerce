@@ -10,7 +10,8 @@ export class AppConfig {
     API_PRODUCT_LIST_PATH = 'api/products';
     API_PRODUCT_ADD_PATH = '';
     API_PRODUCT_DELETE_PATH = '';
-    API_CUSTOMERS_PATH = 'api/customers';
+    API_REGISTER_PATH = 'api/auth/register';
+    API_LOGIN_PATH = 'api/auth/login';
     IMAGE_PATH = 'assets/images/products/';
     ERROR_MSG_PATH = 'api/errors';
     VALIDATION_ERROR_MSG_PATH = 'api/validationerrors';

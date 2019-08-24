@@ -9,7 +9,7 @@ const contentRoutes = require('./routes/content');
 const errorsRoutes = require('./routes/errors');
 const validationerrorsRoutes = require('./routes/validationerrors');
 const productsRoutes = require('./routes/products');
-const customersRoutes = require('./routes/customers');
+const authRoutes = require('./routes/auth');
 
 const cors = require('cors');
 
@@ -80,5 +80,5 @@ app.use('/api/content', contentRoutes);
 app.use('/api/errors', errorsRoutes);
 app.use('/api/validationerrors', validationerrorsRoutes);
 app.use('/api/products', productsRoutes);
-app.use('/api/customers', customersRoutes);
+app.use('/api/auth', authRoutes);
 module.exports = app;

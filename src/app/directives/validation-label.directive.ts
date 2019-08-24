@@ -34,6 +34,7 @@ export class ValidationLabelDirective implements OnInit {
   handleBlurEvent(event) {
     // This is needed to handle the case of clicking a required field and moving out.
     // Rest all are handled by status change subscription
+    console.log(event);
     if (this.control.value === null || this.control.value === '') {
       if (this.control.errors) {
         this.showError();

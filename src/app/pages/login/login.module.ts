@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ValidationMessageService } from '../../service/validation-msg.service';
 import { LoginComponent } from './login.component';
+import { ValidationLabelDirective } from '../../directives/validation-label.directive';
 
 
 const routes: Routes = [
@@ -21,7 +22,8 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   declarations: [
-    LoginComponent
+    LoginComponent,
+    ValidationLabelDirective
   ],
   providers: [
     ValidationMessageService

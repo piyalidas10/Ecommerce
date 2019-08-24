@@ -2,9 +2,9 @@
     <div class="col-xl-4 offset-xl-4 col-md-6 offset-md-3 loginBox">
         <h3 class="text-center">Log In</h3>
         <p *ngIf="message" class="text-center error">{{message}}</p>
-      <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <form [formGroup]="loginForm" (ngSubmit)="verifyLogin()">
           <div class="row form-group clearfix">
-              <label for="emailId" class="col-md-3 col-sm-5 col-12">emailId</label>
+              <label for="emailId" class="col-md-3 col-sm-5 col-12">Email ID</label>
               <div class="col-md-9 col-sm-7 col-12">
                   <input type="text" appValidationLabel class="form-control" formControlName="emailId" />
               </div>

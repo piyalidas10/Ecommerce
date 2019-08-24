@@ -41,7 +41,13 @@ exports.createCustomers = (req, res, next) => {
 };
 
 exports.loginCustomer = (req, res, next) => {
-    Customers.find ( { $and: [{ customerEmail: req.body.customerEmail}, {customerMobile: req.body.customerMobile}]}, function (err, custItems) {
-        
+    Customers.find ( { $and: [{ customerEmail: req.body.customerEmail}, {customerMobile: req.body.customerMobile}]}, function (err, custLog) {
+        console.log(custLog, custLog.length);
+        if (custLog && custLog.length > 0) {
+
+        }
+        else {
+            return res.status(400).send({ message: "Please enter your correct login credential." });
+        }
     });
 };

@@ -19,7 +19,7 @@ import { first } from 'rxjs/operators';
 })
 export class LoginComponent implements OnInit {
   user: {};
-  model: ILogin;
+  isLoading: Boolean = true;
   loginForm: FormGroup;
   message: string;
   returnUrl: string;
@@ -34,8 +34,8 @@ export class LoginComponent implements OnInit {
     private apiService: APIService,
     private sharedService: SharedService,
     private msgService: MessageService,
-    private el: ElementRef,
-    private validErrorMsgService: ValidationMessageService
+    private validErrorMsgService: ValidationMessageService,
+    private el: ElementRef
   ) {
       this.router.events.pipe(
         filter(event => event instanceof ActivationEnd)
@@ -46,8 +46,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.returnUrl = '/';
-    this.createForm();
     this.validationErrorMsg();
+    this.createForm();
     this.authService.logout();
   }
 
@@ -58,8 +58,17 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  verifyLogin() {
+    const invalidElements = this.el.nativeElement.querySelectorAll('.form-control.ng-invalid');
+    if (invalidElements.length > 0) {
+      invalidElements[0].focus();
+    } else {
+      console.log('Login details => ', this.loginForm.value);
+      this.login({value: this.loginForm.value, valid: true});
+    }
+  }
 
-  login() {
+  login({ value, valid }: { value: ILogin, valid: boolean }) {
     this.submitted = true;
     const invalidElements = this.el.nativeElement.querySelectorAll('.form-control.ng-invalid');
     console.log(invalidElements, invalidElements.length);
@@ -74,25 +83,27 @@ export class LoginComponent implements OnInit {
               this.router.navigate([this.returnUrl]);
             },
             error => {
-              this.message = error;
+              this.msgService.error(error.error.message, true);
             });
     }
-}
+  }
 
-
-/*
+  /*
   *** Get API response as validation error json and load response in validationErrorObj of validErrorMsgService
   */
  validationErrorMsg() {
   this.apiService.getValidationErrorMessage().then(
     (res) => {
       if (this.validErrorMsgService.validationErrorObj.length === 0) {
-        this.validErrorMsgService.validationErrorObj = res['validationErrors'];
+        this.validErrorMsgService.validationErrorObj = res['vlderrors'][0]['validationErrors'];
         console.log('Validation Error => ', this.validErrorMsgService.validationErrorObj);
+        this.isLoading = false;
       }
     }, (error) => {
       this.errorData = this.sharedService.getErrorKeys(error.statusText);
+      this.isLoading = false;
     });
 }
+
 
 }
