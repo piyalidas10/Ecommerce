@@ -12,4 +12,17 @@
     text-transform: capitalize;
     cursor: pointer;
   }
+  .nav-item {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .nav-item:last-child{
+    margin-right: 0;
+  }
+  .dropdown-toggle::after{
+    margin-left: 0.5rem;
+  }
+  .dropdown-menu{
+    margin: .5rem 0 0;
+  }
 }

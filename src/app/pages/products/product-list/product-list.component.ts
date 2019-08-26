@@ -24,6 +24,8 @@ export class ProductListComponent implements OnInit, OnDestroy {
   imgURL: string;
   errorData: any;
   productObsv: Subscription;
+  selectedSubcat: string;
+  subCat = '';
 
   @Output() productDetailsEvent = new EventEmitter<any>();
 
@@ -53,12 +55,12 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.errorMsg();
-    this.listAppliances();
+    this.listAppliances(this.subCat);
     this.option = 'Newest First';
     this.sortbyMessage(this.option);
   }
 
-  listAppliances(): void {
+  listAppliances(subCat: string): void {
     try {
         this.route.params.subscribe(params => {
           const cat = params['cat'];
@@ -73,6 +75,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
                     this.products.push(element);
                   }
                 });
+                this.filterBySubcat(this.selectedSubcat);
                 if (this.products.length === 0) {
                   this.nopic = 'empty_product.svg';
                 }
@@ -133,7 +136,20 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   changePrice(evt) {
     console.log('Price Change', evt);
+  }
 
+  checkSubcat(evt) {
+    this.selectedSubcat = evt;
+    this.listAppliances(this.subCat);
+  }
+
+  filterBySubcat(cat) {
+    console.log('Choose Subcat => ', cat);
+    if (cat !== undefined) {
+      const productsByCat = this.products.filter((elemt) => elemt.SubCategory === cat);
+      this.products = productsByCat;
+      console.log(this.products);
+    }
   }
 
   ngOnDestroy() {

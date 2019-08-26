@@ -6,6 +6,12 @@ npm start
 npm run start:server
 ```
 
+# Mockdata
+
+```
+assets/mockdata folder
+```
+
 # PUSH Ecommerce application
 Before push any code you have to pass in lint and test cases
 

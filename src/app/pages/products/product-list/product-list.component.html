@@ -6,7 +6,7 @@
 
   <div class="row">
     <div class="col-12 col-md-4 col-lg-3 sidebar">
-      <app-sidebar-filter (priceVal)="changePrice($event)"></app-sidebar-filter>
+      <app-sidebar-filter (priceVal)="changePrice($event)" (chooseSubcat)="checkSubcat($event)"></app-sidebar-filter>
     </div>
     <div class="col-12 col-md-8 col-lg-9 productLists">
       <app-sortby (changeEvent)="sortbyMessage($event)"></app-sortby>
@@ -21,7 +21,7 @@
       <div class="row" *ngIf="errorData === NULL">
         <div class="col-12 col-xl-3 col-md-4 col-sm-6" *ngFor="let prodt of products">
           <a (click)="productDetails(prodt.ProductId)" class="productBox">
-            <div clas="productImg">
+            <div class="productImg">
               <img [src]="imgURL + checkPath(prodt.ProductPicUrl)" class="img-thumbnail" />
             </div>
             <h6>{{prodt.Name | truncate:20}}</h6>

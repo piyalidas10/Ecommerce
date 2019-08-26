@@ -10,7 +10,6 @@ import { AppConfig } from './settings/app.config';
 
 import { HeaderModule } from './shared/components/header/header.module';
 import { NavbarModule } from './shared/components/navbar/navbar.module';
-import { CartModule } from './shared/components/cart/cart.module';
 
 import { APIService } from './service/api.service';
 import { AuthService } from './auth/auth.service';
@@ -25,7 +24,6 @@ import { environment } from '../environments/environment';
 import { ModalDirective } from './directives/modal.directive';
 import { TimeoutDialogComponent } from './shared/components/timeout-dialog/timeout-dialog.component';
 import { AlertComponent } from './shared/components/alert/alert.component';
-
 
 
 @NgModule({
@@ -44,7 +42,6 @@ import { AlertComponent } from './shared/components/alert/alert.component';
     AppRoutingModule,
     HeaderModule,
     NavbarModule,
-    CartModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   schemas: [

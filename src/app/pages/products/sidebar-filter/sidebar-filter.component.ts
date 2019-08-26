@@ -19,9 +19,11 @@ export class SidebarFilterComponent implements OnInit {
   };
   priceSelection: any;
   @Output() priceVal = new EventEmitter();
+  selectedOpt: string;
+  @Output() chooseSubcat = new EventEmitter<any>();
 
   constructor(
-    private productsData: APIService,
+    private apiService: APIService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
@@ -33,16 +35,12 @@ export class SidebarFilterComponent implements OnInit {
   subCategories() {
       this.route.params.subscribe(params => {
         const cat = params['cat'];
-        this.productsData.getProducts(cat).
-          subscribe(
+        this.apiService.getCategories().
+          then(
             data => {
-              this.subCat = [];
-              data.products.forEach(element => {
-                if (element['Category'] === cat) {
-                  this.subCat.push(element['SubCategory']);
-                }
-              });
-              console.log(this.subCat);
+              const category = data['categories'].filter((elemt) => elemt.catName === cat);
+              this.subCat = category[0].subCat;
+              console.log('Sub category =>', this.subCat);
             },
             err => {
               console.log(err);
@@ -54,6 +52,21 @@ export class SidebarFilterComponent implements OnInit {
   changePrice() {
     console.log('Price', this.priceSelection);
     this.priceVal.emit(this.priceSelection);
+  }
+
+  sortBySubcat(event, index) {
+    const allElement = event.target.parentElement.querySelectorAll('li');
+    this.selectedOpt = event.target.innerText.toLowerCase();
+    console.log(allElement);
+    allElement.forEach(element => {
+      element.classList.remove('active');
+    });
+    if (!event.target.classList.contains('active')) {
+      event.target.classList.add('active');
+    } else {
+      event.target.classList.remove('active');
+    }
+    this.chooseSubcat.emit(this.selectedOpt);
   }
 
 }

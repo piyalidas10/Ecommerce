@@ -27,12 +27,17 @@ const appRoutes: Routes = [
     {
         path: 'products/:cat',
         loadChildren: './pages/products/product-list/product-list.module#ProductListModule',
-        canActivate: [AuthGuard],
         data: {title: 'of Ecommerce Online'}
     },
     {
         path: 'product/details/:id',
         loadChildren: './pages/products/product-details/product-details.module#ProductDetailsModule'
+    },
+    {
+        path: 'cart',
+        loadChildren: './pages/cart/cart.module#CartModule',
+        canActivate: [AuthGuard],
+        data: {title: 'Ecommerce Cart'}
     },
     {
         path: '**',

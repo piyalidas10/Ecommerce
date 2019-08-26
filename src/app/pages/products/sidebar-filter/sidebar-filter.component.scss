@@ -14,6 +14,13 @@
         margin: 10px 0;
         li{
           margin-bottom: 5px;
+          text-transform: capitalize;
+          padding: 3px 0;
+          &.active {
+            background: $color-light-grey;
+            cursor: default;
+            font-weight: 500;
+          }
         }
       }
     }

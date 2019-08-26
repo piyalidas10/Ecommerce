@@ -9,7 +9,7 @@
         "catId" : "2",
         "catName" : "appliances",
         "catDesc" : "appliances",
-        "subCat": ["Television","Microwave"]
+        "subCat": ["television","microwave","electric kettle","mixer grinder","refrigerator","washing machine"]
     },
     {
         "catId" : "3",

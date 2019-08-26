@@ -1,15 +1,22 @@
-<div class="header">
+<div class="loader-bg" *ngIf="isLoading">
+  <div class="loader"></div>
+</div>
+<div class="header" *ngIf="!isLoading">
   <div class="container">
     <div class="row">
       <header class="col-md-12">
         <nav class="navbar navbar-expand-lg">
           <a class="navbar-brand" routerLink="/">Ecommerce</a>
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item" *ngIf="custStatus">
-              <a class="nav-link" routerLink="/login">{{custName}}</a>
+            <li class="nav-item dropdown" *ngIf="custStatus">
+              <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown" href="javascript:void(0);">{{custName}}</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" routerLink="/login">My Profile</a>
+                <a class="dropdown-item" routerLink="/login">Orders</a>
+              </div>
             </li>
             <li class="nav-item" #menuitem *ngFor="let menu of content; let i = index">
-              <a class="nav-link" routerLink="/{{menu.pageHeader}}">{{menu.pageName}}</a>
+              <a class="nav-link" routerLink="/{{menu.pageHeader}}"><i class="fa fa-shopping-cart"></i> {{menu.pageName}}</a>
             </li>
             <!-- <li class="nav-item" *ngIf="!custIsAuthenticated">
               <a class="nav-link" routerLink="/login">Login &amp; Signup</a>
