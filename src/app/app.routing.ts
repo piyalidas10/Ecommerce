@@ -27,6 +27,7 @@ const appRoutes: Routes = [
     {
         path: 'products/:cat',
         loadChildren: './pages/products/product-list/product-list.module#ProductListModule',
+        canActivate: [AuthGuard],
         data: {title: 'of Ecommerce Online'}
     },
     {

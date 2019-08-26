@@ -1,7 +1,9 @@
-import { Component, ViewEncapsulation, OnInit, Inject } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, OnDestroy, Inject } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { DOCUMENT } from '@angular/common';
 import { AppConfig } from './settings/app.config';
+import { AuthService } from './auth/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -9,14 +11,18 @@ import { AppConfig } from './settings/app.config';
   styleUrls: ['./app.component.scss'],
   encapsulation: ViewEncapsulation.Emulated
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
 
   title = 'Ecommerce POC by Piyali Das';
+  custIsAuthenticated = false;
+  custName: string;
+  private authListenerSubs: Subscription;
 
   constructor(
     private titleService: Title,
     private meta: Meta,
     private config: AppConfig,
+    private authService: AuthService,
     @Inject(DOCUMENT) private doc
   ) {}
 
@@ -24,6 +30,8 @@ export class AppComponent implements OnInit {
     this.setAppConfig();
     this.setPageTitle();
     this.createLinkForCanonicalURL();
+    this.authService.autoAuthCust();
+    this.checkAuthentication();
   }
 
   setAppConfig() {
@@ -44,6 +52,21 @@ export class AppComponent implements OnInit {
     this.doc.head.appendChild(link);
     link.setAttribute('href', this.doc.URL);
  }
+
+ checkAuthentication() {
+  // this.custName = this.authService.getCustName();
+  // this.custIsAuthenticated = this.authService.getIsAuth();
+  this.authListenerSubs = this.authService.getLoggedInStatusListener()
+    .subscribe(isAuthenticated => {
+      this.custIsAuthenticated = isAuthenticated;
+      this.custName = this.authService.getCustName();
+      console.log('Header Details => ', this.custIsAuthenticated, this.custName);
+    });
+ }
+
+ngOnDestroy() {
+  this.authListenerSubs.unsubscribe();
+}
 
 }
 

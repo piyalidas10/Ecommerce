@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, ViewEncapsulation, ElementRef } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewEncapsulation, ElementRef, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivationEnd } from '@angular/router';
@@ -9,7 +9,7 @@ import { APIService } from '../../service/api.service';
 import { SharedService } from '../../service/shared.service';
 import { MessageService } from '../../service/message.service';
 import { ValidationMessageService } from '../../service/validation-msg.service';
-import { pipe } from 'rxjs';
+import { pipe, Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
 
 @Component({
@@ -17,7 +17,7 @@ import { first } from 'rxjs/operators';
   templateUrl: './login.component.html',
   encapsulation: ViewEncapsulation.Emulated
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   user: {};
   isLoading: Boolean = true;
   loginForm: FormGroup;
@@ -25,6 +25,10 @@ export class LoginComponent implements OnInit {
   returnUrl: string;
   submitted = false;
   errorData: any;
+  token: string;
+  custEmail: string;
+  custName: string;
+  authLoggedInStatus: Subscription;
 
   constructor(
     private titleService: Title,
@@ -45,10 +49,8 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.returnUrl = '/';
     this.validationErrorMsg();
     this.createForm();
-    this.authService.logout();
   }
 
   createForm() {
@@ -80,7 +82,21 @@ export class LoginComponent implements OnInit {
           .pipe(first())
           .subscribe(
             data => {
-              this.router.navigate([this.returnUrl]);
+              console.log(data);
+              const token = data.token;
+              this.token = token;
+              if (token) {
+                const expiresInDuration = data.expiresIn;
+                this.custEmail = data.email;
+                this.custName = data.custname;
+                this.authService.isAuthenticated = true;
+                const now = new Date();
+                const expirationDate = new Date(
+                  now.getTime() + expiresInDuration * 1000
+                );
+                this.authService.saveAuthData(token, expirationDate, this.custEmail, this.custName);
+                this.router.navigate(['/home']);
+              }
             },
             error => {
               this.msgService.error(error.error.message, true);
@@ -88,10 +104,10 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  /*
-  *** Get API response as validation error json and load response in validationErrorObj of validErrorMsgService
-  */
- validationErrorMsg() {
+/*
+*** Get API response as validation error json and load response in validationErrorObj of validErrorMsgService
+*/
+validationErrorMsg() {
   this.apiService.getValidationErrorMessage().then(
     (res) => {
       if (this.validErrorMsgService.validationErrorObj.length === 0) {
@@ -103,6 +119,10 @@ export class LoginComponent implements OnInit {
       this.errorData = this.sharedService.getErrorKeys(error.statusText);
       this.isLoading = false;
     });
+}
+
+ngOnDestroy() {
+
 }
 
 

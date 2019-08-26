@@ -1,24 +1,24 @@
 const mongoose = require('mongoose');
 
 const contentSchema = mongoose.Schema({
-    siteTitle: { type: String },
-    sitePage:  [{ 
-        pageName: String,
-        pageHeader: String
+    siteTitle: { type: String, required: true },
+    sitePage: [{ 
+        pageName: {type: String },
+        pageHeader: {type: String }
     }],
     slider: [{ 
-        title: String,
-        caption: String,
-        url: String
+        title: {type: String },
+        caption: {type: String },
+        url: {type: String }
     }],
     productPage: {
         sidebar: {
             header: {type: String },
-            subheader: {type: Array }
+            subheader: [{type:String}]
         },
         rightSide: {
             header: {type: String },
-            subheaders: {type: Array }
+            subheaders: [{type:String}]
         }
     }
 });

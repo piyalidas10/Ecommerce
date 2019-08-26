@@ -1,5 +1,5 @@
 <div class="pageContain">
-    <app-header></app-header>
+    <app-header [custStatus]="custIsAuthenticated" [custName]="custName"></app-header>
     <app-navbar></app-navbar>
     <app-alert></app-alert>
     <router-outlet></router-outlet>

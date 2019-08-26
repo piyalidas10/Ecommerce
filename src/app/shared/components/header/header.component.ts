@@ -1,37 +1,40 @@
 import {
-  Component, OnInit, OnChanges, ChangeDetectorRef, ChangeDetectionStrategy,
-  AfterViewInit, ViewChildren, QueryList, ElementRef, Renderer2, ViewEncapsulation
+  Component, OnInit, OnChanges, OnDestroy, ChangeDetectorRef, ChangeDetectionStrategy,
+  AfterViewInit, ViewChildren, QueryList, ElementRef, Renderer2, ViewEncapsulation, Input
 } from '@angular/core';
 import { APIService } from '../../../service/api.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { AuthService } from '../../../auth/auth.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None
 })
-export class HeaderComponent implements OnInit, AfterViewInit {
-  isLoggedIn: any;
+export class HeaderComponent implements OnInit, AfterViewInit, OnChanges {
   userName: string;
   content: {};
   lenMenu: number;
+
+  @Input() custStatus;
+  @Input() custName;
   @ViewChildren('menuitem') private menuitems: QueryList<ElementRef>;
 
   constructor(
     private renderer: Renderer2,
     private productsData: APIService,
     public authService: AuthService,
-    private cdr: ChangeDetectorRef) {
-    // this.cdr.markForCheck();
-  }
+    private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.siteContent();
-    this.authService.loggedInStatus.subscribe(res => this.isLoggedIn = res);
-    console.log(this.authService.loggedInStatus.getValue());
-    this.isLoggedIn = true;
+  }
+
+  ngOnChanges() {
+    console.log('On changes', this.custStatus, this.custName);
+    this.siteContent();
   }
 
   ngAfterViewInit() {
@@ -46,14 +49,16 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       await this.productsData.getContent().
         then(
           (res) => {
-            if (this.isLoggedIn === false) {
-              const pageName = 'logout';
-              this.content = res['content']['sitePage'].filter((elemt) => elemt.pageName !== pageName);
+            console.log(this.custStatus);
+            if (this.custStatus === false) {
+              const pageHeader = 'logout';
+              this.content = res['content'][0]['sitePage'].filter((elemt) => elemt.pageHeader !== pageHeader);
             } else {
-              this.content = res['content']['sitePage'];
+              const pageHeader = 'login';
+              this.content = res['content'][0]['sitePage'].filter((elemt) => elemt.pageHeader !== pageHeader);
               this.checkIndexLogout();
             }
-            console.log('Header Menu => ', res['content']);
+            console.log('Header Menu => ', this.content);
             this.cdr.markForCheck();
           }
         );
@@ -86,11 +91,11 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     // this.renderer.removeAttribute(link, 'ng-reflect-router-link');
     this.renderer.setProperty(link, 'innerHTML', '<a href="javascript:void(0)" class="nav-link">' + ct.pageName  + '</a>');
     this.renderer.listen(link, 'click', () => {
-      this.useLogout();
+      this.custLogout();
     });
   }
 
-  useLogout() {
+  custLogout() {
     this.authService.logout();
   }
 

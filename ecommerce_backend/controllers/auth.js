@@ -1,4 +1,5 @@
 const Customers = require("../models/customers");
+const jwt = require("jsonwebtoken");
 
 exports.createCustomers = (req, res, next) => {
     Customers.find( { $or: [{ customerEmail: req.body.customerEmail}, {customerMobile: req.body.customerMobile}]}, function (err, custItems) {
@@ -41,13 +42,28 @@ exports.createCustomers = (req, res, next) => {
 };
 
 exports.loginCustomer = (req, res, next) => {
-    Customers.find ( { $and: [{ customerEmail: req.body.customerEmail}, {customerMobile: req.body.customerMobile}]}, function (err, custLog) {
-        console.log(custLog, custLog.length);
-        if (custLog && custLog.length > 0) {
-
-        }
-        else {
-            return res.status(400).send({ message: "Please enter your correct login credential." });
+    Customers.findOne ( { customerEmail: req.body.customerEmail}, '+customerPass', function (err, custLog) {
+        if (custLog) {
+            custLog.comparePassword(req.body.customerPass, function (err, isMatch) {
+                console.log(custLog,isMatch);
+                if (!isMatch) {
+                    return res.status(401).json({message: 'Please enter your valid password'});
+                } else {
+                    const token = jwt.sign(
+                        { email: custLog.customerEmail, username: custLog.customerFirstName },
+                        'hi',
+                        { expiresIn: "1h" }
+                    );
+                    res.status(200).json({
+                        token: token,
+                        expiresIn: 3600,
+                        email: custLog.customerEmail,
+                        custname: custLog.customerFirstName
+                    });
+                }
+            });
+        } else {
+            return res.status(400).send({ message: "Please enter your valid email id." });
         }
     });
 };
