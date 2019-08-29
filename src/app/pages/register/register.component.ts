@@ -102,7 +102,7 @@ export class RegisterComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.registerService.unsubscribe();
+    // this.registerService.unsubscribe();
   }
 
 }
