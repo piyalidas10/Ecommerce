@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ValidationMessageService } from '../../service/validation-msg.service';
 import { LoginComponent } from './login.component';
-import { ValidationLabelDirective } from '../../directives/validation-label.directive';
+import { SharedModule } from '../../shared/modules/shared.module';
 
 
 const routes: Routes = [
@@ -19,11 +19,11 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedModule,
     RouterModule.forChild(routes)
   ],
   declarations: [
-    LoginComponent,
-    ValidationLabelDirective
+    LoginComponent
   ],
   providers: [
     ValidationMessageService

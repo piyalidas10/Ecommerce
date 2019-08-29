@@ -48,6 +48,7 @@ export class ValidationLabelDirective implements OnInit {
     this.removeError();
     const valErrors: ValidationErrors = this.control.errors;
     const firstKey = Object.keys(valErrors)[0];
+    console.log('firstKey => ', firstKey);
     const errorMsgKey = this.formControlName + '-' + firstKey;
     const errorMsg = this.validationMsgService.getValidationMsg(errorMsgKey);
     const errSpan = '<span style="color:red;" id="' + this.errorSpanId + '">' + errorMsg + '</span>';
