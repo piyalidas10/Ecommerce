@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, ViewChild, OnDestroy } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, OnDestroy, OnChanges } from '@angular/core';
 import { Router, ActivatedRoute, ActivationEnd } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { filter, map } from 'rxjs/operators';
@@ -15,8 +15,9 @@ import { Subscription } from 'rxjs';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
-export class ProductListComponent implements OnInit, OnDestroy {
+export class ProductListComponent implements OnInit, OnChanges, OnDestroy {
   products = [];
+  filteredProducts = [];
   pic: string;
   nopic: string;
   option: string;
@@ -55,32 +56,49 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.errorMsg();
-    this.listAppliances(this.subCat);
+    this.getProductLists(this.subCat);
     this.option = 'Newest First';
     this.sortbyMessage(this.option);
   }
 
-  listAppliances(subCat: string): void {
+  ngOnChanges() {
+    console.log(this.subCat);
+  }
+
+  getProductLists(subCat: string): void {
     try {
         this.route.params.subscribe(params => {
           const cat = params['cat'];
-          console.log(cat);
+          console.log('Category => ', cat);
           this.productObsv = this.apiService.getProducts(cat).
             subscribe(
               data => {
                 this.products = [];
+                this.filteredProducts = [];
                 console.log(data.products);
+
+                /* Store all products in products array */
                 data.products.forEach(element => {
                   if (element['Category'] === cat) {
                     this.products.push(element);
                   }
                 });
-                this.filterBySubcat(this.selectedSubcat);
+
+                /* Make a clone of products array in filteredProducts array */
+                this.filteredProducts = this.products;
+
+                /* Check if subcategory is all then all products will be listed otherwise filter by subcategory */
+                if (subCat === 'all') {
+                  this.filteredProducts = this.products;
+                } else {
+                  this.filterBySubcat(this.selectedSubcat);
+                }
+
                 if (this.products.length === 0) {
                   this.nopic = 'empty_product.svg';
                 }
                 this.isLoading = false;
-                console.log('products => ', this.products);
+                console.log('products => ', this.filteredProducts);
               },
               err => {
                 this.errorData = this.sharedService.getErrorKeys(err.statusText);
@@ -140,15 +158,19 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   checkSubcat(evt) {
     this.selectedSubcat = evt;
-    this.listAppliances(this.subCat);
+    if (this.selectedSubcat === 'all') {
+      this.getProductLists(this.selectedSubcat);
+    } else {
+      this.getProductLists(this.selectedSubcat);
+    }
   }
 
   filterBySubcat(cat) {
     console.log('Choose Subcat => ', cat);
     if (cat !== undefined) {
-      const productsByCat = this.products.filter((elemt) => elemt.SubCategory === cat);
-      this.products = productsByCat;
-      console.log(this.products);
+      const productsByCat = this.filteredProducts.filter((elemt) => elemt.SubCategory === cat);
+      this.filteredProducts = productsByCat;
+      console.log(this.filteredProducts);
     }
   }
 

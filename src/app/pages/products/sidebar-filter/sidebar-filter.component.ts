@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnChanges, EventEmitter } from '@angular/core';
 import { APIService } from '../../../service/api.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Options } from 'ng5-slider';
@@ -57,7 +57,6 @@ export class SidebarFilterComponent implements OnInit {
   sortBySubcat(event, index) {
     const allElement = event.target.parentElement.querySelectorAll('li');
     this.selectedOpt = event.target.innerText.toLowerCase();
-    console.log(allElement);
     allElement.forEach(element => {
       element.classList.remove('active');
     });
@@ -66,7 +65,10 @@ export class SidebarFilterComponent implements OnInit {
     } else {
       event.target.classList.remove('active');
     }
-    this.chooseSubcat.emit(this.selectedOpt);
+    if (this.selectedOpt !== undefined) {
+      console.log('selectedOpt => ', this.selectedOpt);
+      this.chooseSubcat.emit(this.selectedOpt);
+    }
   }
 
 }

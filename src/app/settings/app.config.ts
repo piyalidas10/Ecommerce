@@ -2,9 +2,9 @@ export class AppConfig {
     protocol = 'http://';
     // apiEndpoint = '127.0.0.1:8081/';
     // contentEndpoint = '127.0.0.1:8081/';
-    apiEndpoint = 'localhost:3000/';
-    contentEndpoint = 'localhost:3000/';
-    pageEndpoint = 'localhost:4200/';
+    apiEndpoint = 'piyali-ecommerce.herokuapp.com/';
+    contentEndpoint = 'piyali-ecommerce.herokuapp.com/';
+    pageEndpoint = 'piyali-ecommerce.herokuapp.com/';
     API_CATEGORY_PATH = 'api/categories';
     API_CONTENT_PATH = 'api/content';
     API_PRODUCT_LIST_PATH = 'api/products';
