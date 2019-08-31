@@ -2,6 +2,7 @@
   <div class="col-12">
     <h6>CATEGORIES</h6>
     <ul class="catListing">
+      <li (click)="sortBySubcat($event, i)">All</li>
       <li *ngFor="let cat of subCat" (click)="sortBySubcat($event, i)">{{cat}}</li>
     </ul>
     <div class="divider"></div>

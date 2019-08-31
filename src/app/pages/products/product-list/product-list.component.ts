@@ -17,6 +17,7 @@ import { Subscription } from 'rxjs';
 })
 export class ProductListComponent implements OnInit, OnDestroy {
   products = [];
+  filteredProducts = [];
   pic: string;
   nopic: string;
   option: string;
@@ -55,12 +56,12 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.errorMsg();
-    this.listAppliances(this.subCat);
+    this.getProductLists(this.subCat);
     this.option = 'Newest First';
     this.sortbyMessage(this.option);
   }
 
-  listAppliances(subCat: string): void {
+  getProductLists(subCat: string): void {
     try {
         this.route.params.subscribe(params => {
           const cat = params['cat'];
@@ -75,12 +76,21 @@ export class ProductListComponent implements OnInit, OnDestroy {
                     this.products.push(element);
                   }
                 });
-                this.filterBySubcat(this.selectedSubcat);
+                /* Make a clone of products array in filteredProducts array */
+                this.filteredProducts = this.products;
+
+                /* Check if subcategory is all then all products will be listed otherwise filter by subcategory */
+                if (subCat === 'all') {
+                  this.filteredProducts = this.products;
+                } else {
+                  this.filterBySubcat(this.selectedSubcat);
+                }
+
                 if (this.products.length === 0) {
                   this.nopic = 'empty_product.svg';
                 }
                 this.isLoading = false;
-                console.log('products => ', this.products);
+                console.log('products => ', this.filteredProducts);
               },
               err => {
                 this.errorData = this.sharedService.getErrorKeys(err.statusText);
@@ -131,7 +141,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
         return ((x.DateOfEntry === y.DateOfEntry) ? 0 : ((x.DateOfEntry > y.DateOfEntry) ? 1 : -1));
       }
     };
-    this.products.sort(SortBy);
+    this.filteredProducts.sort(SortBy);
   }
 
   changePrice(evt) {
@@ -139,16 +149,17 @@ export class ProductListComponent implements OnInit, OnDestroy {
   }
 
   checkSubcat(evt) {
+    console.log(evt);
     this.selectedSubcat = evt;
-    this.listAppliances(this.subCat);
+    this.getProductLists(this.selectedSubcat);
   }
 
-  filterBySubcat(cat) {
-    console.log('Choose Subcat => ', cat);
-    if (cat !== undefined) {
-      const productsByCat = this.products.filter((elemt) => elemt.SubCategory === cat);
-      this.products = productsByCat;
-      console.log(this.products);
+  filterBySubcat(subcat) {
+    console.log('Choose Subcat => ', subcat);
+    if (subcat !== undefined) {
+      const productsByCat = this.filteredProducts.filter((elemt) => elemt.SubCategory === subcat);
+      this.filteredProducts = productsByCat;
+      console.log(this.filteredProducts);
     }
   }
 

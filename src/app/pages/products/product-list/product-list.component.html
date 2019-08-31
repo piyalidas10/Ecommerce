@@ -19,7 +19,7 @@
       </div>
 
       <div class="row" *ngIf="errorData === NULL">
-        <div class="col-12 col-xl-3 col-md-4 col-sm-6" *ngFor="let prodt of products">
+        <div class="col-12 col-xl-3 col-md-4 col-sm-6" *ngFor="let prodt of filteredProducts">
           <a (click)="productDetails(prodt.ProductId)" class="productBox">
             <div class="productImg">
               <img [src]="imgURL + checkPath(prodt.ProductPicUrl)" class="img-thumbnail" />
@@ -32,7 +32,7 @@
             <button class="btn btn-success btn-block">Buy Now</button>
           </a>
         </div>
-        <div class="col-12 no-product text-center" *ngIf="products.length === 0">
+        <div class="col-12 no-product text-center" *ngIf="filteredProducts.length === 0">
           <img [src]="imgURL + nopic" class="img-thumbnail" />
           <h4>Opps sorry, No products found</h4>
         </div>

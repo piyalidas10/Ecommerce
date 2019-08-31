@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter, Renderer2, ElementRef } from '@angular/core';
 import { APIService } from '../../../service/api.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Options } from 'ng5-slider';
@@ -25,11 +25,14 @@ export class SidebarFilterComponent implements OnInit {
   constructor(
     private apiService: APIService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private ren: Renderer2,
+    private el: ElementRef
   ) { }
 
   ngOnInit() {
     this.subCategories();
+    this.onloadSelected();
   }
 
   subCategories() {
@@ -52,6 +55,13 @@ export class SidebarFilterComponent implements OnInit {
   changePrice() {
     console.log('Price', this.priceSelection);
     this.priceVal.emit(this.priceSelection);
+  }
+
+  onloadSelected() {
+    this.selectedOpt = 'all';
+    this.chooseSubcat.emit(this.selectedOpt);
+    const allElement = this.el.nativeElement.querySelectorAll('ul.catListing');
+    allElement[0].children[0].classList.add('active');
   }
 
   sortBySubcat(event, index) {
