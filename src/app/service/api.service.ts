@@ -120,21 +120,27 @@ export class APIService {
 
 
   /**
-   * Get products
+   * Get products by Category
   */
   getProducts(cat: string): Observable<any> {
-    const apiURL = `${this.appConfig.protocol}${this.appConfig.apiEndpoint}${this.appConfig.API_PRODUCT_LIST_PATH}` + '/?cat=';
-    return this.http.get(apiURL, this.ecommerceRQSTOptions);
-    // .pipe(catchError(this.handleError('getProducts', [])));
+    const authData = {category : cat};
+    const apiURL = `${this.appConfig.protocol}${this.appConfig.apiEndpoint}${this.appConfig.API_PRODUCT_LIST_PATH}`;
+    return this.http.post(apiURL, authData)
+    .pipe(map(response => {
+      return response;
+    }));
   }
 
   /**
    * Get product details
   */
   getProductDetails(id: string): Observable<any> {
-      const apiURL = `${this.appConfig.protocol}${this.appConfig.apiEndpoint}${this.appConfig.API_PRODUCT_LIST_PATH}` + '/?id=';
-      return this.http.get(apiURL, this.ecommerceRQSTOptions);
-      // .pipe(catchError(this.handleError('getProductDetails', [])));
+      const apiURL = `${this.appConfig.protocol}${this.appConfig.apiEndpoint}${this.appConfig.API_PRODUCT_DETAILS_PATH}`;
+      const authData = {productid : id};
+      return this.http.post(apiURL, authData)
+      .pipe(map(response => {
+        return response;
+      }));
   }
 
 

@@ -3,26 +3,25 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { ProductsComponent } from './products.component';
 import { Ng5SliderModule } from 'ng5-slider';
-
-const routes: Routes = [
-  {
-    path: '',
-    component: ProductsComponent
-  }
-];
+import { CurrencyPipe } from '../../pipe/currency.pipe';
+import { TruncatePipe } from '../../pipe/truncate.pipe';
 
 @NgModule({
   imports: [
     CommonModule,
     Ng5SliderModule,
     FormsModule,
-    ReactiveFormsModule,
-    RouterModule.forChild(routes)
+    ReactiveFormsModule
+  ],
+  exports: [
+    CurrencyPipe,
+    TruncatePipe,
+    Ng5SliderModule
   ],
   declarations: [
-    ProductsComponent
+    CurrencyPipe,
+    TruncatePipe
   ]
 })
 export class ProductModule { }

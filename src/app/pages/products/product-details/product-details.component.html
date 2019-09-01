@@ -1,27 +1,42 @@
-<div class="container wrapper">
+<div class="loader-bg" *ngIf="isLoading">
+  <div class="loader"></div>
+</div>
+
+<div class="container product-box" *ngIf="!isLoading">
   <div class="row">
-    <!-- <div class="col-12 col-md-5">
+    <div class="col-12 col-md-5">
       <img [src]="imgURL + checkPath(productDt.ProductPicUrl)" class="img-thumbnail" />
     </div>
     <div class="col-12 col-md-7">
-      <h4>Product Name</h4>
-      <div class="col-12 col-lg-6 col-md-5 col-sm-7">
-        <h6>{{prodt.Name | truncate:20}}</h6>
-        <p>
-          <span class="rate">{{prodt.Price | currency:prodt.CurrencyCode }}</span>
-        </p>
-        <ul>
-          <li>Category : {{prodt.Category}}</li>
-          <li>Subcategory : {{prodt.SubCategory}}</li>
-          <li>Supplier Name : {{prodt.SupplierName}}</li>
-          <li>Weight : {{prodt.WeightMeasure + prodt.WeightUnit}}</li>
-          <li>Date of Entry : {{prodt.DateOfEntry}}</li>
-        </ul>
-      </div>
-      <div class="col-12 col-lg-3 col-md-3 col-sm-7">
-        <button class="btn btn-warning btn-block">Add To Cart</button>
-        <button class="btn btn-success btn-block">Buy Now</button>
-      </div>
-    </div> -->
+        <h5>{{productDt.Name}}</h5>
+        <h3>
+          <span class="rate" [innerHTML]="productDt.Price | currency:productDt.CurrencyCode"></span>
+        </h3>
+        <span class="quantity" [ngClass]="{ 'alert': statusTxt, 'alert-dark': statusTxt.type === 'not-available', 'alert-danger': statusTxt.type === 'few-available', 'alert-success': statusTxt.type === 'available' }">{{statusTxt.text}}</span>
+        <table class="table">
+          <tr>
+            <td>Category :</td>
+            <td>{{productDt.Category}}</td>
+          </tr>
+          <tr>
+            <td>Subcategory :</td>
+            <td>{{productDt.SubCategory}}</td>
+          </tr>
+          <tr>
+            <td>Supplier Name :</td>
+            <td>{{productDt.SupplierName}}</td>
+          </tr>
+          <tr>
+            <td>Weight :</td>
+            <td>{{productDt.WeightMeasure + productDt.WeightUnit}}</td>
+          </tr>
+          <tr>
+            <td>Description :</td>
+            <td>{{productDt.Description}}</td>
+          </tr>
+        </table>
+        <button class="btn btn-warning"><i class="fa fa-shopping-cart"></i> Add To Cart</button>
+        <button class="btn btn-success">Buy Now</button>
+    </div>
   </div>
 </div>

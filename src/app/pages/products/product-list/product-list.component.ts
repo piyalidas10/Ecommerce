@@ -72,9 +72,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
                 this.products = [];
                 console.log(data.products);
                 data.products.forEach(element => {
-                  if (element['Category'] === cat) {
-                    this.products.push(element);
-                  }
+                  this.products.push(element);
                 });
                 /* Make a clone of products array in filteredProducts array */
                 this.filteredProducts = this.products;

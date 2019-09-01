@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { APIService } from '../../../service/api.service';
 import { AppConfig } from '../../../settings/app.config';
+import { SharedService } from '../../../service/shared.service';
 
 @Component({
   selector: 'app-product-details',
@@ -13,13 +14,18 @@ export class ProductDetailsComponent implements OnInit {
   imgURL: string;
   pic: string;
   productDt = {};
+  isLoading: Boolean = true;
+  errorData: any;
+  statusTxt: {};
 
   constructor(
     private Activatedroute: ActivatedRoute,
     private productsData: APIService,
-    private appConfig: AppConfig
+    private sharedService: SharedService,
+    private appConfig: AppConfig,
+    private el: ElementRef
   ) {
-    this.imgURL = appConfig.protocol + appConfig.apiEndpoint + appConfig.IMAGE_PATH;
+    this.imgURL = appConfig.protocol + appConfig.pageEndpoint + appConfig.IMAGE_PATH;
   }
 
   ngOnInit() {
@@ -34,13 +40,26 @@ export class ProductDetailsComponent implements OnInit {
     this.productsData.getProductDetails(id)
       .subscribe(
         data => {
-          this.productDt = data;
-          console.log(data);
+          this.productDt = data.productinfo;
+          console.log(this.productDt);
+          this.isLoading = false;
+          this.checkProductQuantity(this.productDt['Quantity']);
         },
         err => {
-          console.log(err);
+          this.errorData = this.sharedService.getErrorKeys(err.statusText);
+          this.isLoading = false;
         }
       );
+  }
+
+  checkProductQuantity(qantity: Number) {
+    if (qantity === 0) {
+      this.statusTxt = {type: 'not-available', text: 'Product Unavailable'};
+    } else if (qantity < 5) {
+      this.statusTxt = {type: 'few-available', text: 'Hurry, Only ' + qantity + ' left!'};
+    } else {
+      this.statusTxt = {type: 'available', text: 'Available'};
+    }
   }
 
   checkPath(imgsrc): string {
@@ -49,6 +68,7 @@ export class ProductDetailsComponent implements OnInit {
     } else {
       this.pic = imgsrc;
     }
+    console.log('Pic => ', this.pic);
     return this.pic;
   }
 

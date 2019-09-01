@@ -26,10 +26,8 @@
             </div>
             <h6>{{prodt.Name | truncate:20}}</h6>
             <p>
-              <span class="rate">{{prodt.Price | currency:prodt.CurrencyCode }}</span>
+              <span class="rate" [innerHTML]="prodt.Price | currency:prodt.CurrencyCode"></span>
             </p>
-            <button class="btn btn-warning btn-block">Add To Cart</button>
-            <button class="btn btn-success btn-block">Buy Now</button>
           </a>
         </div>
         <div class="col-12 no-product text-center" *ngIf="filteredProducts.length === 0">

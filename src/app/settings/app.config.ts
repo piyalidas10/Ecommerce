@@ -8,6 +8,7 @@ export class AppConfig {
     API_CATEGORY_PATH = 'api/categories';
     API_CONTENT_PATH = 'api/content';
     API_PRODUCT_LIST_PATH = 'api/products';
+    API_PRODUCT_DETAILS_PATH = 'api/products/productdetails';
     API_PRODUCT_ADD_PATH = '';
     API_PRODUCT_DELETE_PATH = '';
     API_REGISTER_PATH = 'api/auth/register';
