@@ -1,3 +1,4 @@
+const path = require("path");
 const express = require('express'); //server starts (express framework for routing all these)
 const bodyParser = require("body-parser");
 
@@ -41,6 +42,9 @@ app.use(bodyParser.json());                                     // parse applica
 app.use(bodyParser.urlencoded({extended: true}));               // parse application/x-www-form-urlencoded
 app.use(bodyParser.text());                                     // allows bodyParser to look at raw text
 app.use(bodyParser.json({type: 'application/vnd.api+json'}));  // parse application/vnd.api+json as json
+
+app.use("/images", express.static(path.join(__dirname, "images")));
+app.use("/", express.static(path.join(__dirname, "angular")));
 
 // enable CORS - Cross Origin Resource Sharing
 app.use(cors());

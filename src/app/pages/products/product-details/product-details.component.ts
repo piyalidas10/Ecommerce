@@ -4,6 +4,10 @@ import { APIService } from '../../../service/api.service';
 import { AppConfig } from '../../../settings/app.config';
 import { SharedService } from '../../../service/shared.service';
 
+import { environment } from '../../../../environments/environment';
+const BACKEND_URL = environment.apiEndpoint;
+
+
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
@@ -25,7 +29,7 @@ export class ProductDetailsComponent implements OnInit {
     private appConfig: AppConfig,
     private el: ElementRef
   ) {
-    this.imgURL = appConfig.protocol + appConfig.pageEndpoint + appConfig.IMAGE_PATH;
+    this.imgURL = BACKEND_URL + appConfig.IMAGE_PATH;
   }
 
   ngOnInit() {

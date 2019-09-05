@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input } from '@angular/core';
+
 
 @Component({
   selector: 'app-home-slider',
@@ -6,24 +7,13 @@ import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angula
   styleUrls: ['./home-slider.component.scss']
 })
 export class HomeSliderComponent implements OnInit, AfterViewInit {
+  @Input() sliderData;
   @ViewChild('sliderBox') sliderRef: ElementRef;
-  slideCt = [];
-  constructor() {
-    this.slideCt = [
-      {
-        url: './assets/images/Main_Banner-1-1.jpg',
-        title: 'Los Angeles',
-        caption: 'We had such a great time in LA!'
-      },
-      {
-        url: './assets/images/Main_Banner-2-1.jpg',
-        title: 'Chicago',
-        caption: 'Thank you, Chicago!'
-      }
-    ];
-   }
+
+  constructor() {}
 
   ngOnInit() {
+    console.log('sliderData => ', this.sliderData);
   }
 
   ngAfterViewInit() {

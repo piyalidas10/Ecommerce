@@ -1,9 +1,9 @@
 <div id="demo" class="carousel slide" data-ride="carousel" #sliderBox (mouseover)="showArraow()" (mouseout)="hideArraow()">
   <ul class="carousel-indicators">
-    <li *ngFor="let no of slideCt; let i = index" data-target="#demo" data-slide-to="i"></li>
+    <li *ngFor="let no of sliderData; let i = index" data-target="#demo" data-slide-to="i"></li>
   </ul>
   <div class="carousel-inner">
-    <div class="carousel-item" *ngFor="let sl of slideCt">
+    <div class="carousel-item" *ngFor="let sl of sliderData">
       <img src="{{sl.url}}" alt="Los Angeles" width="1100" height="500">
       <div class="carousel-caption">
         <h3>{{sl.title}}</h3>

@@ -15,7 +15,7 @@ import { AuthService } from '../../../auth/auth.service';
 })
 export class HeaderComponent implements OnInit, AfterViewInit, OnChanges {
   userName: string;
-  content: {};
+  content = [];
   lenMenu: number;
 
   @Input() custStatus;

@@ -1,7 +1,11 @@
-<div class="container">
+<div class="loader-bg" *ngIf="isLoading">
+  <div class="loader"></div>
+</div>
+
+<div class="container" *ngIf="!isLoading">
   <div class="row">
     <div class="col-md-12">
-      <app-home-slider></app-home-slider>
+      <app-home-slider [sliderData]="slideCt" *ngIf="slideCt"></app-home-slider>
     </div>
   </div>
 </div>

@@ -10,6 +10,9 @@ import { SidebarFilterComponent } from '../sidebar-filter/sidebar-filter.compone
 import { UpperCasePipe } from '@angular/common';
 import { Subscription } from 'rxjs';
 
+import { environment } from '../../../../environments/environment';
+const BACKEND_URL = environment.apiEndpoint;
+
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -51,7 +54,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
       ).subscribe(event => {
         this.titleService.setTitle(this.titleCaseWord(event['snapshot'].params['cat']) + ' ' + event['snapshot'].data['title']);
       });
-      this.imgURL = appConfig.protocol + appConfig.pageEndpoint + appConfig.IMAGE_PATH;
+      this.imgURL = BACKEND_URL + appConfig.IMAGE_PATH;
   }
 
   ngOnInit() {
@@ -61,19 +64,22 @@ export class ProductListComponent implements OnInit, OnDestroy {
     this.sortbyMessage(this.option);
   }
 
-  getProductLists(subCat: string): void {
+  async getProductLists(subCat: string) {
     try {
-        this.route.params.subscribe(params => {
+      // "await" will wait for the promise to resolve or reject
+      // if it rejects, an error will be thrown, which you can
+      // catch with a regular try/catch block
+      await this.route.params.subscribe(params => {
           const cat = params['cat'];
           console.log(cat);
           this.productObsv = this.apiService.getProducts(cat).
             subscribe(
               data => {
-                this.products = [];
-                console.log(data.products);
-                data.products.forEach(element => {
-                  this.products.push(element);
-                });
+                this.products = data.products;
+                console.log(this.products);
+                // data.products.forEach(element => {
+                //   this.products.push(element);
+                // });
                 /* Make a clone of products array in filteredProducts array */
                 this.filteredProducts = this.products;
 
