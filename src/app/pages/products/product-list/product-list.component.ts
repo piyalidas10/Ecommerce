@@ -10,12 +10,15 @@ import { SidebarFilterComponent } from '../sidebar-filter/sidebar-filter.compone
 import { UpperCasePipe } from '@angular/common';
 import { Subscription } from 'rxjs';
 
+import { environment } from '../../../../environments/environment';
+const BACKEND_URL = environment.apiEndpoint;
+
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
-export class ProductListComponent implements OnInit, OnChanges, OnDestroy {
+export class ProductListComponent implements OnInit, OnDestroy {
   products = [];
   filteredProducts = [];
   pic: string;
@@ -51,7 +54,7 @@ export class ProductListComponent implements OnInit, OnChanges, OnDestroy {
       ).subscribe(event => {
         this.titleService.setTitle(this.titleCaseWord(event['snapshot'].params['cat']) + ' ' + event['snapshot'].data['title']);
       });
-      this.imgURL = appConfig.protocol + appConfig.pageEndpoint + appConfig.IMAGE_PATH;
+      this.imgURL = BACKEND_URL + appConfig.IMAGE_PATH;
   }
 
   ngOnInit() {
@@ -61,29 +64,22 @@ export class ProductListComponent implements OnInit, OnChanges, OnDestroy {
     this.sortbyMessage(this.option);
   }
 
-  ngOnChanges() {
-    console.log(this.subCat);
-  }
-
-  getProductLists(subCat: string): void {
+  async getProductLists(subCat: string) {
     try {
-        this.route.params.subscribe(params => {
+      // "await" will wait for the promise to resolve or reject
+      // if it rejects, an error will be thrown, which you can
+      // catch with a regular try/catch block
+      await this.route.params.subscribe(params => {
           const cat = params['cat'];
           console.log('Category => ', cat);
           this.productObsv = this.apiService.getProducts(cat).
             subscribe(
               data => {
-                this.products = [];
-                this.filteredProducts = [];
-                console.log(data.products);
-
-                /* Store all products in products array */
-                data.products.forEach(element => {
-                  if (element['Category'] === cat) {
-                    this.products.push(element);
-                  }
-                });
-
+                this.products = data.products;
+                console.log(this.products);
+                // data.products.forEach(element => {
+                //   this.products.push(element);
+                // });
                 /* Make a clone of products array in filteredProducts array */
                 this.filteredProducts = this.products;
 
@@ -149,7 +145,7 @@ export class ProductListComponent implements OnInit, OnChanges, OnDestroy {
         return ((x.DateOfEntry === y.DateOfEntry) ? 0 : ((x.DateOfEntry > y.DateOfEntry) ? 1 : -1));
       }
     };
-    this.products.sort(SortBy);
+    this.filteredProducts.sort(SortBy);
   }
 
   changePrice(evt) {
@@ -157,18 +153,15 @@ export class ProductListComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   checkSubcat(evt) {
+    console.log(evt);
     this.selectedSubcat = evt;
-    if (this.selectedSubcat === 'all') {
-      this.getProductLists(this.selectedSubcat);
-    } else {
-      this.getProductLists(this.selectedSubcat);
-    }
+    this.getProductLists(this.selectedSubcat);
   }
 
-  filterBySubcat(cat) {
-    console.log('Choose Subcat => ', cat);
-    if (cat !== undefined) {
-      const productsByCat = this.filteredProducts.filter((elemt) => elemt.SubCategory === cat);
+  filterBySubcat(subcat) {
+    console.log('Choose Subcat => ', subcat);
+    if (subcat !== undefined) {
+      const productsByCat = this.filteredProducts.filter((elemt) => elemt.SubCategory === subcat);
       this.filteredProducts = productsByCat;
       console.log(this.filteredProducts);
     }

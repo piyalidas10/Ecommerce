@@ -8,6 +8,9 @@ import { Router, ActivationEnd } from '@angular/router';
 import { ILogin } from '../modules/login';
 import { IRegister } from '../modules/register';
 
+import { environment } from '../../environments/environment';
+const BACKEND_URL = environment.apiEndpoint;
+
 @Injectable({
   providedIn: 'root'
 })
@@ -49,7 +52,7 @@ export class AuthService {
       const authData = { customerFirstName: registerVal.firstName, customerMiddleName: registerVal.middleName,
         customerLastName: registerVal.lastName, customerEmail: registerVal.emailId,
         customerMobile: registerVal.mobile, customerPass: registerVal.password};
-      const apiURL = `${this.appConfig.protocol}${this.appConfig.apiEndpoint}${this.appConfig.API_REGISTER_PATH}`;
+      const apiURL = `${BACKEND_URL}${this.appConfig.API_REGISTER_PATH}`;
       return this.http.post<any>(apiURL, authData)
             .pipe(map(response => {
                 return response;
@@ -58,7 +61,7 @@ export class AuthService {
 
   loginCustomer(emailId, password): Observable<any> {
             const authData = { customerEmail: emailId, customerPass: password };
-            const apiURL = `${this.appConfig.protocol}${this.appConfig.apiEndpoint}${this.appConfig.API_LOGIN_PATH}`;
+            const apiURL = `${BACKEND_URL}${this.appConfig.API_LOGIN_PATH}`;
             return this.http.post<any>(apiURL, authData)
             .pipe(map((res: Response) => {
               this.isAuthenticated = true;

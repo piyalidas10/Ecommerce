@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home.component';
-import { HomeSliderModule } from '../../shared/components/home-slider/home-slider.module';
+import { HomeSliderComponent } from '../../shared/components/home-slider/home-slider.component';
 
 const routes: Routes = [
   {
@@ -15,11 +15,11 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(routes),
-    HomeSliderModule
+    RouterModule.forChild(routes)
   ],
   declarations: [
-    HomeComponent
+    HomeComponent,
+    HomeSliderComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

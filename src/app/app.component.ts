@@ -27,15 +27,10 @@ export class AppComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.setAppConfig();
     this.setPageTitle();
     this.createLinkForCanonicalURL();
     this.authService.autoAuthCust();
     this.checkAuthentication();
-  }
-
-  setAppConfig() {
-    console.log('appConfig', this.config.protocol);
   }
 
   setPageTitle() {

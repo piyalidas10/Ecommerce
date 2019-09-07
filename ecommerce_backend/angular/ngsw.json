@@ -1,0 +1,46 @@
+{
+  "configVersion": 1,
+  "index": "./index.html",
+  "assetGroups": [
+    {
+      "name": "ecommerce",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [],
+      "patterns": [
+        "https:\\/\\/maxcdn\\.bootstrapcdn\\.com\\/bootstrap\\/4\\.3\\.1\\/css\\/bootstrap\\.min\\.css",
+        "https:\\/\\/cdnjs\\.cloudflare\\.com\\/ajax\\/libs\\/font-awesome\\/4\\.7\\.0\\/css\\/font-awesome\\.min\\.css",
+        "https:\\/\\/ajax\\.googleapis\\.com\\/ajax\\/libs\\/jquery\\/3\\.3\\.1\\/jquery\\.min\\.js",
+        "https:\\/\\/cdnjs\\.cloudflare\\.com\\/ajax\\/libs\\/popper\\.js\\/1\\.14\\.7\\/umd\\/popper\\.min\\.js",
+        "https:\\/\\/maxcdn\\.bootstrapcdn\\.com\\/bootstrap\\/4\\.3\\.1\\/js\\/bootstrap\\.min\\.js"
+      ]
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {},
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ]
+}
