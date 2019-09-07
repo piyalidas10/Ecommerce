@@ -38,7 +38,7 @@
     "start:server": "nodemon ./ecommerce_backend/server.js",
     "fix": "npm run lint -- --fix",
     "ecommerce-build": "ng lint && ng test --source-map=false --watch=false",
-    "ecommerce-build-prod": "npm run ecommerce-build && ng build --prod --base-href ./"
+    "ecommerce-build-prod": "ng lint && ng build --prod  --base-href ./"
   },
   "private": true,
   "files": [
@@ -72,7 +72,8 @@
     "rxjs": "^6.2.2",
     "rxjs-compat": "^6.5.2",
     "tslib": "^1.9.0",
-    "zone.js": "0.8.26"
+    "zone.js": "0.8.26",
+    "https": "^1.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.6.8",

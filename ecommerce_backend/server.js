@@ -5,6 +5,7 @@
 const app = require('./app');
 const debug = require('debug')('node-angular');
 const http = require('http');
+var https = require('https');
 
 /**
  * Normalize a port into a number, string, or false.

@@ -1,7 +1,6 @@
 import { Component, ViewEncapsulation, OnInit, OnDestroy, Inject } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { DOCUMENT } from '@angular/common';
-import { AppConfig } from './settings/app.config';
 import { AuthService } from './auth/auth.service';
 import { Subscription } from 'rxjs';
 
@@ -21,7 +20,6 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(
     private titleService: Title,
     private meta: Meta,
-    private config: AppConfig,
     private authService: AuthService,
     @Inject(DOCUMENT) private doc
   ) {}

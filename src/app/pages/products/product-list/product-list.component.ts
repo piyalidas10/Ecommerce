@@ -4,7 +4,6 @@ import { Title } from '@angular/platform-browser';
 import { filter, map } from 'rxjs/operators';
 import { APIService } from '../../../service/api.service';
 import { SharedService } from '../../../service/shared.service';
-import { AppConfig } from '../../../settings/app.config';
 
 import { SidebarFilterComponent } from '../sidebar-filter/sidebar-filter.component';
 import { UpperCasePipe } from '@angular/common';
@@ -45,7 +44,6 @@ export class ProductListComponent implements OnInit, OnDestroy {
     private titleService: Title,
     private apiService: APIService,
     private sharedService: SharedService,
-    private appConfig: AppConfig,
     private route: ActivatedRoute,
     private router: Router
   ) {
@@ -54,7 +52,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
       ).subscribe(event => {
         this.titleService.setTitle(this.titleCaseWord(event['snapshot'].params['cat']) + ' ' + event['snapshot'].data['title']);
       });
-      this.imgURL = BACKEND_URL + appConfig.IMAGE_PATH;
+      this.imgURL = BACKEND_URL + environment.IMAGE_PATH;
   }
 
   ngOnInit() {

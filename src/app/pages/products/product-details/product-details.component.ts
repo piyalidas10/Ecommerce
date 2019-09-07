@@ -1,7 +1,6 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { APIService } from '../../../service/api.service';
-import { AppConfig } from '../../../settings/app.config';
 import { SharedService } from '../../../service/shared.service';
 
 import { environment } from '../../../../environments/environment';
@@ -26,10 +25,9 @@ export class ProductDetailsComponent implements OnInit {
     private Activatedroute: ActivatedRoute,
     private productsData: APIService,
     private sharedService: SharedService,
-    private appConfig: AppConfig,
     private el: ElementRef
   ) {
-    this.imgURL = BACKEND_URL + appConfig.IMAGE_PATH;
+    this.imgURL = BACKEND_URL + environment.IMAGE_PATH;
   }
 
   ngOnInit() {

@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
-import { AppConfig } from '../settings/app.config';
 import { resolve, reject } from 'q';
 import { Icategories } from '../modules/categories';
 
@@ -20,7 +19,6 @@ export class APIService {
 
   constructor(
     private http: HttpClient,
-    private appConfig: AppConfig,
     private messageService: MessageService
   ) { }
 
@@ -49,7 +47,7 @@ export class APIService {
   getCategories() {
     // tslint:disable-next-line:no-shadowed-variable
     const promise = new Promise((resolve, reject) => {
-      const apiURL = `${BACKEND_URL}${this.appConfig.API_CATEGORY_PATH}`;
+      const apiURL = `${BACKEND_URL}${environment.API_CATEGORY_PATH}`;
       return this.http.get<{categories: Icategories[]}>(apiURL).toPromise().then(
         res => {
           resolve(res);
@@ -69,7 +67,7 @@ export class APIService {
  getContent() {
   // tslint:disable-next-line:no-shadowed-variable
   const promise = new Promise((resolve, reject) => {
-    const apiURL = `${BACKEND_URL}${this.appConfig.API_CONTENT_PATH}`;
+    const apiURL = `${BACKEND_URL}${environment.API_CONTENT_PATH}`;
     return this.http.get<{content: any}>(apiURL).toPromise().then(
       res => {
         resolve(res);
@@ -88,7 +86,7 @@ export class APIService {
  getErrorMessage() {
    // tslint:disable-next-line:no-shadowed-variable
   const promise = new Promise((resolve, reject) => {
-    const apiURL = `${BACKEND_URL}${this.appConfig.ERROR_MSG_PATH}`;
+    const apiURL = `${BACKEND_URL}${environment.ERROR_MSG_PATH}`;
     return this.http.get<{srverrors: any}>(apiURL).toPromise().then(
       res => {
         resolve(res);
@@ -108,7 +106,7 @@ export class APIService {
  getValidationErrorMessage() {
   // tslint:disable-next-line:no-shadowed-variable
  const promise = new Promise((resolve, reject) => {
-   const apiURL = `${BACKEND_URL}${this.appConfig.VALIDATION_ERROR_MSG_PATH}`;
+   const apiURL = `${BACKEND_URL}${environment.VALIDATION_ERROR_MSG_PATH}`;
    return this.http.get<{vlderrors: any}>(apiURL).toPromise().then(
      res => {
        resolve(res);
@@ -127,7 +125,7 @@ export class APIService {
   */
   getProducts(cat: string): Observable<any> {
     const authData = {category : cat};
-    const apiURL = `${BACKEND_URL}${this.appConfig.API_PRODUCT_LIST_PATH}`;
+    const apiURL = `${BACKEND_URL}${environment.API_PRODUCT_LIST_PATH}`;
     return this.http.post(apiURL, authData)
     .pipe(map(response => {
       return response;
@@ -138,7 +136,7 @@ export class APIService {
    * Get product details
   */
   getProductDetails(id: string): Observable<any> {
-      const apiURL = `${BACKEND_URL}${this.appConfig.API_PRODUCT_DETAILS_PATH}`;
+      const apiURL = `${BACKEND_URL}${environment.API_PRODUCT_DETAILS_PATH}`;
       const authData = {productid : id};
       return this.http.post(apiURL, authData)
       .pipe(map(response => {
