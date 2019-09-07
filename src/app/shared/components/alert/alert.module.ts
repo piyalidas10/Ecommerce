@@ -8,4 +8,4 @@ import { Routes, RouterModule } from '@angular/router';
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
-export class HomeSliderModule { }
+export class AlertModule { }

@@ -64,7 +64,7 @@ export class SidebarFilterComponent implements OnInit {
     allElement[0].children[0].classList.add('active');
   }
 
-  sortBySubcat(event, index) {
+  sortBySubcat(event) {
     const allElement = event.target.parentElement.querySelectorAll('li');
     this.selectedOpt = event.target.innerText.toLowerCase();
     console.log(allElement);

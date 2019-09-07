@@ -44,7 +44,7 @@ app.use(bodyParser.text());                                     // allows bodyPa
 app.use(bodyParser.json({type: 'application/vnd.api+json'}));  // parse application/vnd.api+json as json
 
 app.use("/images", express.static(path.join(__dirname, "images")));
-app.use("/", express.static(path.join(__dirname, "angular")));
+// app.use("/", express.static(path.join(__dirname, "angular")));
 
 // enable CORS - Cross Origin Resource Sharing
 app.use(cors());

@@ -37,8 +37,8 @@
     "start": "npm run && ng serve && ng lint",
     "start:server": "nodemon server.js",
     "fix": "npm run lint -- --fix",
-    "ecommerce-build": "ng lint && ng test --source-map=false --watch=false --configuration=production",
-    "ecommerce-build-prod": "npm run ecommerce-build && ng build --prod  --base-href ./"
+    "ecommerce-build": "ng lint && ng test --source-map=false --watch=false",
+    "ecommerce-build-prod": "ng lint && ng build --prod  --base-href ./"
   },
   "private": true,
   "husky": {

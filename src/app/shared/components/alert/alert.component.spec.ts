@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AlertComponent } from './alert.component';
+import { MessageService } from '../../../service/message.service';
 
 describe('AlertComponent', () => {
   let component: AlertComponent;
@@ -8,7 +9,11 @@ describe('AlertComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AlertComponent ]
+      declarations: [ AlertComponent ],
+      providers: [MessageService],
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
+      ]
     })
     .compileComponents();
   }));

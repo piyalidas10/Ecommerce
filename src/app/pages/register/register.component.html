@@ -4,7 +4,6 @@
 
 <div class="container" *ngIf="!isLoading">
   <div class="col-xl-6 offset-xl-3 col-md-10 offset-md-1 registerBox">
-    <app-alert></app-alert>
     <h3 class="text-center">Register</h3>
     <form [formGroup]="registerForm" (ngSubmit)="verifyForm()">
       <div class="row form-group clearfix">

@@ -5,7 +5,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpErrorInterceptor } from './service/http-error-interceptor';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
-import { AppConfig } from './settings/app.config';
 
 
 import { HeaderModule } from './shared/components/header/header.module';
@@ -49,7 +48,6 @@ import { AlertComponent } from './shared/components/alert/alert.component';
   ],
   providers: [
     APIService,
-    AppConfig,
     AuthService,
     {
       provide: HTTP_INTERCEPTORS,

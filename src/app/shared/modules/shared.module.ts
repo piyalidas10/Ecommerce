@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { ValidationLabelDirective } from '../../directives/validation-label.directive';
 
 @NgModule({
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpClientModule
   ],
   exports: [
     FormsModule,
     ReactiveFormsModule,
-    HttpModule,
+    HttpClientModule,
     ValidationLabelDirective
   ],
   declarations: [

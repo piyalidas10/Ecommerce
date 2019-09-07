@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable, BehaviorSubject, of } from 'rxjs';
 import { Subject } from 'rxjs';
-import { AppConfig } from '../settings/app.config';
 import { Router, ActivationEnd } from '@angular/router';
 import { ILogin } from '../modules/login';
 import { IRegister } from '../modules/register';
@@ -24,7 +23,6 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private appConfig: AppConfig,
     private router: Router
   ) { }
 
@@ -52,7 +50,7 @@ export class AuthService {
       const authData = { customerFirstName: registerVal.firstName, customerMiddleName: registerVal.middleName,
         customerLastName: registerVal.lastName, customerEmail: registerVal.emailId,
         customerMobile: registerVal.mobile, customerPass: registerVal.password};
-      const apiURL = `${BACKEND_URL}${this.appConfig.API_REGISTER_PATH}`;
+      const apiURL = `${BACKEND_URL}${environment.API_REGISTER_PATH}`;
       return this.http.post<any>(apiURL, authData)
             .pipe(map(response => {
                 return response;
@@ -61,7 +59,7 @@ export class AuthService {
 
   loginCustomer(emailId, password): Observable<any> {
             const authData = { customerEmail: emailId, customerPass: password };
-            const apiURL = `${BACKEND_URL}${this.appConfig.API_LOGIN_PATH}`;
+            const apiURL = `${BACKEND_URL}${environment.API_LOGIN_PATH}`;
             return this.http.post<any>(apiURL, authData)
             .pipe(map((res: Response) => {
               this.isAuthenticated = true;
