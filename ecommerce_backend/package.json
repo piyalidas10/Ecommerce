@@ -36,6 +36,7 @@
     "cors": "^2.8.5",
     "detect-passive-events": "^1.0.4",
     "express": "^4.17.1",
+    "compression": "^1.7.4",
     "jsonwebtoken": "^8.2.1",
     "mongoose": "^5.6.9",
     "https": "^1.0.0"
