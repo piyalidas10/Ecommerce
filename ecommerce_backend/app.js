@@ -13,6 +13,7 @@ const productsRoutes = require('./routes/products');
 const authRoutes = require('./routes/auth');
 
 const cors = require('cors');
+const helmet = require('helmet');
 
 const app = express();
 
@@ -46,6 +47,8 @@ app.use(bodyParser.json({type: 'application/vnd.api+json'}));  // parse applicat
 app.use("/images", express.static(path.join(__dirname, "images")));
 app.use("/", express.static(path.join(__dirname, "angular")));
 
+// secure apps by setting various HTTP headers
+app.use(helmet()); 
 // enable CORS - Cross Origin Resource Sharing
 app.use(cors());
 

@@ -17,7 +17,7 @@ const BACKEND_URL = environment.apiEndpoint;
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
-export class ProductListComponent implements OnInit, OnDestroy {
+export class ProductListComponent implements OnInit, OnChanges, OnDestroy {
   products = [];
   filteredProducts = [];
   pic: string;
@@ -62,6 +62,10 @@ export class ProductListComponent implements OnInit, OnDestroy {
     this.sortbyMessage(this.option);
   }
 
+  ngOnChanges() {
+    this.getProductLists(this.subCat);
+  }
+
   async getProductLists(subCat: string) {
     try {
       // "await" will wait for the promise to resolve or reject
@@ -74,7 +78,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
             subscribe(
               data => {
                 this.products = data.products;
-                console.log(this.products);
+                console.log('Products => ', this.products);
                 // data.products.forEach(element => {
                 //   this.products.push(element);
                 // });
@@ -82,9 +86,11 @@ export class ProductListComponent implements OnInit, OnDestroy {
                 this.filteredProducts = this.products;
 
                 /* Check if subcategory is all then all products will be listed otherwise filter by subcategory */
-                if (subCat === 'all') {
+                if (subCat === 'all' || subCat === '') {
+                  console.log('subCat => ', subCat);
                   this.filteredProducts = this.products;
                 } else {
+                  console.log('subCat => ', subCat);
                   this.filterBySubcat(this.selectedSubcat);
                 }
 
@@ -92,7 +98,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
                   this.nopic = 'empty_product.svg';
                 }
                 this.isLoading = false;
-                console.log('products => ', this.filteredProducts);
+                console.log('filtered products => ', this.filteredProducts);
               },
               err => {
                 this.errorData = this.sharedService.getErrorKeys(err.statusText);
@@ -161,7 +167,6 @@ export class ProductListComponent implements OnInit, OnDestroy {
     if (subcat !== undefined) {
       const productsByCat = this.filteredProducts.filter((elemt) => elemt.SubCategory === subcat);
       this.filteredProducts = productsByCat;
-      console.log(this.filteredProducts);
     }
   }
 
