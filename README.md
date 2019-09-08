@@ -493,5 +493,26 @@ app.use('/api/categories', (req, res, next) => {
 });
 ```
 
+## Enable GZIP to increase Performance in Nodejs
+Express 4.x provides minimal functionality which can be enhanced with middleware. One of the less obvious missing features is GZIP compression which shrinks the HTTP payload so it can be expanded by the browser on receipt. To add GZIP, install the compression module using npm:
+
+```
+npm install compression --save
+```
+
+(Depending on your setup, you may need to use sudo on Mac/Linux — there are various ways to fix that.)
+
+In your main application launch file, include the compression module:
+
+```
+var compression = require('compression');
+```
+
+then mount it as the first middleware function (prior to other Express .use methods):
+
+```
+// GZIP all assets
+app.use(compression());
+```
 
 

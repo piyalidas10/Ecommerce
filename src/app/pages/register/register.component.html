@@ -9,7 +9,7 @@
       <div class="row form-group clearfix">
             <div class="col-md-4 col-12">
               <label for="firstName">First Name</label>
-                <input type="text" appValidationLabel formControlName="firstName" class="form-control" />
+                <input type="text" appValidationLabel formControlName="firstName" class="form-control" aria-required="true" />
             </div>
             <div class="col-md-4 col-12">
               <label for="middleName">Middle Name</label>
@@ -17,30 +17,30 @@
             </div>
             <div class="col-md-4 col-12">
               <label for="lastName">Last Name</label>
-                <input type="text" appValidationLabel formControlName="lastName" class="form-control" />
+                <input type="text" appValidationLabel formControlName="lastName" class="form-control" aria-required="true" />
             </div>
       </div>      
       <div class="row form-group clearfix">
         <label for="emailId" class="col-md-4 col-sm-5 col-12">Email ID</label>
         <div class="col-md-8 col-sm-7 col-12">
-          <input type="text" appValidationLabel formControlName="emailId" class="form-control" />
+          <input type="text" appValidationLabel formControlName="emailId" class="form-control" aria-required="true" />
         </div>
       </div>
       <div class="row form-group clearfix">
         <label for="mobile" class="col-md-4 col-sm-5 col-12">Mobile No</label>
         <div class="col-md-8 col-sm-7 col-12">
-          <input type="text" appValidationLabel formControlName="mobile" class="form-control" />
+          <input type="text" appValidationLabel formControlName="mobile" class="form-control" aria-required="true" />
         </div>
       </div>
       <div class="row form-group clearfix">
         <label for="umail" class="col-md-4 col-sm-5 col-12">Password</label>
         <div class="col-md-8 col-sm-7 col-12">
-          <input type="password" appValidationLabel formControlName="password" class="form-control" />
+          <input type="password" appValidationLabel formControlName="password" class="form-control" aria-required="true" />
         </div>
       </div>
       <div class="row form-group clearfix">
         <div class="col-12 text-center">
-            <button class="btn btn-primary" type="submit" appFormSubmit>Register With Us</button>
+            <button class="btn btn-primary" type="submit" role="button" appFormSubmit>Register With Us</button>
         </div>
       </div>  
     </form>

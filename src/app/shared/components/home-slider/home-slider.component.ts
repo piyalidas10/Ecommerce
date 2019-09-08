@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input, ChangeDetectionStrategy } from '@angular/core';
 
 
 @Component({
   selector: 'app-home-slider',
   templateUrl: './home-slider.component.html',
-  styleUrls: ['./home-slider.component.scss']
+  styleUrls: ['./home-slider.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeSliderComponent implements OnInit, AfterViewInit {
   @Input() sliderData;

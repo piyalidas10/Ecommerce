@@ -22,7 +22,7 @@
         <div class="col-12 col-xl-3 col-md-4 col-sm-6" *ngFor="let prodt of filteredProducts">
           <a (click)="productDetails(prodt.ProductId)" class="productBox">
             <div class="productImg">
-              <img [src]="imgURL + checkPath(prodt.ProductPicUrl)" class="img-thumbnail" />
+              <img [src]="imgURL + checkPath(prodt.ProductPicUrl)" alt="{{prodt.Name}}" class="img-thumbnail" />
             </div>
             <h6>{{prodt.Name | truncate:20}}</h6>
             <p>
@@ -31,7 +31,7 @@
           </a>
         </div>
         <div class="col-12 no-product text-center" *ngIf="filteredProducts.length === 0">
-          <img [src]="imgURL + nopic" class="img-thumbnail" />
+          <img [src]="imgURL + nopic" alt="no product" class="img-thumbnail" />
           <h4>Opps sorry, No products found</h4>
         </div>
       </div>

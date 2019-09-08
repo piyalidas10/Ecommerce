@@ -1,6 +1,6 @@
 import {
   Component, Input, OnInit,
-  ComponentFactoryResolver, ViewContainerRef, ViewChild, ElementRef, Renderer2, AfterContentInit
+  ComponentFactoryResolver, ViewContainerRef, ViewChild, ElementRef, Renderer2, AfterContentInit, ChangeDetectionStrategy
 } from '@angular/core';
 import { ComponentLoaderService } from '../../service/modal.service';
 
@@ -9,7 +9,8 @@ import { ComponentLoaderService } from '../../service/modal.service';
   // tslint:disable-next-line:component-selector
   selector: 'modal-dialog',
   templateUrl: './modal-dialog.component.html',
-  styleUrls: ['./modal-dialog.component.scss']
+  styleUrls: ['./modal-dialog.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class ModalDialogComponent implements OnInit, AfterContentInit {

@@ -1,10 +1,11 @@
-import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { NgbModal, NgbModalOptions, NgbActiveModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-timeout-dialog',
   templateUrl: './timeout-dialog.component.html',
-  styleUrls: ['./timeout-dialog.component.scss']
+  styleUrls: ['./timeout-dialog.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TimeoutDialogComponent implements OnInit {
 
