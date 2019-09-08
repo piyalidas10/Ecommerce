@@ -6,18 +6,18 @@
           <div class="row form-group clearfix">
               <label for="emailId" class="col-md-3 col-sm-5 col-12">Email ID</label>
               <div class="col-md-9 col-sm-7 col-12">
-                  <input type="text" appValidationLabel class="form-control" formControlName="emailId" />
+                  <input type="text" appValidationLabel class="form-control" formControlName="emailId" aria-required="true" />
               </div>
           </div>
           <div class="row form-group clearfix">
             <label for="password" class="col-md-3 col-sm-5 col-12">Password</label>
             <div class="col-md-9 col-sm-7 col-12">
-                <input type="password" appValidationLabel class="form-control" formControlName="password"/>
+                <input type="password" appValidationLabel class="form-control" formControlName="password" aria-required="true" />
             </div>
           </div>
           <div class="row">
             <div class="col-md-9 offset-md-3 col-sm-7 offset-sm-5 col-12 form-group text-right">
-                <button class="btn btn-success btn-block" type="submit">Login</button>
+                <button class="btn btn-success btn-block" type="submit" role="button">Login</button>
             </div>
             <div class="col-md-9 offset-md-3 col-sm-7 offset-sm-5 col-12 text-center">
                 <p>New customer? <a routerLink="/register">Start here</a>.</p>

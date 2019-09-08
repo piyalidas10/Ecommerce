@@ -1,5 +1,6 @@
 const path = require("path");
 const express = require('express'); //server starts (express framework for routing all these)
+const compression = require('compression');
 const bodyParser = require("body-parser");
 
 const database = require('./config/database');
@@ -37,6 +38,11 @@ mongoose.connection.on('connected', () => {
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
+
+// GZIP all assets
+app.use(compression());
+app.use(express.static('assets'));
+app.use(express.static('images'));
 
 // Body parser middleware
 app.use(bodyParser.json());                                     // parse application/json
