@@ -73,6 +73,7 @@ export class AuthService {
     localStorage.setItem('expiration', expirationDate.toISOString());
     localStorage.setItem('custEmail', custEmail);
     localStorage.setItem('custName', custName);
+    console.log('saveAuthData => ', custEmail, custName, token, expirationDate);
   }
 
   autoAuthCust() {

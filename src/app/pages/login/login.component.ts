@@ -82,7 +82,6 @@ export class LoginComponent implements OnInit, OnDestroy {
           .pipe(first())
           .subscribe(
             data => {
-              console.log(data);
               const token = data.token;
               this.token = token;
               if (token) {
@@ -94,6 +93,7 @@ export class LoginComponent implements OnInit, OnDestroy {
                 const expirationDate = new Date(
                   now.getTime() + expiresInDuration * 1000
                 );
+                console.log('Login => ', this.custEmail, this.custName, token, expirationDate);
                 this.authService.saveAuthData(token, expirationDate, this.custEmail, this.custName);
                 this.router.navigate(['/home']);
               }
