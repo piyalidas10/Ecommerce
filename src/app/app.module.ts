@@ -22,7 +22,7 @@ import { environment } from '../environments/environment';
 
 import { ModalDirective } from './directives/modal.directive';
 import { TimeoutDialogComponent } from './shared/components/timeout-dialog/timeout-dialog.component';
-import { AlertComponent } from './shared/components/alert/alert.component';
+
 
 
 @NgModule({
@@ -31,8 +31,7 @@ import { AlertComponent } from './shared/components/alert/alert.component';
     ProductsComponent,
     ModalDirective,
     ModalDialogComponent,
-    TimeoutDialogComponent,
-    AlertComponent
+    TimeoutDialogComponent
   ],
   imports: [
     BrowserModule,

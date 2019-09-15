@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, OnInit, OnDestroy, Inject } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, OnDestroy, Inject, OnChanges } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { DOCUMENT } from '@angular/common';
 import { AuthService } from './auth/auth.service';
@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./app.component.scss'],
   encapsulation: ViewEncapsulation.Emulated
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit, OnChanges, OnDestroy {
 
   title = 'Ecommerce POC by Piyali Das';
   custIsAuthenticated = false;
@@ -31,6 +31,10 @@ export class AppComponent implements OnInit, OnDestroy {
     this.checkAuthentication();
   }
 
+  ngOnChanges() {
+    this.checkAuthentication();
+  }
+
   setPageTitle() {
     this.titleService.setTitle(this.title);
     this.meta.addTag({name: 'keywords', content: 'Angular Project, Ecommerce Project'});
@@ -47,8 +51,8 @@ export class AppComponent implements OnInit, OnDestroy {
  }
 
  checkAuthentication() {
-  // this.custName = this.authService.getCustName();
-  // this.custIsAuthenticated = this.authService.getIsAuth();
+  this.custName = this.authService.getCustName();
+  this.custIsAuthenticated = this.authService.getIsAuth();
   this.authListenerSubs = this.authService.getLoggedInStatusListener()
     .subscribe(isAuthenticated => {
       this.custIsAuthenticated = isAuthenticated;

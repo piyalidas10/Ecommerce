@@ -31,12 +31,13 @@ const appRoutes: Routes = [
     },
     {
         path: 'product/details/:id',
-        loadChildren: './pages/products/product-details/product-details.module#ProductDetailsModule'
+        loadChildren: './pages/products/product-details/product-details.module#ProductDetailsModule',
+        data: {title: 'Product Details'}
     },
     {
         path: 'cart',
         loadChildren: './pages/cart/cart.module#CartModule',
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard],
         data: {title: 'Ecommerce Cart'}
     },
     {

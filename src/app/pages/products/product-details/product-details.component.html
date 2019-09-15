@@ -6,6 +6,15 @@
   <div class="row">
     <div class="col-12 col-md-5">
       <img [src]="imgURL + checkPath(productDt.ProductPicUrl)" class="img-thumbnail" />
+
+      <div class="row product-btn-group">
+        <div class="col">
+            <button class="btn btn-block" [ngClass]="{'btn-secondary': statusTxt.type === 'not-available', 'btn-warning': statusTxt.type !== 'not-available' }" [disabled]="statusTxt.type === 'not-available'"><i class="fa fa-shopping-cart"></i> Add To Cart</button>
+        </div>
+        <div class="col">
+            <button class="btn btn-block" [ngClass]="{'btn-secondary': statusTxt.type === 'not-available', 'btn-success': statusTxt.type !== 'not-available' }" [disabled]="statusTxt.type === 'not-available'">Buy Now</button>
+        </div>
+      </div>
     </div>
     <div class="col-12 col-md-7">
         <h5>{{productDt.Name}}</h5>
@@ -35,8 +44,6 @@
             <td>{{productDt.Description}}</td>
           </tr>
         </table>
-        <button class="btn btn-warning"><i class="fa fa-shopping-cart"></i> Add To Cart</button>
-        <button class="btn btn-success">Buy Now</button>
     </div>
   </div>
 </div>

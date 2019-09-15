@@ -46,10 +46,10 @@ export class AuthService {
     return this.loggedInStatus.asObservable();
   }
 
-  createCustomer(registerVal: {firstName, middleName, lastName, emailId, mobile, password}): Observable<IRegister> {
+  createCustomer(registerVal: {firstName, middleName, lastName, dob, gender, emailId, mobile, password}): Observable<IRegister> {
       const authData = { customerFirstName: registerVal.firstName, customerMiddleName: registerVal.middleName,
-        customerLastName: registerVal.lastName, customerEmail: registerVal.emailId,
-        customerMobile: registerVal.mobile, customerPass: registerVal.password};
+        customerLastName: registerVal.lastName, customerDOB: registerVal.dob, customerGender: registerVal.gender,
+        customerEmail: registerVal.emailId, customerMobile: registerVal.mobile, customerPass: registerVal.password};
       const apiURL = `${BACKEND_URL}${environment.API_REGISTER_PATH}`;
       return this.http.post<any>(apiURL, authData)
             .pipe(map(response => {

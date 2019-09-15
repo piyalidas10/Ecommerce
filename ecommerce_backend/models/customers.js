@@ -7,6 +7,8 @@ const customersSchema = mongoose.Schema({
     customerFirstName: { type: String, required: true },
     customerMiddleName: { type: String },
     customerLastName: { type: String, required: true },
+    customerGender: { type: String, required: true},
+    customerDOB: {type: Date, default: Date.now},
     customerCity: { type: String, default:'Not Given' },
     customerState: { type: String, default:'Not Given' },
     customerZip: { type: Number, default: 0 },

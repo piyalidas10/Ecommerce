@@ -1,5 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, ActivationEnd } from '@angular/router';
+import { Title } from '@angular/platform-browser';
+import { filter, map } from 'rxjs/operators';
 import { APIService } from '../../../service/api.service';
 import { SharedService } from '../../../service/shared.service';
 
@@ -21,12 +23,27 @@ export class ProductDetailsComponent implements OnInit {
   errorData: any;
   statusTxt: {};
 
+  titleCaseWord(word: string) {
+    if (!word) {
+      return word;
+    } else {
+      return word[0].toUpperCase() + word.substr(1).toLowerCase();
+    }
+  }
+
   constructor(
+    private titleService: Title,
+    private router: Router,
     private Activatedroute: ActivatedRoute,
     private productsData: APIService,
     private sharedService: SharedService,
     private el: ElementRef
   ) {
+    this.router.events.pipe(
+      filter(event => event instanceof ActivationEnd)
+    ).subscribe(event => {
+      this.titleService.setTitle(this.titleCaseWord(event['snapshot'].params['id']) + ' ' + event['snapshot'].data['title']);
+    });
     this.imgURL = BACKEND_URL + environment.IMAGE_PATH;
   }
 

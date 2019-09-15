@@ -1,3 +1,5 @@
 <div *ngIf="message && message.text !== undefined"
 [ngClass]="{ 'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'error' }">
+<i *ngIf="message.type === 'error'" class="fa fa-times-circle" aria-hidden="true"></i>
+<i *ngIf="message.type === 'success'" class="fa fa-check-circle" aria-hidden="true"></i>
 {{message.text}}</div>

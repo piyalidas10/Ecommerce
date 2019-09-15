@@ -20,6 +20,8 @@ exports.createCustomers = (req, res, next) => {
                 customerFirstName: req.body.customerFirstName,
                 customerMiddleName: req.body.customerMiddleName,
                 customerLastName: req.body.customerLastName,
+                customerDOB: req.body.customerDOB,
+                customerGender: req.body.customerGender,
                 customerMobile: req.body.customerMobile
             });
             custs.save().then(createdCusts => {
