@@ -1,0 +1,45 @@
+@import "../../../assets/styles/theme.scss";
+.cart-details { 
+    background: $color-white;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.08);
+    border: 1px solid #eaeaea;
+    padding: 0 0 convertEm(20) 0;
+    margin-top: 10px;
+}
+
+.price-details {
+    margin-top: 10px;
+}
+.price-section{
+    background: $color-white;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.08);
+    border: 1px solid #eaeaea;
+    padding: convertEm(15);
+}
+.summery-item {
+    margin: convertEm(10) 0;
+    .text {
+
+    }
+    .price {
+        float: right;
+    }
+}
+.delivery-info {
+    margin: convertEm(10) 0;
+    .text {
+
+    }
+    .price {
+        float: right;
+    }
+}
+.total-pay {
+    margin: convertEm(10) 0;
+    .text {
+
+    }
+    .price {
+        float: right;
+    }
+}

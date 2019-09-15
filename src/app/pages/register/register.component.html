@@ -3,8 +3,9 @@
 </div>
 
 <div class="container" *ngIf="!isLoading">
-  <div class="col-xl-6 offset-xl-3 col-md-10 offset-md-1 registerBox">
+  <div class="col-xl-8 offset-xl-2 col-lg-10 col-lg-1 col-md-10 offset-md-1 registerBox">
     <h3 class="text-center">Register</h3>
+    <app-alert></app-alert>
     <form [formGroup]="registerForm" (ngSubmit)="verifyForm()">
       <div class="row form-group clearfix">
             <div class="col-md-4 col-12">
@@ -19,6 +20,21 @@
               <label for="lastName">Last Name</label>
                 <input type="text" appValidationLabel formControlName="lastName" class="form-control" aria-required="true" />
             </div>
+      </div>
+      <div class="row form-group clearfix">
+          <label for="dob" class="col-md-4 col-sm-5 col-12">Date of Birth</label>
+          <div class="col-md-8 col-sm-7 col-12">
+            <input type="text" appValidationLabel formControlName="dob" class="form-control" aria-required="true" />
+          </div>
+      </div>
+      <div class="row form-group clearfix">
+          <label for="gender" class="col-md-4 col-sm-5 col-12">Gender</label>
+          <div class="col-md-8 col-sm-7 col-12">
+            <select appValidationLabel formControlName="gender" class="form-control" aria-required="true">
+              <option value="male">male</option>
+              <option value="female">female</option>
+            </select>
+          </div>
       </div>      
       <div class="row form-group clearfix">
         <label for="emailId" class="col-md-4 col-sm-5 col-12">Email ID</label>

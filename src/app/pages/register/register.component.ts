@@ -52,6 +52,8 @@ export class RegisterComponent implements OnInit, OnChanges, OnDestroy {
       firstName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
       middleName: ['', [Validators.minLength(2), Validators.maxLength(30)]],
       lastName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
+      dob: ['', [Validators.minLength(2), Validators.maxLength(30)]],
+      gender: ['', [Validators.required]],
       emailId: ['', [Validators.required, Validators.email, Validators.pattern('[^ @]*@[^ @]*')]],
       mobile: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.minLength(10), , Validators.maxLength(10)]],
       password: ['', [Validators.required, Validators.minLength(6)]]

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register.component';
+import { AlertComponent } from '../../shared/components/alert/alert.component';
 import { ValidationMessageService } from '../../service/validation-msg.service';
 import { SharedModule } from '../../shared/modules/shared.module';
 
@@ -23,7 +24,8 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   declarations: [
-    RegisterComponent
+    RegisterComponent,
+    AlertComponent
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
