@@ -12,6 +12,7 @@ const errorsRoutes = require('./routes/errors');
 const validationerrorsRoutes = require('./routes/validationerrors');
 const productsRoutes = require('./routes/products');
 const authRoutes = require('./routes/auth');
+const adminRoutes = require('./routes/admin');
 
 const cors = require('cors');
 const helmet = require('helmet');
@@ -94,4 +95,6 @@ app.use('/api/errors', errorsRoutes);
 app.use('/api/validationerrors', validationerrorsRoutes);
 app.use('/api/products', productsRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/admin', adminRoutes);
+
 module.exports = app;

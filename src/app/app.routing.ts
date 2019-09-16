@@ -41,6 +41,11 @@ const appRoutes: Routes = [
         data: {title: 'Ecommerce Cart'}
     },
     {
+        path: 'admin',
+        loadChildren: './admin/dashboard/dashboard.module#DashboardModule',
+        data: {title: 'Ecommerce POC by Piyali Das'}
+    },
+    {
         path: '**',
         loadChildren: '',
         redirectTo: 'home',

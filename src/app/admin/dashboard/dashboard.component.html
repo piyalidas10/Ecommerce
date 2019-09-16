@@ -1,0 +1,22 @@
+<div class="loader-bg" *ngIf="isLoading">
+  <div class="loader"></div>
+</div>
+
+<div class="container wrpapper" *ngIf="!isLoading">
+  <div class="row">
+      <div class="col-md-6">
+            <highcharts-chart 
+            [Highcharts]="Highcharts"
+            [options]="chartOptionsByYear"
+            style="width: 100%; height: 400px; display: block;"
+            ></highcharts-chart>
+      </div>
+      <div class="col-md-6">
+          <highcharts-chart 
+          [Highcharts]="Highcharts"
+          [options]="chartOptionsByGender"
+          style="width: 100%; height: 400px; display: block;"
+          ></highcharts-chart>
+      </div>
+  </div>  
+</div>  
