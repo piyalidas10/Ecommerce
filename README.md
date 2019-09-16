@@ -373,6 +373,7 @@ app.use((req, res, next) => {
 Mongoose is an Object Data Modeling (ODM) library for MongoDB and Node.js. It manages relationships between data, provides schema validation, and is used to translate between objects in code and the representation of those objects in MongoDB. Object Mapping between Node and MongoDB managed via Mongoose.
 
 https://mongoosejs.com/docs/guide.html
+https://docs.mongodb.com/manual/reference/operator/aggregation/group/
 
 ```
 npm install --save mongoose
@@ -514,5 +515,37 @@ then mount it as the first middleware function (prior to other Express .use meth
 // GZIP all assets
 app.use(compression());
 ```
+
+## Highcharts
+https://www.tutorialspoint.com/angular_highcharts/angular_highcharts_quick_guide.htm
+https://codesandbox.io/s/pk2z0qvk0q
+
+
+```
+npm install highcharts --save
+npm install highcharts-angular --save
+```
+
+Add the following entry in highchartsApp.module.ts file
+
+```
+import { HighchartsChartComponent } from 'highcharts-angular';
+declarations: [
+   ...
+   HighchartsChartComponent    
+],
+```
+
+Following is the content of the modified HTML host file app.component.html.
+
+```
+<highcharts-chart
+   [Highcharts] = "highcharts" 
+   [options] = "chartOptions" 
+   style = "width: 100%; height: 400px; display: block;">
+</highcharts-chart>
+```
+
+
 
 

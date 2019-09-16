@@ -9,6 +9,8 @@ export const environment = {
   API_PRODUCT_DELETE_PATH: '',
   API_REGISTER_PATH: 'api/auth/register',
   API_LOGIN_PATH: 'api/auth/login',
+  API_CUSTOMERSBYYEAR: 'api/admin/customersbyyear',
+  API_CUTOMERSBYGENDER: 'api/admin/customersbygender',
   IMAGE_PATH: 'images/products/',
   ERROR_MSG_PATH: 'api/errors',
   VALIDATION_ERROR_MSG_PATH: 'api/validationerrors'
