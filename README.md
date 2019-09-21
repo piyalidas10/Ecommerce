@@ -374,6 +374,7 @@ Mongoose is an Object Data Modeling (ODM) library for MongoDB and Node.js. It ma
 
 https://mongoosejs.com/docs/guide.html
 https://docs.mongodb.com/manual/reference/operator/aggregation/group/
+https://www.mkyong.com/mongodb/mongodb-group-count-and-sort-example/
 
 ```
 npm install --save mongoose

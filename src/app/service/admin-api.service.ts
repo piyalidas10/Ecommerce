@@ -13,10 +13,25 @@ const BACKEND_URL = environment.apiEndpoint;
 })
 export class AdminApiService {
 
+  public headers: HttpHeaders;
+  public ecommerceRQSTOptions: any;
+
   constructor(
     private http: HttpClient,
     private messageService: MessageService
   ) { }
+
+  setEcommerceHeader() {
+    this.headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Ecommerce-version': '1.0.0'
+    });
+    this.ecommerceRQSTOptions = {
+      headers: this.headers,
+      responseType: 'json'
+    };
+  }
 
   /**
    * Get customers registrations in year
@@ -24,40 +39,32 @@ export class AdminApiService {
   getCustomers(): Observable<any> {
     const apiURL = `${BACKEND_URL}${environment.API_CUSTOMERSBYYEAR}`;
     return this.http.get(apiURL)
-    .pipe(catchError(this.handleError('getCustomers', [])));
+    .pipe(map(response => {
+      return response;
+    }));
   }
 
+  /**
+   * Get customers genderwise
+  */
   getCustomersByGender(): Observable<any> {
     const apiURL = `${BACKEND_URL}${environment.API_CUTOMERSBYGENDER}`;
     return this.http.get(apiURL)
-    .pipe(catchError(this.handleError('getCustomersByGender', [])));
+    .pipe(map(response => {
+      return response;
+    }));
   }
-
-
 
   /**
-   * Handle Http operation that failed.
-   * Let the app continue.
-   * @param operation - name of the operation that failed
-   * @param result - optional value to return as the observable result
-   */
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
+   * Get products category wise
+  */
+ getProductsByCategory(): Observable<any> {
+    const apiURL = `${BACKEND_URL}${environment.API_PRODUCTSBYCATEGORY}`;
+    return this.http.get(apiURL)
+    .pipe(map(response => {
+      return response;
+    }));
   }
 
-  /** Log a Service message with the MessageService */
-  private log(message: string) {
-    this.messageService.error(`API Service: ${message}`);
-  }
 
 }
