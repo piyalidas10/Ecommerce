@@ -44,8 +44,22 @@ export class AdminApiService {
     }));
   }
 
+  /**
+   * Get customers genderwise
+  */
   getCustomersByGender(): Observable<any> {
     const apiURL = `${BACKEND_URL}${environment.API_CUTOMERSBYGENDER}`;
+    return this.http.get(apiURL)
+    .pipe(map(response => {
+      return response;
+    }));
+  }
+
+  /**
+   * Get products category wise
+  */
+ getProductsByCategory(): Observable<any> {
+    const apiURL = `${BACKEND_URL}${environment.API_PRODUCTSBYCATEGORY}`;
     return this.http.get(apiURL)
     .pipe(map(response => {
       return response;

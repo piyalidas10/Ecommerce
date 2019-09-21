@@ -13,11 +13,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
   isLoading: Boolean = true;
   customersbyyear = [];
   customersbygender = [];
+  productsbycategory = [];
   allcustomers: Subscription;
 
   Highcharts: typeof Highcharts = Highcharts;
   chartOptionsByYear = {};
   chartOptionsByGender = {};
+  chartOptionsProductsByCategory = {};
   databyyear = [
     {id: 1 , name: 'Jan', count: 0},
     {id: 2 , name: 'Feb', count: 0},
@@ -35,6 +37,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   monthListsbyyear = [];
   countCustomersbyyear = [];
   databygender: any;
+  databycategory = [];
 
 constructor(
   private apiService: AdminApiService,
@@ -50,9 +53,11 @@ ngOnInit() {
 getCustomerLists() {
   const allcustomersbyyear = this.apiService.getCustomers();
   const allcustomersbygender = this.apiService.getCustomersByGender();
-  this.allcustomers = forkJoin([allcustomersbyyear, allcustomersbygender]).subscribe(results => {
+  const countproductsbycategory = this.apiService.getProductsByCategory();
+  this.allcustomers = forkJoin([allcustomersbyyear, allcustomersbygender, countproductsbycategory]).subscribe(results => {
         console.log(results[0]);
         console.log(results[1]);
+        console.log(results[2]);
 
         this.customersbyyear = results[0].custlists;
         this.customersbyyear.forEach(element => {
@@ -76,11 +81,21 @@ getCustomerLists() {
         console.log(this.databygender);
         this.genderwiseChart(this.databygender);
 
+        this.productsbycategory = results[2].prodGroupCount;
+        Object.values(this.productsbycategory).forEach(element => {
+          this.databycategory.push([element._id, element.count]);
+        });
+        console.log(this.databycategory);
+        this.productscatwisechart(this.databycategory);
+
         this.isLoading = false;
 
   });
 }
 
+/**
+   * Get customers registrations in year
+  */
 registrationChart(monthLists, countCustomers) {
   this.chartOptionsByYear = {
     chart: {
@@ -187,6 +202,9 @@ registrationChart(monthLists, countCustomers) {
   };
 }
 
+/**
+   * Get customers genderwise
+  */
 genderwiseChart(databygender) {
   this.chartOptionsByGender = {
     chart : {
@@ -216,10 +234,47 @@ genderwiseChart(databygender) {
    },
    series : [{
       type: 'pie',
-      name: 'Browser share',
-      data: databygender
+      name: 'Percentage',
+      data: databygender,
+      colors: ['#8085e9', '#f45b5b']
   }]
 };
+}
+
+/**
+   * Get products category wise
+  */
+
+productscatwisechart(databycategory) {
+  this.chartOptionsProductsByCategory = {
+    chart: {
+        type: 'pie',
+        options3d: {
+            enabled: true,
+            alpha: 45
+        }
+    },
+    title: {
+        text: 'Products by Categories'
+    },
+    subtitle: {
+        text: '3D donut in Highcharts'
+    },
+    plotOptions: {
+        pie: {
+            innerSize: 100,
+            depth: 45,
+            dataLabels: {
+              enabled: true,
+              format: '<b>{point.name}</b>: {point.y:.0f}'
+           }
+        }
+    },
+    series: [{
+        name: 'Delivered amount',
+        data: databycategory
+    }]
+  };
 }
 
 ngOnDestroy() {

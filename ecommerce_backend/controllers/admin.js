@@ -1,4 +1,6 @@
 const Customers = require("../models/customers");
+const Products = require("../models/products");
+const Categories = require("../models/categories");
 
 exports.getCustomersByYear = (req, res, next) => {
     Customers.aggregate(
@@ -35,6 +37,25 @@ exports.getCustomersByGender = (req, res, next) => {
   .then(custsgen => {
     res.status(200).json({
       custlistsgen: custsgen
+    });
+  });
+};
+
+
+exports.getProductsByCategory = (req, res, next) => {
+  Products.aggregate(
+    [
+      {
+        $group : {
+          _id: "$Category", 
+          count:{ $sum: 1 }
+        }
+      }
+    ]
+  )
+  .then(prodts => {
+    res.status(200).json({
+      prodGroupCount: prodts
     });
   });
 };

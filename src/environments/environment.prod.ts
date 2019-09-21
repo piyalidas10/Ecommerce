@@ -11,6 +11,7 @@ export const environment = {
   API_LOGIN_PATH: 'api/auth/login',
   API_CUSTOMERSBYYEAR: 'api/admin/customersbyyear',
   API_CUTOMERSBYGENDER: 'api/admin/customersbygender',
+  API_PRODUCTSBYCATEGORY: 'api/admin/productsbycategory',
   IMAGE_PATH: 'images/products/',
   ERROR_MSG_PATH: 'api/errors',
   VALIDATION_ERROR_MSG_PATH: 'api/validationerrors'
