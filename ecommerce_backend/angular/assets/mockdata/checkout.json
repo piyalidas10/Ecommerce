@@ -1,0 +1,742 @@
+{
+  "CACHE_INVALIDATION_TTL": "38696646622",
+  "REQUEST": null,
+  "REQUEST-ID": "039fe1b0-d95f-4e7a-94d7-ae6cceb08af0",
+  "RESPONSE": {
+    "accountInfo": {
+      "accountId": "ACC14169314716149039",
+      "availableCoins": 0,
+      "billToPartyId": "ACC14169314716149039",
+      "emailId": "meetpiyali@gmail.com",
+      "firstName": "Piyali",
+      "flipkartFirst": false,
+      "lastName": "Das",
+      "loginIdentifier": "PHONE",
+      "smsNotifyNumber": "+919836451221",
+      "userInfo": {
+        "OS": null,
+        "appType": "Windows 7"
+      }
+    },
+    "actionDetails": {
+      "actions": [],
+      "callbackMessage": null,
+      "callbackUrl": null
+    },
+    "addressData": {
+      "addressMessage": null,
+      "addressType": "user_generated",
+      "billingAddressID": "CNTCTA57820E18AF44DA385B31F849",
+      "billingAddressInfos": [{
+        "type": "BillingAddressInfo",
+        "active": true,
+        "addressLine1": "Vill - Nabapally, P.O - Batanagar,",
+        "addressLine2": "Padeep's Grocery Shop",
+        "addressValidation": {
+          "failureReason": null,
+          "message": null,
+          "status": "OK"
+        },
+        "city": "Kolkata",
+        "id": "CNTCTA57820E18AF44DA385B31F849",
+        "isDefault": true,
+        "name": "Piyali Das",
+        "phone": "9836451221",
+        "pincode": "700140",
+        "state": "West Bengal"
+      }],
+      "pickUpLocations": [],
+      "pincode": "700140",
+      "selectedAddressId": "CNTCTA57820E18AF44DA385B31F849"
+    },
+    "emailRecommendation": "OPTIONAL",
+    "orderSummary": {
+      "abIds": [],
+      "checkoutSummary": {
+        "additionalPriceSummary": null,
+        "coinBottomSheetInfo": null,
+        "coinInfo": null,
+        "coinSavingsMessage": null,
+        "deliveryCharges": 0.0,
+        "deliveryMessage": null,
+        "grandTotal": 1898.0,
+        "messages": [],
+        "multiCurrencyGrandTotal": {
+          "type": "FormattedMessageValue",
+          "data": [{
+            "value": {
+              "type": "RichTextValue",
+              "text": "₹1,898"
+            }
+          }]
+        },
+        "multiCurrencyPrice": {
+          "type": "FormattedMessageValue",
+          "data": [{
+            "value": {
+              "type": "RichTextValue",
+              "text": "₹1,898"
+            }
+          }]
+        },
+        "noOfBuyableForwardItems": 2,
+        "noOfBuyablePreOrderItems": 0,
+        "noOfBuyableReverseItems": 0,
+        "noOfNonServiceableItems": 0,
+        "octroiCharges": 0.0,
+        "pickUpCharges": 0.0,
+        "preOrderCharges": 0.0,
+        "price": 1898.0,
+        "priceOfReverseItems": 0.0,
+        "savingAmount": 3351.0
+      },
+      "forceOBDPresent": false,
+      "id": "OD1166590068230710",
+      "itemCountHavingCoinPrice": 0,
+      "itemDecisionResponses": [],
+      "requestedStores": [{
+        "allEgv": false,
+        "basketType": "FLIPKART",
+        "buyableStateItems": [{
+          "actions": null,
+          "attachTitle": null,
+          "cardPricingDetails": {
+            "coinPrice": null,
+            "message": [],
+            "prices": [{
+              "currency": "INR",
+              "label": null,
+              "priceType": "PRICE",
+              "strikeOff": false,
+              "subLabel": null,
+              "value": 799
+            }, {
+              "currency": "INR",
+              "label": null,
+              "priceType": "PRICE",
+              "strikeOff": true,
+              "subLabel": null,
+              "value": 3300
+            }, {
+              "currency": "INR",
+              "label": null,
+              "priceType": "DISCOUNT_PERCENT",
+              "strikeOff": false,
+              "subLabel": null,
+              "value": 75
+            }],
+            "showPrice": true
+          },
+          "cartItemRefId": "LSTPERD8AYKYPQHGWWKI6XQEW:VER-509811724825244-195-10347133:P:C-0012:U:SPCMS",
+          "category": "Fragrance",
+          "checkoutItemState": "BUYABLE",
+          "childItemType": null,
+          "childItems": null,
+          "coSubTitle": null,
+          "codCallout": {
+            "message": "Pay by Cash",
+            "sentiment": "POSITIVE"
+          },
+          "conditionalPromotion": [{
+            "ctaInfo": null,
+            "messageType": null,
+            "promotionAmount": 0.0,
+            "promotionMessage": "₹50 Off with Flipkart Pay Later",
+            "tncInfo": null,
+            "warning": null
+          }, {
+            "ctaInfo": null,
+            "messageType": null,
+            "promotionAmount": 0.0,
+            "promotionMessage": "5% Unlimited Cashback on Flipkart Axis Card",
+            "tncInfo": null,
+            "warning": null
+          }, {
+            "ctaInfo": null,
+            "messageType": null,
+            "promotionAmount": 0.0,
+            "promotionMessage": "Extra 5% off* with Axis Bank Buzz Credit Card",
+            "tncInfo": null,
+            "warning": null
+          }],
+          "exchangeViewData": null,
+          "flipkartAssured": true,
+          "flipkartFirst": false,
+          "forwardServices": null,
+          "gradeInfo": {
+            "color": null,
+            "id": null,
+            "name": null,
+            "shortDesc": null
+          },
+          "id": null,
+          "imageUrl": "https://rukminim1.flixcart.com/image/100/100/jlzhci80/perfume/w/w/k/100-classic-black-eau-de-toilette-jaguar-men-original-imaf8zmtqkydxxhg.jpeg?q=90",
+          "isChild": false,
+          "itemPromiseInfo": {
+            "availablePromises": [{
+              "deliveryCharges": 0.0,
+              "deliverySlotsInfo": {},
+              "deliverySlotsOrder": null,
+              "deliverySlotsTimingOrder": null,
+              "octroiCharges": 0.0,
+              "pickUpEndDate": null,
+              "pickUpStartDate": null,
+              "prices": [{
+                "currency": "INR",
+                "label": null,
+                "priceType": "PRICE",
+                "strikeOff": false,
+                "subLabel": null,
+                "value": 0
+              }, {
+                "currency": "INR",
+                "label": null,
+                "priceType": "PRICE",
+                "strikeOff": true,
+                "subLabel": null,
+                "value": 40
+              }],
+              "promiseDate": "by Wed, Oct 9",
+              "slaMessage": "Delivery by Wed, Oct 9 | Free",
+              "slaMessageConstruct": {
+                "level": "info",
+                "text": "Delivery by Wed Oct 9"
+              },
+              "type": "REGULAR",
+              "urgency": null
+            }],
+            "isSlottedDeliveryAvailable": false,
+            "selectedPromiseSpeedType": "REGULAR",
+            "serviceabilityText": null,
+            "serviceable": true
+          },
+          "itemState": "BUYABLE",
+          "itemTag": null,
+          "itemType": "PHYSICAL",
+          "listingId": "LSTPERD8AYKYPQHGWWKI6XQEW",
+          "listingType": "current",
+          "mainTitle": "Jaguar Classic Black Eau de Toilette  -  100 ml",
+          "nbfcOffers": null,
+          "obdRecommendation": null,
+          "offerSummary": {
+            "appliedMessage": "1 offer applied",
+            "availableMessage": "3 offers available",
+            "separator": "https://rukminim1.flixcart.com/www/{@width}/{@height}/promos/28/06/2019/16d5f3c0-3fe6-46e7-9d12-5d0b89ce2229.png?q={@quality}"
+          },
+          "otherPromotions": [{
+            "ctaInfo": null,
+            "messageType": null,
+            "promotionAmount": 0.0,
+            "promotionMessage": "Buy worth Min ₹600 and get 20% up to 200",
+            "tncInfo": null,
+            "warning": null
+          }],
+          "popUpDetails": {
+            "knowMore": null,
+            "offers": {},
+            "offersTitle": null,
+            "priceDescriptions": null,
+            "priceDetails": {
+              "finalPrice": {
+                "currency": "INR",
+                "label": "Total",
+                "priceType": "PRICE",
+                "strikeOff": false,
+                "subLabel": null,
+                "value": 799
+              },
+              "multiCurrencyfinalPrice": {
+                "coinValue": 0,
+                "currency": "INR",
+                "inrSavings": 0,
+                "label": "Total",
+                "multiCurrencyPrice": {
+                  "type": "FormattedMessageValue",
+                  "data": [{
+                    "value": {
+                      "type": "RichTextValue",
+                      "text": "₹799"
+                    }
+                  }]
+                },
+                "priceType": "PRICE",
+                "strikeOff": false,
+                "subLabel": null,
+                "value": 799
+              },
+              "prebookPriceItems": null,
+              "priceLineItems": [{
+                "currency": null,
+                "label": "MRP",
+                "priceType": "PRICE",
+                "strikeOff": true,
+                "subLabel": null,
+                "value": 3300
+              }, {
+                "currency": null,
+                "label": "Selling Price",
+                "priceType": "PRICE",
+                "strikeOff": false,
+                "subLabel": null,
+                "value": 1200
+              }, {
+                "currency": null,
+                "label": "Extra Discount",
+                "priceType": "DISCOUNT",
+                "strikeOff": false,
+                "subLabel": null,
+                "value": 401
+              }, {
+                "currency": null,
+                "label": "Special Price",
+                "priceType": "PRICE",
+                "strikeOff": false,
+                "subLabel": null,
+                "value": 799
+              }]
+            },
+            "savingsSummary": null
+          },
+          "preBookInfo": null,
+          "preorder": false,
+          "prexoOffers": null,
+          "pricingInfo": {
+            "bottomSheetCoinPrice": null,
+            "coinApplicable": false,
+            "coinApplied": false,
+            "coinInrSavings": 0.0,
+            "coinPriceInrComponent": 0.0,
+            "coinsRequired": 0.0,
+            "discountAmount": 2501,
+            "discountPercent": 75,
+            "finalPrice": 799.0,
+            "mrp": 3300.0,
+            "octroiCharge": 0.0,
+            "offerSaving": 2501.0,
+            "pickUpCharge": 0.0,
+            "sellingPrice": 799.0,
+            "shippingCharge": 0.0,
+            "sourcingFee": 0.0,
+            "subTotal": 799.0
+          },
+          "productId": "PERD8AYKYPQHGWWK",
+          "quantity": 1,
+          "recommendedItems": null,
+          "reservationDetails": null,
+          "restrictQuantityUpdate": false,
+          "reverseServices": [{
+            "type": "ReturnsCallout",
+            "calloutId": "no_returns",
+            "count": 0,
+            "displayText": "No Returns Applicable",
+            "icon": "NO_RETURN",
+            "pageLink": "https://www.flipkart.com/pages/no_returns",
+            "sentiment": "NEGATIVE",
+            "tabType": "NO_RETURN"
+          }],
+          "sProductSuffix": null,
+          "sellerId": "bd91df39671142ca",
+          "sellerName": "SuperComNet",
+          "serviceProfile": null,
+          "showAttach": false,
+          "showMrp": false,
+          "subTitle": "For Men",
+          "trackingInfo": {
+            "slaTracking": "10 to 10d_10d_10d_0d_FREE_11pm:NA_NA_NA:NA_NA_NA:NA_NA:NA_NA_NA:REGULAR"
+          },
+          "urgency": null,
+          "vertical": "Perfume"
+        }, {
+          "actions": null,
+          "attachTitle": null,
+          "cardPricingDetails": {
+            "coinPrice": null,
+            "message": [],
+            "prices": [{
+              "currency": "INR",
+              "label": null,
+              "priceType": "PRICE",
+              "strikeOff": false,
+              "subLabel": null,
+              "value": 1099
+            }, {
+              "currency": "INR",
+              "label": null,
+              "priceType": "PRICE",
+              "strikeOff": true,
+              "subLabel": null,
+              "value": 1949
+            }, {
+              "currency": "INR",
+              "label": null,
+              "priceType": "DISCOUNT_PERCENT",
+              "strikeOff": false,
+              "subLabel": null,
+              "value": 43
+            }],
+            "showPrice": true
+          },
+          "cartItemRefId": "LSTSECFC8CEWA4FH2CCHPP2JL:VER-509811724825244-195-10347133:P:C-0012:U:SPCMS",
+          "category": "ComputerAccessory",
+          "checkoutItemState": "BUYABLE",
+          "childItemType": null,
+          "childItems": null,
+          "coSubTitle": null,
+          "codCallout": {
+            "message": "Pay by Cash",
+            "sentiment": "POSITIVE"
+          },
+          "conditionalPromotion": [{
+            "ctaInfo": null,
+            "messageType": null,
+            "promotionAmount": 0.0,
+            "promotionMessage": "₹50 Off with Flipkart Pay Later",
+            "tncInfo": null,
+            "warning": null
+          }, {
+            "ctaInfo": null,
+            "messageType": null,
+            "promotionAmount": 0.0,
+            "promotionMessage": "5% Unlimited Cashback on Flipkart Axis Card",
+            "tncInfo": null,
+            "warning": null
+          }, {
+            "ctaInfo": null,
+            "messageType": null,
+            "promotionAmount": 0.0,
+            "promotionMessage": "Extra 5% off* with Axis Bank Buzz Credit Card",
+            "tncInfo": null,
+            "warning": null
+          }],
+          "exchangeViewData": null,
+          "flipkartAssured": true,
+          "flipkartFirst": false,
+          "forwardServices": null,
+          "gradeInfo": {
+            "color": null,
+            "id": null,
+            "name": null,
+            "shortDesc": null
+          },
+          "id": null,
+          "imageUrl": "https://rukminim1.flixcart.com/image/100/100/jwcf9u80/security-software/2/c/c/quick-heal-anti-virus-pro-for-1-user-3-years-original-imafgwfwztgtmmhd.jpeg?q=90",
+          "isChild": false,
+          "itemPromiseInfo": {
+            "availablePromises": [{
+              "deliveryCharges": 0.0,
+              "deliverySlotsInfo": {},
+              "deliverySlotsOrder": null,
+              "deliverySlotsTimingOrder": null,
+              "octroiCharges": 0.0,
+              "pickUpEndDate": null,
+              "pickUpStartDate": null,
+              "prices": [{
+                "currency": "INR",
+                "label": null,
+                "priceType": "PRICE",
+                "strikeOff": false,
+                "subLabel": null,
+                "value": 0
+              }, {
+                "currency": "INR",
+                "label": null,
+                "priceType": "PRICE",
+                "strikeOff": true,
+                "subLabel": null,
+                "value": 40
+              }],
+              "promiseDate": "by Sun, Oct 13",
+              "slaMessage": "Delivery by Sun, Oct 13 | Free",
+              "slaMessageConstruct": {
+                "level": "info",
+                "text": "Delivery by Sun Oct 13"
+              },
+              "type": "REGULAR",
+              "urgency": null
+            }],
+            "isSlottedDeliveryAvailable": false,
+            "selectedPromiseSpeedType": "REGULAR",
+            "serviceabilityText": null,
+            "serviceable": true
+          },
+          "itemState": "BUYABLE",
+          "itemTag": null,
+          "itemType": "PHYSICAL",
+          "listingId": "LSTSECFC8CEWA4FH2CCHPP2JL",
+          "listingType": "current",
+          "mainTitle": "Quick Heal Anti-virus 1 User 3 Years",
+          "nbfcOffers": null,
+          "obdRecommendation": null,
+          "offerSummary": {
+            "appliedMessage": null,
+            "availableMessage": "3 offers available",
+            "separator": "https://rukminim1.flixcart.com/www/{@width}/{@height}/promos/28/06/2019/16d5f3c0-3fe6-46e7-9d12-5d0b89ce2229.png?q={@quality}"
+          },
+          "otherPromotions": [],
+          "popUpDetails": {
+            "knowMore": null,
+            "offers": {},
+            "offersTitle": null,
+            "priceDescriptions": null,
+            "priceDetails": {
+              "finalPrice": {
+                "currency": "INR",
+                "label": "Total",
+                "priceType": "PRICE",
+                "strikeOff": false,
+                "subLabel": null,
+                "value": 1099
+              },
+              "multiCurrencyfinalPrice": {
+                "coinValue": 0,
+                "currency": "INR",
+                "inrSavings": 0,
+                "label": "Total",
+                "multiCurrencyPrice": {
+                  "type": "FormattedMessageValue",
+                  "data": [{
+                    "value": {
+                      "type": "RichTextValue",
+                      "text": "₹1,099"
+                    }
+                  }]
+                },
+                "priceType": "PRICE",
+                "strikeOff": false,
+                "subLabel": null,
+                "value": 1099
+              },
+              "prebookPriceItems": null,
+              "priceLineItems": [{
+                "currency": null,
+                "label": "MRP",
+                "priceType": "PRICE",
+                "strikeOff": true,
+                "subLabel": null,
+                "value": 1949
+              }, {
+                "currency": null,
+                "label": "Selling Price",
+                "priceType": "PRICE",
+                "strikeOff": false,
+                "subLabel": null,
+                "value": 1099
+              }]
+            },
+            "savingsSummary": null
+          },
+          "preBookInfo": null,
+          "preorder": false,
+          "prexoOffers": null,
+          "pricingInfo": {
+            "bottomSheetCoinPrice": null,
+            "coinApplicable": false,
+            "coinApplied": false,
+            "coinInrSavings": 0.0,
+            "coinPriceInrComponent": 0.0,
+            "coinsRequired": 0.0,
+            "discountAmount": 850,
+            "discountPercent": 43,
+            "finalPrice": 1099.0,
+            "mrp": 1949.0,
+            "octroiCharge": 0.0,
+            "offerSaving": 850.0,
+            "pickUpCharge": 0.0,
+            "sellingPrice": 1099.0,
+            "shippingCharge": 0.0,
+            "sourcingFee": 0.0,
+            "subTotal": 1099.0
+          },
+          "productId": "SECFC8CEWA4FH2CC",
+          "quantity": 1,
+          "recommendedItems": null,
+          "reservationDetails": null,
+          "restrictQuantityUpdate": false,
+          "reverseServices": [{
+            "type": "ReturnsCallout",
+            "calloutId": "no_returns",
+            "count": 0,
+            "displayText": "No Returns Applicable",
+            "icon": "NO_RETURN",
+            "pageLink": "https://www.flipkart.com/pages/no_returns",
+            "sentiment": "NEGATIVE",
+            "tabType": "NO_RETURN"
+          }],
+          "sProductSuffix": null,
+          "sellerId": "d591418b408940a0",
+          "sellerName": "RetailNet",
+          "serviceProfile": null,
+          "showAttach": false,
+          "showMrp": false,
+          "subTitle": "CD/DVD",
+          "trackingInfo": {
+            "slaTracking": "14 to 14d_14d_14d_0d_FREE_11pm:NA_NA_NA:NA_NA_NA:NA_NA:NA_NA_NA:REGULAR"
+          },
+          "urgency": null,
+          "vertical": "SecuritySoftware"
+        }],
+        "coldStateItems": [],
+        "storeSummary": {
+          "additionalPriceSummary": null,
+          "availabilityText": null,
+          "cardPricingDetails": {
+            "coinPrice": null,
+            "message": [],
+            "prices": [{
+              "currency": "INR",
+              "label": null,
+              "priceType": "PRICE",
+              "strikeOff": false,
+              "subLabel": null,
+              "value": 1898
+            }, {
+              "currency": "INR",
+              "label": null,
+              "priceType": "PRICE",
+              "strikeOff": true,
+              "subLabel": null,
+              "value": 5249
+            }, {
+              "currency": "INR",
+              "label": null,
+              "priceType": "DISCOUNT_PERCENT",
+              "strikeOff": false,
+              "subLabel": null,
+              "value": 63
+            }],
+            "showPrice": true
+          },
+          "codCallout": {
+            "message": "Your cart is eligible for Cash On Delivery.",
+            "sentiment": "POSITIVE"
+          },
+          "coinBottomSheetInfo": null,
+          "coinInfo": null,
+          "coinSavingsMessage": null,
+          "deliveryCharges": 0.0,
+          "deliveryMessage": null,
+          "grandTotal": 1898.0,
+          "messages": [],
+          "mrp": 5249.0,
+          "multiCurrencyGrandTotal": null,
+          "multiCurrencyPrice": null,
+          "noOfBuyableForwardItems": 0,
+          "noOfBuyablePreOrderItems": 0,
+          "noOfBuyableReverseItems": 0,
+          "noOfNonServiceableItems": 0,
+          "octroiCharges": 0.0,
+          "pickUpCharges": 0.0,
+          "preOrderCharges": 0.0,
+          "price": 1898.0,
+          "priceOfReverseItems": 0.0,
+          "savingAmount": 3351.0,
+          "storePromiseInfo": null
+        }
+      }]
+    },
+    "pageSlots": [{
+      "slotType": "WIDGET",
+      "id": 3,
+      "parentId": 0,
+      "layoutParams": {
+        "orientation": "",
+        "widgetHeight": 150,
+        "widgetWidth": 12
+      },
+      "dataId": "120324655",
+      "elementId": "3-BANNER",
+      "hasWidgetDataChanged": true,
+      "ttl": 30000,
+      "widget": {
+        "type": "BANNER",
+        "viewType": "SOLO_VIEW",
+        "widgetAttributes": {
+          "backgroundDotColor": null,
+          "bleedingColor": null,
+          "displayItemSeparator": false,
+          "displayViewAll": false,
+          "selectedDotColor": null,
+          "skin": "LIGHT",
+          "skinType": null,
+          "stopBleedingColor": null,
+          "unselectedDotColor": null,
+          "viewType": "SOLO_VIEW"
+        },
+        "data": {
+          "renderableComponents": [{
+            "action": null,
+            "metaData": null,
+            "tracking": {
+              "contentId": "STATIC_BANNER",
+              "otracker": "dynamic_banner_1_3.banner.BANNER_STATIC_BANNER",
+              "widgetType": "banner",
+              "otracker1": "dynamic_banner_WHITELISTED_DJ_CONTENT_TYPE_NOT_AVAILABLE_NA_SOLO_VIEW_banner_cc_1_NA_view-all",
+              "findingMethod": "DJ_CONTENT_TYPE_NOT_AVAILABLE",
+              "impressionId": "lo_null:670a617b-2a23-4380-ae79-8d4425fe350d.STATIC_BANNER",
+              "dataKey": "3.banner.BANNER",
+              "pageType": "dynamic",
+              "widgetCategory": "WHITELISTED",
+              "contextType": "page",
+              "viewType": "SOLO_VIEW",
+              "position": "1",
+              "moduleId": "DJ_CONTENT_TYPE_NOT_AVAILABLE",
+              "contentType": "banner",
+              "module_position": "1",
+              "prop47": "banner_banner_DYNAMIC_1"
+            },
+            "trackingData": null,
+            "value": {
+              "type": "ImageValue",
+              "aspectRatio": "1440:344",
+              "dynamicImageUrl": "https://rukminim1.flixcart.com/lockin/{@width}/{@height}/images/promotion_banner_v2_inactive_2.png?q={@quality}",
+              "height": 0,
+              "imageMap": {
+                "1080": "https://rukminim1.flixcart.com/lockin/1080/420/images/promotion_banner_v2_inactive_2.png?q=90",
+                "320": "https://rukminim1.flixcart.com/lockin/320/125/images/promotion_banner_v2_inactive_2.png?q=90",
+                "720": "https://rukminim1.flixcart.com/lockin/720/280/images/promotion_banner_v2_inactive_2.png?q=90",
+                "480": "https://rukminim1.flixcart.com/lockin/480/186/images/promotion_banner_v2_inactive_2.png?q=90",
+                "240": "https://rukminim1.flixcart.com/lockin/240/93/images/promotion_banner_v2_inactive_2.png?q=90"
+              },
+              "source": "dj",
+              "width": 0
+            }
+          }]
+        },
+        "tracking": {
+          "impressionId": "lo_null:670a617b-2a23-4380-ae79-8d4425fe350d",
+          "pageType": "dynamic",
+          "widgetCategory": "WHITELISTED",
+          "contextType": "page",
+          "viewType": "SOLO_VIEW",
+          "widgetKey": "3.banner.BANNER",
+          "otracker": "dynamic_banner",
+          "moduleId": "DJ_CONTENT_TYPE_NOT_AVAILABLE",
+          "contentType": "contentCollection",
+          "widgetType": "banner",
+          "otracker1": "dynamic_banner_WHITELISTED_DJ_CONTENT_TYPE_NOT_AVAILABLE_NA_SOLO_VIEW_wc_view-all",
+          "findingMethod": "DJ_CONTENT_TYPE_NOT_AVAILABLE"
+        }
+      }
+    }],
+    "tracking": {
+      "digitalItemPresent": false
+    },
+    "viewType": "DEFAULT"
+  },
+  "SESSION": {
+    "accountId": "ACC14169314716149039",
+    "asn": null,
+    "email": "meetpiyali@gmail.com",
+    "firstName": "Piyali",
+    "flipkartFirstUser": false,
+    "isLoggedIn": true,
+    "lastName": "Das",
+    "nsid": "2.SI71B403E05F664FCD8DE7FA74543C37A4.0.VI27057E74C8F64A1B9714808A488B2D9A",
+    "secureToken": "SI71B403E05F664FCD8DE7FA74543C37A4:VI27057E74C8F64A1B9714808A488B2D9A",
+    "sn": "2.VI27057E74C8F64A1B9714808A488B2D9A.SI71B403E05F664FCD8DE7FA74543C37A4.VS2FB6769E9F1745E6A35B4491C696277E.1569734753",
+    "ts": 0,
+    "twoFa": false,
+    "vid": "VI27057E74C8F64A1B9714808A488B2D9A"
+  },
+  "STATUS_CODE": 200
+}

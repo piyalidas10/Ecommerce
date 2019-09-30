@@ -6,7 +6,3 @@ module.exports = {
         port: 27017
     }
 };
-
-/*
-    important note: create your own database in mongodb or mlab.com like this
-*/
