@@ -15,7 +15,8 @@ const productsSchema = mongoose.Schema({
     Quantity: { type: Number, required: true },
     CurrencyCode: { type: String, required: true },
     Price: { type: Number, required: true },
-    DateOfEntry : { type: Date, required: true }
+    deliveryPrice: { type: Number, default: 0 },
+    DateOfEntry : { type: Date, required: true },
 });
 
 /* 

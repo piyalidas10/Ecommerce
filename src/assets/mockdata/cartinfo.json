@@ -1,0 +1,338 @@
+{
+  "CACHE_INVALIDATION_TTL": "38696899876",
+  "REQUEST": null,
+  "REQUEST-ID": "f32a2013-ae02-408f-836e-a69afa952b4a",
+  "RESPONSE": {
+    "pageData": {
+      "backTTL": 30000,
+      "elementId": "page",
+      "hardTTL": 2147483647,
+      "hasMorePages": false,
+      "infinitePage": false,
+      "layoutParams": {
+        "backgroundColor": "#F1F2F4",
+        "orientation": "",
+        "theme": "light"
+      },
+      "pageHash": "-1282531718",
+      "pageLevelSlots": {},
+      "pageTTL": 30000,
+      "pageTags": {
+        "tags": []
+      },
+      "paginationContextMap": {},
+      "sharedData": {},
+      "trackingContext": {
+        "navigationalPageName": "dynamic",
+        "navigationalPageType": "dynamic",
+        "pageName": "CART_PAGE",
+        "pageType": "dynamic",
+        "tracking": {
+          "loginStatus": "login:flipkart"
+        }
+      }
+    },
+    "pageMeta": {
+      "baseImpressionId": "f32a2013-ae02-408f-836e-a69afa952b4a",
+      "pageNotChanged": false,
+      "prefetchPage": {
+        "enablePrefetch": false
+      }
+    },
+    "slots": [
+        {
+      "slotType": "LOGICAL",
+      "id": 10004,
+      "parentId": 10001,
+      "layoutParams": {
+        "backgroundColor": "#ffffff",
+        "boxShadow": "0 1px 2px 0 rgba(0, 0, 0, 0.2)",
+        "orientation": "",
+        "spacing": "20,0,0,0",
+        "widgetHeight": 150,
+        "widgetWidth": 12
+      },
+      "childArrangement": "STACK"
+    }, {
+      "slotType": "WIDGET",
+      "id": 7,
+      "parentId": 10004,
+      "layoutParams": {
+        "borderTop": "1",
+        "orientation": "",
+        "widgetHeight": 150,
+        "widgetWidth": 12
+      },
+      "dataId": "-1959176317",
+      "elementId": "7-TEXT_V2",
+      "hasWidgetDataChanged": true,
+      "ttl": 3000,
+      "widget": {
+        "type": "TEXT_V2",
+        "viewType": "SFL_PAGE_TITLE",
+        "data": {
+          "message": {
+            "action": null,
+            "metaData": null,
+            "tracking": null,
+            "trackingData": null,
+            "value": {
+              "type": "RichMessageValue",
+              "image": {
+                "type": "ImageValue",
+                "dynamicImageUrl": "https://rukminim1.flixcart.com/www/{@width}/{@height}/promos/13/02/2019/db96c6a2-6e28-450b-963b-b39ed4fd85f7.png?q={@quality}",
+                "height": 0,
+                "width": 0
+              },
+              "title": {
+                "type": "RichTextValue",
+                "text": "Saved For Later (1)"
+              }
+            }
+          }
+        }
+      }
+    }, {
+      "slotType": "WIDGET",
+      "id": 9002000,
+      "parentId": 10004,
+      "layoutParams": {
+        "borderTop": "1",
+        "orientation": "",
+        "widgetHeight": 150,
+        "widgetWidth": 12
+      },
+      "dataId": "903467486",
+      "elementId": "9002000-SFL_PRODUCT_CARD",
+      "hasWidgetDataChanged": true,
+      "ttl": 3000,
+      "widget": {
+        "type": "SFL_PRODUCT_CARD",
+        "viewType": "RightAligned",
+        "data": {
+          "actions": [{
+            "action": {
+              "constraints": null,
+              "fallback": null,
+              "loginType": "LOGIN_NOT_REQUIRED",
+              "omnitureData": null,
+              "originalUrl": null,
+              "params": {
+                "pageNumber": 1,
+                "productId": "AFGF9438ZUTXD6CH",
+                "pageUri": "/viewcart?otracker=PP_GoToCart",
+                "listingId": "LSTAFGF9438ZUTXD6CHDZRP0S",
+                "type": "MOVE_SFL_TO_CART"
+              },
+              "screenType": null,
+              "tracking": {},
+              "type": "MOVE_SFL_TO_CART",
+              "url": null
+            },
+            "metaData": null,
+            "tracking": null,
+            "trackingData": null,
+            "value": {
+              "type": "TransactActionButtonValue",
+              "image": {
+                "type": "ImageValue",
+                "dynamicImageUrl": "https://rukminim1.flixcart.com/www/{@width}/{@height}/promos/13/02/2019/2e475610-320f-4c65-baa2-a77736a94f77.png?q={@quality}",
+                "height": 0,
+                "width": 0
+              },
+              "title": "Move to cart"
+            }
+          }, {
+            "action": {
+              "constraints": null,
+              "fallback": null,
+              "loginType": "LOGIN_NOT_REQUIRED",
+              "omnitureData": null,
+              "originalUrl": null,
+              "params": {},
+              "screenType": null,
+              "tracking": {},
+              "type": "SHOW_POPUP",
+              "url": null
+            },
+            "metaData": null,
+            "tracking": null,
+            "trackingData": null,
+            "value": {
+              "type": "TransactActionButtonValue",
+              "image": {
+                "type": "ImageValue",
+                "dynamicImageUrl": "https://rukminim1.flixcart.com/www/{@width}/{@height}/promos/13/02/2019/bc836649-0a7f-498b-a8f8-ef0a0217ff28.png?q={@quality}",
+                "height": 0,
+                "width": 0
+              },
+              "popupDetails": {
+                "type": "REMOVE_ITEM_CONFIRMATION",
+                "data": {
+                  "actions": [{
+                    "action": {
+                      "constraints": null,
+                      "fallback": null,
+                      "loginType": "LOGIN_NOT_REQUIRED",
+                      "omnitureData": null,
+                      "originalUrl": null,
+                      "params": {},
+                      "screenType": null,
+                      "tracking": {},
+                      "type": "POPUP_DISMISS",
+                      "url": null
+                    },
+                    "metaData": null,
+                    "tracking": null,
+                    "trackingData": null,
+                    "value": {
+                      "type": "RichButtonValue",
+                      "title": "Cancel"
+                    }
+                  }, {
+                    "action": {
+                      "constraints": null,
+                      "fallback": null,
+                      "loginType": "LOGIN_NOT_REQUIRED",
+                      "omnitureData": null,
+                      "originalUrl": null,
+                      "params": {
+                        "pageNumber": 2,
+                        "productId": "AFGF9438ZUTXD6CH",
+                        "pageUri": "/viewcart?otracker=PP_GoToCart",
+                        "listingId": "LSTAFGF9438ZUTXD6CHDZRP0S",
+                        "type": "SFL_REMOVE"
+                      },
+                      "screenType": null,
+                      "tracking": {},
+                      "type": "SFL_REMOVE",
+                      "url": null
+                    },
+                    "metaData": null,
+                    "tracking": null,
+                    "trackingData": null,
+                    "value": {
+                      "type": "RichButtonValue",
+                      "title": "Remove"
+                    }
+                  }],
+                  "subtitle": "Are you sure you want to remove this item?",
+                  "title": "Remove Item"
+                },
+                "tracking": {
+                  "sProduct": ";AFGF9438ZUTXD6CH;;;;eVar19=ActionFigure|eVar22=Toy|eVar93=FLIPKART|eVar88=LSTAFGF9438ZUTXD6CHDZRP0S|eVar84=990_990_370_62_62|evar67=4.5_100_800_40|evar44=1k7a31t9nkn6i3wh_FA|eVar89=unique shape",
+                  "productId": "AFGF9438ZUTXD6CH",
+                  "marketPlace": "FLIPKART",
+                  "otracker": "SFL_PRODUCT_CARD",
+                  "category": "Toy",
+                  "widgetType": "SFL_PRODUCT_CARD"
+                }
+              },
+              "title": "Remove"
+            }
+          }],
+          "productInfo": {
+            "baseInfo": {
+              "action": {
+                "constraints": null,
+                "fallback": null,
+                "loginType": "LOGIN_NOT_REQUIRED",
+                "omnitureData": null,
+                "originalUrl": "/unique-shape-groot-flower-pot-pen-holder/p/itmf94htaj9kfgbz?pid=AFGF9438ZUTXD6CH&lid=LSTAFGF9438ZUTXD6CHDZRP0S",
+                "params": {
+                  "valid": true,
+                  "pids": ["AFGF9438ZUTXD6CH"],
+                  "lids": ["LSTAFGF9438ZUTXD6CHDZRP0S"]
+                },
+                "screenType": "productPage",
+                "tracking": {},
+                "type": "NAVIGATION",
+                "url": "/unique-shape-groot-flower-pot-pen-holder/p/itmf94htaj9kfgbz?pid=AFGF9438ZUTXD6CH&lid=LSTAFGF9438ZUTXD6CHDZRP0S"
+              },
+              "metaData": null,
+              "tracking": null,
+              "trackingData": null,
+              "value": {
+                "type": "BaseProductInfoValue",
+                "callouts": [],
+                "id": "AFGF9438ZUTXD6CH",
+                "listingId": "LSTAFGF9438ZUTXD6CHDZRP0S",
+                "media": {
+                  "images": [{
+                    "aspectRatio": null,
+                    "contentInfo": null,
+                    "height": null,
+                    "url": "https://rukminim1.flixcart.com/image/{@width}/{@height}/jmawvbk0/action-figure/6/c/h/groot-flower-pot-and-pen-holder-unique-shape-original-imaf98h6gx2xb4dv.jpeg?q={@quality}",
+                    "width": null
+                  }]
+                },
+                "quantity": 1,
+                "titles": {
+                  "subtitle": "Multicolor",
+                  "title": "unique shape Groot flower pot and pen holder"
+                }
+              }
+            },
+            "children": null,
+            "preBookInfo": null,
+            "pricingInfo": {
+              "coinPrice": null,
+              "message": [],
+              "prices": [{
+                "currency": "INR",
+                "label": null,
+                "priceType": "PRICE",
+                "strikeOff": false,
+                "subLabel": null,
+                "value": 375
+              }, {
+                "currency": "INR",
+                "label": null,
+                "priceType": "PRICE",
+                "strikeOff": true,
+                "subLabel": null,
+                "value": 999
+              }, {
+                "currency": "INR",
+                "label": null,
+                "priceType": "DISCOUNT_PERCENT",
+                "strikeOff": false,
+                "subLabel": null,
+                "value": 62
+              }],
+              "showPrice": true
+            },
+            "seller": {
+              "fAssured": true,
+              "name": null
+            }
+          }
+        },
+        "tracking": {
+          "sProduct": ";AFGF9438ZUTXD6CH;;;;eVar19=ActionFigure|eVar22=Toy|eVar93=FLIPKART|eVar88=LSTAFGF9438ZUTXD6CHDZRP0S|eVar84=990_990_370_62_62|evar67=4.5_100_800_40|evar44=1k7a31t9nkn6i3wh_FA|eVar89=unique shape",
+          "productId": "AFGF9438ZUTXD6CH",
+          "marketPlace": "FLIPKART",
+          "otracker": "SFL_PRODUCT_CARD",
+          "category": "Toy",
+          "widgetType": "SFL_PRODUCT_CARD"
+        }
+      }
+    }]
+  },
+  "SESSION": {
+    "accountId": "ACC14169314716149039",
+    "asn": null,
+    "email": "meetpiyali@gmail.com",
+    "firstName": "Piyali",
+    "flipkartFirstUser": false,
+    "isLoggedIn": true,
+    "lastName": "Das",
+    "nsid": "2.SI71B403E05F664FCD8DE7FA74543C37A4.0.VI27057E74C8F64A1B9714808A488B2D9A",
+    "secureToken": "SI71B403E05F664FCD8DE7FA74543C37A4:VI27057E74C8F64A1B9714808A488B2D9A",
+    "sn": "2.VI27057E74C8F64A1B9714808A488B2D9A.SI71B403E05F664FCD8DE7FA74543C37A4.VS2FB6769E9F1745E6A35B4491C696277E.1569734499",
+    "ts": 0,
+    "twoFa": false,
+    "vid": "VI27057E74C8F64A1B9714808A488B2D9A"
+  },
+  "STATUS_CODE": 200
+}

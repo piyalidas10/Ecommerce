@@ -57,15 +57,33 @@ export class AuthService {
             }));
   }
 
-  loginCustomer(emailId, password): Observable<any> {
+  loginCustomer(emailId: string, password: string) {
             const authData = { customerEmail: emailId, customerPass: password };
             const apiURL = `${BACKEND_URL}${environment.API_LOGIN_PATH}`;
-            return this.http.post<any>(apiURL, authData)
-            .pipe(map((res: Response) => {
-              this.isAuthenticated = true;
-              this.loggedInStatus.next(true);
-              return res;
-            }));
+            return this.http.post<{ token: string; expiresIn: number; email: string, custname: string }>(apiURL, authData)
+            .subscribe(
+              response => {
+                console.log(response);
+                const token = response.token;
+                this.token = token;
+                if (token) {
+                  const expiresInDuration = response.expiresIn;
+                  this.custEmail = response.email;
+                  this.custName = response.custname;
+                  this.isAuthenticated = true;
+                  this.loggedInStatus.next(true);
+                  const now = new Date();
+                  const expirationDate = new Date(
+                    now.getTime() + expiresInDuration * 1000
+                  );
+                  this.saveAuthData(token, expirationDate, this.custEmail, this.custName);
+                  this.router.navigate(['/home']);
+                }
+              },
+              error => {
+                this.loggedInStatus.next(false);
+              }
+            );
   }
 
   saveAuthData(token: string, expirationDate: Date, custEmail: string, custName: string) {
@@ -116,8 +134,10 @@ export class AuthService {
     };
   }
 
-  logout(): void {
+  logout() {
     this.token = null;
+    this.custEmail = null;
+    this.custName = null;
     this.isAuthenticated = false;
     this.loggedInStatus.next(false);
     clearTimeout(this.tokenTimer);

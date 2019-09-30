@@ -86,7 +86,6 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnChanges {
 
   modifyLogoutLink(i, ct) {
     const link = this.menuitems.toArray()[i].nativeElement;
-    console.log(ct);
     // this.renderer.setAttribute(link, 'href', 'javascript:void(0)');
     // this.renderer.removeAttribute(link, 'ng-reflect-router-link');
     this.renderer.setProperty(link, 'innerHTML', '<a href="javascript:void(0)" class="nav-link">' + ct.pageName  + '</a>');
