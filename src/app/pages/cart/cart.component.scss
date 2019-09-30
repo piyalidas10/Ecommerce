@@ -15,6 +15,20 @@
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.08);
     border: 1px solid #eaeaea;
     padding: convertEm(15);
+    h6{
+        text-transform: uppercase;
+        padding-bottom: 15px;
+        font-weight: bold;
+        border-bottom: $color-grey-light 1px solid;
+    }
+}
+.cart-header{
+    padding-top: convertEm(15);
+    padding-bottom: convertEm(15);
+    border-bottom: $color-grey-light 1px solid;
+    h5{
+        padding-bottom: 0;
+    }
 }
 .summery-item {
     margin: convertEm(10) 0;

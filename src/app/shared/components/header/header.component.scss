@@ -25,4 +25,15 @@
   .dropdown-menu{
     margin: .5rem 0 0;
   }
+  .dropdown-menu::after{
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 10px;
+    border: solid transparent;
+    width: 0;
+    height: 0;
+    border-width: 10px;
+    border-bottom-color: #FFF;
+  }
 }

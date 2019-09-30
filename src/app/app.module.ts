@@ -5,6 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpErrorInterceptor } from './service/http-error-interceptor';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
+import { AuthInterceptor } from './auth/auth-interceptor';
 
 
 import { HeaderModule } from './shared/components/header/header.module';
@@ -51,6 +52,11 @@ import { TimeoutDialogComponent } from './shared/components/timeout-dialog/timeo
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpErrorInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
       multi: true
     }
   ],

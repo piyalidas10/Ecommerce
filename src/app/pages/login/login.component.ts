@@ -78,29 +78,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       console.log(invalidElements[0]);
       invalidElements[0].focus();
     } else {
-        this.authService.loginCustomer(this.loginForm.get('emailId').value, this.loginForm.get('password').value)
-          .pipe(first())
-          .subscribe(
-            data => {
-              console.log(data);
-              const token = data.token;
-              this.token = token;
-              if (token) {
-                const expiresInDuration = data.expiresIn;
-                this.custEmail = data.email;
-                this.custName = data.custname;
-                this.authService.isAuthenticated = true;
-                const now = new Date();
-                const expirationDate = new Date(
-                  now.getTime() + expiresInDuration * 1000
-                );
-                this.authService.saveAuthData(token, expirationDate, this.custEmail, this.custName);
-                this.router.navigate(['/home']);
-              }
-            },
-            error => {
-              this.msgService.error(error.error.message, true);
-            });
+        this.authService.loginCustomer(this.loginForm.get('emailId').value, this.loginForm.get('password').value);
     }
   }
 
