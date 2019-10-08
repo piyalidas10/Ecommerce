@@ -52,7 +52,7 @@ exports.loginCustomer = (req, res, next) => {
                     return res.status(401).json({message: 'Please enter your valid password'});
                 } else {
                     const token = jwt.sign(
-                        { email: custLog.customerEmail, username: custLog.customerFirstName },
+                        { email: custLog.customerEmail, userFname: custLog.customerFirstName, userMname: custLog.customerMiddleName, userLname: custLog.customerLastName },
                         'hi',
                         { expiresIn: "1h" }
                     );
@@ -60,7 +60,9 @@ exports.loginCustomer = (req, res, next) => {
                         token: token,
                         expiresIn: 3600,
                         email: custLog.customerEmail,
-                        custname: custLog.customerFirstName
+                        custFname: custLog.customerFirstName,
+                        custMname: custLog.customerMiddleName,
+                        custLname: custLog.customerLastName
                     });
                 }
             });

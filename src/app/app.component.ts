@@ -51,12 +51,12 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy {
  }
 
  checkAuthentication() {
-  this.custName = this.authService.getCustName();
+  this.custName = this.authService.getCustName()[0];
   this.custIsAuthenticated = this.authService.getIsAuth();
   this.authListenerSubs = this.authService.getLoggedInStatusListener()
     .subscribe(isAuthenticated => {
       this.custIsAuthenticated = isAuthenticated;
-      this.custName = this.authService.getCustName();
+      this.custName = this.authService.getCustName()[0];
       console.log('Header Details => ', this.custIsAuthenticated, this.custName);
     });
  }

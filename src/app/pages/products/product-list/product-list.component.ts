@@ -104,6 +104,7 @@ export class ProductListComponent implements OnInit, OnChanges, OnDestroy {
                 this.errorData = this.sharedService.getErrorKeys(err.statusText);
                 this.isLoading = false;
                 console.log('errorData => ', this.errorData);
+                this.errorMsg();
               }
             );
         });

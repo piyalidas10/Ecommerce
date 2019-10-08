@@ -5,6 +5,7 @@ login credentails
 ```
 piyali@gmail.com / admin123
 demo@gmail.com / demo123
+admintest@gmail.com / test123
 ```
 
 

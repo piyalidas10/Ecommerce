@@ -145,6 +145,32 @@ export class APIService {
   }
 
 
+  /**
+   * Check product availability in cart
+  */
+ isAvailableInCart(email): Observable<any> {
+  const apiURL = `${BACKEND_URL}${environment.API_CART_CHECK_PRODUCT}`;
+  const authData = {email: email};
+  return this.http.post(apiURL, authData, this.ecommerceRQSTOptions)
+  .pipe(map(response => {
+    return response;
+  }));
+}
+
+
+  /**
+   * Add to cart details
+  */
+ addToCart(sessionInfoDt, productInfoDt): Observable<any> {
+    const apiURL = `${BACKEND_URL}${environment.API_CART_PATH}`;
+    const authData = {sessionInfo: sessionInfoDt, productsInfo: productInfoDt};
+    return this.http.post(apiURL, authData, this.ecommerceRQSTOptions)
+    .pipe(map(response => {
+      return response;
+    }));
+ }
+
+
 
   // /**
   //  * Handle Http operation that failed.

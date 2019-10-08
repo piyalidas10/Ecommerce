@@ -5,6 +5,7 @@ import {
 import { APIService } from '../../../service/api.service';
 import { Observable, Subscription } from 'rxjs';
 import { AuthService } from '../../../auth/auth.service';
+import { SharedService } from '../../../service/shared.service';
 
 @Component({
   selector: 'app-header',
@@ -17,6 +18,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnChanges {
   userName: string;
   content = [];
   lenMenu: number;
+  errorData: any;
 
   @Input() custStatus;
   @Input() custName;
@@ -25,6 +27,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnChanges {
   constructor(
     private renderer: Renderer2,
     private productsData: APIService,
+    private sharedService: SharedService,
     public authService: AuthService,
     private cdr: ChangeDetectorRef) {}
 
@@ -63,7 +66,8 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnChanges {
           }
         );
     } catch (error) {
-      console.log(error);
+      this.errorData = this.sharedService.getErrorKeys(error.statusText);
+      console.log(this.errorData);
     }
   }
 
