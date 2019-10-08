@@ -3,7 +3,7 @@
 </div>
 
 <div class="container" *ngIf="!isLoading">
-  <div class="row">
+  <div class="row" *ngIf="cartProducts.length > 0">
     <div class="col-12 col-md-7 col-lg-8 cart-details">
       <div class="col-12 cart-header clearfix">
         <h5>My Cart ()</h5>
@@ -38,4 +38,11 @@
         </div>
       </div>
     </div>
+</div>
+<div class="row">
+  <div class="col-12 no-product text-center" *ngIf="cartProducts.length === 0">
+    <img [src]="imgURL + nopic" alt="no product" class="img-thumbnail" />
+    <h4>Opps sorry, Your cart is empty</h4>
+  </div>
+</div>
 </div>

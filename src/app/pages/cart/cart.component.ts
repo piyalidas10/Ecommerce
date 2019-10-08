@@ -26,8 +26,9 @@ export class CartComponent implements OnInit {
   custToken: string;
   custEmail: string;
   private authListenerSubs: Subscription;
-  cartProducts: any;
+  cartProducts = [];
   pic: string;
+  nopic: string;
 
   titleCaseWord(word: string) {
     if (!word) {
@@ -81,8 +82,13 @@ export class CartComponent implements OnInit {
   checkProductInCart(email) {
     this.apiService.isAvailableInCart(email).subscribe(
       data => {
-        this.cartProducts = data.productsInCart[0].cartResponse;
+        if (data.productsInCart.length > 0) {
+          this.cartProducts = data.productsInCart[0].cartResponse;
+        } else {
+          this.nopic = 'empty_product.svg';
+        }
         this.isLoading = false;
+        console.log(data);
       },
       err => {
         this.errorData = this.sharedService.getErrorKeys(err.statusText);
