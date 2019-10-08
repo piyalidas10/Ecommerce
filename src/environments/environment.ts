@@ -13,6 +13,8 @@ export const environment = {
   API_PRODUCT_DELETE_PATH: '',
   API_REGISTER_PATH: 'api/auth/register',
   API_LOGIN_PATH: 'api/auth/login',
+  API_CART_PATH: 'api/cart',
+  API_CART_CHECK_PRODUCT: 'api/cart/check',
   API_CUSTOMERSBYYEAR: 'api/admin/customersbyyear',
   API_CUTOMERSBYGENDER: 'api/admin/customersbygender',
   API_PRODUCTSBYCATEGORY: 'api/admin/productsbycategory',

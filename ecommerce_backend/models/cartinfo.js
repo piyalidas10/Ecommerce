@@ -1,27 +1,31 @@
 const mongoose = require('mongoose');
+require('mongoose-double')(mongoose);
 
 const cartinfoSchema = mongoose.Schema({
-    products: [
+    cartResponse: [
         {
-            productId: { type: String, required: true },
-            status: { type: String, required: true }
+            productId: { type: String, required: true, unique: true },
+            subCategory: { type: String, required: true },
+            category: { type: String, required: true },
+            supplierName: { type: String, required: true },
+            name: { type: String, required: true },
+            productPicUrl: { type: String, required: true },
+            status: { type: String, required: true },
+            quantity: { type: Number, required: true },
+            currencyCode: { type: String, required: true, default: "INR" },
+            price: { type: Number, required: true, default: 0 },
+            deliveryPrice: { type: Number, required: true },
+            countofProduct: { type: Number, required: true, default: 1 }
         }
     ],
-    priceDetails: {
-        productCount: { required: true, type: Number, default: 0 },
-        totalAmount: { required: true, type: Number, default: 0 },
-        totalPayable: { required: true, type: Number, default: 0 },
-        deliveryPrice: { required: true, type: Number, default: 0 }
-    },
     sessionInfo: {
         email: { type: String, required: true, lowercase: true, unique: true },
-        firstName: { type: String, required: true },
         isLoggedIn: { type: Boolean, required: true },
+        firstName: { type: String, required: true },
+        middleName: { type: String },
         lastName: { type: String, required: true },
         secureToken: { type: String, required: true },
-    },
-    orderDate: { type: Date, required: true },
-    deliverDate: { type: Date, required: true },
+    }
 });
 
 /* 

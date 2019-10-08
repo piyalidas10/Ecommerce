@@ -9,7 +9,8 @@
 
       <div class="row product-btn-group">
         <div class="col">
-            <button class="btn btn-block" [ngClass]="{'btn-secondary': statusTxt.type === 'not-available', 'btn-warning': statusTxt.type !== 'not-available' }" [disabled]="statusTxt.type === 'not-available'"><i class="fa fa-shopping-cart"></i> Add To Cart</button>
+            <button class="btn btn-block" *ngIf="!isProductInCartPresent" (click)="addtocart()" [ngClass]="{'btn-secondary': statusTxt.type === 'not-available', 'btn-warning': statusTxt.type !== 'not-available' }" [disabled]="statusTxt.type === 'not-available'"><i class="fa fa-shopping-cart"></i> Add To Cart</button>
+            <button class="btn btn-block" *ngIf="isProductInCartPresent" (click)="gotocart()" [ngClass]="{'btn-secondary': statusTxt.type === 'not-available', 'btn-warning': statusTxt.type !== 'not-available' }" [disabled]="statusTxt.type === 'not-available'"><i class="fa fa-shopping-cart"></i> Go To Cart</button>
         </div>
         <div class="col">
             <button class="btn btn-block" [ngClass]="{'btn-secondary': statusTxt.type === 'not-available', 'btn-success': statusTxt.type !== 'not-available' }" [disabled]="statusTxt.type === 'not-available'">Buy Now</button>

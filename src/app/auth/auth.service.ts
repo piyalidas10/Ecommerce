@@ -17,7 +17,9 @@ export class AuthService {
   public isAuthenticated = false;
   public token: string;
   public custEmail: string;
-  public custName: string;
+  public custFname: string;
+  public custMname: string;
+  public custLname: string;
   private tokenTimer: any;
   public loggedInStatus = new BehaviorSubject<boolean>(false);
 
@@ -39,7 +41,7 @@ export class AuthService {
   }
 
   getCustName() {
-    return this.custName;
+    return [this.custFname, this.custMname, this.custLname];
   }
 
   getLoggedInStatusListener() {
@@ -60,7 +62,9 @@ export class AuthService {
   loginCustomer(emailId: string, password: string) {
             const authData = { customerEmail: emailId, customerPass: password };
             const apiURL = `${BACKEND_URL}${environment.API_LOGIN_PATH}`;
-            return this.http.post<{ token: string; expiresIn: number; email: string, custname: string }>(apiURL, authData)
+            return this.http.post
+            <{ token: string; expiresIn: number; email: string, custFname: string, custMname: string, custLname: string }>
+            (apiURL, authData)
             .subscribe(
               response => {
                 console.log(response);
@@ -69,14 +73,16 @@ export class AuthService {
                 if (token) {
                   const expiresInDuration = response.expiresIn;
                   this.custEmail = response.email;
-                  this.custName = response.custname;
+                  this.custFname = response.custFname;
+                  this.custMname = response.custMname;
+                  this.custLname = response.custLname;
                   this.isAuthenticated = true;
                   this.loggedInStatus.next(true);
                   const now = new Date();
                   const expirationDate = new Date(
                     now.getTime() + expiresInDuration * 1000
                   );
-                  this.saveAuthData(token, expirationDate, this.custEmail, this.custName);
+                  this.saveAuthData(token, expirationDate, this.custEmail, this.custFname, this.custMname, this.custLname);
                   this.router.navigate(['/home']);
                 }
               },
@@ -86,12 +92,13 @@ export class AuthService {
             );
   }
 
-  saveAuthData(token: string, expirationDate: Date, custEmail: string, custName: string) {
+  saveAuthData(token: string, expirationDate: Date, custEmail: string, custFname: string, custMname: string, custLname: string) {
     localStorage.setItem('token', token);
     localStorage.setItem('expiration', expirationDate.toISOString());
     localStorage.setItem('custEmail', custEmail);
-    localStorage.setItem('custName', custName);
-    console.log('saveAuthData => ', custEmail, custName, token, expirationDate);
+    localStorage.setItem('custFname', custFname);
+    localStorage.setItem('custMname', custMname);
+    localStorage.setItem('custLname', custLname);
   }
 
   autoAuthCust() {
@@ -105,7 +112,9 @@ export class AuthService {
       this.token = authInformation.token;
       this.isAuthenticated = true;
       this.custEmail = authInformation.custEmail;
-      this.custName = authInformation.custName;
+      this.custFname = authInformation.custFname;
+      this.custMname = authInformation.custMname;
+      this.custLname = authInformation.custLname;
       this.setAuthTimer(expiresIn / 1000);
       this.loggedInStatus.next(true);
     }
@@ -122,7 +131,9 @@ export class AuthService {
     const token = localStorage.getItem('token');
     const expirationDate = localStorage.getItem('expiration');
     const custEmail = localStorage.getItem('custEmail');
-    const custName = localStorage.getItem('custName');
+    const custFname = localStorage.getItem('custFname');
+    const custMname = localStorage.getItem('custMname');
+    const custLname = localStorage.getItem('custLname');
     if (!token || !expirationDate) {
       return;
     }
@@ -130,14 +141,18 @@ export class AuthService {
       token: token,
       expirationDate: new Date(expirationDate),
       custEmail: custEmail,
-      custName: custName
+      custFname: custFname,
+      custMname: custMname,
+      custLname: custLname
     };
   }
 
   logout() {
     this.token = null;
     this.custEmail = null;
-    this.custName = null;
+    this.custFname = null;
+    this.custMname = null;
+    this.custLname = null;
     this.isAuthenticated = false;
     this.loggedInStatus.next(false);
     clearTimeout(this.tokenTimer);
@@ -149,7 +164,9 @@ export class AuthService {
     localStorage.removeItem('token');
     localStorage.removeItem('expiration');
     localStorage.removeItem('custEmail');
-    localStorage.removeItem('custName');
+    localStorage.removeItem('custFname');
+    localStorage.removeItem('custMname');
+    localStorage.removeItem('custLname');
   }
 
 }

@@ -4,6 +4,8 @@ import { Title } from '@angular/platform-browser';
 import { filter, map } from 'rxjs/operators';
 import { APIService } from '../../../service/api.service';
 import { SharedService } from '../../../service/shared.service';
+import { AuthService } from '../../../auth/auth.service';
+import { Subscription } from 'rxjs';
 
 import { environment } from '../../../../environments/environment';
 const BACKEND_URL = environment.apiEndpoint;
@@ -22,6 +24,14 @@ export class ProductDetailsComponent implements OnInit {
   isLoading: Boolean = true;
   errorData: any;
   statusTxt: {};
+  custIsAuthenticated = false;
+  custFname: string;
+  custMname: string;
+  custLname: string;
+  custToken: string;
+  custEmail: string;
+  private authListenerSubs: Subscription;
+  isProductInCartPresent: Boolean = false;
 
   titleCaseWord(word: string) {
     if (!word) {
@@ -35,8 +45,9 @@ export class ProductDetailsComponent implements OnInit {
     private titleService: Title,
     private router: Router,
     private Activatedroute: ActivatedRoute,
-    private productsData: APIService,
+    private apiService: APIService,
     private sharedService: SharedService,
+    private authService: AuthService,
     private el: ElementRef
   ) {
     this.router.events.pipe(
@@ -45,6 +56,7 @@ export class ProductDetailsComponent implements OnInit {
       this.titleService.setTitle(this.titleCaseWord(event['snapshot'].params['id']) + ' ' + event['snapshot'].data['title']);
     });
     this.imgURL = BACKEND_URL + environment.IMAGE_PATH;
+    this.getSessionInfo();
   }
 
   ngOnInit() {
@@ -52,11 +64,12 @@ export class ProductDetailsComponent implements OnInit {
       this.productId = params['id'];
       console.log('productId', this.productId);
       this.fetchProductInfo(this.productId);
+      this.checkProductInCart(this.custEmail);
     });
   }
 
   fetchProductInfo(id) {
-    this.productsData.getProductDetails(id)
+    this.apiService.getProductDetails(id)
       .subscribe(
         data => {
           this.productDt = data.productinfo;
@@ -87,8 +100,72 @@ export class ProductDetailsComponent implements OnInit {
     } else {
       this.pic = imgsrc;
     }
-    console.log('Pic => ', this.pic);
     return this.pic;
+  }
+
+  getSessionInfo() {
+    this.custToken = this.authService.getToken();
+    this.custEmail = this.authService.getCustMail();
+    this.custFname = this.authService.getCustName()[0];
+    this.custMname = this.authService.getCustName()[1];
+    this.custLname = this.authService.getCustName()[2];
+    this.custIsAuthenticated = this.authService.getIsAuth();
+    this.authListenerSubs = this.authService.getLoggedInStatusListener()
+      .subscribe(isAuthenticated => {
+        this.custIsAuthenticated = isAuthenticated;
+        this.custEmail = this.authService.getCustMail();
+        this.custFname = this.authService.getCustName()[0];
+        this.custMname = this.authService.getCustName()[1];
+        this.custLname = this.authService.getCustName()[2];
+        this.custToken = this.authService.getToken();
+      });
+  }
+
+  addtocart() {
+    const sessionInfo = {
+      email: this.custEmail,
+      isLoggedIn: this.custIsAuthenticated,
+      firstName: this.custFname,
+      middleName: this.custMname,
+      lastName: this.custLname,
+      secureToken: this.custToken
+    };
+    this.apiService.addToCart(sessionInfo, this.productDt)
+      .subscribe(
+        data => {
+          console.log('cartdata => ', data);
+          this.router.navigate(['/cart']);
+        },
+        err => {
+          this.errorData = this.sharedService.getErrorKeys(err.statusText);
+          this.isLoading = false;
+        }
+    );
+  }
+
+  checkProductInCart(email) {
+    this.apiService.isAvailableInCart(email).subscribe(
+      data => {
+        console.log(data.productsInCart[0].cartResponse);
+        const cartProducts = data.productsInCart[0].cartResponse;
+        cartProducts.forEach(element => {
+          if (element.productId === this.productId) {
+            this.isProductInCartPresent = true;
+          } else {
+            this.isProductInCartPresent = false;
+          }
+        });
+        this.isLoading = false;
+      },
+      err => {
+        this.errorData = this.sharedService.getErrorKeys(err.statusText);
+        this.isLoading = false;
+      }
+    );
+  }
+
+  gotocart() {
+    this.router.navigate(['/cart']);
   }
 
 }

@@ -1,11 +1,24 @@
-<div class="container">
+<div class="loader-bg" *ngIf="isLoading">
+  <div class="loader"></div>
+</div>
+
+<div class="container" *ngIf="!isLoading">
   <div class="row">
     <div class="col-12 col-md-7 col-lg-8 cart-details">
       <div class="col-12 cart-header clearfix">
         <h5>My Cart ()</h5>
-        <div class="col-12 product-item clearfix">
-
-        </div>
+      </div>
+      <div class="col-12 product-item clearfix" *ngFor="let cartPdt of cartProducts">
+          <div class="row">
+              <div class="col-lg-3 text-center">
+                  <img [src]="imgURL + checkPath(cartPdt.productPicUrl)"/>
+                </div>
+                <div class="col-lg-9">
+                  <h6>{{cartPdt.name}}</h6>
+                  <p>Supplier : {{cartPdt.supplierName}}</p>
+                  <h4 [innerHTML]="cartPdt.price | currency:cartPdt.currencyCode"></h4>
+                </div>
+          </div>
       </div>
     </div>
     <div class="col-12 col-md-5 col-lg-4 price-details">

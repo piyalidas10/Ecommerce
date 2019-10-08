@@ -20,6 +20,7 @@ export class SharedService {
 
   public getErrorKeys(key) {
     const objKey = key.toUpperCase().split(' ').join('_');
+    console.log(objKey);
     return this.errorObj[objKey];
   }
 

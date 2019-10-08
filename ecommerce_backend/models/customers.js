@@ -7,13 +7,14 @@ const customersSchema = mongoose.Schema({
     customerFirstName: { type: String, required: true },
     customerMiddleName: { type: String },
     customerLastName: { type: String, required: true },
-    customerGender: { type: String, required: true},
+    customerGender: { type: String, required: true, enum: ['male', 'female', 'Others']},
     customerDOB: {type: Date, default: Date.now},
     customerCity: { type: String, default:'Not Given' },
     customerState: { type: String, default:'Not Given' },
     customerZip: { type: Number, default: 0 },
     customerMobile: { type: Number, required: true, unique: true },
     customerCountry: { type: String, default:'india' },
+    customerAddress: { type: String, default:'Not Given' },
     customerRegisterDate: { type: Date, default: Date.now}
 });
 
