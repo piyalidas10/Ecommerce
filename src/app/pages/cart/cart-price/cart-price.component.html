@@ -1,0 +1,17 @@
+<div class="price-section">
+  <h6>Price Details</h6>
+  <div class="summery-item">
+    <span class="text">Price ({{productLen}}
+      <span *ngIf="productLen < 2">item</span>
+      <span *ngIf="productLen > 1">items</span>)</span>
+    <span class="price">{{totalPrice | currency:currencyCode}}</span>
+  </div>
+  <div class="delivery-info">
+    <span class="text">Delivery</span>
+    <span class="price">{{totalDeliveryAmt | currency:currencyCode}}</span>
+  </div>
+  <div class="total-pay">
+    <span class="text">Total Payable</span>
+    <span class="price">{{totalPayableAmt | currency:currencyCode}}</span>
+  </div>
+</div>

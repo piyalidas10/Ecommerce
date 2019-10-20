@@ -4,42 +4,24 @@
 
 <div class="container" *ngIf="!isLoading">
   <div class="row" *ngIf="cartProducts.length > 0">
-    <div class="col-12 col-md-7 col-lg-8 cart-details">
-      <div class="col-12 cart-header clearfix">
-        <h5>My Cart ()</h5>
+      <div class="col-12 col-md-7 col-lg-8 cart-details">
+        <app-cart-details
+        [custEmail]="custEmail"
+        [cartProducts]="cartProducts"
+        (isCartChanged)="cartChange($event)">
+        </app-cart-details>
       </div>
-      <div class="col-12 product-item clearfix" *ngFor="let cartPdt of cartProducts">
-          <div class="row">
-              <div class="col-lg-3 text-center">
-                  <img [src]="imgURL + checkPath(cartPdt.productPicUrl)"/>
-                </div>
-                <div class="col-lg-9">
-                  <h6>{{cartPdt.name}}</h6>
-                  <p>Supplier : {{cartPdt.supplierName}}</p>
-                  <h4 [innerHTML]="cartPdt.price | currency:cartPdt.currencyCode"></h4>
-                </div>
-          </div>
+      <div class="col-12 col-md-5 col-lg-4 price-details">
+          <app-cart-price
+          [productLen]="cartProducts.length"
+          [totalPrice]="totalPrice"
+          [totalDeliveryAmt]="totalDeliveryAmt"
+          [totalPayableAmt]="totalPayableAmt"
+          [currencyCode]="currencyCode">
+          </app-cart-price>
       </div>
-    </div>
-    <div class="col-12 col-md-5 col-lg-4 price-details">
-      <div class="price-section">
-        <h6>Price Details</h6>
-        <div class="summery-item">
-          <span class="text">Price (1 item)</span>
-          <span class="price">398</span>
-        </div>
-        <div class="delivery-info">
-          <span class="text">Delivery</span>
-          <span class="price">52</span>
-        </div>
-        <div class="total-pay">
-          <span class="text">Total Payable</span>
-          <span class="price">450</span>
-        </div>
-      </div>
-    </div>
-</div>
-<div class="row">
+  </div>
+  <div class="row">
   <div class="col-12 no-product text-center" *ngIf="cartProducts.length === 0">
     <img [src]="imgURL + nopic" alt="no product" class="img-thumbnail" />
     <h4>Opps sorry, Your cart is empty</h4>

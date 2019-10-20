@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 import { Router, ActivationEnd } from '@angular/router';
 import { ILogin } from '../modules/login';
 import { IRegister } from '../modules/register';
+import { MessageService } from '../service/message.service';
 
 import { environment } from '../../environments/environment';
 const BACKEND_URL = environment.apiEndpoint;
@@ -25,7 +26,8 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private msgService: MessageService
   ) { }
 
   getToken() {
@@ -55,6 +57,7 @@ export class AuthService {
       const apiURL = `${BACKEND_URL}${environment.API_REGISTER_PATH}`;
       return this.http.post<any>(apiURL, authData)
             .pipe(map(response => {
+              console.log(response);
                 return response;
             }));
   }
@@ -87,6 +90,7 @@ export class AuthService {
                 }
               },
               error => {
+                this.msgService.error(error.error.message, true);
                 this.loggedInStatus.next(false);
               }
             );

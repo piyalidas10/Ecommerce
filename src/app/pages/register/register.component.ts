@@ -75,8 +75,8 @@ export class RegisterComponent implements OnInit, OnChanges, OnDestroy {
           .pipe()
           .subscribe(
               data => {
-                  this.msgService.success('Registration successful. Please go to login page.', true);
-                  this.router.navigate(['/register']);
+                  this.msgService.success(data['message'], true);
+                  this.router.navigate(['/login']);
               },
               error => {
                   console.log('Registration error => ', error.error.message);

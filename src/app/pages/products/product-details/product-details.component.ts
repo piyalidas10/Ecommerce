@@ -149,7 +149,7 @@ export class ProductDetailsComponent implements OnInit {
         console.log(data.productsInCart[0].cartResponse);
         const cartProducts = data.productsInCart[0].cartResponse;
         cartProducts.forEach(element => {
-          if (element.productId === this.productId) {
+          if (element._id === this.productId) {
             this.isProductInCartPresent = true;
           } else {
             this.isProductInCartPresent = false;

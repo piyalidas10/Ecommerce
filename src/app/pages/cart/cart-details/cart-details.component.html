@@ -1,0 +1,31 @@
+<div class="col-12 cart-header clearfix">
+  <h5>My Cart ({{cartProducts.length}})</h5>
+</div>
+<div class="col-12 product-item clearfix" *ngFor="let cartPdt of cartProducts">
+  <div class="row">
+    <div class="col-lg-3 text-center">
+      <img [src]="imgURL + checkPath(cartPdt.productPicUrl)" />
+    </div>
+    <div class="col-lg-9">
+      <h6>{{cartPdt.name}}</h6>
+      <p>Supplier : {{cartPdt.supplierName}}</p>
+      <h4 [innerHTML]="cartPdt.price_payable | currency:cartPdt.currencyCode"></h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-3 text-center">
+      <button class="btn btn-sm btn-outline-danger" [disabled]="cartPdt.qauntity_buy<2" (click)="product_delete(cartPdt.productId, cartPdt.price, cartPdt.qauntity_buy)">
+        <i class="fa fa-minus" aria-hidden="true"></i>
+      </button>
+      <div class="qauntity_buy">
+        <input type="text" class="form-control" value="{{cartPdt.qauntity_buy}}" />
+      </div>
+      <button class="btn btn-sm btn-outline-success" (click)="product_add(cartPdt.productId, cartPdt.price, cartPdt.qauntity_buy)">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="col-lg-9">
+      <span class="link" (click)="product_remove_fromcart(cartPdt.productId)">Remove</span>
+    </div>
+  </div>
+</div>

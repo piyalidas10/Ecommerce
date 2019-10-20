@@ -26,7 +26,7 @@ exports.createCustomers = (req, res, next) => {
             });
             custs.save().then(createdCusts => {
                 res.status(201).json({
-                    message: "Customer added successfully",
+                    message: "Registration successful. Please go to login page",
                     custlists: {
                         ...createdCusts
                     }
@@ -67,7 +67,9 @@ exports.loginCustomer = (req, res, next) => {
                 }
             });
         } else {
-            return res.status(400).send({ message: "Please enter your valid email id." });
+            res.status(500).json({
+                message: "Please enter your valid email id."
+            });
         }
     });
 };
