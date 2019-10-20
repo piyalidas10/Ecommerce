@@ -4,18 +4,19 @@ require('mongoose-double')(mongoose);
 const cartinfoSchema = mongoose.Schema({
     cartResponse: [
         {
-            productId: { type: String, required: true, unique: true },
+            productId: { type: String, required: true },
             subCategory: { type: String, required: true },
             category: { type: String, required: true },
             supplierName: { type: String, required: true },
             name: { type: String, required: true },
             productPicUrl: { type: String, required: true },
             status: { type: String, required: true },
-            quantity: { type: Number, required: true },
+            quantity_in_stock: { type: Number, required: true },
             currencyCode: { type: String, required: true, default: "INR" },
             price: { type: Number, required: true, default: 0 },
             deliveryPrice: { type: Number, required: true },
-            countofProduct: { type: Number, required: true, default: 1 }
+            qauntity_buy: { type: Number, required: true, default: 1 },
+            price_payable: { type: Number, required: true, default: 0 }
         }
     ],
     sessionInfo: {

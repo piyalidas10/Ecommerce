@@ -2,22 +2,14 @@
 .cart-details { 
     background: $color-white;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.08);
-    border: 1px solid #eaeaea;
+    border: 1px solid $boder-color;
     padding: 0 0 convertEm(20) 0;
     margin-top: 10px;
-}
-.product-item{
-    padding-top: convertEm(15);
-    padding-bottom: convertEm(15);
-    border-bottom: 1px solid #eaeaea;
-    img {
-        height: 150px;
-    }
 }
 .no-product{
     background: $color-white;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.08);
-    border: 1px solid #eaeaea;
+    border: 1px solid $boder-color;
     padding: convertEm(20);
     margin-top: 10px;
     h4{
@@ -32,51 +24,4 @@
 }
 .price-details {
     margin-top: 10px;
-}
-.price-section{
-    background: $color-white;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,.08);
-    border: 1px solid #eaeaea;
-    padding: convertEm(15);
-    h6{
-        text-transform: uppercase;
-        padding-bottom: 15px;
-        font-weight: bold;
-        border-bottom: $color-grey-light 1px solid;
-    }
-}
-.cart-header{
-    padding-top: convertEm(15);
-    padding-bottom: convertEm(15);
-    border-bottom: $color-grey-light 1px solid;
-    h5{
-        padding-bottom: 0;
-    }
-}
-.summery-item {
-    margin: convertEm(10) 0;
-    .text {
-
-    }
-    .price {
-        float: right;
-    }
-}
-.delivery-info {
-    margin: convertEm(10) 0;
-    .text {
-
-    }
-    .price {
-        float: right;
-    }
-}
-.total-pay {
-    margin: convertEm(10) 0;
-    .text {
-
-    }
-    .price {
-        float: right;
-    }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, OnChanges, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute, ActivationEnd } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { filter, map } from 'rxjs/operators';
@@ -27,8 +27,11 @@ export class CartComponent implements OnInit {
   custEmail: string;
   private authListenerSubs: Subscription;
   cartProducts = [];
-  pic: string;
   nopic: string;
+  totalPrice = 0;
+  currencyCode: string;
+  totalDeliveryAmt = 0;
+  totalPayableAmt = 0;
 
   titleCaseWord(word: string) {
     if (!word) {
@@ -84,6 +87,7 @@ export class CartComponent implements OnInit {
       data => {
         if (data.productsInCart.length > 0) {
           this.cartProducts = data.productsInCart[0].cartResponse;
+          this.priceCount(this.cartProducts);
         } else {
           this.nopic = 'empty_product.svg';
         }
@@ -97,13 +101,21 @@ export class CartComponent implements OnInit {
     );
   }
 
-  checkPath(imgsrc): string {
-    if (imgsrc === undefined || imgsrc === '') {
-      this.pic = 'empty_product.svg';
-    } else {
-      this.pic = imgsrc;
+  priceCount(prdt) {
+    console.log(prdt);
+    this.totalPrice = 0;
+    prdt.forEach(element => {
+      this.totalPrice += element.price_payable;
+      this.currencyCode = element.currencyCode;
+      this.totalDeliveryAmt += element.deliveryPrice;
+    });
+    this.totalPayableAmt = this.totalPrice + this.totalDeliveryAmt;
+  }
+
+  cartChange(evt) {
+    if (evt === true) {
+      this.checkProductInCart(this.custEmail);
     }
-    return this.pic;
   }
 
 }

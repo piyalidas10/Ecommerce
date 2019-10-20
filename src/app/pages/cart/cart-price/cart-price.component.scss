@@ -1,0 +1,43 @@
+@import "../../../../assets/styles/theme.scss";
+.price-section{
+    background: $color-white;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.08);
+    border: 1px solid $boder-color;
+    padding: convertEm(15);
+    h6{
+        text-transform: uppercase;
+        padding-bottom: 15px;
+        font-weight: bold;
+        border-bottom: $color-grey-light 1px solid;
+    }
+}
+.summery-item {
+    margin: convertEm(10) 0;
+    .text {
+
+    }
+    .price {
+        float: right;
+    }
+}
+.delivery-info {
+    margin: convertEm(10) 0;
+    .text {
+
+    }
+    .price {
+        float: right;
+    }
+}
+.total-pay {
+    margin: convertEm(10) 0;
+    border-top: dashed 1px $boder-color;
+    padding-top: convertEm(10);
+    font-weight: 500;
+    .text {
+
+    }
+    .price {
+        float: right;
+    }
+}

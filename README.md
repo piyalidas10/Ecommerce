@@ -34,12 +34,17 @@ Before push any code you have to pass in lint and test cases
 ## After pass in both cases---------
 
 ```
-1. git stash ---------- save you local changes
-2. git pull ----------- pull the master branch changes
-3. git stash apply -------- merge local changes with master branch changes
-1. git add .
-2. git commit -m "message" --no-verify
-3. git push -u origin master
+git stash ---------- save you local changes
+git pull ----------- pull the master branch changes
+git stash apply -------- merge local changes with master branch changes
+git add .
+git commit -m "message“ -------- commit local changes to stage
+git commit -m "message" --no-verify -------- forcefully commit local changes to
+stage
+git push -u origin master -------- push local changes to master branch
+git checkout –b <branch_name> -------- create new branch and move to that new branch
+git checkout <branch_name> -------- move to that branch
+git merge master -------- merge your changes of master branch to current branch
 ```
 
 # In  API service static JSON files are used which are coming from assets folder

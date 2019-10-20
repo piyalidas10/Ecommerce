@@ -10,7 +10,7 @@ exports.getProducts = (req, res, next) => {
 
 exports.getProductDetails = (req, res, next) => {
   console.log(req.body.productid);
-  Products.findOne( { ProductId: req.body.productid}).then(prods => {
+  Products.findOne( { _id: req.body.productid}).then(prods => {
     res.status(200).json({
       productinfo: prods
     });

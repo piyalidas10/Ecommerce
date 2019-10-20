@@ -24,7 +24,7 @@ export class AlertComponent implements OnInit, OnChanges, OnDestroy {
   showMsgAlert() {
     this.subscription = this.msgService.getMessage().subscribe(message => {
         this.message = message;
-        console.log(this.message);
+        console.log('showMsgAlert => ', this.message);
     });
   }
 

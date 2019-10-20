@@ -171,6 +171,44 @@ export class APIService {
  }
 
 
+ /**
+   * Add product quantity to buy
+  */
+ productAddToBuy(email, id, price, qty): Observable<any> {
+  const apiURL = `${BACKEND_URL}${environment.API_CART_ADD_PRODUCT_QUANTITY}`;
+  const authData = {email: email, id: id, price: price, qty: qty};
+  return this.http.post(apiURL, authData, this.ecommerceRQSTOptions)
+  .pipe(map(response => {
+    return response;
+  }));
+}
+
+
+ /**
+   * Delete product quantity to buy
+  */
+ productDeleteToBuy(email, id, price, qty): Observable<any> {
+  const apiURL = `${BACKEND_URL}${environment.API_CART_DELETE_PRODUCT_QUANTITY}`;
+  const authData = {email: email, id: id, price: price, qty: qty};
+  return this.http.post(apiURL, authData, this.ecommerceRQSTOptions)
+  .pipe(map(response => {
+    return response;
+  }));
+}
+
+ /**
+   * Remoe product from cart
+  */
+ productRemoveFromCart(email, id): Observable<any> {
+  const apiURL = `${BACKEND_URL}${environment.API_CART_REMOVE_PRODUCT}`;
+  const authData = {email: email, id: id};
+  return this.http.post(apiURL, authData, this.ecommerceRQSTOptions)
+  .pipe(map(response => {
+    return response;
+  }));
+}
+
+
 
   // /**
   //  * Handle Http operation that failed.
