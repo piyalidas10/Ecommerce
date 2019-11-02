@@ -1,6 +1,9 @@
 # Live URL
 https://piyali-ecommerce.herokuapp.com
 
+# Admin URL
+https://piyali-ecommerce.herokuapp.com/#/admin
+
 login credentails
 ```
 piyali@gmail.com / admin123
@@ -31,7 +34,7 @@ Before push any code you have to pass in lint and test cases
 2. ng test
 ```
 
-## After pass in both cases---------
+# GIT codes
 
 ```
 git stash ---------- save you local changes
@@ -39,13 +42,19 @@ git pull ----------- pull the master branch changes
 git stash apply -------- merge local changes with master branch changes
 git add .
 git commit -m "message“ -------- commit local changes to stage
-git commit -m "message" --no-verify -------- forcefully commit local changes to
-stage
+git commit -m "message" --no-verify -------- forcefully commit local changes to stage
 git push -u origin master -------- push local changes to master branch
 git checkout –b <branch_name> -------- create new branch and move to that new branch
 git checkout <branch_name> -------- move to that branch
 git merge master -------- merge your changes of master branch to current branch
 ```
+
+# API 
+## Authorization using JWT
+```
+https://medium.com/@maison.moa/using-jwt-json-web-tokens-to-authorize-users-and-protect-api-routes-3e04a1453c3e
+```
+
 
 # In  API service static JSON files are used which are coming from assets folder
 categories.json

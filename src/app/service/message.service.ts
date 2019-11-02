@@ -26,12 +26,13 @@ export class MessageService {
   success(message: string, keepAfterNavigationChange = false) {
     this.keepAfterNavigationChange = keepAfterNavigationChange;
     this.subject.next({ type: 'success', text: message });
-    console.log('Piyali', keepAfterNavigationChange);
+    console.log('message service success => ', keepAfterNavigationChange);
   }
 
   error(message: string, keepAfterNavigationChange = false) {
       this.keepAfterNavigationChange = keepAfterNavigationChange;
       this.subject.next({ type: 'error', text: message });
+      console.log('message service error => ', this.keepAfterNavigationChange, message);
   }
 
   getMessage(): Observable<any> {

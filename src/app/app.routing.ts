@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
+import { LoginGuard } from './auth/login.guard';
 
 const appRoutes: Routes = [
     {
@@ -17,11 +18,13 @@ const appRoutes: Routes = [
     {
         path: 'login',
         loadChildren: './pages/login/login.module#LoginModule',
+        canActivate: [LoginGuard],
         data: {title: 'Ecommerce login'}
     },
     {
         path: 'register',
         loadChildren: './pages/register/register.module#RegisterModule',
+        canActivate: [LoginGuard],
         data: {title: 'Ecommerce Register'}
     },
     {
@@ -37,7 +40,7 @@ const appRoutes: Routes = [
     {
         path: 'cart',
         loadChildren: './pages/cart/cart.module#CartModule',
-        // canActivate: [AuthGuard],
+        canActivate: [AuthGuard],
         data: {title: 'Ecommerce Cart'}
     },
     {
@@ -54,8 +57,8 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(appRoutes, { useHash: true })],
+    imports: [RouterModule.forRoot(appRoutes)],
     exports: [RouterModule],
-    providers: [AuthGuard]
+    providers: [AuthGuard, LoginGuard]
 })
 export class AppRoutingModule { }

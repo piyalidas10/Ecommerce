@@ -32,7 +32,7 @@ exports.createCustomers = (req, res, next) => {
                     }
                 });
             })
-            .catch(error => {
+            .catch(error => {   
                 console.log(error);
                 res.status(500).json({
                 message: "Registration is not successfull!"

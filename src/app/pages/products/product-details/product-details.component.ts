@@ -1,10 +1,11 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute, ActivationEnd } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { filter, map } from 'rxjs/operators';
 import { APIService } from '../../../service/api.service';
 import { SharedService } from '../../../service/shared.service';
 import { AuthService } from '../../../auth/auth.service';
+import { MessageService } from '../../../service/message.service';
 import { Subscription } from 'rxjs';
 
 import { environment } from '../../../../environments/environment';
@@ -48,7 +49,9 @@ export class ProductDetailsComponent implements OnInit {
     private apiService: APIService,
     private sharedService: SharedService,
     private authService: AuthService,
-    private el: ElementRef
+    private msgService: MessageService,
+    private el: ElementRef,
+    private cdr: ChangeDetectorRef
   ) {
     this.router.events.pipe(
       filter(event => event instanceof ActivationEnd)
@@ -60,6 +63,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.errorMsg();
     this.Activatedroute.params.subscribe(params => {
       this.productId = params['id'];
       console.log('productId', this.productId);
@@ -92,6 +96,7 @@ export class ProductDetailsComponent implements OnInit {
     } else {
       this.statusTxt = {type: 'available', text: 'Available'};
     }
+    console.log('this.statusTxt ', this.statusTxt);
   }
 
   checkPath(imgsrc): string {
@@ -138,7 +143,9 @@ export class ProductDetailsComponent implements OnInit {
         },
         err => {
           this.errorData = this.sharedService.getErrorKeys(err.statusText);
+          this.msgService.error(this.errorData, true);
           this.isLoading = false;
+          this.cdr.detectChanges();
         }
     );
   }
@@ -160,6 +167,7 @@ export class ProductDetailsComponent implements OnInit {
       },
       err => {
         this.errorData = this.sharedService.getErrorKeys(err.statusText);
+        this.msgService.error(this.errorData, true);
         this.isLoading = false;
       }
     );
@@ -167,6 +175,17 @@ export class ProductDetailsComponent implements OnInit {
 
   gotocart() {
     this.router.navigate(['/cart']);
+  }
+
+  errorMsg() {
+    this.apiService.getErrorMessage().then(
+      (res) => {
+        if (this.sharedService.errorObj.length === 0) {
+          this.sharedService.errorObj = res['srverrors'][0]['errorslist'];
+          console.log('erroJson => ', this.sharedService.errorObj);
+        }
+      }, (error) => {
+      });
   }
 
 }

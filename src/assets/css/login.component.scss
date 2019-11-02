@@ -7,5 +7,8 @@
   border: 1px solid #eaeaea;
   margin-top: 30px;
   padding: convertEm(30);
+  p{
+    text-transform: capitalize;
+  }
 }
 

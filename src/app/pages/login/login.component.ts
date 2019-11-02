@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   custEmail: string;
   custName: string;
   authLoggedInStatus: Subscription;
+  content = [];
 
   constructor(
     private titleService: Title,
@@ -49,8 +50,27 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.siteContent();
     this.validationErrorMsg();
     this.createForm();
+  }
+
+  async siteContent() {
+    try {
+      // "await" will wait for the promise to resolve or reject
+      // if it rejects, an error will be thrown, which you can
+      // catch with a regular try/catch block
+      await this.sharedService.content.
+        subscribe(
+          (res) => {
+            this.content = res['loginPage'];
+            console.log(this.content);
+          }
+        );
+    } catch (error) {
+      this.errorData = this.sharedService.getErrorKeys(error.statusText);
+      console.log(this.errorData);
+    }
   }
 
   createForm() {
