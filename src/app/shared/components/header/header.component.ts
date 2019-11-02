@@ -49,15 +49,15 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnChanges {
       // "await" will wait for the promise to resolve or reject
       // if it rejects, an error will be thrown, which you can
       // catch with a regular try/catch block
-      await this.sharedService.content.
-        subscribe(
+      await this.apiService.getContent().
+        then(
           (res) => {
             if (this.custStatus === false) {
               const pageHeader = 'logout';
-              this.content = res['sitePage'].filter((elemt) => elemt.pageHeader !== pageHeader);
+              this.content = res['content'][0]['sitePage'].filter((elemt) => elemt.pageHeader !== pageHeader);
             } else {
               const pageHeader = 'login';
-              this.content = res['sitePage'].filter((elemt) => elemt.pageHeader !== pageHeader);
+              this.content = res['content'][0]['sitePage'].filter((elemt) => elemt.pageHeader !== pageHeader);
               this.checkIndexLogout();
             }
             console.log('Header Menu => ', this.content);
