@@ -89,6 +89,9 @@ html,body {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .08);
     border: 1px solid #eaeaea;
   }
+  form label, .btn {
+    text-transform: capitalize;
+  }
   
   @media (min-width: 1600px) {
     .container {

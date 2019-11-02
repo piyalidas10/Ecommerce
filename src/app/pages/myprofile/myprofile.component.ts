@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./myprofile.component.scss']
 })
 export class MyprofileComponent implements OnInit {
+  isLoading: Boolean = true;
 
   constructor() { }
 
