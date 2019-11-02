@@ -2,12 +2,13 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AlertComponent } from './alert.component';
+
+import { FooterComponent } from './footer.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: AlertComponent
+    component: FooterComponent
   }
 ];
 
@@ -17,9 +18,9 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  exports: [AlertComponent],
+  exports: [FooterComponent],
   declarations: [
-    AlertComponent
+    FooterComponent
   ]
 })
-export class AlertModule { }
+export class FooterModule { }

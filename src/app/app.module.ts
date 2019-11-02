@@ -24,7 +24,6 @@ import { environment } from '../environments/environment';
 import { ModalDirective } from './directives/modal.directive';
 import { TimeoutDialogComponent } from './shared/components/timeout-dialog/timeout-dialog.component';
 import { AlertComponent } from './shared/components/alert/alert.component';
-import { MyprofileComponent } from './pages/myprofile/myprofile.component';
 
 
 
@@ -35,8 +34,7 @@ import { MyprofileComponent } from './pages/myprofile/myprofile.component';
     ModalDirective,
     ModalDialogComponent,
     TimeoutDialogComponent,
-    AlertComponent,
-    MyprofileComponent
+    AlertComponent
   ],
   imports: [
     BrowserModule,
