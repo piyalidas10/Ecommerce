@@ -1,16 +1,16 @@
 <div class="container">
     <div class="col-xl-4 offset-xl-4 col-md-6 offset-md-3 loginBox">
-        <h3 class="text-center">Log In</h3>
+        <h3 class="text-center">{{content['pageTitle']}}</h3>
         <p *ngIf="message" class="text-center error">{{message}}</p>
       <form [formGroup]="loginForm" (ngSubmit)="verifyLogin()">
           <div class="row form-group clearfix">
-              <label for="emailId" class="col-md-3 col-sm-5 col-12">Email ID</label>
+              <label for="emailId" class="col-md-3 col-sm-5 col-12">{{content['formFields'][0]}}</label>
               <div class="col-md-9 col-sm-7 col-12">
                   <input type="text" appValidationLabel class="form-control" formControlName="emailId" aria-required="true" />
               </div>
           </div>
           <div class="row form-group clearfix">
-            <label for="password" class="col-md-3 col-sm-5 col-12">Password</label>
+            <label for="password" class="col-md-3 col-sm-5 col-12">{{content['formFields'][1]}}</label>
             <div class="col-md-9 col-sm-7 col-12">
                 <input type="password" appValidationLabel class="form-control" formControlName="password" aria-required="true" />
             </div>
@@ -20,7 +20,7 @@
                 <button class="btn btn-success btn-block" type="submit" role="button">Login</button>
             </div>
             <div class="col-md-9 offset-md-3 col-sm-7 offset-sm-5 col-12 text-center">
-                <p>New customer? <a routerLink="/register">Start here</a>.</p>
+                <p>{{content['txt']}} <a routerLink="/register">{{content['link']}}</a>.</p>
             </div>
           </div>
       </form>

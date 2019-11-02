@@ -4,58 +4,57 @@
 
 <div class="container" *ngIf="!isLoading">
   <div class="col-xl-8 offset-xl-2 col-lg-10 col-lg-1 col-md-10 offset-md-1 registerBox">
-    <h3 class="text-center">Register</h3>
+    <h3 class="text-center">{{content['pageTitle']}}</h3>
     <form [formGroup]="registerForm" (ngSubmit)="verifyForm()">
       <div class="row form-group clearfix">
             <div class="col-md-4 col-12">
-              <label for="firstName">First Name</label>
+              <label for="firstName">{{content['formFields'][0]}}</label>
                 <input type="text" appValidationLabel formControlName="firstName" class="form-control" aria-required="true" />
             </div>
             <div class="col-md-4 col-12">
-              <label for="middleName">Middle Name</label>
+              <label for="middleName">{{content['formFields'][1]}}</label>
                 <input type="text" appValidationLabel formControlName="middleName" class="form-control" />
             </div>
             <div class="col-md-4 col-12">
-              <label for="lastName">Last Name</label>
+              <label for="lastName">{{content['formFields'][2]}}</label>
                 <input type="text" appValidationLabel formControlName="lastName" class="form-control" aria-required="true" />
             </div>
       </div>
       <div class="row form-group clearfix">
-          <label for="dob" class="col-md-4 col-sm-5 col-12">Date of Birth</label>
+          <label for="dob" class="col-md-4 col-sm-5 col-12">{{content['formFields'][3]}}</label>
           <div class="col-md-8 col-sm-7 col-12">
             <input type="text" appValidationLabel formControlName="dob" class="form-control" aria-required="true" />
           </div>
       </div>
       <div class="row form-group clearfix">
-          <label for="gender" class="col-md-4 col-sm-5 col-12">Gender</label>
+          <label for="gender" class="col-md-4 col-sm-5 col-12">{{content['formFields'][4]}}</label>
           <div class="col-md-8 col-sm-7 col-12">
             <select appValidationLabel formControlName="gender" class="form-control" aria-required="true">
-              <option value="male">male</option>
-              <option value="female">female</option>
+              <option value="{{opt}}" *ngFor="let opt of content['genderOptions']">{{opt}}</option>
             </select>
           </div>
       </div>      
       <div class="row form-group clearfix">
-        <label for="emailId" class="col-md-4 col-sm-5 col-12">Email ID</label>
+        <label for="emailId" class="col-md-4 col-sm-5 col-12">{{content['formFields'][5]}}</label>
         <div class="col-md-8 col-sm-7 col-12">
           <input type="text" appValidationLabel formControlName="emailId" class="form-control" aria-required="true" />
         </div>
       </div>
       <div class="row form-group clearfix">
-        <label for="mobile" class="col-md-4 col-sm-5 col-12">Mobile No</label>
+        <label for="mobile" class="col-md-4 col-sm-5 col-12">{{content['formFields'][6]}}</label>
         <div class="col-md-8 col-sm-7 col-12">
           <input type="text" appValidationLabel formControlName="mobile" class="form-control" aria-required="true" />
         </div>
       </div>
       <div class="row form-group clearfix">
-        <label for="umail" class="col-md-4 col-sm-5 col-12">Password</label>
+        <label for="umail" class="col-md-4 col-sm-5 col-12">{{content['formFields'][7]}}</label>
         <div class="col-md-8 col-sm-7 col-12">
           <input type="password" appValidationLabel formControlName="password" class="form-control" aria-required="true" />
         </div>
       </div>
       <div class="row form-group clearfix">
         <div class="col-12 text-center">
-            <button class="btn btn-primary" type="submit" role="button" appFormSubmit>Register With Us</button>
+            <button class="btn btn-primary" type="submit" role="button" appFormSubmit>{{content['btn']}}</button>
         </div>
       </div>  
     </form>

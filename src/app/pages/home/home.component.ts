@@ -37,11 +37,10 @@ export class HomeComponent implements OnInit {
       // "await" will wait for the promise to resolve or reject
       // if it rejects, an error will be thrown, which you can
       // catch with a regular try/catch block
-      await this.apiService.getContent().
-        then(
+      await this.sharedService.content.
+        subscribe(
           (res) => {
-            this.slideCt = res['content'][0]['slider'];
-            console.log('Slider => ', this.slideCt);
+            this.slideCt = res['slider'];
             this.isLoading = false;
           }
         );

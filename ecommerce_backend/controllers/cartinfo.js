@@ -12,7 +12,6 @@ exports.checkProduct = (req, res, next) => {
 
 exports.orderProducts = (req, res, next) => {
     Cartinfo.find( { 'sessionInfo.email': req.body.sessionInfo.email }, function (err, cartDt) {
-        console.log(cartDt.length);
         if (cartDt && cartDt.length > 0) {
           if (cartDt[0].sessionInfo.email === req.body.sessionInfo.email) {
             const cartAgain = {
@@ -29,17 +28,24 @@ exports.orderProducts = (req, res, next) => {
                             deliveryPrice: req.body.productsInfo.deliveryPrice,
                             price_payable: req.body.productsInfo.Price
             };
-            console.log(cartAgain);
-            Cartinfo.updateOne({
-                $push: {'cartResponse': cartAgain},
-                'sessionInfo.secureToken': req.body.sessionInfo.secureToken,
-                }).then(cartLists => {
+            Cartinfo.findOneAndUpdate(
+                { 'sessionInfo.email': req.body.sessionInfo.email },
+                { $push: {'cartResponse': cartAgain} },
+                { $set: {'sessionInfo.secureToken': req.body.sessionInfo.secureToken} }
+                ).then(cartLists => {
+                    console.log(cartLists);
                     res.status(201).json({
                         cartDetails: {
                             ...cartLists
                         }
                     });
-            });
+                })
+                .catch(error => {   
+                    console.log(error.errmsg);
+                    res.status(500).json({
+                        message: error.errmsg
+                    });
+                });
           }
         }
         else {
