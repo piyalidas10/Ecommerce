@@ -572,6 +572,16 @@ Following is the content of the modified HTML host file app.component.html.
 </highcharts-chart>
 ```
 
+# Swagger setting up to Nodejs API
+
+https://www.youtube.com/watch?v=qemG0CWOx1I
+https://github.com/Sean-Bradley/Seans-TypeScript-NodeJS-CRUD-REST-API-Boilerplate
+https://www.youtube.com/watch?v=PbwQWw7xSOM
+http://petstore.swagger.io/
+
+
+# Stripe payment gateway
+
 
 
 

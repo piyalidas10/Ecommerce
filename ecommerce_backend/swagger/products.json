@@ -1,0 +1,103 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Product Application API",
+      "description": "Made by Piyali Das",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:3000",
+    "basePath": "/swagger/products/",
+    "tags": [
+      {
+        "name": "Products",
+        "description": "API for products in the ecommerce project"
+      }
+    ],
+    "schemes": [
+      "http"
+    ],
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "paths": {
+      "/allproducts": {
+        "get": {
+            "tags": [
+                "Products"
+            ],
+            "summary": "Get all cats in system",
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "schema": {
+                        "$ref": "#/definitions/Products"
+                    }
+                }
+            }
+        }
+      },
+      "/getProducts": {
+        "post": {
+          "tags": [
+            "Products"
+          ],
+          "description": "Get all products using Category",
+          "parameters": [
+            {
+              "name": "category",
+              "in": "body",
+              "description": "Get all products",
+              "schema": {
+                "type": "string",
+                "properties": {
+                    "category": {
+                      "type": "string"
+                    }
+                },
+                "required": ["category"]
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Sucessfull",
+              "schema": {
+                "$ref": "#/definitions/Products"
+              }
+            },
+            "400": {
+              "description": "Failed"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Products": {
+        "type": "object",
+        "properties": {
+          "SubCategory": { "type": "string" },
+          "Category": { "type": "string" },
+          "SupplierName": { "type": "string" },
+          "WeightMeasure": { "type": "number" },
+          "WeightUnit": { "type": "string" },
+          "Description": { "type": "string" },
+          "Name": { "type": "string" },
+          "DateOfSale": { "type": "string"},
+          "ProductPicUrl": { "type": "string"},
+          "Status": { "type": "string"},
+          "Quantity": { "type": "number" },
+          "CurrencyCode": { "type": "string" },
+          "Price": { "type": "number" },
+          "deliveryPrice": { "type": "number"}
+        }
+      }
+    }
+}
