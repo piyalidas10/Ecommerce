@@ -15,10 +15,15 @@ const cartRoutes = require('./routes/cartinfo');
 const authRoutes = require('./routes/auth');
 const adminRoutes = require('./routes/admin');
 
+
+const swaggerDocument = require('./openapi.json');
+
 const cors = require('cors');
 const helmet = require('helmet');
 
+const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
+
 
 const app = express();
 
@@ -101,7 +106,8 @@ app.use('/api/cart', cartRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
 
-const swaggerProducts = require('./swagger/products.json');
-app.use('/swagger/products', swaggerUi.serve, swaggerUi.setup(swaggerProducts));
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, { explorer: true }));
 
 module.exports = app;

@@ -578,6 +578,10 @@ https://www.youtube.com/watch?v=qemG0CWOx1I
 https://github.com/Sean-Bradley/Seans-TypeScript-NodeJS-CRUD-REST-API-Boilerplate
 https://www.youtube.com/watch?v=PbwQWw7xSOM
 http://petstore.swagger.io/
+https://itnext.io/setting-up-swagger-in-a-node-js-application-d3c4d7aa56d4
+https://www.youtube.com/watch?v=w71TrUUWRDU
+https://swagger.io/docs/specification/about/
+http://editor.swagger.io/?_ga=2.212193814.307479361.1574600989-1925759619.1574389229
 
 
 # Stripe payment gateway

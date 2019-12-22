@@ -24,6 +24,9 @@
     "angular",
     "application"
   ],
+  "scripts": {
+    "swagger": "./node_modules/.bin/swagger-jsdoc -d  ./config/swaggerDef.js -o openapi.json"
+  },
   "engines": {
     "node": ">= 10.15.3",
     "npm": ">= 6.4.1"
@@ -40,6 +43,7 @@
     "jsonwebtoken": "^8.2.1",
     "mongoose": "^5.6.9",
     "https": "^1.0.0",
+    "swagger-jsdoc": "^3.5.0",
     "swagger-ui-express": "^4.1.2"
   }
 }
