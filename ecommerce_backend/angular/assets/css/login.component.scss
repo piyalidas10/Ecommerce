@@ -1,0 +1,14 @@
+// body{
+//   @include gradient(#000000, #ff0000);
+// }
+.loginBox {
+  background: $color-white;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .08);
+  border: 1px solid #eaeaea;
+  margin-top: 30px;
+  padding: convertEm(30);
+  p{
+    text-transform: capitalize;
+  }
+}
+

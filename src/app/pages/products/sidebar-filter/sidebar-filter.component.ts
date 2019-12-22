@@ -67,7 +67,6 @@ export class SidebarFilterComponent implements OnInit {
   sortBySubcat(event) {
     const allElement = event.target.parentElement.querySelectorAll('li');
     this.selectedOpt = event.target.innerText.toLowerCase();
-    console.log(allElement);
     allElement.forEach(element => {
       element.classList.remove('active');
     });
@@ -76,7 +75,10 @@ export class SidebarFilterComponent implements OnInit {
     } else {
       event.target.classList.remove('active');
     }
-    this.chooseSubcat.emit(this.selectedOpt);
+    if (this.selectedOpt !== undefined) {
+      console.log('selectedOpt => ', this.selectedOpt);
+      this.chooseSubcat.emit(this.selectedOpt);
+    }
   }
 
 }

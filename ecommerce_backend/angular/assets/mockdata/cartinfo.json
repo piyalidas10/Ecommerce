@@ -1,0 +1,115 @@
+{
+  "_id": {
+    "$oid": "5d9c9eff194fde1edc8ca095"
+  },
+  "cartResponse": [{
+      "currencyCode": "INR",
+      "price": 16790,
+      "countofProduct": 1,
+      "_id": {
+        "$oid": "5d9c9eff194fde1edc8ca096"
+      },
+      "productId": "GL-B201ASPY",
+      "subCategory": "refrigerator",
+      "category": "appliances",
+      "supplierName": "Very Best Screens",
+      "name": "LG 190 L Direct Cool Single Door 5 Star Refrigerator",
+      "productPicUrl": "gl-b201aspy-5-lg-original-imafemyzvrczxtqf.jpeg",
+      "status": "Available",
+      "quantity": 3,
+      "deliveryPrice": 0
+    },
+    {
+      "currencyCode": "INR",
+      "price": 1349,
+      "countofProduct": 1,
+      "_id": {
+        "$oid": "5d9c9f08194fde1edc8ca097"
+      },
+      "productId": "PGMFD",
+      "subCategory": "electric kettle",
+      "category": "appliances",
+      "supplierName": "Very Best Screens",
+      "name": "Prestige PGMFD 01 Grill",
+      "productPicUrl": "prestige-pgmfd-01-original-imafgt9g2agrbzaz.jpeg",
+      "status": "Available",
+      "quantity": 8,
+      "deliveryPrice": 50
+    },
+    {
+      "currencyCode": "INR",
+      "price": 1049,
+      "countofProduct": 1,
+      "_id": {
+        "$oid": "5d9c9f63fd1fbc1a20bacb02"
+      },
+      "productId": "LLMG66",
+      "subCategory": "mixer grinder",
+      "category": "appliances",
+      "supplierName": "Very Best Screens",
+      "name": "Lifelong Dynamite LLMG66 500 W Mixer Grinder",
+      "productPicUrl": "lifelong-llmg66-original-imafhhsxg6xjdydm.jpeg",
+      "status": "Available",
+      "quantity": 8,
+      "deliveryPrice": 50
+    }
+  ],
+  "sessionInfo": {
+    "email": "piyali@gmail.com",
+    "isLoggedIn": true,
+    "firstName": "piyali",
+    "middleName": "",
+    "lastName": "das",
+    "secureToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBpeWFsaUBnbWFpbC5jb20iLCJ1c2VyRm5hbWUiOiJwaXlhbGkiLCJ1c2VyTW5hbWUiOiIiLCJ1c2VyTG5hbWUiOiJkYXMiLCJpYXQiOjE1NzA1NDUzMTYsImV4cCI6MTU3MDU0ODkxNn0.vnncMwr2TSOBRiLXzY2GRz8S4v8HLxsxuhWHW--6BuM"
+  },
+  "__v": 0
+}
+
+
+
+[{
+  "currencyCode": "INR",
+  "price": 1349,
+  "qauntity_buy": 1,
+  "price_payable": 1349,
+  "_id": "5d9e04e57289021788073c76",
+  "productId": "PGMFD",
+  "subCategory": "electric kettle",
+  "category": "appliances",
+  "supplierName": "Very Best Screens",
+  "name": "Prestige PGMFD 01 Grill",
+  "productPicUrl": "prestige-pgmfd-01-original-imafgt9g2agrbzaz.jpeg",
+  "status": "Available",
+  "quantity_in_stock": 8,
+  "deliveryPrice": 50
+}, {
+  "currencyCode": "INR",
+  "price": 12300,
+  "qauntity_buy": 1,
+  "price_payable": 12300,
+  "_id": "5d9e05367289021788073c77",
+  "productId": "HT-1000",
+  "subCategory": "laptops",
+  "category": "electronics",
+  "supplierName": "Very Best Screens",
+  "name": "Notebook Basic 15",
+  "productPicUrl": "hp-na-laptop-original-imafg9tsqupgg2qa.jpeg",
+  "status": "Available",
+  "quantity_in_stock": 10,
+  "deliveryPrice": 0
+}, {
+  "currencyCode": "INR",
+  "price": 15499,
+  "qauntity_buy": 1,
+  "price_payable": 15499,
+  "_id": "5da31b9a7097a00004f15308",
+  "productId": "T7269NDDL",
+  "subCategory": "washing machine",
+  "category": "appliances",
+  "supplierName": "Very Best Screens",
+  "name": "LG 6.2 kg Inverter Fully Automatic Top Load Washing Machine Silver, White",
+  "productPicUrl": "t7269nddl-lg-original-imafc8kx8evmcnet.jpeg",
+  "status": "Available",
+  "quantity": 5,
+  "deliveryPrice": 0
+}]

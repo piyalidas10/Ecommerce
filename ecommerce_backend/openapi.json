@@ -1,0 +1,116 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Product API Documentation",
+    "version": "1.0.0",
+    "description": "API documentation description"
+  },
+  "host": "https://piyali-ecommerce.herokuapp.com/",
+  "basePath": "/api/",
+  "paths": {
+    "/api/getProducts/": {
+      "post": {
+        "summary": "Create a new user",
+        "tags": [
+          "Products"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "properties": {
+                  "category": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "category": "appliances"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "A user schema",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Products"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Products": {
+        "type": "object",
+        "required": [
+          "Category"
+        ],
+        "properties": {
+          "SubCategory": {
+            "type": "string"
+          },
+          "Category": {
+            "type": "string"
+          },
+          "SupplierName": {
+            "type": "string"
+          },
+          "WeightMeasure": {
+            "type": "number"
+          },
+          "WeightUnit": {
+            "type": "string"
+          },
+          "Description": {
+            "type": "string"
+          },
+          "Name": {
+            "type": "string"
+          },
+          "DateOfSale": {
+            "type": "string"
+          },
+          "ProductPicUrl": {
+            "type": "string"
+          },
+          "Status": {
+            "type": "string"
+          },
+          "Quantity": {
+            "type": "number"
+          },
+          "CurrencyCode": {
+            "type": "string"
+          },
+          "Price": {
+            "type": "number"
+          },
+          "deliveryPrice": {
+            "type": "number"
+          },
+          "DateOfEntry": {
+            "type": "date"
+          }
+        }
+      },
+      "example": {
+        "Category": "electronics"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Products",
+      "description": "Products management"
+    }
+  ]
+}

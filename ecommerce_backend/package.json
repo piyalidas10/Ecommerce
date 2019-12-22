@@ -1,0 +1,49 @@
+{
+  "name": "ecommerce",
+  "version": "0.0.1",
+  "main": "server.js",
+  "author": {
+    "name": "Piyali Das",
+    "email": "piyalidas.it@gmail.com"
+  },
+  "description": "A ecommerce POC",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/piyalidas10/angular-library"
+  },
+  "contributors": [
+    "piyali das <piyalidas.it@gmail.com>"
+  ],
+  "homepage": "http://localhost:4200/home",
+  "keywords": [
+    "ecommerce",
+    "POC",
+    "angular",
+    "application"
+  ],
+  "scripts": {
+    "swagger": "./node_modules/.bin/swagger-jsdoc -d  ./config/swaggerDef.js -o openapi.json"
+  },
+  "engines": {
+    "node": ">= 10.15.3",
+    "npm": ">= 6.4.1"
+  },
+  "private": true,
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "bcryptjs": "^2.4.3",
+    "core-js": "^2.5.4",
+    "cors": "^2.8.5",
+    "detect-passive-events": "^1.0.4",
+    "express": "^4.17.1",
+    "compression": "^1.7.4",
+    "jsonwebtoken": "^8.2.1",
+    "mongoose": "^5.6.9",
+    "https": "^1.0.0",
+    "swagger-jsdoc": "^3.5.0",
+    "swagger-ui-express": "^4.1.2"
+  }
+}

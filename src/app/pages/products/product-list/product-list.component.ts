@@ -73,7 +73,7 @@ export class ProductListComponent implements OnInit, OnChanges, OnDestroy {
       // catch with a regular try/catch block
       await this.route.params.subscribe(params => {
           const cat = params['cat'];
-          console.log(cat);
+          console.log('Category => ', cat);
           this.productObsv = this.apiService.getProducts(cat).
             subscribe(
               data => {

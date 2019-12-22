@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-require('mongoose-double')(mongoose);
+// require('mongoose-double')(mongoose);
 
 const cartinfoSchema = mongoose.Schema({
     cartResponse: [

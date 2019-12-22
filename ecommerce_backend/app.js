@@ -15,8 +15,15 @@ const cartRoutes = require('./routes/cartinfo');
 const authRoutes = require('./routes/auth');
 const adminRoutes = require('./routes/admin');
 
+
+const swaggerDocument = require('./openapi.json');
+
 const cors = require('cors');
 const helmet = require('helmet');
+
+const swaggerJsdoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
+
 
 const app = express();
 
@@ -53,7 +60,7 @@ app.use(bodyParser.text());                                     // allows bodyPa
 app.use(bodyParser.json({type: 'application/vnd.api+json'}));  // parse application/vnd.api+json as json
 
 app.use("/images", express.static(path.join(__dirname, "images")));
-// app.use("/", express.static(path.join(__dirname, "angular")));
+app.use("/", express.static(path.join(__dirname, "angular")));
 
 // secure apps by setting various HTTP headers
 app.use(helmet()); 
@@ -98,5 +105,9 @@ app.use('/api/products', productsRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
+
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, { explorer: true }));
 
 module.exports = app;
