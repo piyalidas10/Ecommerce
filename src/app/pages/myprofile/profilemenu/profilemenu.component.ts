@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-profilemenu',
+  selector: 'ecommerce-profilemenu',
   templateUrl: './profilemenu.component.html',
   styleUrls: ['./profilemenu.component.scss']
 })

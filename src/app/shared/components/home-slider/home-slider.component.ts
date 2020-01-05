@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input, ChangeD
 
 
 @Component({
-  selector: 'app-home-slider',
+  selector: 'ecommerce-home-slider',
   templateUrl: './home-slider.component.html',
   styleUrls: ['./home-slider.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

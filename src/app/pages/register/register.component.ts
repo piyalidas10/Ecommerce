@@ -12,7 +12,7 @@ import { IRegister } from '../../modules/register';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-register',
+  selector: 'ecommerce-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })

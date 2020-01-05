@@ -13,7 +13,7 @@ import { pipe, Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-login',
+  selector: 'ecommerce-login',
   templateUrl: './login.component.html',
   encapsulation: ViewEncapsulation.Emulated
 })

@@ -5,20 +5,20 @@
 <div class="container" *ngIf="!isLoading">
   <div class="row" *ngIf="cartProducts.length > 0">
       <div class="col-12 col-md-7 col-lg-8 cart-details">
-        <app-cart-details
+        <ecommerce-cart-details
         [custEmail]="custEmail"
         [cartProducts]="cartProducts"
         (isCartChanged)="cartChange($event)">
-        </app-cart-details>
+        </ecommerce-cart-details>
       </div>
       <div class="col-12 col-md-5 col-lg-4 price-details">
-          <app-cart-price
+          <ecommerce-cart-price
           [productLen]="cartProducts.length"
           [totalPrice]="totalPrice"
           [totalDeliveryAmt]="totalDeliveryAmt"
           [totalPayableAmt]="totalPayableAmt"
           [currencyCode]="currencyCode">
-          </app-cart-price>
+          </ecommerce-cart-price>
       </div>
   </div>
   <div class="row">

@@ -3,7 +3,7 @@ import { APIService } from '../../../service/api.service';
 import { Icategories } from '../../../modules/categories';
 
 @Component({
-  selector: 'app-navbar',
+  selector: 'ecommerce-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })

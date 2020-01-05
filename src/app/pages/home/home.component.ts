@@ -6,7 +6,7 @@ import { APIService } from '../../service/api.service';
 import { SharedService } from '../../service/shared.service';
 
 @Component({
-  selector: 'app-home',
+  selector: 'ecommerce-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })

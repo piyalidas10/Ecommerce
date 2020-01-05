@@ -3,8 +3,7 @@ import { Directive, Input, Output, EventEmitter, ElementRef, HostListener,
 import { ModalDialogComponent } from '../shared/modal-dialog/modal-dialog.component';
 
 @Directive({
-  // tslint:disable-next-line:directive-selector
-  selector: '[modal-box]'
+  selector: '[ecommerce-modal-box]'
 })
 export class ModalDirective {
   @Input() title: string;

@@ -2,8 +2,8 @@
     <div class="loader"></div>
 </div>
 <div class="pageContain" *ngIf="!isLoading">
-    <app-header [custStatus]="custIsAuthenticated" [custName]="custName"></app-header>
-    <app-navbar></app-navbar>
-    <app-alert></app-alert>
+    <ecommerce-header [custStatus]="custIsAuthenticated" [custName]="custName"></ecommerce-header>
+    <ecommerce-navbar></ecommerce-navbar>
+    <ecommerce-alert></ecommerce-alert>
     <router-outlet></router-outlet>
 </div>

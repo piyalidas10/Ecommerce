@@ -7,7 +7,7 @@ import { environment } from '../../../../environments/environment';
 const BACKEND_URL = environment.apiEndpoint;
 
 @Component({
-  selector: 'app-cart-details',
+  selector: 'ecommerce-cart-details',
   templateUrl: './cart-details.component.html',
   styleUrls: ['./cart-details.component.scss']
 })

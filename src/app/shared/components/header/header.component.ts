@@ -8,7 +8,7 @@ import { AuthService } from '../../../auth/auth.service';
 import { SharedService } from '../../../service/shared.service';
 
 @Component({
-  selector: 'app-header',
+  selector: 'ecommerce-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

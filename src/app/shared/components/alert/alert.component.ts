@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 import { MessageService } from '../../../service/message.service';
 
 @Component({
-  selector: 'app-alert',
+  selector: 'ecommerce-alert',
   templateUrl: './alert.component.html',
   styleUrls: ['./alert.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

@@ -2,7 +2,7 @@ import { Component, OnInit, Input, ChangeDetectorRef, ChangeDetectionStrategy } 
 import { NgbModal, NgbModalOptions, NgbActiveModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-timeout-dialog',
+  selector: 'ecommerce-timeout-dialog',
   templateUrl: './timeout-dialog.component.html',
   styleUrls: ['./timeout-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

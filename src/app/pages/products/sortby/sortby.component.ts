@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, OnChanges, EventEmitter, Output, ViewChild, AfterViewInit } from '@angular/core';
 
 @Component({
-  selector: 'app-sortby',
+  selector: 'ecommerce-sortby',
   templateUrl: './sortby.component.html',
   styleUrls: ['./sortby.component.scss']
 })

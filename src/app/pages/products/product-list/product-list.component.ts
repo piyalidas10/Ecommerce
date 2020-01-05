@@ -13,7 +13,7 @@ import { environment } from '../../../../environments/environment';
 const BACKEND_URL = environment.apiEndpoint;
 
 @Component({
-  selector: 'app-product-list',
+  selector: 'ecommerce-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })

@@ -13,7 +13,7 @@ const BACKEND_URL = environment.apiEndpoint;
 
 
 @Component({
-  selector: 'app-product-details',
+  selector: 'ecommerce-product-details',
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.scss']
 })

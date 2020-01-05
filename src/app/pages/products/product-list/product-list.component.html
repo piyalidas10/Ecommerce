@@ -6,10 +6,10 @@
 
   <div class="row">
     <div class="col-12 col-md-4 col-lg-3 sidebar">
-      <app-sidebar-filter (priceVal)="changePrice($event)" (chooseSubcat)="checkSubcat($event)"></app-sidebar-filter>
+      <ecommerce-sidebar-filter (priceVal)="changePrice($event)" (chooseSubcat)="checkSubcat($event)"></ecommerce-sidebar-filter>
     </div>
     <div class="col-12 col-md-8 col-lg-9 productLists">
-      <app-sortby (changeEvent)="sortbyMessage($event)"></app-sortby>
+      <ecommerce-sortby (changeEvent)="sortbyMessage($event)"></ecommerce-sortby>
 
       <div class="errorWrapper col-12" *ngIf="errorData !== NULL">
         <div class="col-sm-12 alert alert-danger">

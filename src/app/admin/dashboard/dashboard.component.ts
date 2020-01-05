@@ -5,7 +5,7 @@ import { Router, ActivatedRoute, ActivationEnd } from '@angular/router';
 import { Subscription, forkJoin } from 'rxjs';
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'ecommerce-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })

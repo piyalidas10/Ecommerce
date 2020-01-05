@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-cart-price',
+  selector: 'ecommerce-cart-price',
   templateUrl: './cart-price.component.html',
   styleUrls: ['./cart-price.component.scss']
 })

@@ -5,7 +5,7 @@ import { Options } from 'ng5-slider';
 import { Output } from '@angular/core';
 
 @Component({
-  selector: 'app-sidebar-filter',
+  selector: 'ecommerce-sidebar-filter',
   templateUrl: './sidebar-filter.component.html',
   styleUrls: ['./sidebar-filter.component.scss']
 })
