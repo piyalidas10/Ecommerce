@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { ValidationMessageService } from '../service/validation-msg.service';
 
 @Directive({
-  selector: '[appValidationLabel]'
+  selector: '[ecommerce-validation-label]'
 })
 export class ValidationLabelDirective implements OnInit {
 

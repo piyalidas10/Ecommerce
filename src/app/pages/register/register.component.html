@@ -9,27 +9,27 @@
       <div class="row form-group clearfix">
             <div class="col-md-4 col-12">
               <label for="firstName">{{content['formFields'][0]}}</label>
-                <input type="text" appValidationLabel formControlName="firstName" class="form-control" aria-required="true" />
+                <input type="text" ecommerce-validation-label formControlName="firstName" class="form-control" aria-required="true" />
             </div>
             <div class="col-md-4 col-12">
               <label for="middleName">{{content['formFields'][1]}}</label>
-                <input type="text" appValidationLabel formControlName="middleName" class="form-control" />
+                <input type="text" ecommerce-validation-label formControlName="middleName" class="form-control" />
             </div>
             <div class="col-md-4 col-12">
               <label for="lastName">{{content['formFields'][2]}}</label>
-                <input type="text" appValidationLabel formControlName="lastName" class="form-control" aria-required="true" />
+                <input type="text" ecommerce-validation-label formControlName="lastName" class="form-control" aria-required="true" />
             </div>
       </div>
       <div class="row form-group clearfix">
           <label for="dob" class="col-md-4 col-sm-5 col-12">{{content['formFields'][3]}}</label>
           <div class="col-md-8 col-sm-7 col-12">
-            <input type="text" appValidationLabel formControlName="dob" class="form-control" aria-required="true" />
+            <input type="text" ecommerce-validation-label formControlName="dob" class="form-control" aria-required="true" />
           </div>
       </div>
       <div class="row form-group clearfix">
           <label for="gender" class="col-md-4 col-sm-5 col-12">{{content['formFields'][4]}}</label>
           <div class="col-md-8 col-sm-7 col-12">
-            <select appValidationLabel formControlName="gender" class="form-control" aria-required="true">
+            <select ecommerce-validation-label formControlName="gender" class="form-control" aria-required="true">
               <option value="{{opt}}" *ngFor="let opt of content['genderOptions']">{{opt}}</option>
             </select>
           </div>
@@ -37,19 +37,19 @@
       <div class="row form-group clearfix">
         <label for="emailId" class="col-md-4 col-sm-5 col-12">{{content['formFields'][5]}}</label>
         <div class="col-md-8 col-sm-7 col-12">
-          <input type="text" appValidationLabel formControlName="emailId" class="form-control" aria-required="true" />
+          <input type="text" ecommerce-validation-label formControlName="emailId" class="form-control" aria-required="true" />
         </div>
       </div>
       <div class="row form-group clearfix">
         <label for="mobile" class="col-md-4 col-sm-5 col-12">{{content['formFields'][6]}}</label>
         <div class="col-md-8 col-sm-7 col-12">
-          <input type="text" appValidationLabel formControlName="mobile" class="form-control" aria-required="true" />
+          <input type="text" ecommerce-validation-label formControlName="mobile" class="form-control" aria-required="true" />
         </div>
       </div>
       <div class="row form-group clearfix">
         <label for="umail" class="col-md-4 col-sm-5 col-12">{{content['formFields'][7]}}</label>
         <div class="col-md-8 col-sm-7 col-12">
-          <input type="password" appValidationLabel formControlName="password" class="form-control" aria-required="true" />
+          <input type="password" ecommerce-validation-label formControlName="password" class="form-control" aria-required="true" />
         </div>
       </div>
       <div class="row form-group clearfix">
