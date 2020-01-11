@@ -1,0 +1,20 @@
+[
+    {
+        "catId" : "1",
+        "catName" : "electronics",
+        "catDesc" : "electronics",
+        "subCat": ["Laptops"]
+    },
+    {
+        "catId" : "2",
+        "catName" : "appliances",
+        "catDesc" : "appliances",
+        "subCat": ["television","microwave","electric kettle","mixer grinder","refrigerator","washing machine"]
+    },
+    {
+        "catId" : "3",
+        "catName" : "home-furniture",
+        "catDesc" : "home & furniture",
+        "subCat": ["Kitchen","Furniture"]
+    }
+]

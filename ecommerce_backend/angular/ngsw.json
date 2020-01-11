@@ -1,0 +1,123 @@
+{
+  "configVersion": 1,
+  "index": "./index.html",
+  "assetGroups": [
+    {
+      "name": "ecommerce",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "./1.98d35bbe27b81884c2c2.js",
+        "./2.08c3ebc7a7e649bba58c.js",
+        "./3.6bf9f540e50c8c54fb9e.js",
+        "./4.7f43bd95d41e3854bbd1.js",
+        "./5.7d226fe2a0c4160ebe14.js",
+        "./6.9abcec6e5de3270baf8e.js",
+        "./7.a4d7b830fe0864d46089.js",
+        "./8.bd3e74b97b927a124b98.js",
+        "./9.c177270571b1e767cc16.js",
+        "./common.be5c829287867807af1e.js",
+        "./favicon.ico",
+        "./index.html",
+        "./main.406d10e91652c1c27869.js",
+        "./polyfills.59b8ab2da5f340a759a4.js",
+        "./runtime.0c517d1f8aa6a57ed8ae.js",
+        "./styles.3e27009678b69f94015c.css"
+      ],
+      "patterns": [
+        "https:\\/\\/maxcdn\\.bootstrapcdn\\.com\\/bootstrap\\/4\\.3\\.1\\/css\\/bootstrap\\.min\\.css",
+        "https:\\/\\/cdnjs\\.cloudflare\\.com\\/ajax\\/libs\\/font-awesome\\/4\\.7\\.0\\/css\\/font-awesome\\.min\\.css",
+        "https:\\/\\/ajax\\.googleapis\\.com\\/ajax\\/libs\\/jquery\\/3\\.3\\.1\\/jquery\\.min\\.js",
+        "https:\\/\\/cdnjs\\.cloudflare\\.com\\/ajax\\/libs\\/popper\\.js\\/1\\.14\\.7\\/umd\\/popper\\.min\\.js",
+        "https:\\/\\/maxcdn\\.bootstrapcdn\\.com\\/bootstrap\\/4\\.3\\.1\\/js\\/bootstrap\\.min\\.js"
+      ]
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "./assets/css/login.component.scss",
+        "./assets/css/main.scss",
+        "./assets/icons/icon-128x128.png",
+        "./assets/icons/icon-144x144.png",
+        "./assets/icons/icon-152x152.png",
+        "./assets/icons/icon-192x192.png",
+        "./assets/icons/icon-384x384.png",
+        "./assets/icons/icon-512x512.png",
+        "./assets/icons/icon-72x72.png",
+        "./assets/icons/icon-96x96.png",
+        "./assets/js/owl.carousel.js",
+        "./assets/mockdata/cartinfo.json",
+        "./assets/mockdata/categories.json",
+        "./assets/mockdata/checkout.json",
+        "./assets/mockdata/content.json",
+        "./assets/mockdata/errors.json",
+        "./assets/mockdata/products.json",
+        "./assets/mockdata/validationerrors.json",
+        "./assets/styles/ecommerce.scss",
+        "./assets/styles/mixin.scss",
+        "./assets/styles/theme.scss"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "./1.98d35bbe27b81884c2c2.js": "17fbc86b1a9fd4fab4ec7a533cd8fe5cc4a85d2e",
+    "./2.08c3ebc7a7e649bba58c.js": "0a7e045c92d1ca442df7ee5f7a12f7b4836d629a",
+    "./3.6bf9f540e50c8c54fb9e.js": "f46835c5c2509cf39856b24409e00268dd800359",
+    "./4.7f43bd95d41e3854bbd1.js": "63fdf5245718a0cd40dfa075105a92a7a19dcd80",
+    "./5.7d226fe2a0c4160ebe14.js": "5c5e2080e845d8556275a0ddcd91aa3a4a71485c",
+    "./6.9abcec6e5de3270baf8e.js": "df926556aafa695a69dbc48401026b793a2e53d0",
+    "./7.a4d7b830fe0864d46089.js": "b0a500bba771b419a9e87aa27b2acbe2fb5dc4b1",
+    "./8.bd3e74b97b927a124b98.js": "493b70d54b510b0adf08559ac0d059e69fd330bc",
+    "./9.c177270571b1e767cc16.js": "e4939ecf780f8815639f30c6b99a1bde2dbb690f",
+    "./assets/css/login.component.scss": "e169788454181f1a5b2259a5bf0288a00d99ebc1",
+    "./assets/css/main.scss": "50aea78db5465bc81c0cb7d78c3a0d904a94d931",
+    "./assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "./assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "./assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "./assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "./assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "./assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "./assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "./assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "./assets/js/owl.carousel.js": "e36e270656befad5af2149fe6a4e99a776afd681",
+    "./assets/mockdata/cartinfo.json": "7b06e267d73e600e8f4bb31cd41f86da620c1467",
+    "./assets/mockdata/categories.json": "c04a4642ff6ac8c0671c669ef864de0211c42073",
+    "./assets/mockdata/checkout.json": "0b63f3603c3fabfeb790c8402500a4ea7b6fe6ad",
+    "./assets/mockdata/content.json": "4d3e854751efb7e8a11c5c66fbc86d03a3b6ab6f",
+    "./assets/mockdata/errors.json": "e94da9237398f449ee68b90bac99d3234b20925c",
+    "./assets/mockdata/products.json": "b4c52ed9893d816488be8f1ea8db59ba79255a4b",
+    "./assets/mockdata/validationerrors.json": "fe451fb39052299249657ed26f207e0a18d669ae",
+    "./assets/styles/ecommerce.scss": "494239a534df0e6ea7e3de12354fb2dc2627dcb1",
+    "./assets/styles/mixin.scss": "fbb76303173099c913bcc16397433ae5a9ce906b",
+    "./assets/styles/theme.scss": "558c9609457a61e5a0feeb54cc6b4a120c531f9f",
+    "./common.be5c829287867807af1e.js": "1c1b4017e11f12433eb01054ac3ec98d5259bfba",
+    "./favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
+    "./index.html": "d4a407903a248b7b0e40ab67faafc8d04b9d0180",
+    "./main.406d10e91652c1c27869.js": "6fba10dd9a2df93392bb9768eeba3820cb0dcead",
+    "./polyfills.59b8ab2da5f340a759a4.js": "3ef2876d863957e6e11e7b2277a55ac1aedb02cb",
+    "./runtime.0c517d1f8aa6a57ed8ae.js": "c612d5b62f7029a7d96a6614eed0ade2ab53fb32",
+    "./styles.3e27009678b69f94015c.css": "03cd35ed9adc91b492533fd96440108b4b50408c"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ]
+}
