@@ -8,6 +8,7 @@ import { SharedService } from '../../../service/shared.service';
 import { SidebarFilterComponent } from '../sidebar-filter/sidebar-filter.component';
 import { UpperCasePipe } from '@angular/common';
 import { Subscription } from 'rxjs';
+import {Constants} from '../../../constants/constants';
 
 import { environment } from '../../../../environments/environment';
 const BACKEND_URL = environment.apiEndpoint;
@@ -45,7 +46,8 @@ export class ProductListComponent implements OnInit, OnChanges, OnDestroy {
     private apiService: APIService,
     private sharedService: SharedService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private constants: Constants
   ) {
       this.router.events.pipe(
         filter(event => event instanceof ActivationEnd)
@@ -140,11 +142,11 @@ export class ProductListComponent implements OnInit, OnChanges, OnDestroy {
   sortbyMessage(event): void {
     this.option = event;
     const SortBy = (x, y) => {
-      if (this.option === 'Price -- Low to High') {
+      if (this.option === this.constants.sortbyPrice_L2H) {
         return ((x.Price === y.Price) ? 0 : ((x.Price > y.Price[this.option]) ? 1 : -1));
-      } else if (this.option === 'Price -- High to Low') {
+      } else if (this.option === this.constants.sortbyPrice_H2L) {
         return ((x.Price === y.Price) ? 0 : ((x.Price > y.Price) ? -1 : 1));
-      } else if (this.option === 'Newest First') {
+      } else if (this.option === this.constants.sortbyPrice_NF) {
         return ((x.DateOfEntry === y.DateOfEntry) ? 0 : ((x.DateOfEntry > y.DateOfEntry) ? 1 : -1));
       } else {
         return ((x.DateOfEntry === y.DateOfEntry) ? 0 : ((x.DateOfEntry > y.DateOfEntry) ? 1 : -1));

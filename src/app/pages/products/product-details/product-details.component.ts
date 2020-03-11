@@ -7,6 +7,7 @@ import { SharedService } from '../../../service/shared.service';
 import { AuthService } from '../../../auth/auth.service';
 import { MessageService } from '../../../service/message.service';
 import { Subscription } from 'rxjs';
+import {Constants} from '../../../constants/constants';
 
 import { environment } from '../../../../environments/environment';
 const BACKEND_URL = environment.apiEndpoint;
@@ -51,7 +52,8 @@ export class ProductDetailsComponent implements OnInit {
     private authService: AuthService,
     private msgService: MessageService,
     private el: ElementRef,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private constants: Constants
   ) {
     this.router.events.pipe(
       filter(event => event instanceof ActivationEnd)
@@ -90,11 +92,11 @@ export class ProductDetailsComponent implements OnInit {
 
   checkProductQuantity(qantity: Number) {
     if (qantity === 0) {
-      this.statusTxt = {type: 'not-available', text: 'Product Unavailable'};
+      this.statusTxt = {type: this.constants.prod_NA, text: 'Product Unavailable'};
     } else if (qantity < 5) {
-      this.statusTxt = {type: 'few-available', text: 'Hurry, Only ' + qantity + ' left!'};
+      this.statusTxt = {type: this.constants.prod_FEW, text: 'Hurry, Only ' + qantity + ' left!'};
     } else {
-      this.statusTxt = {type: 'available', text: 'Available'};
+      this.statusTxt = {type: this.constants.prod_AVAILABLE, text: 'Available'};
     }
     console.log('this.statusTxt ', this.statusTxt);
   }

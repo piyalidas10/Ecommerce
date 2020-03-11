@@ -5,6 +5,7 @@ import { APIService } from './service/api.service';
 import { SharedService } from './service/shared.service';
 import { AuthService } from './auth/auth.service';
 import { Subscription } from 'rxjs';
+import {Constants} from './constants/constants';
 
 @Component({
   selector: 'ecommerce-root',
@@ -14,7 +15,6 @@ import { Subscription } from 'rxjs';
 })
 export class AppComponent implements OnInit, OnChanges, OnDestroy {
 
-  title = 'Ecommerce POC by Piyali Das';
   isLoading: Boolean = true;
   custIsAuthenticated = false;
   custName: string;
@@ -28,6 +28,7 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy {
     private apiService: APIService,
     private authService: AuthService,
     private sharedService: SharedService,
+    private constants: Constants,
     @Inject(DOCUMENT) private doc
   ) {
     this.siteContent();
@@ -67,11 +68,11 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   setPageTitle() {
-    this.titleService.setTitle(this.title);
-    this.meta.addTag({name: 'keywords', content: 'Angular Project, Ecommerce Project'});
-    this.meta.addTag({name: 'description', content: 'Angular project POC by Piyali Das'});
-    this.meta.addTag({name: 'author', content: 'Piyali Das'});
-    this.meta.addTag({name: 'robots', content: 'index, follow'});
+    this.titleService.setTitle(this.constants['title']);
+    this.meta.addTag({name: 'keywords', content: this.constants['meta_keywords']});
+    this.meta.addTag({name: 'description', content: this.constants['meta_description']});
+    this.meta.addTag({name: 'author', content: this.constants['meta_author']});
+    this.meta.addTag({name: 'robots', content: this.constants['meta_robots']});
   }
 
   createLinkForCanonicalURL() {
