@@ -71,7 +71,7 @@
     "highcharts-angular": "^2.4.0",
     "https": "^1.0.0",
     "jsonwebtoken": "^8.2.1",
-    "mongoose": "^5.6.9",
+    "mongoose": "^5.7.5",
     "mongoose-double": "0.0.1",
     "ng5-slider": "^1.2.1",
     "nodemailer": "^6.3.0",
