@@ -1,46 +1,225 @@
 {
-    "siteTitle": "ecommerce",
-    "sitePage": [
+  "_id": {
+    "$oid": "5d62b075cbc1111884073fa5"
+  },
+  "registerPage": {
+    "pageTitle": "register",
+    "formFields": [
         {
-            "pageName": "login & signup",
-            "pageHeader": "login"
-        },
+        "key": "firstName",
+        "input": "text",
+        "valids": [{
+            "valid": "required",
+            "error": "firstName is required"
+          },
+          {
+            "valid": "pattern",
+            "validator": "^[a-zA-Z]+$",
+            "error": "firstName is accept only text"
+          },
+          {
+            "valid": "minlength",
+            "length": 3,
+            "error": "firstName must be at least 3 characters"
+          }
+        ]
+      },
+      {
+        "key": "middleName",
+        "input": "text",
+        "valids": [{
+            "valid": "required",
+            "error": "middleName is required"
+          },
+          {
+            "valid": "pattern",
+            "validator": "^[a-zA-Z]+$",
+            "error": "middleName is accept only text"
+          },
+          {
+            "valid": "minlength",
+            "length": 3,
+            "error": "middleName must be at least 3 characters"
+          }
+        ]
+      },
+      {
+        "key": "lastName",
+        "input": "text",
+        "valids": [{
+            "valid": "required",
+            "error": "lastName is required"
+          },
+          {
+            "valid": "pattern",
+            "validator": "^[a-zA-Z]+$",
+            "error": "lastName is accept only text"
+          },
+          {
+            "valid": "minlength",
+            "length": 3,
+            "error": "lastName must be at least 3 characters"
+          }
+        ]
+      },
+      {
+        "key": "dob",
+        "input": "text",
+        "valids": []
+      },
+      {
+        "key": "gender",
+        "input": "radio",
+        "items": [{
+            "name": "male",
+            "id": 0
+          },
+          {
+            "name": "female",
+            "id": 1
+          }
+        ],
+        "valids": []
+      },
         {
-            "pageName": "logout",
-            "pageHeader": "logout"
-        },
-        {
-            "pageName": "cart",
-            "pageHeader": "cart"
-        }
+        "key": "emailId",
+        "input": "emailId",
+        "valids": [{
+            "valid": "required",
+            "error": "emailId is required"
+          },
+          {
+            "valid": "emailId",
+            "error": "emailId must be valid"
+          }
+        ]
+      },
+      {
+        "key": "mobile",
+        "input": "text",
+        "valids": [{
+            "valid": "required",
+            "error": "mobile is required"
+          },
+          {
+            "valid": "pattern",
+            "validator": "^[0-9]{10}$",
+            "error": "mobile is accept only number and maximum 10 numbers "
+          }
+        ]
+      },
+      {
+        "key": "password",
+        "input": "password",
+        "valids": [{
+            "valid": "required",
+            "error": "password is required"
+          },
+          {
+            "valid": "minlength",
+            "length": 6,
+            "error": "Password must be at least 6 characters"
+          }
+        ]
+      }
     ],
-    "slider": [
+    "btn": "register with us",
+    "genderOptions": [
+      "male",
+      "female"
+    ]
+  },
+  "loginPage": {
+    "pageTitle": "login",
+    "formFields": [
         {
-            "title": "Los Angeles",
-            "caption": "We had such a great time in LA!",
-            "url": "https://demo.themedelights.com/Wordpress/WP01/WP004/wp-content/uploads/2019/03/Main_Banner-1-1.jpg"
-        },
-        {
-            "title": "Chicago",
-            "caption": "Thank you, Chicago!",
-            "url": "https://demo.themedelights.com/Wordpress/WP01/WP004/wp-content/uploads/2019/03/Main_Banner-2-1.jpg"
-        }
+        "key": "emailId",
+        "input": "emailId",
+        "valids": [{
+            "valid": "required",
+            "error": "emailId is required"
+          },
+          {
+            "valid": "emailId",
+            "error": "emailId must be valid"
+          }
+        ]
+      },
+      {
+      "key": "password",
+        "input": "password",
+        "valids": [{
+            "valid": "required",
+            "error": "password is required"
+          },
+          {
+            "valid": "minlength",
+            "length": 6,
+            "error": "Password must be at least 6 characters"
+          }
+        ]
+      }
     ],
-    "productPage": {
-        "sidebar": {
-            "header": "filters",
-            "subheader": [
-                "sub categories",
-                "price"
-            ]
-        },
-        "rightSide": {
-            "header": "sort by",
-            "subheaders": [
-                "Price -- Low to High",
-                "Price -- High to Low",
-                "Newest First"
-            ]
-        }
+    "btn": "login",
+    "txt": "new customer?",
+    "link": "start here"
+  },
+  "productPage": {
+    "sidebar": {
+      "subheader": [
+        "sub categories",
+        "price"
+      ],
+      "header": "filters"
+    },
+    "rightSide": {
+      "subheaders": [
+        "Price -- Low to High",
+        "Price -- High to Low",
+        "Newest First"
+      ],
+      "header": "sort by"
     }
+  },
+  "siteTitle": "ecommerce",
+  "sitePage": [{
+      "_id": {
+        "$oid": "5d62b075cbc1111884073fa8"
+      },
+      "pageName": "login & signup",
+      "pageHeader": "login"
+    },
+    {
+      "_id": {
+        "$oid": "5d62b075cbc1111884073fa6"
+      },
+      "pageName": "cart",
+      "pageHeader": "cart"
+    },
+    {
+      "_id": {
+        "$oid": "5d62b075cbc1111884073fa7"
+      },
+      "pageName": "logout",
+      "pageHeader": "logout"
+    }
+  ],
+  "slider": [{
+      "_id": {
+        "$oid": "5d62b075cbc1111884073faa"
+      },
+      "title": "Los Angeles",
+      "caption": "We had such a great time in LA!",
+      "url": "https://demo.themedelights.com/Wordpress/WP01/WP004/wp-content/uploads/2019/03/Main_Banner-1-1.jpg"
+    },
+    {
+      "_id": {
+        "$oid": "5d62b075cbc1111884073fa9"
+      },
+      "title": "Chicago",
+      "caption": "Thank you, Chicago!",
+      "url": "https://demo.themedelights.com/Wordpress/WP01/WP004/wp-content/uploads/2019/03/Main_Banner-2-1.jpg"
+    }
+  ],
+  "__v": 0
 }
