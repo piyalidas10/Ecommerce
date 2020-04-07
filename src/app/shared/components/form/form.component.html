@@ -1,0 +1,75 @@
+<form [formGroup]="formName" #formDir="ngForm" (ngSubmit)="verifyForm()">
+<div class="row" *ngFor="let form of formFields; let i = index">
+    <div class="col-12 form-group" *ngIf="form.input == 'text'">
+      <label>{{form.key}}
+        <span class="required" *ngIf="formName.get(form.key).hasError('required')">*</span>
+      </label>
+      <input [type]="form.input" [formControlName]="form.key" class="form-control" [ngClass]="{'is-invalid' : formName.get(form.key).errors && formDir.submitted }">
+      <div *ngIf="!formName.get(form.key).valid && formName.get(form.key).errors && formDir.submitted">
+        <div *ngFor="let err of form.valids; let k = index">
+          <span class="error" *ngIf="formName.get(form.key).hasError(err.valid)">{{err.error}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 form-group" *ngIf="form.input == 'email'">
+      <label>{{form.key}}
+        <span class="required" *ngIf="formName.get(form.key).hasError('required')">*</span>
+      </label>
+      <input [type]="form.input" [formControlName]="form.key" class="form-control" [ngClass]="{'is-invalid' : formName.get(form.key).errors && formDir.submitted }">
+      <div *ngIf="!formName.get(form.key).valid && formName.get(form.key).errors && formDir.submitted">
+        <div *ngFor="let err of form.valids; let k = index">
+          <span class="error" *ngIf="formName.get(form.key).hasError(err.valid)">{{err.error}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 form-group" *ngIf="form.input == 'password'">
+      <label>{{form.key}}
+        <span class="required" *ngIf="formName.get(form.key).hasError('required')">*</span>
+      </label>
+      <input [type]="form.input" minlength="3" [formControlName]="form.key" class="form-control" [ngClass]="{'is-invalid' : formName.get(form.key).errors && formDir.submitted }">
+      <div *ngIf="!formName.get(form.key).valid && formName.get(form.key).errors && formDir.submitted">
+        <div *ngFor="let err of form.valids; let k = index">
+          <span class="error" *ngIf="formName.get(form.key).hasError(err.valid)">{{err.error}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 form-group" *ngIf="form.input == 'select'">
+      <label>{{form.key}}
+        <span class="required" *ngIf="formName.get(form.key).hasError('required')">*</span>
+      </label>
+      <select [formControlName]="form.key" class="form-control" [ngClass]="{'is-invalid' : formName.get(form.key).errors && formDir.submitted }">
+        <option *ngFor="let item of form.items; let j = index" [value]="item.id">
+          {{item.name}}
+        </option>
+      </select>
+      <div *ngIf="!formName.get(form.key).valid && formName.get(form.key).errors && formDir.submitted ">
+        <div *ngFor="let err of form.valids; let k = index">
+          <span class="error" *ngIf="formName.get(form.key).hasError(err.valid)">{{err.error}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 form-group" *ngIf="form.input == 'radio'">
+      <label>{{form.key}}
+        <span class="required" *ngIf="formName.get(form.key).hasError('required')">*</span>
+      </label>
+      <div class="form-group">
+        <div class="form-check-inline" *ngFor="let item of form.items; let j = index">
+          <label class="form-check-label">
+            <input [type]="form.input" class="form-check-input" [formControlName]="form.key" [value]="item.id"
+              [ngClass]="{'is-invalid' : formName.get(form.key).errors && formDir.submitted }">{{item.name}}
+          </label>
+        </div>
+        <div *ngIf="!formName.get(form.key).valid && formName.get(form.key).errors && formDir.submitted">
+          <div *ngFor="let err of form.valids; let k = index">
+            <span class="error" *ngIf="formName.get(form.key).hasError(err.valid)">{{err.error}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-12 form-group text-center">
+        <button type="submit" class="btn btn-success">{{btnName}}</button>
+      </div>
+    </div>
+  </form>

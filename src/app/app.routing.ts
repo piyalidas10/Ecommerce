@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
 import { LoginGuard } from './auth/login.guard';
+import {Constants} from './constants/constants';
 
 const appRoutes: Routes = [
     {
@@ -59,6 +60,6 @@ const appRoutes: Routes = [
 @NgModule({
     imports: [RouterModule.forRoot(appRoutes, { useHash: true })],
     exports: [RouterModule],
-    providers: [AuthGuard, LoginGuard]
+    providers: [AuthGuard, LoginGuard, Constants]
 })
 export class AppRoutingModule { }

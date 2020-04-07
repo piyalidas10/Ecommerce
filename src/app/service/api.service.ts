@@ -103,21 +103,21 @@ export class APIService {
  /**
    * Get Form validation error message
   */
- getValidationErrorMessage() {
-  // tslint:disable-next-line:no-shadowed-variable
- const promise = new Promise((resolve, reject) => {
-   const apiURL = `${BACKEND_URL}${environment.VALIDATION_ERROR_MSG_PATH}`;
-   return this.http.get<{vlderrors: any}>(apiURL).toPromise().then(
-     res => {
-       resolve(res);
-     },
-     msg => {
-       reject(msg);
-     }
-   );
- });
- return promise;
-}
+//  getValidationErrorMessage() {
+//   // tslint:disable-next-line:no-shadowed-variable
+//  const promise = new Promise((resolve, reject) => {
+//    const apiURL = `${BACKEND_URL}${environment.VALIDATION_ERROR_MSG_PATH}`;
+//    return this.http.get<{vlderrors: any}>(apiURL).toPromise().then(
+//      res => {
+//        resolve(res);
+//      },
+//      msg => {
+//        reject(msg);
+//      }
+//    );
+//  });
+//  return promise;
+// }
 
 
   /**

@@ -1,4 +1,5 @@
 import { Component, OnInit, ElementRef, OnChanges, EventEmitter, Output, ViewChild, AfterViewInit } from '@angular/core';
+import {Constants} from '../../../constants/constants';
 
 @Component({
   selector: 'ecommerce-sortby',
@@ -11,10 +12,10 @@ export class SortbyComponent implements OnInit, OnChanges, AfterViewInit {
   @Output() changeEvent = new EventEmitter<any>();
   @ViewChild('selectSort') selectSort: ElementRef;
 
-  constructor() { }
+  constructor(private constants: Constants) { }
 
   ngOnInit() {
-    this.type = ['Price -- Low to High', 'Price -- High to Low', 'Newest First'];
+    this.type = [this.constants['sortbyPrice_L2H'], this.constants['sortbyPrice_H2L'], this.constants['sortbyPrice_NF']];
   }
 
   ngAfterViewInit() {

@@ -23,6 +23,11 @@ npm start
 npm run start:server
 ```
 
+# CI/CD (Continuous Integration/Continuous Delivery) with Heroku and GitHub
+https://www.youtube.com/watch?v=_tiecDrW6yY
+https://www.youtube.com/watch?v=O_xEqtjh1io
+https://devcenter.heroku.com/articles/github-integration
+
 # Mockdata
 
 ```
@@ -51,6 +56,13 @@ git checkout –b <branch_name> -------- create new branch and move to that new 
 git checkout <branch_name> -------- move to that branch
 git merge master -------- merge your changes of master branch to current branch
 ```
+## Understanding the Angular CLI Workspace File
+https://nitayneeman.com/posts/understanding-the-angular-cli-workspace-file/
+https://blog.ninja-squad.com/2018/05/04/angular-cli-6.0/
+```
+@angular-devkit/build-angular: this is the one to build an Angular application, now a required dependency in your CLI projects.
+```
+
 
 # API 
 ## Authorization using JWT
