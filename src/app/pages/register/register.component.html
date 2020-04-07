@@ -3,60 +3,14 @@
 </div>
 
 <div class="container" *ngIf="!isLoading">
-  <div class="col-xl-8 offset-xl-2 col-lg-10 col-lg-1 col-md-10 offset-md-1 registerBox">
+  <div class="col-xl-4 offset-xl-4 col-lg-6 offset-lg-3 col-md-8 offset-md-2 registerBox">
     <h3 class="text-center">{{content['pageTitle']}}</h3>
-    <form [formGroup]="registerForm" (ngSubmit)="verifyForm()">
-      <div class="row form-group clearfix">
-            <div class="col-md-4 col-12">
-              <label for="firstName">{{content['formFields'][0]}}</label>
-                <input type="text" ecommerce-validation-label formControlName="firstName" class="form-control" aria-required="true" />
-            </div>
-            <div class="col-md-4 col-12">
-              <label for="middleName">{{content['formFields'][1]}}</label>
-                <input type="text" ecommerce-validation-label formControlName="middleName" class="form-control" />
-            </div>
-            <div class="col-md-4 col-12">
-              <label for="lastName">{{content['formFields'][2]}}</label>
-                <input type="text" ecommerce-validation-label formControlName="lastName" class="form-control" aria-required="true" />
-            </div>
-      </div>
-      <div class="row form-group clearfix">
-          <label for="dob" class="col-md-4 col-sm-5 col-12">{{content['formFields'][3]}}</label>
-          <div class="col-md-8 col-sm-7 col-12">
-            <input type="text" ecommerce-validation-label formControlName="dob" class="form-control" aria-required="true" />
-          </div>
-      </div>
-      <div class="row form-group clearfix">
-          <label for="gender" class="col-md-4 col-sm-5 col-12">{{content['formFields'][4]}}</label>
-          <div class="col-md-8 col-sm-7 col-12">
-            <select ecommerce-validation-label formControlName="gender" class="form-control" aria-required="true">
-              <option value="{{opt}}" *ngFor="let opt of content['genderOptions']">{{opt}}</option>
-            </select>
-          </div>
-      </div>      
-      <div class="row form-group clearfix">
-        <label for="emailId" class="col-md-4 col-sm-5 col-12">{{content['formFields'][5]}}</label>
-        <div class="col-md-8 col-sm-7 col-12">
-          <input type="text" ecommerce-validation-label formControlName="emailId" class="form-control" aria-required="true" />
-        </div>
-      </div>
-      <div class="row form-group clearfix">
-        <label for="mobile" class="col-md-4 col-sm-5 col-12">{{content['formFields'][6]}}</label>
-        <div class="col-md-8 col-sm-7 col-12">
-          <input type="text" ecommerce-validation-label formControlName="mobile" class="form-control" aria-required="true" />
-        </div>
-      </div>
-      <div class="row form-group clearfix">
-        <label for="umail" class="col-md-4 col-sm-5 col-12">{{content['formFields'][7]}}</label>
-        <div class="col-md-8 col-sm-7 col-12">
-          <input type="password" ecommerce-validation-label formControlName="password" class="form-control" aria-required="true" />
-        </div>
-      </div>
-      <div class="row form-group clearfix">
-        <div class="col-12 text-center">
-            <button class="btn btn-primary" type="submit" role="button" appFormSubmit>{{content['btn']}}</button>
-        </div>
-      </div>  
-    </form>
+
+    <ecommerce-form
+      [formFields]="formFields"
+      [formName]="registerForm"
+      [btnName]="content['btn']"
+      (formValue)="getFormValue($event)"
+      ></ecommerce-form>
   </div>
 </div>

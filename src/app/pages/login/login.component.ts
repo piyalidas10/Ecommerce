@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, ViewEncapsulation, ElementRef, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl, ValidatorFn } from '@angular/forms';
 import { Router, ActivationEnd } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
 import { ILogin } from '../../modules/login';
@@ -8,7 +8,6 @@ import { AuthService } from '../../auth/auth.service';
 import { APIService } from '../../service/api.service';
 import { SharedService } from '../../service/shared.service';
 import { MessageService } from '../../service/message.service';
-import { ValidationMessageService } from '../../service/validation-msg.service';
 import { pipe, Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
 
@@ -30,6 +29,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   custName: string;
   authLoggedInStatus: Subscription;
   content = [];
+  formFields = [];
 
   constructor(
     private titleService: Title,
@@ -39,7 +39,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     private apiService: APIService,
     private sharedService: SharedService,
     private msgService: MessageService,
-    private validErrorMsgService: ValidationMessageService,
     private el: ElementRef
   ) {
       this.router.events.pipe(
@@ -51,8 +50,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.siteContent();
-    this.validationErrorMsg();
-    this.createForm();
   }
 
   async siteContent() {
@@ -64,7 +61,9 @@ export class LoginComponent implements OnInit, OnDestroy {
         subscribe(
           (res) => {
             this.content = res['loginPage'];
+            this.formFields = this.content['formFields'];
             console.log(this.content);
+            this.isLoading = false;
           }
         );
     } catch (error) {
@@ -73,21 +72,9 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
   }
 
-  createForm() {
-    this.loginForm = this.formBuilder.group({
-      emailId: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
-    });
-  }
-
-  verifyLogin() {
-    const invalidElements = this.el.nativeElement.querySelectorAll('.form-control.ng-invalid');
-    if (invalidElements.length > 0) {
-      invalidElements[0].focus();
-    } else {
-      console.log('Login details => ', this.loginForm.value);
-      this.login({value: this.loginForm.value, valid: true});
-    }
+  getFormValue(formVal) {
+    console.log('Login Form Value => ', formVal);
+    this.login({value: formVal, valid: true});
   }
 
   login({ value, valid }: { value: ILogin, valid: boolean }) {
@@ -98,26 +85,9 @@ export class LoginComponent implements OnInit, OnDestroy {
       console.log(invalidElements[0]);
       invalidElements[0].focus();
     } else {
-        this.authService.loginCustomer(this.loginForm.get('emailId').value, this.loginForm.get('password').value);
+        this.authService.loginCustomer(value);
     }
   }
-
-/*
-*** Get API response as validation error json and load response in validationErrorObj of validErrorMsgService
-*/
-validationErrorMsg() {
-  this.apiService.getValidationErrorMessage().then(
-    (res) => {
-      if (this.validErrorMsgService.validationErrorObj.length === 0) {
-        this.validErrorMsgService.validationErrorObj = res['vlderrors'][0]['validationErrors'];
-        console.log('Validation Error => ', this.validErrorMsgService.validationErrorObj);
-        this.isLoading = false;
-      }
-    }, (error) => {
-      this.errorData = this.sharedService.getErrorKeys(error.statusText);
-      this.isLoading = false;
-    });
-}
 
 ngOnDestroy() {
 

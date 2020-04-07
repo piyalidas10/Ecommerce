@@ -1,24 +1,32 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ValidationLabelDirective } from '../../directives/validation-label.directive';
+import { FormComponent } from '../components/form/form.component';
+
 
 @NgModule({
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
+  ],
+  declarations: [
+    ValidationLabelDirective,
+    FormComponent
   ],
   exports: [
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    ValidationLabelDirective
+    ValidationLabelDirective,
+    FormComponent
   ],
-  declarations: [
-    ValidationLabelDirective
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
   ],
-  providers: [
-  ]
+  providers: []
 })
 export class SharedModule { }

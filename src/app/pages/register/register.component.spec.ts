@@ -1,6 +1,5 @@
 import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { ValidationMessageService } from '../../service/validation-msg.service';
 import { RegisterComponent } from './register.component';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivationEnd } from '@angular/router';

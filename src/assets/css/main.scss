@@ -32,6 +32,14 @@ html,body {
     margin-top: -60px;
     animation: spin 2s linear infinite;
   }
+  .required{
+    color: $color-red;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .error{
+    color: $color-red;
+  }
   
   @keyframes spin {
     0% {

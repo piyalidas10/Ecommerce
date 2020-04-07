@@ -2,12 +2,11 @@ import { Component, OnInit, OnChanges, ElementRef, OnDestroy } from '@angular/co
 import { Title } from '@angular/platform-browser';
 import { Router, ActivationEnd } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators, ValidatorFn } from '@angular/forms';
 import { APIService } from '../../service/api.service';
 import { SharedService } from '../../service/shared.service';
 import { MessageService } from '../../service/message.service';
 import { AuthService } from '../../auth/auth.service';
-import { ValidationMessageService } from '../../service/validation-msg.service';
 import { IRegister } from '../../modules/register';
 import { Subscription } from 'rxjs';
 
@@ -22,6 +21,7 @@ export class RegisterComponent implements OnInit, OnChanges, OnDestroy {
   isLoading: Boolean = true;
   registerService: Subscription;
   content = [];
+  formFields = [];
 
   constructor(
     private titleService: Title,
@@ -31,8 +31,7 @@ export class RegisterComponent implements OnInit, OnChanges, OnDestroy {
     private sharedService: SharedService,
     private msgService: MessageService,
     private authService: AuthService,
-    private el: ElementRef,
-    private validErrorMsgService: ValidationMessageService
+    private el: ElementRef
   ) {
       this.router.events.pipe(
         filter(event => event instanceof ActivationEnd)
@@ -43,8 +42,6 @@ export class RegisterComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnInit() {
     this.siteContent();
-    this.createForm();
-    this.validationErrorMsg();
   }
 
   ngOnChanges() {}
@@ -58,7 +55,9 @@ export class RegisterComponent implements OnInit, OnChanges, OnDestroy {
         subscribe(
           (res) => {
             this.content = res['registerPage'];
-            console.log(this.content);
+            this.formFields = this.content['formFields'];
+            console.log('Register Page Content => ', this.content);
+            this.isLoading = false;
           }
         );
     } catch (error) {
@@ -67,31 +66,13 @@ export class RegisterComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
 
-  createForm() {
-    this.registerForm = this.formBuilder.group({
-      firstName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
-      middleName: ['', [Validators.minLength(2), Validators.maxLength(30)]],
-      lastName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
-      dob: ['', [Validators.minLength(2), Validators.maxLength(30)]],
-      gender: [''],
-      emailId: ['', [Validators.required, Validators.email, Validators.pattern('[^ @]*@[^ @]*')]],
-      mobile: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.minLength(10), , Validators.maxLength(10)]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
-    });
-  }
-
-  verifyForm() {
-    const invalidElements = this.el.nativeElement.querySelectorAll('.form-control.ng-invalid');
-    if (invalidElements.length > 0) {
-      invalidElements[0].focus();
-    } else {
-      console.log('Registration details => ', this.registerForm.value);
-      this.register({value: this.registerForm.value, valid: true});
-    }
+  getFormValue(formVal) {
+    console.log('Register Form Value => ', formVal);
+    this.register({value: formVal, valid: true});
   }
 
   register({ value, valid }: { value: IRegister, valid: boolean }) {
-      this.registerService = this.authService.createCustomer(this.registerForm.value)
+      this.registerService = this.authService.createCustomer(value)
           .pipe()
           .subscribe(
               data => {
@@ -104,23 +85,6 @@ export class RegisterComponent implements OnInit, OnChanges, OnDestroy {
                   this.msgService.error(error.error.message, true);
                   this.isLoading = false;
               });
-  }
-
-  /*
-  *** Get API response as validation error json and load response in validationErrorObj of validErrorMsgService
-  */
-  validationErrorMsg() {
-    this.apiService.getValidationErrorMessage().then(
-      (res) => {
-        if (this.validErrorMsgService.validationErrorObj.length === 0) {
-          this.validErrorMsgService.validationErrorObj = res['vlderrors'][0]['validationErrors'];
-          console.log('Validation Error => ', this.validErrorMsgService.validationErrorObj);
-          this.isLoading = false;
-        }
-      }, (error) => {
-        this.errorData = this.sharedService.getErrorKeys(error.statusText);
-        this.isLoading = false;
-      });
   }
 
   ngOnDestroy() {

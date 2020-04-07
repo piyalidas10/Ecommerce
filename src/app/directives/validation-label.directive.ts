@@ -1,7 +1,6 @@
 import { Directive, Input, HostListener, ElementRef, OnInit, OnDestroy } from '@angular/core';
 import { NgControl, ValidationErrors } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { ValidationMessageService } from '../service/validation-msg.service';
 
 @Directive({
   selector: '[ecommerce-validation-label]'
@@ -9,8 +8,7 @@ import { ValidationMessageService } from '../service/validation-msg.service';
 export class ValidationLabelDirective implements OnInit {
 
   constructor(private elRef: ElementRef,
-    private control: NgControl,
-    private validationMsgService: ValidationMessageService
+    private control: NgControl
   ) { }
 
   @Input('formControlName') formControlName: string;
@@ -50,7 +48,7 @@ export class ValidationLabelDirective implements OnInit {
     const firstKey = Object.keys(valErrors)[0];
     console.log('firstKey => ', firstKey);
     const errorMsgKey = this.formControlName + '-' + firstKey;
-    const errorMsg = this.validationMsgService.getValidationMsg(errorMsgKey);
+    const errorMsg = '';
     const errSpan = '<span style="color:red;" id="' + this.errorSpanId + '">' + errorMsg + '</span>';
     this.elRef.nativeElement.parentElement.insertAdjacentHTML('beforeend', errSpan);
     this.elRef.nativeElement.classList.add('is-invalid');
