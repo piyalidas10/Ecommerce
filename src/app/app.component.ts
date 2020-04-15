@@ -6,6 +6,7 @@ import { SharedService } from './service/shared.service';
 import { AuthService } from './auth/auth.service';
 import { Subscription } from 'rxjs';
 import {Constants} from './constants/constants';
+import { MessageService } from './service/message.service';
 
 @Component({
   selector: 'ecommerce-root',
@@ -19,8 +20,11 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy {
   custIsAuthenticated = false;
   custName: string;
   private authListenerSubs: Subscription;
+  private subscription: Subscription;
   content = [];
   errorData: any;
+  alertMsg: any;
+
 
   constructor(
     private titleService: Title,
@@ -29,6 +33,7 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy {
     private authService: AuthService,
     private sharedService: SharedService,
     private constants: Constants,
+    private msgService: MessageService,
     @Inject(DOCUMENT) private doc
   ) {
     this.siteContent();
@@ -39,11 +44,13 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy {
     this.createLinkForCanonicalURL();
     this.authService.autoAuthCust();
     this.checkAuthentication();
+    this.showMsgAlert();
   }
 
   ngOnChanges() {
     this.checkAuthentication();
     console.log('Piyali');
+    this.showMsgAlert();
   }
 
   async siteContent() {
@@ -92,6 +99,13 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy {
       console.log('Header Details => ', this.custIsAuthenticated, this.custName);
     });
  }
+
+ showMsgAlert() {
+  this.subscription = this.msgService.getMessage().subscribe(message => {
+      this.alertMsg = message;
+      console.log('showMsgAlert => ', this.alertMsg);
+  });
+}
 
 ngOnDestroy() {
   this.authListenerSubs.unsubscribe();

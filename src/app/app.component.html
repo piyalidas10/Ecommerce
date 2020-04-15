@@ -4,6 +4,6 @@
 <div class="pageContain" *ngIf="!isLoading">
     <ecommerce-header [custStatus]="custIsAuthenticated" [custName]="custName"></ecommerce-header>
     <ecommerce-navbar></ecommerce-navbar>
-    <ecommerce-alert></ecommerce-alert>
+    <ecommerce-alert [alertMsg]="alertMsg"></ecommerce-alert>
     <router-outlet></router-outlet>
 </div>

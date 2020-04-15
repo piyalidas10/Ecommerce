@@ -1,35 +1,20 @@
-import { Component, OnInit, OnDestroy, OnChanges, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, OnDestroy, OnChanges, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MessageService } from '../../../service/message.service';
 
 @Component({
   selector: 'ecommerce-alert',
   templateUrl: './alert.component.html',
-  styleUrls: ['./alert.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./alert.component.scss']
 })
-export class AlertComponent implements OnInit, OnChanges, OnDestroy {
+export class AlertComponent implements OnInit {
   private subscription: Subscription;
   message: any;
+  @Input() alertMsg;
 
   constructor(private msgService: MessageService) { }
 
   ngOnInit() {
-      // this.showMsgAlert();
   }
 
-  ngOnChanges() {
-    this.showMsgAlert();
-  }
-
-  showMsgAlert() {
-    this.subscription = this.msgService.getMessage().subscribe(message => {
-        this.message = message;
-        console.log('showMsgAlert => ', this.message);
-    });
-  }
-
-  ngOnDestroy() {
-      this.subscription.unsubscribe();
-  }
 }
