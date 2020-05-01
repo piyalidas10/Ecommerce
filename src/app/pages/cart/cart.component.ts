@@ -7,8 +7,7 @@ import { SharedService } from '../../service/shared.service';
 import { AuthService } from '../../auth/auth.service';
 import { Subscription } from 'rxjs';
 
-import { environment } from '../../../environments/environment';
-const BACKEND_URL = environment.apiEndpoint;
+import { AppConfig } from '../../settings/app.config';
 
 @Component({
   selector: 'ecommerce-cart',
@@ -42,6 +41,7 @@ export class CartComponent implements OnInit {
   }
 
   constructor(
+    private _appConfig: AppConfig,
     private titleService: Title,
     private router: Router,
     private Activatedroute: ActivatedRoute,
@@ -55,7 +55,7 @@ export class CartComponent implements OnInit {
     ).subscribe(event => {
       this.titleService.setTitle(this.titleCaseWord(event['snapshot'].params['id']) + ' ' + event['snapshot'].data['title']);
     });
-    this.imgURL = BACKEND_URL + environment.IMAGE_PATH;
+    this.imgURL = this._appConfig.apiEndpoint + this._appConfig.IMAGE_PATH;
     this.getSessionInfo();
   }
 

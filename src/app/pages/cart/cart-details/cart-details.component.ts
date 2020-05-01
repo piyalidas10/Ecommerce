@@ -3,8 +3,7 @@ import { APIService } from '../../../service/api.service';
 import { SharedService } from '../../../service/shared.service';
 import { AuthService } from '../../../auth/auth.service';
 
-import { environment } from '../../../../environments/environment';
-const BACKEND_URL = environment.apiEndpoint;
+import { AppConfig } from '../../../settings/app.config';
 
 @Component({
   selector: 'ecommerce-cart-details',
@@ -19,12 +18,13 @@ export class CartDetailsComponent implements OnInit {
   @Output() isCartChanged = new EventEmitter<any>();
 
   constructor(
+    private _appConfig: AppConfig,
     private apiService: APIService,
     private sharedService: SharedService,
     private authService: AuthService,
     private cdr: ChangeDetectorRef
   ) {
-    this.imgURL = BACKEND_URL + environment.IMAGE_PATH;
+    this.imgURL = this._appConfig.apiEndpoint + this._appConfig.IMAGE_PATH;
   }
 
   ngOnInit() {

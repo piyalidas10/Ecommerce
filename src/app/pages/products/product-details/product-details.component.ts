@@ -9,8 +9,7 @@ import { MessageService } from '../../../service/message.service';
 import { Subscription } from 'rxjs';
 import {Constants} from '../../../constants/constants';
 
-import { environment } from '../../../../environments/environment';
-const BACKEND_URL = environment.apiEndpoint;
+import { AppConfig } from '../../../settings/app.config';
 
 
 @Component({
@@ -44,6 +43,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   constructor(
+    private _appConfig: AppConfig,
     private titleService: Title,
     private router: Router,
     private Activatedroute: ActivatedRoute,
@@ -60,7 +60,7 @@ export class ProductDetailsComponent implements OnInit {
     ).subscribe(event => {
       this.titleService.setTitle(this.titleCaseWord(event['snapshot'].params['id']) + ' ' + event['snapshot'].data['title']);
     });
-    this.imgURL = BACKEND_URL + environment.IMAGE_PATH;
+    this.imgURL = this._appConfig.apiEndpoint + this._appConfig.IMAGE_PATH;
     this.getSessionInfo();
   }
 

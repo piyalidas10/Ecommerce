@@ -4,8 +4,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from './message.service';
 
-import { environment } from '../../environments/environment';
-const BACKEND_URL = environment.apiEndpoint;
+import { AppConfig } from '../settings/app.config';
 
 
 @Injectable({
@@ -17,6 +16,7 @@ export class AdminApiService {
   public ecommerceRQSTOptions: any;
 
   constructor(
+    private _appConfig: AppConfig,
     private http: HttpClient,
     private messageService: MessageService
   ) { }
@@ -37,7 +37,7 @@ export class AdminApiService {
    * Get customers registrations in year
   */
   getCustomers(): Observable<any> {
-    const apiURL = `${BACKEND_URL}${environment.API_CUSTOMERSBYYEAR}`;
+    const apiURL = `${this._appConfig.apiEndpoint}${this._appConfig.API_CUSTOMERSBYYEAR}`;
     return this.http.get(apiURL)
     .pipe(map(response => {
       return response;
@@ -48,7 +48,7 @@ export class AdminApiService {
    * Get customers genderwise
   */
   getCustomersByGender(): Observable<any> {
-    const apiURL = `${BACKEND_URL}${environment.API_CUTOMERSBYGENDER}`;
+    const apiURL = `${this._appConfig.apiEndpoint}${this._appConfig.API_CUTOMERSBYGENDER}`;
     return this.http.get(apiURL)
     .pipe(map(response => {
       return response;
@@ -59,7 +59,7 @@ export class AdminApiService {
    * Get products category wise
   */
  getProductsByCategory(): Observable<any> {
-    const apiURL = `${BACKEND_URL}${environment.API_PRODUCTSBYCATEGORY}`;
+    const apiURL = `${this._appConfig.apiEndpoint}${this._appConfig.API_PRODUCTSBYCATEGORY}`;
     return this.http.get(apiURL)
     .pipe(map(response => {
       return response;

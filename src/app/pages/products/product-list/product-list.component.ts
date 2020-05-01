@@ -10,8 +10,7 @@ import { UpperCasePipe } from '@angular/common';
 import { Subscription } from 'rxjs';
 import {Constants} from '../../../constants/constants';
 
-import { environment } from '../../../../environments/environment';
-const BACKEND_URL = environment.apiEndpoint;
+import { AppConfig } from '../../../settings/app.config';
 
 @Component({
   selector: 'ecommerce-product-list',
@@ -42,6 +41,7 @@ export class ProductListComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   constructor(
+    private _appConfig: AppConfig,
     private titleService: Title,
     private apiService: APIService,
     private sharedService: SharedService,
@@ -54,7 +54,7 @@ export class ProductListComponent implements OnInit, OnChanges, OnDestroy {
       ).subscribe(event => {
         this.titleService.setTitle(this.titleCaseWord(event['snapshot'].params['cat']) + ' ' + event['snapshot'].data['title']);
       });
-      this.imgURL = BACKEND_URL + environment.IMAGE_PATH;
+      this.imgURL = this._appConfig.apiEndpoint + this._appConfig.IMAGE_PATH;
   }
 
   ngOnInit() {

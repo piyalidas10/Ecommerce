@@ -8,8 +8,7 @@ import { ILogin } from '../modules/login';
 import { IRegister } from '../modules/register';
 import { MessageService } from '../service/message.service';
 
-import { environment } from '../../environments/environment';
-const BACKEND_URL = environment.apiEndpoint;
+import { AppConfig } from '../settings/app.config';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +24,7 @@ export class AuthService {
   public loggedInStatus = new BehaviorSubject<boolean>(false);
 
   constructor(
+    private _appConfig: AppConfig,
     private http: HttpClient,
     private router: Router,
     private msgService: MessageService
@@ -54,7 +54,7 @@ export class AuthService {
       const authData = { customerFirstName: registerVal.firstName, customerMiddleName: registerVal.middleName,
         customerLastName: registerVal.lastName, customerDOB: registerVal.dob, customerGender: registerVal.gender,
         customerEmail: registerVal.email, customerMobile: registerVal.mobile, customerPass: registerVal.password};
-      const apiURL = `${BACKEND_URL}${environment.API_REGISTER_PATH}`;
+      const apiURL = `${this._appConfig.apiEndpoint}${this._appConfig.API_REGISTER_PATH}`;
       return this.http.post<any>(apiURL, authData)
             .pipe(map(response => {
               console.log('createCustomer => ', response);
@@ -65,7 +65,7 @@ export class AuthService {
   loginCustomer(cusInfo) {
             const authData = { customerEmail: cusInfo.email, customerPass: cusInfo.password };
             console.log('loginCustomer authData => ', authData);
-            const apiURL = `${BACKEND_URL}${environment.API_LOGIN_PATH}`;
+            const apiURL = `${this._appConfig.apiEndpoint}${this._appConfig.API_LOGIN_PATH}`;
             return this.http.post
             <{ token: string; expiresIn: number; email: string, custFname: string, custMname: string, custLname: string }>
             (apiURL, authData)
