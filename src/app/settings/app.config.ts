@@ -1,4 +1,8 @@
-import { Inject, isDevMode } from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
+
+@Injectable({
+    providedIn: 'root'
+  })
 
 export class AppConfig {
     apiEndpoint: string;

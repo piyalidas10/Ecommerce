@@ -6,8 +6,6 @@ import { HttpErrorInterceptor } from './service/http-error-interceptor';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
 import { AuthInterceptor } from './auth/auth-interceptor';
-import { PlatformConfig } from './settings/platform.config';
-import { AppConfig } from './settings/app.config';
 
 
 import { HeaderModule } from './shared/components/header/header.module';
@@ -50,8 +48,6 @@ import { AlertComponent } from './shared/components/alert/alert.component';
     CUSTOM_ELEMENTS_SCHEMA
   ],
   providers: [
-    PlatformConfig,
-    AppConfig,
     APIService,
     AuthService,
     {
