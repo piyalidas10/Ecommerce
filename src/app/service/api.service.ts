@@ -6,8 +6,7 @@ import { MessageService } from './message.service';
 import { resolve, reject } from 'q';
 import { Icategories } from '../modules/categories';
 
-import { environment } from '../../environments/environment';
-const BACKEND_URL = environment.apiEndpoint;
+import { AppConfig } from '../settings/app.config';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +17,7 @@ export class APIService {
   public ecommerceRQSTOptions: any;
 
   constructor(
+    private _appConfig: AppConfig,
     private http: HttpClient,
     private messageService: MessageService
   ) { }
@@ -47,7 +47,7 @@ export class APIService {
   getCategories() {
     // tslint:disable-next-line:no-shadowed-variable
     const promise = new Promise((resolve, reject) => {
-      const apiURL = `${BACKEND_URL}${environment.API_CATEGORY_PATH}`;
+      const apiURL = `${this._appConfig.apiEndpoint}${this._appConfig.API_CATEGORY_PATH}`;
       return this.http.get<{categories: Icategories[]}>(apiURL).toPromise().then(
         res => {
           resolve(res);
@@ -67,7 +67,7 @@ export class APIService {
  getContent() {
   // tslint:disable-next-line:no-shadowed-variable
   const promise = new Promise((resolve, reject) => {
-    const apiURL = `${BACKEND_URL}${environment.API_CONTENT_PATH}`;
+    const apiURL = `${this._appConfig.apiEndpoint}${this._appConfig.API_CONTENT_PATH}`;
     return this.http.get<{content: any}>(apiURL).toPromise().then(
       res => {
         resolve(res);
@@ -86,7 +86,7 @@ export class APIService {
  getErrorMessage() {
    // tslint:disable-next-line:no-shadowed-variable
   const promise = new Promise((resolve, reject) => {
-    const apiURL = `${BACKEND_URL}${environment.ERROR_MSG_PATH}`;
+    const apiURL = `${this._appConfig.apiEndpoint}${this._appConfig.ERROR_MSG_PATH}`;
     return this.http.get<{srverrors: any}>(apiURL).toPromise().then(
       res => {
         resolve(res);
@@ -106,7 +106,7 @@ export class APIService {
 //  getValidationErrorMessage() {
 //   // tslint:disable-next-line:no-shadowed-variable
 //  const promise = new Promise((resolve, reject) => {
-//    const apiURL = `${BACKEND_URL}${environment.VALIDATION_ERROR_MSG_PATH}`;
+//    const apiURL = `${this._appConfig.apiEndpoint}${this._appConfig.VALIDATION_ERROR_MSG_PATH}`;
 //    return this.http.get<{vlderrors: any}>(apiURL).toPromise().then(
 //      res => {
 //        resolve(res);
@@ -125,7 +125,7 @@ export class APIService {
   */
   getProducts(cat: string): Observable<any> {
     const authData = {category : cat};
-    const apiURL = `${BACKEND_URL}${environment.API_PRODUCT_LIST_PATH}`;
+    const apiURL = `${this._appConfig.apiEndpoint}${this._appConfig.API_PRODUCT_LIST_PATH}`;
     return this.http.post(apiURL, authData)
     .pipe(map(response => {
       return response;
@@ -136,7 +136,7 @@ export class APIService {
    * Get product details
   */
   getProductDetails(id: string): Observable<any> {
-      const apiURL = `${BACKEND_URL}${environment.API_PRODUCT_DETAILS_PATH}`;
+      const apiURL = `${this._appConfig.apiEndpoint}${this._appConfig.API_PRODUCT_DETAILS_PATH}`;
       const authData = {productid : id};
       return this.http.post(apiURL, authData)
       .pipe(map(response => {
@@ -149,7 +149,7 @@ export class APIService {
    * Check product availability in cart
   */
  isAvailableInCart(email): Observable<any> {
-  const apiURL = `${BACKEND_URL}${environment.API_CART_CHECK_PRODUCT}`;
+  const apiURL = `${this._appConfig.apiEndpoint}${this._appConfig.API_CART_CHECK_PRODUCT}`;
   const authData = {email: email};
   return this.http.post(apiURL, authData, this.ecommerceRQSTOptions)
   .pipe(map(response => {
@@ -162,7 +162,7 @@ export class APIService {
    * Add to cart details
   */
  addToCart(sessionInfoDt, productInfoDt): Observable<any> {
-    const apiURL = `${BACKEND_URL}${environment.API_CART_PATH}`;
+    const apiURL = `${this._appConfig.apiEndpoint}${this._appConfig.API_CART_PATH}`;
     const authData = {sessionInfo: sessionInfoDt, productsInfo: productInfoDt};
     return this.http.post(apiURL, authData, this.ecommerceRQSTOptions)
     .pipe(map(response => {
@@ -175,7 +175,7 @@ export class APIService {
    * Add product quantity to buy
   */
  productAddToBuy(email, id, price, qty): Observable<any> {
-  const apiURL = `${BACKEND_URL}${environment.API_CART_ADD_PRODUCT_QUANTITY}`;
+  const apiURL = `${this._appConfig.apiEndpoint}${this._appConfig.API_CART_ADD_PRODUCT_QUANTITY}`;
   const authData = {email: email, id: id, price: price, qty: qty};
   return this.http.post(apiURL, authData, this.ecommerceRQSTOptions)
   .pipe(map(response => {
@@ -188,7 +188,7 @@ export class APIService {
    * Delete product quantity to buy
   */
  productDeleteToBuy(email, id, price, qty): Observable<any> {
-  const apiURL = `${BACKEND_URL}${environment.API_CART_DELETE_PRODUCT_QUANTITY}`;
+  const apiURL = `${this._appConfig.apiEndpoint}${this._appConfig.API_CART_DELETE_PRODUCT_QUANTITY}`;
   const authData = {email: email, id: id, price: price, qty: qty};
   return this.http.post(apiURL, authData, this.ecommerceRQSTOptions)
   .pipe(map(response => {
@@ -200,7 +200,7 @@ export class APIService {
    * Remoe product from cart
   */
  productRemoveFromCart(email, id): Observable<any> {
-  const apiURL = `${BACKEND_URL}${environment.API_CART_REMOVE_PRODUCT}`;
+  const apiURL = `${this._appConfig.apiEndpoint}${this._appConfig.API_CART_REMOVE_PRODUCT}`;
   const authData = {email: email, id: id};
   return this.http.post(apiURL, authData, this.ecommerceRQSTOptions)
   .pipe(map(response => {

@@ -1,12 +1,14 @@
 import { Component, ViewEncapsulation, OnInit, OnDestroy, Inject, OnChanges } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { DOCUMENT } from '@angular/common';
+import { PlatformConfig } from './settings/platform.config';
 import { APIService } from './service/api.service';
 import { SharedService } from './service/shared.service';
 import { AuthService } from './auth/auth.service';
-import { Subscription } from 'rxjs';
+import { Subscription, from } from 'rxjs';
 import {Constants} from './constants/constants';
 import { MessageService } from './service/message.service';
+
 
 @Component({
   selector: 'ecommerce-root',
@@ -27,6 +29,7 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy {
 
 
   constructor(
+    private _platformConfig: PlatformConfig,
     private titleService: Title,
     private meta: Meta,
     private apiService: APIService,
@@ -40,11 +43,14 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnInit() {
-    this.setPageTitle();
-    this.createLinkForCanonicalURL();
-    this.authService.autoAuthCust();
-    this.checkAuthentication();
-    this.showMsgAlert();
+    console.log('_platformConfig (check for browser) => ', this._platformConfig);
+    if (this._platformConfig.isBrowser) {
+      this.setPageTitle();
+      this.createLinkForCanonicalURL();
+      this.authService.autoAuthCust();
+      this.checkAuthentication();
+      this.showMsgAlert();
+    }
   }
 
   ngOnChanges() {
