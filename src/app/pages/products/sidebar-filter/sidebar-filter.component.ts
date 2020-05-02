@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Renderer2, ElementRef } from '@angular/core';
 import { APIService } from '../../../service/api.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { PlatformConfig } from '../../../settings/platform.config';
 import { Options } from 'ng5-slider';
 import { Output } from '@angular/core';
 
@@ -23,6 +24,7 @@ export class SidebarFilterComponent implements OnInit {
   @Output() chooseSubcat = new EventEmitter<any>();
 
   constructor(
+    private _platformConfig: PlatformConfig,
     private apiService: APIService,
     private route: ActivatedRoute,
     private router: Router,
@@ -31,8 +33,10 @@ export class SidebarFilterComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.subCategories();
-    this.onloadSelected();
+    if (this._platformConfig.isBrowser) {
+      this.subCategories();
+      this.onloadSelected();
+    }
   }
 
   subCategories() {

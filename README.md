@@ -179,44 +179,140 @@ ng build --prod
 http-server -p 8081 -c-1 dist/ecommerce
 ```
 
-## Configure environment.ts for LOCAL
+## Configure Application Settings
 
 ```
-export const environment = {
-  production: false,
-  apiEndpoint: 'http://localhost:3000/',
-  API_CATEGORY_PATH: 'api/categories',
-  API_CONTENT_PATH: 'api/content',
-  API_PRODUCT_LIST_PATH: 'api/products',
-  API_PRODUCT_DETAILS_PATH: 'api/products/productdetails',
-  API_PRODUCT_ADD_PATH: '',
-  API_PRODUCT_DELETE_PATH: '',
-  API_REGISTER_PATH: 'api/auth/register',
-  API_LOGIN_PATH: 'api/auth/login',
-  IMAGE_PATH: 'images/products/',
-  ERROR_MSG_PATH: 'api/errors',
-  VALIDATION_ERROR_MSG_PATH: 'api/validationerrors'
-};
+import { Injectable, isDevMode } from '@angular/core';
+
+@Injectable({
+    providedIn: 'root'
+  })
+
+export class AppConfig {
+    apiEndpoint: string;
+    API_CATEGORY_PATH: string;
+    API_CONTENT_PATH: string;
+    API_PRODUCT_LIST_PATH: string;
+    API_PRODUCT_DETAILS_PATH: string;
+    API_PRODUCT_ADD_PATH: string;
+    API_PRODUCT_DELETE_PATH: string;
+    API_REGISTER_PATH: string;
+    API_LOGIN_PATH: string;
+    API_CART_PATH: string;
+    API_CART_CHECK_PRODUCT: string;
+    API_CART_ADD_PRODUCT_QUANTITY: string;
+    API_CART_DELETE_PRODUCT_QUANTITY: string;
+    API_CART_REMOVE_PRODUCT: string;
+    API_CUSTOMERSBYYEAR: string;
+    API_CUTOMERSBYGENDER: string;
+    API_PRODUCTSBYCATEGORY: string;
+    IMAGE_PATH: string;
+    ERROR_MSG_PATH: string;
+    VALIDATION_ERROR_MSG_PATH: string;
+
+    envDevMode: Boolean;
+
+    constructor() {
+        console.log('Environment in Development mode => ', isDevMode());
+        this.envDevMode = isDevMode();
+        if (this.envDevMode) {
+            this.apiEndpoint = 'http://localhost:3000/';
+        } else {
+            this.apiEndpoint = 'https://piyali-ecommerce.herokuapp.com/';
+        }
+        this.API_CATEGORY_PATH = 'api/categories';
+        this.API_CONTENT_PATH = 'api/content';
+        this.API_PRODUCT_LIST_PATH = 'api/products';
+        this.API_PRODUCT_DETAILS_PATH = 'api/products/productdetails';
+        this.API_PRODUCT_ADD_PATH = '';
+        this.API_PRODUCT_DELETE_PATH = '';
+        this.API_REGISTER_PATH = 'api/auth/register';
+        this.API_LOGIN_PATH = 'api/auth/login';
+        this.API_CART_PATH = 'api/cart';
+        this.API_CART_CHECK_PRODUCT = 'api/cart/check';
+        this.API_CART_ADD_PRODUCT_QUANTITY = 'api/cart/addqty';
+        this.API_CART_DELETE_PRODUCT_QUANTITY = 'api/cart/deleteqty';
+        this.API_CART_REMOVE_PRODUCT = 'api/cart/removeprod';
+        this.API_CUSTOMERSBYYEAR = 'api/admin/customersbyyear';
+        this.API_CUTOMERSBYGENDER = 'api/admin/customersbygender';
+        this.API_PRODUCTSBYCATEGORY = 'api/admin/productsbycategory';
+        this.IMAGE_PATH = 'images/products/';
+        this.ERROR_MSG_PATH = 'api/errors';
+        this.VALIDATION_ERROR_MSG_PATH = 'api/validationerrors';
+    }
+}
+
 ```
 
-## Configure environment.ts for PRODUCTION
+## isDevMode in Angular
+
+Angular CLI projects already use a production environment variable to enable production mode when in the production environment. But Angular also provides us with an utility function called isDevMode that makes it easy to check if the app in running in dev mode:
 
 ```
-export const environment = {
-  production: true,
-  apiEndpoint: 'https://piyali-ecommerce.herokuapp.com/',
-  API_CATEGORY_PATH: 'api/categories',
-  API_CONTENT_PATH: 'api/content',
-  API_PRODUCT_LIST_PATH: 'api/products',
-  API_PRODUCT_DETAILS_PATH: 'api/products/productdetails',
-  API_PRODUCT_ADD_PATH: '',
-  API_PRODUCT_DELETE_PATH: '',
-  API_REGISTER_PATH: 'api/auth/register',
-  API_LOGIN_PATH: 'api/auth/login',
-  IMAGE_PATH: 'images/products/',
-  ERROR_MSG_PATH: 'api/errors',
-  VALIDATION_ERROR_MSG_PATH: 'api/validationerrors'
-};
+if (isDevMode()) {
+      console.log('👋 Development!');
+    } else {
+      console.log('💪 Production!');
+    
+    }
+}
+```
+
+## @Inject in Angular
+
+We are not actually working directly with the global values document and window. Instead, we inject them via Angular’s dependency injection - this keeps our code decoupled and testable, and gives us the option to later inject different values for these Injectables based on the environment.
+
+document is injectable via the DOCUMENT Injection Token which is part of Angular.
+
+```
+import { DOCUMENT } from '@angular/common';
+import { Component, PLATFORM_ID, Inject } from '@angular/core';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
+
+@Component({ 
+    ... 
+})
+export class MyComponent {
+
+    constructor(
+        @Inject(DOCUMENT) private document: Document,
+        @Inject(PLATFORM_ID) private platformId: any,
+        windowRefService: WindowRefService,
+    ) {}
+
+    ngOnInit() {
+        this.scrollToTop();
+    }
+
+    scrollToTop() {
+        if (isPlatformBrowser(this.platformId)) {
+            this.windowRefService.nativeWindow.scrollTo(0);
+        }
+    }
+}
+```
+
+## Prepare your code (isPlatformBrowser is your friend)
+
+There are a few important changes you need to make to your code if it is to be successfully rendered on the server. Every code base is different and so the specifics will be different. However, you can generally group SSR specific caveats into a few rules.
+1. Don’t access the DOM directly (the document/window is inaccessible without a browser).
+2. Limit/Remove usage of setInterval or similar timing functions
+3. Ensure your dependencies are compatible with SSR.
+4. SSR renders the initial state of your application. So as an example, if your images are loaded lazily, provide an SSR-compatible eager alternative using the next step (5) to ensure the content is there.
+5. If you need to prevent certain code from running on the server, wrap it in isPlatformBrowser(this.platformID) {}
+
+```
+constructor(@Inject(PLATFORM_ID) private platformID: Object) {
+        
+    // run main initialisation code
+    if (isPlatformBrowser(this.platformID)) {
+       this.observable$ = interval(1000)... // safe to run code
+    }
+    // OR the alternative
+    if (isPlatformServer(this.platformID)) {
+       // run server side code 
+    }
+}
 ```
 
 ## ngsw-config.json

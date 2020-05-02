@@ -2,6 +2,7 @@ import { Component, OnInit, OnChanges, ElementRef, OnDestroy } from '@angular/co
 import { Title } from '@angular/platform-browser';
 import { Router, ActivationEnd } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
+import { PlatformConfig } from '../../settings/platform.config';
 import { FormBuilder, FormGroup, FormControl, Validators, ValidatorFn } from '@angular/forms';
 import { APIService } from '../../service/api.service';
 import { SharedService } from '../../service/shared.service';
@@ -24,6 +25,7 @@ export class RegisterComponent implements OnInit, OnChanges, OnDestroy {
   formFields = [];
 
   constructor(
+    private _platformConfig: PlatformConfig,
     private titleService: Title,
     private router: Router,
     private formBuilder: FormBuilder,
@@ -41,7 +43,9 @@ export class RegisterComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnInit() {
-    this.siteContent();
+    if (this._platformConfig.isBrowser) {
+      this.siteContent();
+    }
   }
 
   ngOnChanges() {}

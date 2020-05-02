@@ -3,6 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { FormBuilder, FormGroup, Validators, FormControl, ValidatorFn } from '@angular/forms';
 import { Router, ActivationEnd } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
+import { PlatformConfig } from '../../settings/platform.config';
 import { ILogin } from '../../modules/login';
 import { AuthService } from '../../auth/auth.service';
 import { APIService } from '../../service/api.service';
@@ -32,6 +33,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   formFields = [];
 
   constructor(
+    private _platformConfig: PlatformConfig,
     private titleService: Title,
     private formBuilder: FormBuilder,
     private router: Router,
@@ -49,7 +51,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.siteContent();
+    if (this._platformConfig.isBrowser) {
+      this.siteContent();
+    }
   }
 
   async siteContent() {

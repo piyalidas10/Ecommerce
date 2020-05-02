@@ -2,6 +2,7 @@ import { Component, OnInit, OnChanges, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute, ActivationEnd } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { filter, map } from 'rxjs/operators';
+import { PlatformConfig } from '../../settings/platform.config';
 import { APIService } from '../../service/api.service';
 import { SharedService } from '../../service/shared.service';
 import { AuthService } from '../../auth/auth.service';
@@ -41,6 +42,7 @@ export class CartComponent implements OnInit {
   }
 
   constructor(
+    private _platformConfig: PlatformConfig,
     private _appConfig: AppConfig,
     private titleService: Title,
     private router: Router,
@@ -55,12 +57,16 @@ export class CartComponent implements OnInit {
     ).subscribe(event => {
       this.titleService.setTitle(this.titleCaseWord(event['snapshot'].params['id']) + ' ' + event['snapshot'].data['title']);
     });
-    this.imgURL = this._appConfig.apiEndpoint + this._appConfig.IMAGE_PATH;
-    this.getSessionInfo();
+    if (this._platformConfig.isBrowser) {
+      this.imgURL = this._appConfig.apiEndpoint + this._appConfig.IMAGE_PATH;
+      this.getSessionInfo();
+    }
   }
 
   ngOnInit() {
-    this.getSessionInfo();
+    if (this._platformConfig.isBrowser) {
+      this.getSessionInfo();
+    }
   }
 
   getSessionInfo() {

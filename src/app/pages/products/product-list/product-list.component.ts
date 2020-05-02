@@ -4,7 +4,7 @@ import { Title } from '@angular/platform-browser';
 import { filter, map } from 'rxjs/operators';
 import { APIService } from '../../../service/api.service';
 import { SharedService } from '../../../service/shared.service';
-
+import { PlatformConfig } from '../../../settings/platform.config';
 import { SidebarFilterComponent } from '../sidebar-filter/sidebar-filter.component';
 import { UpperCasePipe } from '@angular/common';
 import { Subscription } from 'rxjs';
@@ -41,6 +41,7 @@ export class ProductListComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   constructor(
+    private _platformConfig: PlatformConfig,
     private _appConfig: AppConfig,
     private titleService: Title,
     private apiService: APIService,
@@ -58,10 +59,12 @@ export class ProductListComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnInit() {
-    this.errorMsg();
-    this.getProductLists(this.subCat);
-    this.option = 'Newest First';
-    this.sortbyMessage(this.option);
+    if (this._platformConfig.isBrowser) {
+      this.errorMsg();
+      this.getProductLists(this.subCat);
+      this.option = 'Newest First';
+      this.sortbyMessage(this.option);
+    }
   }
 
   ngOnChanges() {
