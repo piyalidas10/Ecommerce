@@ -8,6 +8,7 @@ import { AuthService } from './auth/auth.service';
 import { Subscription, from } from 'rxjs';
 import {Constants} from './constants/constants';
 import { MessageService } from './service/message.service';
+import {LocalStore} from './ecommerce-store/local-store';
 
 
 @Component({
@@ -23,9 +24,10 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy {
   custName: string;
   private authListenerSubs: Subscription;
   private subscription: Subscription;
-  content = [];
+  content: any;
   errorData: any;
   alertMsg: any;
+  localStore: any;
 
 
   constructor(
@@ -39,7 +41,7 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy {
     private msgService: MessageService,
     @Inject(DOCUMENT) private doc
   ) {
-    this.siteContent();
+    this.localStore = new LocalStore();
   }
 
   ngOnInit() {
@@ -50,6 +52,7 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy {
       this.authService.autoAuthCust();
       this.checkAuthentication();
       this.showMsgAlert();
+      this.callLoalStore();
     }
   }
 
@@ -59,18 +62,27 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy {
     this.showMsgAlert();
   }
 
-  async siteContent() {
+  callLoalStore() {
+    if (this.localStore.getData() === null) {
+      this.siteContent();
+    } else {
+      this.content = this.localStore.getData();
+      this.storeLocalStoreDataInService();
+      this.isLoading = false;
+    }
+  }
+
+  siteContent() {
     try {
-      // "await" will wait for the promise to resolve or reject
-      // if it rejects, an error will be thrown, which you can
-      // catch with a regular try/catch block
-      await this.apiService.getContent().
+      Promise.all([this.apiService.getContent(), this.apiService.getCategories()]).
         then(
           (res) => {
-            this.content = res['content'][0];
-            console.log('this.content => ', this.content);
+            console.log('Promise all => ', res);
+            const arrjoin = Object.assign({}, res[0], res[1]);
+            console.log('Join = ', arrjoin);
+            this.localStore.setData(arrjoin); /* store site content data in localstorage */
+            this.storeLocalStoreDataInService();
             this.isLoading = false;
-            this.sharedService.setSiteContent(this.content);
           }
         );
     } catch (error) {
@@ -78,6 +90,13 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy {
       this.isLoading = false;
       console.log(this.errorData);
     }
+  }
+
+  storeLocalStoreDataInService() {
+    this.content = this.localStore.getData().content[0];
+    console.log('this.content => ', this.content);
+    this.sharedService.setSiteContent(this.content);
+    this.sharedService.setCategories(this.localStore.getData().categories);
   }
 
   setPageTitle() {

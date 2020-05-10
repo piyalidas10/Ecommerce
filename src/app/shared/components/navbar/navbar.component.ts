@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { APIService } from '../../../service/api.service';
+import { SharedService } from '../../../service/shared.service';
 import { Icategories } from '../../../modules/categories';
 
 @Component({
@@ -10,7 +10,7 @@ import { Icategories } from '../../../modules/categories';
 export class NavbarComponent implements OnInit {
   categories: {};
   selectedCat: string;
-  constructor(private productsData: APIService) { }
+  constructor(private sharedService: SharedService) { }
 
   ngOnInit() {
     this.listCategories();
@@ -21,11 +21,11 @@ export class NavbarComponent implements OnInit {
       // "await" will wait for the promise to resolve or reject
       // if it rejects, an error will be thrown, which you can
       // catch with a regular try/catch block
-      await this.productsData.getCategories().
-        then(
+      await this.sharedService.categories.
+        subscribe(
           (res: Icategories[]) => {
-            this.categories = res['categories'];
-            console.log(res);
+            this.categories = res;
+            console.log('categories => ', this.categories);
           }
         );
       } catch (error) {
