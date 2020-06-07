@@ -4,8 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { Ng5SliderModule } from 'ng5-slider';
-import { CurrencyPipe } from '../../pipe/currency.pipe';
-import { TruncatePipe } from '../../pipe/truncate.pipe';
+import { CurrencyPipe } from '@ecommerce/pipe/currency.pipe';
+import { TruncatePipe } from '@ecommerce/pipe/truncate.pipe';
 
 @NgModule({
   imports: [

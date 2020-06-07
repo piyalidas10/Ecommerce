@@ -2,15 +2,15 @@ import { Component, OnInit, Output, EventEmitter, ViewChild, OnDestroy, OnChange
 import { Router, ActivatedRoute, ActivationEnd } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { filter, map } from 'rxjs/operators';
-import { APIService } from '../../../service/api.service';
-import { SharedService } from '../../../service/shared.service';
-import { PlatformConfig } from '../../../settings/platform.config';
+import { APIService } from '@ecommerce/service/api.service';
+import { SharedService } from '@ecommerce/service/shared.service';
+import { PlatformConfig } from '@ecommerce/settings/platform.config';
 import { SidebarFilterComponent } from '../sidebar-filter/sidebar-filter.component';
 import { UpperCasePipe } from '@angular/common';
 import { Subscription } from 'rxjs';
-import {Constants} from '../../../constants/constants';
+import {Constants} from '@ecommerce/constants/constants';
 
-import { AppConfig } from '../../../settings/app.config';
+import { AppConfig } from '@ecommerce/settings/app.config';
 
 @Component({
   selector: 'ecommerce-product-list',

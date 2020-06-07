@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register.component';
-import { SharedModule } from '../../shared/modules/shared.module';
+import { SharedModule } from '@ecommerce/shared/modules/shared.module';
 
 
 const routes: Routes = [

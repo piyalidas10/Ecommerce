@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router, ActivationEnd } from '@angular/router';
 import { filter, map, flatMap } from 'rxjs/operators';
-import { PlatformConfig } from '../../settings/platform.config';
-import { APIService } from '../../service/api.service';
-import { SharedService } from '../../service/shared.service';
+import { PlatformConfig } from '@ecommerce/settings/platform.config';
+import { APIService } from '@ecommerce/service/api.service';
+import { SharedService } from '@ecommerce/service/shared.service';
 
 @Component({
   selector: 'ecommerce-home',

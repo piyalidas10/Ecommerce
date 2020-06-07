@@ -1,6 +1,6 @@
 import { Directive, Input, Output, EventEmitter, ElementRef, HostListener,
     Renderer2, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
-import { ModalDialogComponent } from '../shared/modal-dialog/modal-dialog.component';
+import { ModalDialogComponent } from '@ecommerce/shared/modal-dialog/modal-dialog.component';
 
 @Directive({
   selector: '[ecommerce-modal-box]'

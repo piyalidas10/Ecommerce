@@ -2,13 +2,13 @@ import { Component, OnInit, OnChanges, ElementRef, OnDestroy } from '@angular/co
 import { Title } from '@angular/platform-browser';
 import { Router, ActivationEnd } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
-import { PlatformConfig } from '../../settings/platform.config';
+import { PlatformConfig } from '@ecommerce/settings/platform.config';
 import { FormBuilder, FormGroup, FormControl, Validators, ValidatorFn } from '@angular/forms';
-import { APIService } from '../../service/api.service';
-import { SharedService } from '../../service/shared.service';
-import { MessageService } from '../../service/message.service';
-import { AuthService } from '../../auth/auth.service';
-import { IRegister } from '../../modules/register';
+import { APIService } from '@ecommerce/service/api.service';
+import { SharedService } from '@ecommerce/service/shared.service';
+import { MessageService } from '@ecommerce/service/message.service';
+import { AuthService } from '@ecommerce/auth/auth.service';
+import { IRegister } from '@ecommerce/modules/register';
 import { Subscription } from 'rxjs';
 
 @Component({

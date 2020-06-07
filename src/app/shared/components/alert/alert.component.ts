@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, OnChanges, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { MessageService } from '../../../service/message.service';
+import { MessageService } from '@ecommerce/service/message.service';
 
 @Component({
   selector: 'ecommerce-alert',

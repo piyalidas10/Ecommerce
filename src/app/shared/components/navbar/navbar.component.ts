@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SharedService } from '../../../service/shared.service';
-import { Icategories } from '../../../modules/categories';
+import { SharedService } from '@ecommerce/service/shared.service';
+import { Icategories } from '@ecommerce/modules/categories';
 
 @Component({
   selector: 'ecommerce-navbar',

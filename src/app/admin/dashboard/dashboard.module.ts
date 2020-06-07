@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { DashboardComponent } from './dashboard.component';
 import { HighchartsChartModule } from 'highcharts-angular';
-import { AdminApiService } from '../../service/admin-api.service';
+import { AdminApiService } from '@ecommerce/service/admin-api.service';
 
 const routes: Routes = [
   {

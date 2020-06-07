@@ -4,9 +4,9 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
 import { resolve, reject } from 'q';
-import { Icategories } from '../modules/categories';
+import { Icategories } from '@ecommerce/modules/categories';
 
-import { AppConfig } from '../settings/app.config';
+import { AppConfig } from '@ecommerce/settings/app.config';
 
 @Injectable({
   providedIn: 'root',

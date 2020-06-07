@@ -94,6 +94,36 @@ products.json
           ],
 ```
 
+# Angular - tsconfig paths configurations
+https://www.youtube.com/watch?v=whRsz7ywYZo
+
+You can do like this:
+```
+"compilerOptions": {
+        "baseUrl": "src", // This must be specified if "paths" is.
+         ...
+        "paths": {
+          "@ecommerce/auth/*": ["./app/auth/*"],
+          "@ecommerce/service/*": ["./app/service/*"],
+          "@ecommerce/directives/*": ["./app/directives/*"],
+          "@ecommerce/constants/*": ["./app/constants/*"],
+          "@ecommerce/modules/*": ["./app/modules/*"],
+          "@ecommerce/settings/*": ["./app/settings/*"],
+          "@ecommerce/pipe/*": ["./app/pipe/*"],
+          "@ecommerce/shared/*": ["./app/shared/*"],
+          "@ecommerce/css/*": ["./app/assets/css/*"],
+          "@ecommerce/images/*": ["./app/assets/images/*"],
+        },
+```
+Have in mind that the path where you want to refer to, it takes your baseUrl as the base of the route you are pointing to and it's mandatory as described on the doc.
+
+The character '@' is not mandatory.
+
+After you set it up on that way, you can easily use it like this:
+```
+import { Yo } from '@config/index';
+```
+
 # Package.json
 
 Husky is a really cool npm package that lets you define npm scripts that correlate to local Git events such as a commit or push.
@@ -705,6 +735,9 @@ http://editor.swagger.io/?_ga=2.212193814.307479361.1574600989-1925759619.157438
 
 
 # Stripe payment gateway
+
+
+https://angularfirst.com/typescript-string-enums/
 
 
 

@@ -1,7 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "src", // This must be specified if "paths" is.
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
@@ -12,6 +12,18 @@
     "typeRoots": [
       "node_modules/@types"
     ],
+    "paths": {
+      "@ecommerce/auth/*": ["./app/auth/*"],
+      "@ecommerce/service/*": ["./app/service/*"],
+      "@ecommerce/directives/*": ["./app/directives/*"],
+      "@ecommerce/constants/*": ["./app/constants/*"],
+      "@ecommerce/modules/*": ["./app/modules/*"],
+      "@ecommerce/settings/*": ["./app/settings/*"],
+      "@ecommerce/pipe/*": ["./app/pipe/*"],
+      "@ecommerce/shared/*": ["./app/shared/*"],
+      "@ecommerce/css/*": ["./app/assets/css/*"],
+      "@ecommerce/images/*": ["./app/assets/images/*"],
+    },
     "lib": [
       "es2017",
       "dom"

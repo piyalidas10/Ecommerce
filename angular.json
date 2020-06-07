@@ -28,7 +28,10 @@
               "src/manifest.json"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/styles/ecommerce.scss",
+              "src/assets/styles/mixin.scss",
+              "src/assets/styles/theme.scss"
             ],
             "scripts": []
           },

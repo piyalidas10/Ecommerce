@@ -4,7 +4,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from './message.service';
 
-import { AppConfig } from '../settings/app.config';
+import { AppConfig } from '@ecommerce/settings/app.config';
 
 
 @Injectable({

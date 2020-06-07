@@ -12,3 +12,36 @@
       -ms-border-radius: $radius;
           border-radius: $radius;
 }
+@mixin border-radius($left: 30, $top: 0, $right: 0, $bottom: 0) {
+  -webkit-border-radius: $left $top $right $bottom;
+     -moz-border-radius: $left $top $right $bottom;
+      -ms-border-radius: $left $top $right $bottom;
+          border-radius: $left $top $right $bottom;
+}
+
+@mixin sprite-icons($left, $right, $url) {
+  background-image: url($url);
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: left $left + px top $right + px;
+  display: inline-block;
+}
+
+$breakpoints: (
+    "phone":        400px,
+    "phone-wide":   480px,
+    "phablet":      560px,
+    "tablet-small": 640px,
+    "tablet":       768px,
+    "tablet-wide":  1024px,
+    "desktop":      1248px,
+    "desktop-wide": 1440px
+);
+@mixin mq($width, $type: max) {
+    @if map_has_key($breakpoints, $width) {
+        $width: map_get($breakpoints, $width);
+        @media only screen and (#{$type}-width: $width) {
+            @content;
+        }
+    }
+}

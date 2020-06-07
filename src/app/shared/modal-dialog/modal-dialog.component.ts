@@ -2,7 +2,7 @@ import {
   Component, Input, OnInit,
   ComponentFactoryResolver, ViewContainerRef, ViewChild, ElementRef, Renderer2, AfterContentInit, ChangeDetectionStrategy
 } from '@angular/core';
-import { ComponentLoaderService } from '../../service/modal.service';
+import { ComponentLoaderService } from '@ecommerce/service/modal.service';
 
 
 @Component({

@@ -2,14 +2,14 @@ import { Component, OnInit, ElementRef, ChangeDetectorRef } from '@angular/core'
 import { Router, ActivatedRoute, ActivationEnd } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { filter, map } from 'rxjs/operators';
-import { APIService } from '../../../service/api.service';
-import { SharedService } from '../../../service/shared.service';
-import { AuthService } from '../../../auth/auth.service';
-import { MessageService } from '../../../service/message.service';
+import { APIService } from '@ecommerce/service/api.service';
+import { SharedService } from '@ecommerce/service/shared.service';
+import { AuthService } from '@ecommerce/auth/auth.service';
+import { MessageService } from '@ecommerce/service/message.service';
 import { Subscription } from 'rxjs';
-import {Constants} from '../../../constants/constants';
+import {Constants} from '@ecommerce/constants/constants';
 
-import { AppConfig } from '../../../settings/app.config';
+import { AppConfig } from '@ecommerce/settings/app.config';
 
 
 @Component({

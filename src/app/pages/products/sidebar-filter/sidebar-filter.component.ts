@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter, Renderer2, ElementRef } from '@angular/core';
-import { APIService } from '../../../service/api.service';
+import { APIService } from '@ecommerce/service/api.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { PlatformConfig } from '../../../settings/platform.config';
+import { PlatformConfig } from '@ecommerce/settings/platform.config';
 import { Options } from 'ng5-slider';
 import { Output } from '@angular/core';
 

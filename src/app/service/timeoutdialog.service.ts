@@ -2,7 +2,7 @@ import { Injectable, Component, Input, OnInit, ApplicationRef, ChangeDetectorRef
 import { Observable, of } from 'rxjs';
 import { delay, tap } from 'rxjs/operators';
 import { NgbModal, NgbModalOptions, NgbActiveModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { TimeoutDialogComponent } from '../shared/components/timeout-dialog/timeout-dialog.component';
+import { TimeoutDialogComponent } from '@ecommerce/shared/components/timeout-dialog/timeout-dialog.component';
 
 @Injectable({
   providedIn: 'root'

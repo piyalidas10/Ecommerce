@@ -1,13 +1,13 @@
 import { Component, ViewEncapsulation, OnInit, OnDestroy, Inject, OnChanges } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { DOCUMENT } from '@angular/common';
-import { PlatformConfig } from './settings/platform.config';
-import { APIService } from './service/api.service';
-import { SharedService } from './service/shared.service';
+import { PlatformConfig } from '@ecommerce/settings/platform.config';
+import { APIService } from '@ecommerce/service/api.service';
+import { SharedService } from '@ecommerce/service/shared.service';
 import { AuthService } from './auth/auth.service';
 import { Subscription, from } from 'rxjs';
 import {Constants} from './constants/constants';
-import { MessageService } from './service/message.service';
+import { MessageService } from '@ecommerce/service/message.service';
 import {LocalStore} from './ecommerce-store/local-store';
 
 

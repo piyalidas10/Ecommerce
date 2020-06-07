@@ -2,13 +2,13 @@ import { Component, OnInit, OnChanges, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute, ActivationEnd } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { filter, map } from 'rxjs/operators';
-import { PlatformConfig } from '../../settings/platform.config';
-import { APIService } from '../../service/api.service';
-import { SharedService } from '../../service/shared.service';
-import { AuthService } from '../../auth/auth.service';
+import { PlatformConfig } from '@ecommerce/settings/platform.config';
+import { APIService } from '@ecommerce/service/api.service';
+import { SharedService } from '@ecommerce/service/shared.service';
+import { AuthService } from '@ecommerce/auth/auth.service';
 import { Subscription } from 'rxjs';
 
-import { AppConfig } from '../../settings/app.config';
+import { AppConfig } from '@ecommerce/settings/app.config';
 
 @Component({
   selector: 'ecommerce-cart',

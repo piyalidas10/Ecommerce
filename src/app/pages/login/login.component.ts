@@ -3,12 +3,12 @@ import { Title } from '@angular/platform-browser';
 import { FormBuilder, FormGroup, Validators, FormControl, ValidatorFn } from '@angular/forms';
 import { Router, ActivationEnd } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
-import { PlatformConfig } from '../../settings/platform.config';
-import { ILogin } from '../../modules/login';
-import { AuthService } from '../../auth/auth.service';
-import { APIService } from '../../service/api.service';
-import { SharedService } from '../../service/shared.service';
-import { MessageService } from '../../service/message.service';
+import { PlatformConfig } from '@ecommerce/settings/platform.config';
+import { ILogin } from '@ecommerce/modules/login';
+import { AuthService } from '@ecommerce/auth/auth.service';
+import { APIService } from '@ecommerce/service/api.service';
+import { SharedService } from '@ecommerce/service/shared.service';
+import { MessageService } from '@ecommerce/service/message.service';
 import { pipe, Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
 

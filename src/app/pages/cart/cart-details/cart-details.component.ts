@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, ChangeDetectorRef, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
-import { APIService } from '../../../service/api.service';
-import { SharedService } from '../../../service/shared.service';
-import { AuthService } from '../../../auth/auth.service';
+import { APIService } from '@ecommerce/service/api.service';
+import { SharedService } from '@ecommerce/service/shared.service';
+import { AuthService } from '@ecommerce/auth/auth.service';
 
-import { AppConfig } from '../../../settings/app.config';
+import { AppConfig } from '@ecommerce/settings/app.config';
 
 @Component({
   selector: 'ecommerce-cart-details',

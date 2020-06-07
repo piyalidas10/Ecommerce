@@ -2,10 +2,10 @@ import {
   Component, OnInit, OnChanges, OnDestroy, ChangeDetectorRef, ChangeDetectionStrategy,
   AfterViewInit, ViewChildren, QueryList, ElementRef, Renderer2, ViewEncapsulation, Input
 } from '@angular/core';
-import { APIService } from '../../../service/api.service';
+import { APIService } from '@ecommerce/service/api.service';
 import { Observable, Subscription } from 'rxjs';
-import { AuthService } from '../../../auth/auth.service';
-import { SharedService } from '../../../service/shared.service';
+import { AuthService } from '@ecommerce/auth/auth.service';
+import { SharedService } from '@ecommerce/service/shared.service';
 
 @Component({
   selector: 'ecommerce-header',
@@ -77,8 +77,9 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnChanges {
   checkIndexLogout() {
     for (const k in this.content) {
       if (this.content.hasOwnProperty(k)) {
-        // console.log(this.content[k]);
+        console.log(this.content[k]);
         if (this.content[k].pageHeader === 'logout') {
+          console.log(this.menuitems);
           this.menuitems.changes.subscribe(() => {
             this.modifyLogoutLink(k, this.content[k]);
           });

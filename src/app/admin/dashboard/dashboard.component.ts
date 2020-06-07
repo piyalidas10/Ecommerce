@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import * as Highcharts from 'highcharts';
-import { AdminApiService } from '../../service/admin-api.service';
+import { AdminApiService } from '@ecommerce/service/admin-api.service';
 import { Router, ActivatedRoute, ActivationEnd } from '@angular/router';
 import { Subscription, forkJoin } from 'rxjs';
 

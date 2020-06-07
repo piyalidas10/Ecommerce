@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, OnChanges, EventEmitter, Output, ViewChild, AfterViewInit } from '@angular/core';
-import {Constants} from '../../../constants/constants';
-import { PlatformConfig } from '../../../settings/platform.config';
+import {Constants} from '@ecommerce/constants/constants';
+import { PlatformConfig } from '@ecommerce/settings/platform.config';
 
 @Component({
   selector: 'ecommerce-sortby',
