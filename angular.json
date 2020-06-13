@@ -29,9 +29,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/assets/styles/ecommerce.scss",
-              "src/assets/styles/mixin.scss",
-              "src/assets/styles/theme.scss"
+              "src/ecommerce.scss"
             ],
             "scripts": []
           },
