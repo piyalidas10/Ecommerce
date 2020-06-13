@@ -75,7 +75,7 @@
     "mongoose-double": "0.0.1",
     "ng5-slider": "^1.2.1",
     "nodemailer": "^6.3.0",
-    "npm": "^6.8.0",
+    "npm": "^6.13.4",
     "rxjs": "^6.2.2",
     "rxjs-compat": "^6.5.2",
     "swagger-jsdoc": "^3.5.0",
