@@ -1,22 +1,31 @@
 {
-"errorslist" : {
-    "BAD_REQUEST": {
-        "errorDesc": "The server cannot or will not process the request due to an apparent client error."
+    "_id": {
+        "$oid": "5d502b91e7179a084eecdc05"
     },
-    "UNAUTHORIZED": {
-        "errorDesc": "The user does not have valid authentication credentials for the target resource."
-    },
-    "FORBIDDEN": {
-        "errorDesc": "The user might not have the necessary permissions for a resource, or may need an account of some sort."
-    },
-    "NOT_FOUND": {
-        "errorDesc": "The requested resource could not be found but may be available in the future."
-    },
-    "REQUEST_TIMEOUT": {
-        "errorDesc": "The server timed out waiting for the request."
-    },
-    "GATEWAY_TIMEOUT": {
-        "errorDesc": "A network error between servers on the internet or an issue with an actual server"
+    "errorslist": {
+        "BAD_REQUEST": {
+            "errorDesc": "The server cannot or will not process the request due to an apparent client error."
+        },
+        "UNAUTHORIZED": {
+            "errorDesc": "The user does not have valid authentication credentials for the target resource."
+        },
+        "FORBIDDEN": {
+            "errorDesc": "The user might not have the necessary permissions for a resource, or may need an account of some sort."
+        },
+        "NOT_FOUND": {
+            "errorDesc": "The requested resource could not be found but may be available in the future."
+        },
+        "REQUEST_TIMEOUT": {
+            "errorDesc": "The server timed out waiting for the request."
+        },
+        "GATEWAY_TIMEOUT": {
+            "errorDesc": "A network error between servers on the internet or an issue with an actual server"
+        },
+        "UNKNOWN_ERROR": {
+            "errorDesc": "A network error between servers on the internet or an issue with an actual server"
+        },
+        "INTERNAL_SERVER_ERROR": {
+            "errorDesc": "The server encountered an internal error or misconfiguration and was unable to complete your request"
+        }
     }
-}
 }

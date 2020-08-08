@@ -4,8 +4,8 @@ import { map } from 'rxjs/operators';
 import { Observable, BehaviorSubject, of } from 'rxjs';
 import { Subject } from 'rxjs';
 import { Router, ActivationEnd } from '@angular/router';
-import { ILogin } from '@ecommerce/modules/login';
-import { IRegister } from '@ecommerce/modules/register';
+import { ILogin } from '@ecommerce/interfaces/login';
+import { IRegister } from '@ecommerce/interfaces/register';
 import { MessageService } from '@ecommerce/service/message.service';
 
 import { AppConfig } from '@ecommerce/settings/app.config';

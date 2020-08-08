@@ -82,7 +82,7 @@ export class ProductListComponent implements OnInit, OnChanges, OnDestroy {
           this.productObsv = this.apiService.getProducts(cat).
             subscribe(
               data => {
-                this.products = data.products;
+                this.products = data;
                 console.log('Products => ', this.products);
                 // data.products.forEach(element => {
                 //   this.products.push(element);

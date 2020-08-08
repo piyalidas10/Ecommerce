@@ -1,18 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { MessageService } from './message.service';
 import { resolve, reject } from 'q';
-import { Icategories } from '@ecommerce/modules/categories';
+import { Icategories } from '@ecommerce/interfaces/categories';
 
 import { AppConfig } from '@ecommerce/settings/app.config';
+
+import { Categories } from '@ecommerce/models/categories.model';
+import { Errors } from '@ecommerce/models/errors.model';
+import { Products, Product } from '@ecommerce/models/products.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class APIService {
-  public products: {};
   public headers: HttpHeaders;
   public ecommerceRQSTOptions: any;
 
@@ -48,7 +51,7 @@ export class APIService {
     // tslint:disable-next-line:no-shadowed-variable
     const promise = new Promise((resolve, reject) => {
       const apiURL = `${this._appConfig.apiEndpoint}${this._appConfig.API_CATEGORY_PATH}`;
-      return this.http.get<{categories: Icategories[]}>(apiURL).toPromise().then(
+      return this.http.get<{categories: Categories[]}>(apiURL).toPromise().then(
         res => {
           resolve(res);
         },
@@ -87,7 +90,7 @@ export class APIService {
    // tslint:disable-next-line:no-shadowed-variable
   const promise = new Promise((resolve, reject) => {
     const apiURL = `${this._appConfig.apiEndpoint}${this._appConfig.ERROR_MSG_PATH}`;
-    return this.http.get<{srverrors: any}>(apiURL).toPromise().then(
+    return this.http.get<{srverrors: Errors}>(apiURL).toPromise().then(
       res => {
         resolve(res);
       },
@@ -123,13 +126,13 @@ export class APIService {
   /**
    * Get products by Category
   */
-  getProducts(cat: string): Observable<any> {
+  getProducts(cat: string): Observable<Product[]> {
     const authData = {category : cat};
     const apiURL = `${this._appConfig.apiEndpoint}${this._appConfig.API_PRODUCT_LIST_PATH}`;
-    return this.http.post(apiURL, authData)
-    .pipe(map(response => {
-      return response;
-    }));
+    return this.http.post<Product[]>(apiURL, authData)
+    .pipe(
+      map((response => response['products'].map((product: Product) => new Product().deserialize(product))))
+    );
   }
 
   /**

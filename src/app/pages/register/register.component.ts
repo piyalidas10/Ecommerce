@@ -8,7 +8,7 @@ import { APIService } from '@ecommerce/service/api.service';
 import { SharedService } from '@ecommerce/service/shared.service';
 import { MessageService } from '@ecommerce/service/message.service';
 import { AuthService } from '@ecommerce/auth/auth.service';
-import { IRegister } from '@ecommerce/modules/register';
+import { IRegister } from '@ecommerce/interfaces/register';
 import { Subscription } from 'rxjs';
 
 @Component({

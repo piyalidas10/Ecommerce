@@ -1,9 +1,4 @@
 export class Constants {
-    public meta_keywords = 'Angular Project, Ecommerce Project';
-    public meta_description = 'Angular project POC by Piyali Das';
-    public meta_author = 'Piyali Das';
-    public meta_robots = 'index, follow';
-
     public site_title = 'Ecommerce POC by Piyali Das';
 
     public prod_NA = 'not-available';

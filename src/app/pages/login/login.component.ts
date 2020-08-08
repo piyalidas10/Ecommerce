@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators, FormControl, ValidatorFn } from '@a
 import { Router, ActivationEnd } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
 import { PlatformConfig } from '@ecommerce/settings/platform.config';
-import { ILogin } from '@ecommerce/modules/login';
+import { ILogin } from '@ecommerce/interfaces/login';
 import { AuthService } from '@ecommerce/auth/auth.service';
 import { APIService } from '@ecommerce/service/api.service';
 import { SharedService } from '@ecommerce/service/shared.service';

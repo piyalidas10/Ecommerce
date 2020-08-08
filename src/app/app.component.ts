@@ -7,6 +7,7 @@ import { SharedService } from '@ecommerce/service/shared.service';
 import { AuthService } from './auth/auth.service';
 import { Subscription, from } from 'rxjs';
 import {Constants} from './constants/constants';
+import {MetaTags} from './enums/meta-tags';
 import { MessageService } from '@ecommerce/service/message.service';
 import {LocalStore} from './ecommerce-store/local-store';
 
@@ -101,10 +102,10 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy {
 
   setPageTitle() {
     this.titleService.setTitle(this.constants['title']);
-    this.meta.addTag({name: 'keywords', content: this.constants['meta_keywords']});
-    this.meta.addTag({name: 'description', content: this.constants['meta_description']});
-    this.meta.addTag({name: 'author', content: this.constants['meta_author']});
-    this.meta.addTag({name: 'robots', content: this.constants['meta_robots']});
+    this.meta.addTag({name: 'keywords', content: MetaTags['keywords']});
+    this.meta.addTag({name: 'description', content: MetaTags['description']});
+    this.meta.addTag({name: 'author', content: MetaTags['author']});
+    this.meta.addTag({name: 'robots', content: MetaTags['robots']});
   }
 
   createLinkForCanonicalURL() {
