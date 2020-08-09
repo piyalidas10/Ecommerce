@@ -67,9 +67,7 @@ export class ProductListComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
 
-  ngOnChanges() {
-    this.getProductLists(this.subCat);
-  }
+  ngOnChanges() {}
 
   async getProductLists(subCat: string) {
     try {

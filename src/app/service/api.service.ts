@@ -10,7 +10,7 @@ import { AppConfig } from '@ecommerce/settings/app.config';
 
 import { Categories } from '@ecommerce/models/categories.model';
 import { Errors } from '@ecommerce/models/errors.model';
-import { Products, Product } from '@ecommerce/models/products.model';
+import { Product } from '@ecommerce/models/product.model';
 
 @Injectable({
   providedIn: 'root',
