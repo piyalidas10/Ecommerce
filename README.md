@@ -107,7 +107,7 @@ You can do like this:
           "@ecommerce/service/*": ["./app/service/*"],
           "@ecommerce/directives/*": ["./app/directives/*"],
           "@ecommerce/constants/*": ["./app/constants/*"],
-          "@ecommerce/modules/*": ["./app/modules/*"],
+          "@ecommerce/interfaces/*": ["./app/interfaces/*"],
           "@ecommerce/settings/*": ["./app/settings/*"],
           "@ecommerce/pipe/*": ["./app/pipe/*"],
           "@ecommerce/shared/*": ["./app/shared/*"],
@@ -287,6 +287,12 @@ if (isDevMode()) {
     }
 }
 ```
+
+## Angular Models and deserialization
+https://medium.com/swlh/angular-7-models-cd0cd80f5e33
+https://nehalist.io/angular-7-models/
+https://nehalist.io/working-with-models-in-angular/
+https://github.com/nehalist/angular7-models
 
 ## @Inject in Angular
 
@@ -739,6 +745,9 @@ http://editor.swagger.io/?_ga=2.212193814.307479361.1574600989-1925759619.157438
 
 https://angularfirst.com/typescript-string-enums/
 
+
+# Reference Urls
+https://nehalist.io/working-with-models-in-angular/
 
 
 

@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 import {Constants} from '@ecommerce/constants/constants';
 
 import { AppConfig } from '@ecommerce/settings/app.config';
+import { Product } from '@ecommerce/models/product.model';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class ProductDetailsComponent implements OnInit {
   productId: string;
   imgURL: string;
   pic: string;
-  productDt = {};
+  public productDt: Product;
   isLoading: Boolean = true;
   errorData: any;
   statusTxt: {};
@@ -78,8 +79,8 @@ export class ProductDetailsComponent implements OnInit {
     this.apiService.getProductDetails(id)
       .subscribe(
         data => {
-          this.productDt = data.productinfo;
-          console.log(this.productDt);
+          this.productDt = data;
+          console.log('Product Details => ', this.productDt, typeof(this.productDt));
           this.isLoading = false;
           this.checkProductQuantity(this.productDt['Quantity']);
         },
@@ -155,7 +156,8 @@ export class ProductDetailsComponent implements OnInit {
   checkProductInCart(email) {
     this.apiService.isAvailableInCart(email).subscribe(
       data => {
-        if (data.productsInCart[0].cartResponse.length > 0) {
+        console.log(data);
+        if (data.productsInCart[0] && data.productsInCart[0].cartResponse.length > 0) {
           const cartProducts = data.productsInCart[0].cartResponse;
           cartProducts.forEach(element => {
             if (element.productId === this.productId) {

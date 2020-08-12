@@ -138,13 +138,12 @@ export class APIService {
   /**
    * Get product details
   */
-  getProductDetails(id: string): Observable<any> {
+  getProductDetails(id: string): Observable<Product> {
       const apiURL = `${this._appConfig.apiEndpoint}${this._appConfig.API_PRODUCT_DETAILS_PATH}`;
       const authData = {productid : id};
-      return this.http.post(apiURL, authData)
-      .pipe(map(response => {
-        return response;
-      }));
+      return this.http.post<Product>(apiURL, authData)
+      .pipe(map(response => new Product().deserialize(response['productinfo']))
+      );
   }
 
 

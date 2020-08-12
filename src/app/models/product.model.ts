@@ -21,4 +21,8 @@ export class Product implements Deserializable {
         Object.assign(this, input);
         return this;
     }
+
+    getWeight() {
+        return this.WeightMeasure + ' ' + this.WeightUnit;
+    }
 }

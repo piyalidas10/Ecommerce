@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
 import {Constants} from '@ecommerce/constants/constants';
 
 import { AppConfig } from '@ecommerce/settings/app.config';
+import { Product } from '@ecommerce/models/product.model';
 
 @Component({
   selector: 'ecommerce-product-list',
@@ -18,7 +19,7 @@ import { AppConfig } from '@ecommerce/settings/app.config';
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit, OnChanges, OnDestroy {
-  products = [];
+  products: Product[];
   filteredProducts = [];
   pic: string;
   nopic: string;
@@ -87,6 +88,7 @@ export class ProductListComponent implements OnInit, OnChanges, OnDestroy {
                 // });
                 /* Make a clone of products array in filteredProducts array */
                 this.filteredProducts = this.products;
+                console.log(this.filteredProducts);
 
                 /* Check if subcategory is all then all products will be listed otherwise filter by subcategory */
                 if (subCat === 'all' || subCat === '') {
