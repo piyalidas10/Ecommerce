@@ -20,7 +20,6 @@ import {LocalStore} from './ecommerce-store/local-store';
 })
 export class AppComponent implements OnInit, OnChanges, OnDestroy {
 
-  isLoading: Boolean = true;
   custIsAuthenticated = false;
   custName: string;
   private authListenerSubs: Subscription;
@@ -69,7 +68,6 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy {
     } else {
       this.content = this.localStore.getData();
       this.storeLocalStoreDataInService();
-      this.isLoading = false;
     }
   }
 
@@ -83,12 +81,10 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy {
             console.log('Join = ', arrjoin);
             this.localStore.setData(arrjoin); /* store site content data in localstorage */
             this.storeLocalStoreDataInService();
-            this.isLoading = false;
           }
         );
     } catch (error) {
       this.errorData = this.sharedService.getErrorKeys(error.statusText);
-      this.isLoading = false;
       console.log(this.errorData);
     }
   }

@@ -1,7 +1,5 @@
-<div class="loader-bg" *ngIf="isLoading">
-    <div class="loader"></div>
-</div>
-<div class="pageContain" *ngIf="!isLoading">
+<ecommerce-loader></ecommerce-loader>
+<div class="pageContain">
     <ecommerce-header [custStatus]="custIsAuthenticated" [custName]="custName"></ecommerce-header>
     <ecommerce-navbar></ecommerce-navbar>
     <ecommerce-alert [alertMsg]="alertMsg"></ecommerce-alert>

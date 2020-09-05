@@ -24,6 +24,8 @@ import { environment } from '../environments/environment';
 import { ModalDirective } from './directives/modal.directive';
 import { TimeoutDialogComponent } from './shared/components/timeout-dialog/timeout-dialog.component';
 import { AlertComponent } from './shared/components/alert/alert.component';
+import { LoaderComponent } from './shared/components/loader/loader.component';
+import { LoaderInterceptor } from './service/loader-interceptor';
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import { AlertComponent } from './shared/components/alert/alert.component';
     ModalDirective,
     ModalDialogComponent,
     TimeoutDialogComponent,
-    AlertComponent
+    AlertComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +61,11 @@ import { AlertComponent } from './shared/components/alert/alert.component';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
       multi: true
     }
   ],

@@ -52,17 +52,19 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnChanges {
       await this.sharedService.content.
         subscribe(
           (res) => {
-            console.log('header content => ', res);
-            if (this.custStatus === false) {
-              const pageHeader = 'logout';
-              this.content = res['sitePage'].filter((elemt) => elemt.pageHeader !== pageHeader);
-            } else {
-              const pageHeader = 'login';
-              this.content = res['sitePage'].filter((elemt) => elemt.pageHeader !== pageHeader);
-              this.checkIndexLogout();
+            if (res) {
+              console.log('header content => ', res);
+              if (this.custStatus === false) {
+                const pageHeader = 'logout';
+                this.content = res['sitePage'].filter((elemt) => elemt.pageHeader !== pageHeader);
+              } else {
+                const pageHeader = 'login';
+                this.content = res['sitePage'].filter((elemt) => elemt.pageHeader !== pageHeader);
+                this.checkIndexLogout();
+              }
+              console.log('Header Menu => ', this.content);
+              this.cdr.markForCheck();
             }
-            console.log('Header Menu => ', this.content);
-            this.cdr.markForCheck();
           }
         );
     } catch (error) {
