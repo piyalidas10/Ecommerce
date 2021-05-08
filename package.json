@@ -100,7 +100,7 @@
     "karma-jasmine": "~1.1.2",
     "karma-jasmine-html-reporter": "^0.2.2",
     "lighthouse": "^4.0.0-alpha.2-3.2.1",
-    "ng-packagr": "^4.7.1",
+    "ng-packagr": "^10.1.1",
     "nodemon": "^1.19.1",
     "protractor": "~5.4.0",
     "puppeteer": "^1.11.0",
