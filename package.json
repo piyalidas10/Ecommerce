@@ -65,7 +65,7 @@
     "core-js": "^2.5.4",
     "cors": "^2.8.5",
     "detect-passive-events": "^1.0.4",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "helmet": "^3.21.0",
     "highcharts": "^7.2.0",
     "highcharts-angular": "^2.4.0",
