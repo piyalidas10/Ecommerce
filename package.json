@@ -70,7 +70,7 @@
     "highcharts": "^7.2.0",
     "highcharts-angular": "^2.4.0",
     "https": "^1.0.0",
-    "jsonwebtoken": "^8.2.1",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^5.6.9",
     "mongoose-double": "0.0.1",
     "ng5-slider": "^1.2.1",
